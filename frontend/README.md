@@ -36,6 +36,7 @@ npm i @types/react-router-dom
 ```
 
 #### react-transition-group
+
 ```terminal
 npm i react-transition-group
 npm i @types/react-transition-group
@@ -46,4 +47,13 @@ npm i @types/react-transition-group
 ```terminal
 npm i node-sass
 npm i @types/node-sass
+```
+
+#### Absolute Path
+
+```json
+"compilerOptions": {
+        "baseUrl": "src",
+        ...
+}
 ```
