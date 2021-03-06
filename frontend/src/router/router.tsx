@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import HomePresenter from "pages/home/presenter/HomePresenter";
+import Nav from "components/nav/Nav";
 
 const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup>
@@ -18,6 +19,7 @@ const TransitionRouter = withRouter(({ location }) => (
 const MyRouter = () => {
     return (
         <BrowserRouter>
+            <Nav />
             <TransitionRouter />
         </BrowserRouter>
     );
