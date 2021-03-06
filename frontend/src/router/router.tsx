@@ -4,13 +4,22 @@ import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import HomePresenter from "pages/home/presenter/HomePresenter";
+
 import Nav from "components/nav/Nav";
+import InterviewPresenter from "pages/interview/presenter/InterviewPresenter";
+import IntroducePresenter from "pages/introduce/presenter/IntroducePresenter";
+import LibraryPresenter from "pages/library/presenter/LibraryPresenter";
+import SigninPresenter from "pages/signin/presenter/SigninPresenter";
 
 const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup>
         <CSSTransition key={location.key} classNames="asd" timeout={1000}>
             <Switch location={location}>
                 <Route path="/" exact component={HomePresenter} />
+                <Route path="/introduce" component={IntroducePresenter} />
+                <Route path="/library" component={LibraryPresenter} />
+                <Route path="/interview" component={InterviewPresenter} />
+                <Route path="/sign" component={SigninPresenter} />
             </Switch>
         </CSSTransition>
     </TransitionGroup>

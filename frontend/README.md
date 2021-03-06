@@ -8,6 +8,13 @@
 npx create-react-app frontend --template typescript
 ```
 
+#### SASS
+
+```terminal
+npm i node-sass
+npm i @types/node-sass
+```
+
 #### Redux
 
 ```terminal
@@ -40,13 +47,6 @@ npm i @types/react-router-dom
 ```terminal
 npm i react-transition-group
 npm i @types/react-transition-group
-```
-
-#### SASS
-
-```terminal
-npm i node-sass
-npm i @types/node-sass
 ```
 
 #### Absolute Path
