@@ -1,11 +1,19 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import Category from "components/nav/Category";
 
-import NavCategory from "components/nav/NavCategory";
 import "components/nav/nav.scss";
 
 const Nav = () => {
+    const categorys = [
+        { path: "", name: "홈" },
+        { path: "introduce", name: "소개" },
+        { path: "library", name: "책장" },
+        { path: "interview", name: "인터뷰" },
+        { path: "sign", name: "로그인" },
+    ];
+
     return (
         <div className="nav">
             <div className="nav__right">
@@ -22,7 +30,11 @@ const Nav = () => {
                 </div>
             </div>
 
-            <NavCategory />
+            <div className="nav__category">
+                {categorys.map((category) => (
+                    <Category path={category.path} name={category.name} />
+                ))}
+            </div>
         </div>
     );
 };
