@@ -12,8 +12,8 @@ import LibraryPresenter from "pages/library/presenter/LibraryPresenter";
 import SigninPresenter from "pages/signin/presenter/SigninPresenter";
 
 const TransitionRouter = withRouter(({ location }) => (
-    <TransitionGroup>
-        <CSSTransition key={location.key} classNames="asd" timeout={1000}>
+    <TransitionGroup className="page">
+        <CSSTransition key={location.key} classNames="slide" timeout={1200}>
             <Switch location={location}>
                 <Route path="/" exact component={HomePresenter} />
                 <Route path="/introduce" component={IntroducePresenter} />

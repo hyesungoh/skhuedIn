@@ -6,3 +6,27 @@
     box-sizing: border-box;
     font-family: "Noto Sans KR", sans-serif;
 }
+
+
+.slide-enter,
+.slide-exit {
+    transition: transform 1200ms ease-in-out;
+}
+
+.slide-enter {
+    position: absolute;
+    transform: translateX(100vw);
+}
+
+.slide-enter.slide-enter-active {
+    transform: translateX(0%);
+}
+
+.slide-exit {
+    position: absolute;
+    transform: translateX(0%);
+}
+
+.slide-exit-active {
+    transform: translateX(-100vw);
+}
