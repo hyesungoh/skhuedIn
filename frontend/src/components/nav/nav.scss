@@ -6,7 +6,6 @@
     background-color: $white_color;
     padding: $layout_padding;
 
-
     z-index: 99;
 
     position: sticky;
@@ -132,8 +131,7 @@
         justify-content: space-evenly;
         row-gap: 20px;
 
-        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.2),
-            0 15px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: $strong_shadow;
 
         & > a {
             transition: color 0.5s;
