@@ -59,6 +59,13 @@ npm i --save @fortawesome/react-fontawesome
 
 ```
 
+#### Gh pages
+
+```terminal
+npm install gh-pages --save-dev
+
+```
+
 #### Absolute Path
 
 ```json

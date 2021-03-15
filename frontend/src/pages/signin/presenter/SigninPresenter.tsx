@@ -12,32 +12,32 @@ import "pages/SignIn/SignIn.scss";
 const SignInPresenter = () => {
     return (
         <div className="center">
-            <div className="signform">
-                <div className="signform__text">
+            <div className="signinform">
+                <div className="signinform__text">
                     <span>스쿠드인에 로그인하고 취뽀하기</span>
                 </div>
 
-                <div className="signform__input">
+                <div className="signinform__input">
                     <input
                         type="text"
-                        className="signform__input__tag"
+                        className="signinform__input__tag"
                         required
                     />
-                    <span className="signform__input__placeholder">ID</span>
+                    <span className="signinform__input__placeholder">ID</span>
                 </div>
 
-                <div className="signform__input">
+                <div className="signinform__input">
                     <input
                         type="text"
-                        className="signform__input__tag"
+                        className="signinform__input__tag"
                         required
                     />
-                    <span className="signform__input__placeholder">
+                    <span className="signinform__input__placeholder">
                         Password
                     </span>
                 </div>
 
-                <div className="signform__social">
+                <div className="signinform__social">
                     <FontAwesomeIcon
                         icon={faGoogle}
                         size="4x"
@@ -57,12 +57,12 @@ const SignInPresenter = () => {
                     />
                 </div>
 
-                <span className="signform__link">
+                <span className="signinform__link">
                     아직 회원이 아니신가요?{" "}
                     <Link to="/signup">회원가입 하러가기</Link>
                 </span>
 
-                <button className="signform__btn">Sign In</button>
+                <button className="signinform__btn">Sign In</button>
             </div>
         </div>
     );

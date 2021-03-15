@@ -4,13 +4,15 @@
     width: 100vw;
     height: 90vh;
 
+    position: absolute;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.signform {
+.signinform {
     width: 500px;
     height: 500px;
     padding: 20px;
@@ -78,7 +80,7 @@
     }
 }
 
-.signform__input {
+.signinform__input {
     position: relative;
 
     display: flex;
@@ -110,10 +112,15 @@
             border-bottom: solid 4px $emph_color;
         }
 
-        &:focus + .signform__input__placeholder,
-        &:valid + .signform__input__placeholder {
+        &:focus + .signinform__input__placeholder,
+        &:valid + .signinform__input__placeholder {
             font-size: 0.8rem;
             bottom: 90%;
         }
     }
+}
+
+.signupform {
+    height: auto;
+    
 }
