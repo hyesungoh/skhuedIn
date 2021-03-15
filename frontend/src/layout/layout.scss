@@ -1,3 +1,5 @@
+@import "style/variable.scss";
+
 .layout {
     width: 100vw;
     // padding: 0px 10%;
@@ -10,7 +12,7 @@
 .page {
     width: 100vw;
     min-height: 100vh;
-    background-color: #F3F2EE;
+    background-color: $background_color;
 
     padding-top: 10px;
 }
