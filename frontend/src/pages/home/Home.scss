@@ -4,7 +4,7 @@
     width: 100%;
 
     display: grid;
-    grid-template: "profile newsfeed honor" auto / 220px 3fr 1fr;
+    grid-template: "profile newsfeed honor" auto / 220px 1fr 330px;
     justify-content: space-between;
     column-gap: 14px;
 
@@ -22,15 +22,20 @@
 
     &__newsfeed {
         grid-area: "newsfeed";
+
+        min-height: 100vh;
     }
 
     &__honor {
         grid-area: "honor";
 
         max-height: 500px;
+        padding: 10px;
+
         position: sticky;
         top: 80px;
 
+        background-color: $white_color;
         border-radius: $border_intensity;
     }
 }
@@ -51,9 +56,28 @@
 
             background-color: black;
             border-radius: 50%;
+            overflow: hidden;
+
+            & > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
         }
 
-        &__name {
+        &__container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &__name {
+                font-size: 1rem;
+            }
+
+            &__major {
+                font-size: 0.8rem;
+            }
         }
     }
 
@@ -87,11 +111,124 @@
         &__navigate {
             cursor: pointer;
             font-weight: bold;
-            
-            transition: all .5s;
+
+            transition: all 0.5s;
 
             &:hover {
                 color: $bold_color;
+            }
+        }
+    }
+}
+
+.honor {
+    &__text {
+        height: 8%;
+    }
+
+    &__list {
+        height: 92%;
+        overflow-y: scroll;
+    }
+}
+
+.honorProfile {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 12px;
+
+    &__img {
+        width: 50px;
+        height: 50px;
+
+        overflow: hidden;
+        border-radius: 50%;
+
+        & > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+
+        &__name {
+            font-size: 0.9rem;
+        }
+
+        &__info {
+            font-size: 0.6rem;
+        }
+    }
+
+    &__btn {
+        width: 70px;
+        height: 40px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 40px;
+        border: solid 1px $emph_color;
+
+        font-size: 0.7rem;
+        transition: all 0.5s;
+
+        &:hover {
+            background-color: $emph_color;
+            color: $white_color;
+        }
+    }
+}
+
+.newsfeed__content {
+    min-height: 200px;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    padding: 10px;
+
+    border-radius: $border_intensity;
+    background-color: $white_color;
+
+    &__writer {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        &__img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            & > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+
+            &--major {
+                font-size: 0.8rem;
             }
         }
     }
