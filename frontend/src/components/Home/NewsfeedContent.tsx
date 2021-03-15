@@ -1,11 +1,12 @@
 import React from "react";
+import sample from "static/images/profile.png";
 
 const NewsfeedContent = () => {
     return (
         <div className="newsfeed__content">
             <div className="newsfeed__content__writer">
                 <div className="newsfeed__content__writer__img">
-                    <img src="/images/profile.png" alt="writer profile img" />
+                    <img src={sample} alt="writer profile img" />
                 </div>
                 <div className="newsfeed__content__writer__info">
                     <span>Hyesung Oh</span>

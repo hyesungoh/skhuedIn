@@ -1,10 +1,12 @@
 import React from "react";
 
+import sample from "static/images/profile.png";
+
 const HonorProfile = () => {
     return (
         <div className="honorProfile">
             <div className="honorProfile__img">
-                <img src="/images/profile.png" alt="honorProfile img" />
+                <img src={sample} alt="honorProfile img" />
             </div>
             <div className="honorProfile__container">
                 <div className="honorProfile__container__ame">

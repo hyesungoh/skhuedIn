@@ -1,11 +1,13 @@
 import React from "react";
 
+import sample from "static/images/profile.png";
+
 const Profile = () => {
     return (
         <div className="home__profile">
             <div className="profile__info">
                 <div className="profile__info__image">
-                    <img src="/images/profile.png" alt="profile" />
+                    <img src={sample} alt="profile" />
                 </div>
                 <div className="profile__info__container">
                     <span className="profile__info__container__name">
