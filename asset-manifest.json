@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/skuedin/static/css/main.71524c66.chunk.css",
+    "main.js": "/skuedin/static/js/main.9188d8ea.chunk.js",
+    "main.js.map": "/skuedin/static/js/main.9188d8ea.chunk.js.map",
+    "runtime-main.js": "/skuedin/static/js/runtime-main.15d552e2.js",
+    "runtime-main.js.map": "/skuedin/static/js/runtime-main.15d552e2.js.map",
+    "static/js/2.b1db356d.chunk.js": "/skuedin/static/js/2.b1db356d.chunk.js",
+    "static/js/2.b1db356d.chunk.js.map": "/skuedin/static/js/2.b1db356d.chunk.js.map",
+    "index.html": "/skuedin/index.html",
+    "static/css/main.71524c66.chunk.css.map": "/skuedin/static/css/main.71524c66.chunk.css.map",
+    "static/js/2.b1db356d.chunk.js.LICENSE.txt": "/skuedin/static/js/2.b1db356d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.15d552e2.js",
+    "static/js/2.b1db356d.chunk.js",
+    "static/css/main.71524c66.chunk.css",
+    "static/js/main.9188d8ea.chunk.js"
+  ]
+}
