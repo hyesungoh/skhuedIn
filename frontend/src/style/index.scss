@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap");
+@import "style/variable.scss";
 
 * {
     margin: 0;
@@ -7,26 +8,36 @@
     font-family: "Noto Sans KR", sans-serif;
 }
 
+.page {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: $background_color;
+    padding-top: 10px;
+}
 
 .slide-enter,
 .slide-exit {
-    transition: transform 1200ms ease-in-out;
+    transition: all 1000ms ease-in-out;
 }
 
 .slide-enter {
-    position: absolute;
-    transform: translateX(100vw);
+    // position: absolute;
+    opacity: 0;
+    transform: translateX(20%);
 }
 
 .slide-enter.slide-enter-active {
-    transform: translateX(0%);
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .slide-exit {
-    position: absolute;
+    // position: absolute;
+    opacity: 1;
     transform: translateX(0%);
 }
 
 .slide-exit-active {
-    transform: translateX(-100vw);
+    opacity: 0;
+    transform: translateX(-20%);
 }

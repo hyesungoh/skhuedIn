@@ -1,17 +1,20 @@
 @import "style/variable.scss";
 
 .home {
-    width: 100%;
-
-    display: grid;
-    grid-template: "profile newsfeed honor" auto / 220px 1fr 330px;
-    justify-content: space-between;
+    width: 100vw;
+    padding: $layout_padding;
+    // position: absolute;
+    
+    display: flex;
+    flex-direction: row;
+    // grid-template: "profile newsfeed honor" auto / 220px auto 330px;
+    justify-content: center;
     column-gap: 14px;
 
     &__profile {
-        grid-area: "profile";
-
         max-height: 320px;
+        width: 220px;
+
         position: sticky;
         top: 80px;
 
@@ -21,14 +24,14 @@
     }
 
     &__newsfeed {
-        grid-area: "newsfeed";
-
+        width: 50%;
         min-height: 100vh;
     }
 
     &__honor {
-        grid-area: "honor";
         max-height: 500px;
+        width: 330px;
+
         padding: 10px;
 
         position: sticky;
