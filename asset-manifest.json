@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/skuedin/static/css/main.71524c66.chunk.css",
-    "main.js": "/skuedin/static/js/main.805ac2ee.chunk.js",
-    "main.js.map": "/skuedin/static/js/main.805ac2ee.chunk.js.map",
-    "runtime-main.js": "/skuedin/static/js/runtime-main.15d552e2.js",
-    "runtime-main.js.map": "/skuedin/static/js/runtime-main.15d552e2.js.map",
-    "static/js/2.b1db356d.chunk.js": "/skuedin/static/js/2.b1db356d.chunk.js",
-    "static/js/2.b1db356d.chunk.js.map": "/skuedin/static/js/2.b1db356d.chunk.js.map",
-    "index.html": "/skuedin/index.html",
-    "static/css/main.71524c66.chunk.css.map": "/skuedin/static/css/main.71524c66.chunk.css.map",
-    "static/js/2.b1db356d.chunk.js.LICENSE.txt": "/skuedin/static/js/2.b1db356d.chunk.js.LICENSE.txt",
-    "static/media/profile.f22db04e.png": "/skuedin/static/media/profile.f22db04e.png"
+    "main.css": "/skhuedIn/static/css/main.71524c66.chunk.css",
+    "main.js": "/skhuedIn/static/js/main.805ac2ee.chunk.js",
+    "main.js.map": "/skhuedIn/static/js/main.805ac2ee.chunk.js.map",
+    "runtime-main.js": "/skhuedIn/static/js/runtime-main.46885e6d.js",
+    "runtime-main.js.map": "/skhuedIn/static/js/runtime-main.46885e6d.js.map",
+    "static/js/2.b1db356d.chunk.js": "/skhuedIn/static/js/2.b1db356d.chunk.js",
+    "static/js/2.b1db356d.chunk.js.map": "/skhuedIn/static/js/2.b1db356d.chunk.js.map",
+    "index.html": "/skhuedIn/index.html",
+    "static/css/main.71524c66.chunk.css.map": "/skhuedIn/static/css/main.71524c66.chunk.css.map",
+    "static/js/2.b1db356d.chunk.js.LICENSE.txt": "/skhuedIn/static/js/2.b1db356d.chunk.js.LICENSE.txt",
+    "static/media/profile.f22db04e.png": "/skhuedIn/static/media/profile.f22db04e.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.15d552e2.js",
+    "static/js/runtime-main.46885e6d.js",
     "static/js/2.b1db356d.chunk.js",
     "static/css/main.71524c66.chunk.css",
     "static/js/main.805ac2ee.chunk.js"
