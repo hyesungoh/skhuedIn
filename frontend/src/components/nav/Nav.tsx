@@ -11,7 +11,6 @@ const Nav = () => {
         { path: "introduce", name: "소개" },
         { path: "library", name: "책장" },
         { path: "interview", name: "인터뷰" },
-        { path: "sign", name: "로그인" },
     ];
 
     return (
@@ -34,6 +33,18 @@ const Nav = () => {
                 {categorys.map((category) => (
                     <Category path={category.path} name={category.name} />
                 ))}
+
+                <div className="nav__category__element nav__dropdown">
+                    <span></span>
+                    <span>로그인</span>
+                    <span className="nav__dropdown__border"></span>
+
+                    <div className="nav__dropdown--content">
+                        <Link to="/">마이페이지</Link>
+                        <Link to="/">설정</Link>
+                        <Link to="/sign">로그아웃</Link>
+                    </div>
+                </div>
             </div>
         </div>
     );
