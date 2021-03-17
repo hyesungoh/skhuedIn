@@ -45,16 +45,19 @@
 
 .peoples {
     &__category {
+        align-self: flex-end;
+
         width: auto;
         height: 2rem;
         padding: 0px 0.8rem;
-        align-self: flex-end;
+        margin-bottom: 10px;
 
         display: flex;
         justify-content: flex-end;
         align-items: center;
 
         position: relative;
+
         background-color: $white_color;
         border-radius: $border_intensity;
 
@@ -74,7 +77,7 @@
             transform: translateX(10%);
             top: 110%;
             right: 0;
-            
+
             background-color: $white_color;
             transition: all 0.5s;
 
@@ -88,6 +91,105 @@
             row-gap: 20px;
 
             box-shadow: $strong_shadow;
+
+            & > span {
+                transition: color 0.5s;
+                cursor: pointer;
+
+                &:hover {
+                    color: $emph_color;
+                }
+            }
+        }
+    }
+
+    &__list {
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        justify-content: center;
+
+        flex-wrap: wrap;
+        gap: 20px;
+
+        &__profile {
+            width: 300px;
+            height: 300px;
+            padding: 10px 12px;
+            background-color: $white_color;
+            border-radius: $border_intensity;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            cursor: pointer;
+            transition: box-shadow 0.5s;
+        }
+    }
+}
+
+.peoples__list__profile {
+    &:hover {
+        box-shadow: $normal_shadow;
+    }
+
+    &__logo {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        &__img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            & > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__div {
+            margin-top: 1rem;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: background-color 0.3s;
+
+            &__heart {
+                width: 20px !important;
+                height: 20px;
+                opacity: 0.5;
+            }
+
+            &:hover {
+                background-color: $background_color;
+            }
+        }
+    }
+
+    &__info {
+        height: 50%;
+        
+        &__name {
+            font-size: 1.2rem;
+        }
+
+        &__major {
+            font-size: 0.8rem;
+            font-weight: 100;
+
+            margin-bottom: 1rem;
         }
     }
 }

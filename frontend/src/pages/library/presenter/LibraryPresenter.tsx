@@ -1,8 +1,7 @@
 import React from "react";
 
-import NewsfeedContent from "components/Home/NewsfeedContent";
-import HonorProfile from "components/Home/HonorProfile";
 import "pages/library/Library.scss";
+import PeopleProfile from "components/Library/PeopleProfile";
 
 const LibraryPresenter = () => {
     return (
@@ -18,6 +17,22 @@ const LibraryPresenter = () => {
                         <span>인기순</span>
                         <span>최신업데이트순</span>
                     </div>
+                </div>
+
+                <div className="peoples__list">
+                    <PeopleProfile />
+                    <PeopleProfile />
+                    <PeopleProfile />
+                    <PeopleProfile />
+                    <PeopleProfile />
+                    <PeopleProfile />
+                    <PeopleProfile />
+                    <PeopleProfile />
+                    <PeopleProfile />
+                    <PeopleProfile />
+                    <PeopleProfile />
+                    <PeopleProfile />
+                    <PeopleProfile />
                 </div>
             </div>
             <div className="library__recommend"></div>
