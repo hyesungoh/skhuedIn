@@ -10,7 +10,7 @@ const SignUpPresenter = () => {
 
                 <div className="signinform__input">
                     <input
-                        type="email"
+                        type="e-mail"
                         className="signinform__input__tag"
                         required
                     />
@@ -60,9 +60,7 @@ const SignUpPresenter = () => {
                         className="signinform__input__tag"
                         required
                     />
-                    <span className="signinform__input__placeholder">
-                        학과
-                    </span>
+                    <span className="signinform__input__placeholder">학과</span>
                 </div>
 
                 <div className="signinform__input">
@@ -76,7 +74,9 @@ const SignUpPresenter = () => {
                     </span>
                 </div>
 
-                <button className="signinform__btn">Sign Up</button>
+                <button type="submit" className="signinform__btn">
+                    Sign Up
+                </button>
             </div>
         </div>
     );

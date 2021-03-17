@@ -1,0 +1,93 @@
+@import "style/variable.scss";
+
+.library {
+    width: 100vw;
+    padding: $layout_padding;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 14px;
+
+    &__category {
+        max-height: 320px;
+        width: 220px;
+
+        position: sticky;
+        top: 80px;
+
+        background-color: $white_color;
+        border-radius: $border_intensity;
+        overflow: hidden;
+    }
+
+    &__peoples {
+        width: 50%;
+        min-height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__recommend {
+        max-height: 500px;
+        width: 330px;
+
+        padding: 10px;
+
+        position: sticky;
+        top: 80px;
+
+        background-color: $white_color;
+        border-radius: $border_intensity;
+    }
+}
+
+.peoples {
+    &__category {
+        width: auto;
+        height: 2rem;
+        padding: 0px 0.8rem;
+        align-self: flex-end;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        position: relative;
+        background-color: $white_color;
+        border-radius: $border_intensity;
+
+        &:hover {
+            & .peoples__category--content {
+                visibility: visible;
+                opacity: 1;
+                transform: translateX(0%);
+            }
+        }
+
+        &--content {
+            visibility: hidden;
+            position: absolute;
+            opacity: 0;
+
+            transform: translateX(10%);
+            top: 110%;
+            right: 0;
+            
+            background-color: $white_color;
+            transition: all 0.5s;
+
+            width: 10rem;
+            height: 200px;
+            padding: 6px 12px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            row-gap: 20px;
+
+            box-shadow: $strong_shadow;
+        }
+    }
+}
