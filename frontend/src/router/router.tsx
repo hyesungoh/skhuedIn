@@ -9,6 +9,7 @@ import Nav from "components/nav/Nav";
 import InterviewPresenter from "pages/interview/presenter/InterviewPresenter";
 import IntroducePresenter from "pages/introduce/presenter/IntroducePresenter";
 import LibraryPresenter from "pages/library/presenter/LibraryPresenter";
+import BookPresenter from "pages/book/presenter/BookPresenter";
 import SignInPresenter from "pages/SignIn/presenter/SignInPresenter";
 import SignUpPresenter from "pages/SignUp/presenter/SignUpPresenter";
 
@@ -18,7 +19,8 @@ const TransitionRouter = withRouter(({ location }) => (
             <Switch location={location}>
                 <Route path="/" exact component={HomePresenter} />
                 <Route path="/introduce" component={IntroducePresenter} />
-                <Route path="/library" component={LibraryPresenter} />
+                <Route path="/library" exact component={LibraryPresenter} />
+                <Route path="/library/:id" component={BookPresenter} />
                 <Route path="/interview" component={InterviewPresenter} />
                 <Route path="/signin" component={SignInPresenter} />
                 <Route path="/signup" component={SignUpPresenter} />

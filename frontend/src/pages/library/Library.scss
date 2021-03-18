@@ -114,6 +114,11 @@
         flex-wrap: wrap;
         gap: 20px;
 
+        & > a {
+            all: unset;
+            color: initial;
+        }
+
         &__profile {
             width: 260px;
             height: 260px;
@@ -181,7 +186,7 @@
 
     &__info {
         height: 50%;
-        
+
         &__name {
             font-size: 1.2rem;
         }
@@ -192,5 +197,11 @@
 
             margin-bottom: 1rem;
         }
+    }
+}
+
+.library__recommend {
+    &__title {
+        margin-bottom: 10px;
     }
 }

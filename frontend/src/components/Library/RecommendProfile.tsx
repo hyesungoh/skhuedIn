@@ -4,7 +4,7 @@ import sample from "static/images/profile.png";
 
 const RecommendProfile = () => {
     return (
-        <div>
+        <div className="honorProfile">
             <div className="honorProfile__img">
                 <img src={sample} alt="honorProfile img" />
             </div>
