@@ -1,0 +1,72 @@
+@import "style/variable.scss";
+
+.book {
+    width: 100vw;
+    padding: $layout_padding;
+
+    display: flex;
+    gap: 20px;
+
+    &__profile {
+        width: 60%;
+        height: 1200px;
+        margin-bottom: 20px;
+        padding: 10px 12px;
+
+        background-color: $white_color;
+        border-radius: $border_intensity;
+    }
+
+    &__loadmap {
+        width: 40%;
+        height: 600px;
+        background-color: $white_color;
+        border-radius: $border_intensity;
+
+        position: sticky;
+        top: 80px;
+    }
+}
+
+.book__profile__info {
+    width: 100%;
+    height: 250px;
+    display: flex;
+
+    &__vertical {
+        width: 180px;
+        height: 100%;
+
+        &__image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-color: pink;
+            overflow: hidden;
+
+            & > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                
+            }
+        }
+
+        &__follow {
+            width: 100%;
+            height: 70px;
+
+            background-color: green;
+        }
+    }
+
+    &__summary {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.book__profile__question {
+    width: 100%;
+    height: 300px;
+}
