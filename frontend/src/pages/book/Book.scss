@@ -89,14 +89,14 @@
             background-color: $background_color;
         }
         &:active {
-            background-color: $bold_color;
+            background-color: $emph_color;
             color: $white_color;
         }
     }
 
     &__heart {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
 
         display: flex;
         justify-content: center;
@@ -113,4 +113,32 @@
 .book__profile__question {
     width: 100%;
     height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &__write {
+        width: 100%;
+        height: 50px;
+        padding: 10px 12px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: $border_intensity;
+        background-color: $background_color;
+
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+            background-color: $emph_color;
+        }
+
+        &:active {
+            background-color: $bold_color;
+            color: $white_color;
+        }
+    }
 }

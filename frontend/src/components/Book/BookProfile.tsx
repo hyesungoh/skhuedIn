@@ -2,7 +2,11 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
+
+import BookProfileQuestion from "./BookProfileQuestion";
+
 import sample from "static/images/profile.png";
+import BookProfileInfoSummary from "./BookProfileInfoSummary";
 
 const BookProfile = () => {
     return (
@@ -20,14 +24,9 @@ const BookProfile = () => {
                         <button>인터뷰 요청하기</button>
                     </div>
                 </div>
-
-                <div className="book__profile__info__summary">
-                    <p>여기에 디테일 정보들</p>
-                </div>
+                <BookProfileInfoSummary />
             </div>
-            <div className="book__profile__question">
-                여기는 질문 쓰기랑 질문들
-            </div>
+            <BookProfileQuestion />
         </div>
     );
 };
