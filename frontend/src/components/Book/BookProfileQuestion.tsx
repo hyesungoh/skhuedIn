@@ -13,6 +13,14 @@ const BookProfileQuestion = () => {
             <BookProfileQuestionSummary />
             <BookProfileQuestionSummary />
             <BookProfileQuestionSummary />
+            <BookProfileQuestionSummary />
+            <BookProfileQuestionSummary />
+            <BookProfileQuestionSummary />
+            <BookProfileQuestionSummary />
+            <BookProfileQuestionSummary />
+            <BookProfileQuestionSummary />
+            <BookProfileQuestionSummary />
+            <BookProfileQuestionSummary />
         </div>
     );
 };
