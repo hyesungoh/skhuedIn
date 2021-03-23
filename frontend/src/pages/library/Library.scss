@@ -109,19 +109,21 @@
         height: auto;
 
         display: flex;
-        justify-content: center;
-
+        justify-content: space-evenly;
         flex-wrap: wrap;
-        gap: 20px;
-
-        & > a {
-            all: unset;
-            color: initial;
-        }
 
         &__profile {
-            width: 260px;
-            height: 260px;
+            all: unset;
+            color: initial;
+
+            width: 100%;
+            height: auto;
+
+            // width: 260px;
+            // height: 260px;
+
+            // margin-left: 1rem;
+            margin-bottom: 1rem;
             padding: 10px 12px;
             background-color: $white_color;
             border-radius: $border_intensity;

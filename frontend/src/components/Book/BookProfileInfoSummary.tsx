@@ -1,9 +1,16 @@
 import React from "react";
 
+import BookProfileInfoSummaryElement from "./BookProfileInfoSummaryElement";
+
 const BookProfileInfoSummary = () => {
     return (
         <div className="book__profile__info__summary">
-            <p>여기에 디테일 정보들</p>
+            <BookProfileInfoSummaryElement />
+            <BookProfileInfoSummaryElement />
+            <BookProfileInfoSummaryElement />
+            <BookProfileInfoSummaryElement />
+            <BookProfileInfoSummaryElement />
+            <BookProfileInfoSummaryElement />
         </div>
     );
 };
