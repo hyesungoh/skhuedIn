@@ -30,8 +30,12 @@ const Nav = () => {
             </div>
 
             <div className="nav__category">
-                {categorys.map((category) => (
-                    <Category path={category.path} name={category.name} />
+                {categorys.map((category, index) => (
+                    <Category
+                        key={index}
+                        path={category.path}
+                        name={category.name}
+                    />
                 ))}
 
                 <div className="nav__category__element nav__dropdown">

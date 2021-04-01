@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
 import PeopleProfile from "components/Library/PeopleProfile";
 const List = () => {
+    const categories: string[] = [
+        "경력순",
+        "졸업순",
+        "인기순",
+        "최신업데이트순",
+    ];
+    const [category, setCategory] = useState<string>(categories[0]);
+
     return (
         <div className="library__peoples">
             <div className="peoples__category">
-                <span>경력순</span>
+                <span>{category}</span>
 
                 <div className="peoples__category--content">
-                    <span>경력순</span>
-                    <span>졸업순</span>
-                    <span>인기순</span>
-                    <span>최신업데이트순</span>
+                    {categories.map((tempCategory, index) => (
+                        <span
+                            key={index}
+                            onClick={() => setCategory(tempCategory)}
+                        >
+                            {tempCategory}
+                        </span>
+                    ))}
                 </div>
             </div>
 
