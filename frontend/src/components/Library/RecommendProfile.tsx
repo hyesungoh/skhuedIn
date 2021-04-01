@@ -16,9 +16,9 @@ const RecommendProfile = () => {
                     소프트웨어 공학과 / 17학번 / 어쩌구 재직중
                 </div>
             </div>
-            <div className="honorProfile__btn">
+            {/* <div className="honorProfile__btn">
                 <span>자세히 보기</span>
-            </div>
+            </div> */}
         </div>
     );
 };
