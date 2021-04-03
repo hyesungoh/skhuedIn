@@ -77,6 +77,25 @@ npm install gh-pages --save-dev
 
 ## Issue
 
+-   `ERROR` Modal: `ref` is not a prop.
+    prop의 이름은 ref가 안됨
+
+```tsx
+// refs로 이름을 바꾸어 해결
+const TempCompo = () => {
+    const tempRef = useRef<HTMLDivElement>(null);
+
+    return <NextCompo refs={tempRef} />;
+};
+
+interface INextCompo {
+    refs: HTMLDivElement | null;
+}
+const NextCompo = ({ refs }: INextCompo) => {
+    return <div ref={refs}> something </div>;
+};
+```
+
 -   `ERROR` Type 'RefObject<HTMLDivElement>' is missing the following properties
 
 ```tsx
