@@ -1,6 +1,3 @@
-import PeopleProfile from "components/Library/PeopleProfile";
-import React from "react";
-
 const RoadmapDetail = () => {
     return (
         <div className="book__roadmap__detail">
