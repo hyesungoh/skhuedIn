@@ -1,7 +1,7 @@
 import React from "react";
 
 import BookProfile from "components/Book/BookProfile";
-import Loadmap from "components/Book/Loadmap";
+import Roadmap from "components/Book/Roadmap";
 
 import "pages/book/Book.scss";
 
@@ -9,7 +9,7 @@ const BookPresenter = () => {
     return (
         <div className="book">
             <BookProfile />
-            <Loadmap />
+            <Roadmap />
         </div>
     );
 };
