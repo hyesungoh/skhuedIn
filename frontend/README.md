@@ -74,3 +74,13 @@ npm install gh-pages --save-dev
         ...
 }
 ```
+
+## Issue
+
+-   `ERROR` Type 'RefObject<HTMLDivElement>' is missing the following properties
+
+```tsx
+interface ISomething {
+    refs: React.RefObject<HTMLDivElement>;
+}
+```

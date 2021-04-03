@@ -8,7 +8,11 @@ import BookProfileQuestion from "./BookProfileQuestion";
 import sample from "static/images/profile.png";
 import BookProfileInfoSummary from "./BookProfileInfoSummary";
 
-const BookProfile = () => {
+interface IBookProfile {
+    openModal(): void;
+}
+
+const BookProfile = ({ openModal }: IBookProfile) => {
     return (
         <div className="book__profile">
             <div className="book__profile__info">
@@ -21,7 +25,7 @@ const BookProfile = () => {
                             <FontAwesomeIcon icon={faHeart} size="1x" />
                         </div>
 
-                        <button>인터뷰 요청하기</button>
+                        <button onClick={openModal}>인터뷰 요청하기</button>
                     </div>
                 </div>
                 <BookProfileInfoSummary />

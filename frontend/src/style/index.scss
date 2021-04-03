@@ -41,3 +41,31 @@
     opacity: 0;
     transform: translateX(-20%);
 }
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    &__content {
+        width: 34vw;
+        height: 60vh;
+        background-color: white;
+    }
+
+    &--show {
+        opacity: 1;
+        visibility: visible;
+    }
+}
