@@ -75,6 +75,24 @@ npm install gh-pages --save-dev
 }
 ```
 
+#### React-mde
+
+react markdown editor
+
+```terminal
+// react 17.0.2 is not supported
+npm i react-mde --force
+```
+
+#### React-markdown
+
+markdown converter
+
+```terminal
+npm i react-markdown
+
+```
+
 ## Issue
 
 -   `ERROR` Modal: `ref` is not a prop.

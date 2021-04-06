@@ -1,12 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import BookProfileQuestionSummary from "./BookProfileQuestionSummary";
 
 const BookProfileQuestion = () => {
     return (
         <div className="book__profile__question">
-            <div className="book__profile__question__write">
-                <span>질문하기</span>
-            </div>
+            <Link to="/write">
+                <div className="book__profile__question__write">
+                    <span>질문하기</span>
+                </div>
+            </Link>
 
             <BookProfileQuestionSummary />
             <BookProfileQuestionSummary />

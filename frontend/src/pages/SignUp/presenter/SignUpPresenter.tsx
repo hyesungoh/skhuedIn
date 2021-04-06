@@ -1,6 +1,7 @@
 import React from "react";
 
 const SignUpPresenter = () => {
+    // 이메일, 비번, 이름, (프로필사진), 입학년도, 졸업년도, 
     return (
         <div className="center">
             <div className="signinform signupform">
