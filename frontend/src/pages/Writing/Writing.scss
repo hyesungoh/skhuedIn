@@ -14,6 +14,15 @@
     }
 }
 
+.clock {
+    display: flex;
+    align-items: center;
+
+    &--element {
+        background-color: white;
+    }
+}
+
 .react-mde {
     background-color: white;
 }
@@ -21,17 +30,4 @@
 .mde-text,
 .mde-preview {
     min-height: 80vh !important;
-}
-
-.react-clock {
-    width: 50px !important;
-    height: 50px !important;
-
-    &__face {
-        background-color: white;
-    }
-
-    &__second-hand {
-        transition: transform 0.5s;
-    }
 }

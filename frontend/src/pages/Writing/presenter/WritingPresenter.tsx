@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactMde from "react-mde";
 import ReactMarkdown from "react-markdown";
 
 import "react-mde/lib/styles/css/react-mde-all.css";
-import "react-clock/dist/Clock.css";
 
 import "pages/Writing/Writing.scss";
+import Clock from "components/Clock/Clock";
 
 // Suggestion
 // function loadSuggestions(text: string): any {
@@ -44,20 +44,10 @@ const WritingPresenter = () => {
         "write"
     );
 
-    const [time, setTime] = useState<Date>(new Date());
-
-    useEffect(() => {
-        const interval = setInterval(() => setTime(new Date()), 1000);
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, []);
-
     return (
         <div className="writing">
             <div className="writing__form">
-                
+                <Clock />
 
                 <ReactMde
                     value={value}
