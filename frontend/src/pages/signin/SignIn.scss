@@ -71,7 +71,7 @@
         border-radius: 12px;
         cursor: pointer;
         background-color: $background_color;
-        transition: all .5s;
+        transition: all 0.5s;
 
         &:hover {
             background-color: $emph_color;
@@ -93,6 +93,8 @@
 
     &__placeholder {
         position: absolute;
+        pointer-events: none;
+
         top: 50%;
         left: 10%;
         transform: translateY(-50%);
@@ -123,5 +125,4 @@
 
 .signupform {
     height: auto;
-    
 }

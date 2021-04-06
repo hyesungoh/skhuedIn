@@ -61,9 +61,9 @@ const WritingPresenter = () => {
                 <div className="writing__form__title">
                     <div className="writing__form__title__input">
                         <input type="text" required />
-                        <label className="writing__form__title__input--placeholder">
+                        <span className="writing__form__title__input--placeholder">
                             제목을 입력해주세요
-                        </label>
+                        </span>
                     </div>
                     <Clock />
                 </div>

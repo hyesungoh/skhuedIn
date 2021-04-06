@@ -47,9 +47,9 @@
         }
     }
 
-    & label {
+    &--placeholder {
         position: absolute;
-
+        pointer-events: none;
         top: 50%;
         left: 10px;
         transform: translateY(-50%);
