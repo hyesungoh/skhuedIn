@@ -13,6 +13,7 @@ import "pages/SignIn/SignIn.scss";
 
 const SignInPresenter = () => {
     const [id, setId] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
 
     return (
         <div className="center">
@@ -21,18 +22,9 @@ const SignInPresenter = () => {
                     <span>스쿠드인에 로그인하고 취뽀하기</span>
                 </div>
 
-                <SignInput text={"ID"} state={id} setState={setId} />
+                <SignInput text={"ID"} setState={setId} />
 
-                <div className="signinform__input">
-                    <input
-                        type="text"
-                        className="signinform__input__tag"
-                        required
-                    />
-                    <span className="signinform__input__placeholder">
-                        Password
-                    </span>
-                </div>
+                <SignInput text={"Password"} setState={setPassword} />
 
                 <div className="signinform__social">
                     <FontAwesomeIcon

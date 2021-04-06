@@ -93,8 +93,9 @@
 
     &__placeholder {
         position: absolute;
-        bottom: 50%;
+        top: 50%;
         left: 10%;
+        transform: translateY(-50%);
 
         transition: all 0.4s;
     }
@@ -115,7 +116,7 @@
         &:focus + .signinform__input__placeholder,
         &:valid + .signinform__input__placeholder {
             font-size: 0.8rem;
-            bottom: 90%;
+            transform: translateY(-180%);
         }
     }
 }
