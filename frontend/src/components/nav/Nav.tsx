@@ -7,7 +7,7 @@ import "components/nav/nav.scss";
 
 const Nav = () => {
     const categorys = [
-        { path: "", name: "홈" },
+        { path: "", name: "이야기" },
         { path: "introduce", name: "소개" },
         { path: "library", name: "책장" },
         { path: "interview", name: "인터뷰" },

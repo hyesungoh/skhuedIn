@@ -13,6 +13,7 @@ import BookPresenter from "pages/book/presenter/BookPresenter";
 import SignInPresenter from "pages/SignIn/presenter/SignInPresenter";
 import SignUpPresenter from "pages/SignUp/presenter/SignUpPresenter";
 import MypagePresenter from "pages/mypage/presenter/MypagePresenter";
+import WritingPresenter from "pages/Writing/presenter/WritingPresenter";
 
 const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup className="page">
@@ -26,6 +27,7 @@ const TransitionRouter = withRouter(({ location }) => (
                 <Route path="/signin" component={SignInPresenter} />
                 <Route path="/signup" component={SignUpPresenter} />
                 <Route path="/mypage/:id" component={MypagePresenter} />
+                <Route path="/write" component={WritingPresenter} />
             </Switch>
         </CSSTransition>
     </TransitionGroup>
