@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -7,9 +7,13 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
+import SignInput from "components/Sign/SignInput";
+
 import "pages/SignIn/SignIn.scss";
 
 const SignInPresenter = () => {
+    const [id, setId] = useState<string>("");
+
     return (
         <div className="center">
             <div className="signinform">
@@ -17,14 +21,7 @@ const SignInPresenter = () => {
                     <span>스쿠드인에 로그인하고 취뽀하기</span>
                 </div>
 
-                <div className="signinform__input">
-                    <input
-                        type="text"
-                        className="signinform__input__tag"
-                        required
-                    />
-                    <span className="signinform__input__placeholder">ID</span>
-                </div>
+                <SignInput text={"ID"} state={id} setState={setId} />
 
                 <div className="signinform__input">
                     <input

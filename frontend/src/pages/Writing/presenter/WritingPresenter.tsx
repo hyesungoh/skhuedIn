@@ -82,6 +82,10 @@ const WritingPresenter = () => {
                         },
                     }}
                 ></ReactMde>
+
+                <span className="writing__form__ps">
+                    좋은 글을 통해 좋은 영향을
+                </span>
             </div>
         </div>
     );

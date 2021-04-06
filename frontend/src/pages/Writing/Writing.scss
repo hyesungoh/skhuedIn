@@ -6,6 +6,9 @@
     justify-content: center;
 
     &__form {
+        display: flex;
+        flex-direction: column;
+
         width: 50%;
         padding-bottom: 100px;
 
@@ -15,6 +18,13 @@
             justify-content: space-between;
 
             margin-bottom: 10px;
+        }
+
+        &__ps {
+            width: 100%;
+            text-align: right;
+            font-size: 0.85rem;
+            opacity: 0.8;
         }
     }
 }

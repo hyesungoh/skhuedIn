@@ -1,6 +1,7 @@
 import React from "react";
 import sample from "static/images/profile.png";
 
+
 const NewsfeedContent = () => {
     return (
         <div className="newsfeed__content">
