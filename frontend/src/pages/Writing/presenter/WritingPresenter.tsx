@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import ReactMde from "react-mde";
 import ReactMarkdown from "react-markdown";
 
-import Clock from "react-clock";
-
 import "react-mde/lib/styles/css/react-mde-all.css";
 import "react-clock/dist/Clock.css";
 
@@ -59,7 +57,7 @@ const WritingPresenter = () => {
     return (
         <div className="writing">
             <div className="writing__form">
-                <Clock value={time} className="clock" />
+                
 
                 <ReactMde
                     value={value}

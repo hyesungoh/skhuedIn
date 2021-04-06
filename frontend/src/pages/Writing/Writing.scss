@@ -24,6 +24,9 @@
 }
 
 .react-clock {
+    width: 50px !important;
+    height: 50px !important;
+
     &__face {
         background-color: white;
     }
