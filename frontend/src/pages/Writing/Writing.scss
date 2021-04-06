@@ -11,15 +11,61 @@
     &__form {
         width: 50%;
         height: auto;
+
+        &__title {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.writing__form__title__input {
+    position: relative;
+    width: 100%;
+
+    & input {
+        all: unset;
+        width: 70%;
+        height: 44px;
+        background-color: white;
+
+        padding-left: 10px;
+    }
+
+    & label {
+        position: absolute;
+
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+
+        transition: opacity 0.5s;
     }
 }
 
 .clock {
+    width: auto;
+    height: auto;
+
     display: flex;
     align-items: center;
 
     &--element {
+        width: 15px;
+        height: 28px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         background-color: white;
+
+        &:nth-child(even) {
+            margin-right: 6px;
+        }
     }
 }
 

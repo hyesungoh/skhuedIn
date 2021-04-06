@@ -47,7 +47,13 @@ const WritingPresenter = () => {
     return (
         <div className="writing">
             <div className="writing__form">
-                <Clock />
+                <div className="writing__form__title">
+                    <div className="writing__form__title__input">
+                        <input type="text" />
+                        <label>제목을 입력해주세요</label>
+                    </div>
+                    <Clock />
+                </div>
 
                 <ReactMde
                     value={value}
