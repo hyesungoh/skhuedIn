@@ -10,8 +10,10 @@
     column-gap: 14px;
 
     &__category {
-        max-height: 320px;
+        // max-height: 320px;
+        height: auto;
         width: 220px;
+        padding: 8px 12px;
 
         position: sticky;
         top: 80px;
@@ -205,5 +207,20 @@
 .library__recommend {
     &__title {
         margin-bottom: 10px;
+    }
+}
+
+.library__category {
+    &__checkbox {
+        display: none;
+    }
+    &__body {
+        height: 0;
+        overflow: hidden;
+        transition: all 1s;
+    }
+
+    &__checkbox:checked + .library__category__body {
+        height: 100px;
     }
 }
