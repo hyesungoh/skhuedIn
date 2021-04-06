@@ -38,7 +38,18 @@ import Clock from "components/Clock/Clock";
 
 const WritingPresenter = () => {
     const [value, setValue] = useState<string | undefined>(
-        "**Hello WORLD!!!**"
+        `# 큰 글자
+## 두 번째로 큰 글자
+### 세 번째로 큰 글자
+...
+중간 선
+---
+> 누군가 말했어요\n
+**강조** *이테릭체*\n
+![profile](https://user-images.githubusercontent.com/26461307/113733635-9c85b000-9735-11eb-9775-c54b121d100f.png)\n
+[링크 태그](www.hyesungoh.xyz)
+
+`
     );
     const [selectedTab, setSelectedTab] = useState<"write" | "preview">(
         "write"
@@ -49,8 +60,10 @@ const WritingPresenter = () => {
             <div className="writing__form">
                 <div className="writing__form__title">
                     <div className="writing__form__title__input">
-                        <input type="text" />
-                        <label>제목을 입력해주세요</label>
+                        <input type="text" required />
+                        <label className="writing__form__title__input--placeholder">
+                            제목을 입력해주세요
+                        </label>
                     </div>
                     <Clock />
                 </div>
