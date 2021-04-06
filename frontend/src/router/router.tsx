@@ -3,8 +3,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-import HomePresenter from "pages/home/presenter/HomePresenter";
-
+import HomeContainer from "pages/home/container/HomeContainer";
 import Nav from "components/nav/Nav";
 import InterviewPresenter from "pages/interview/presenter/InterviewPresenter";
 import IntroducePresenter from "pages/introduce/presenter/IntroducePresenter";
@@ -19,7 +18,7 @@ const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup className="page">
         <CSSTransition key={location.key} classNames="slide" timeout={1200}>
             <Switch location={location}>
-                <Route path="/" exact component={HomePresenter} />
+                <Route path="/" exact component={HomeContainer} />
                 <Route path="/introduce" component={IntroducePresenter} />
                 <Route path="/library" exact component={LibraryPresenter} />
                 <Route path="/library/:id" component={BookPresenter} />

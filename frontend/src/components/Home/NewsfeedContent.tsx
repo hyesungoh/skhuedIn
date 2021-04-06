@@ -1,10 +1,16 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
+
+import { IPost } from "types/types";
 import sample from "static/images/profile.png";
 
+interface INewsfeedContent {
+    post: IPost;
+}
 
-const NewsfeedContent = () => {
+const NewsfeedContent = ({ post }: INewsfeedContent) => {
     return (
-        <div className="newsfeed__content">
+        <div className="newsfeed__content mde-preview">
             <div className="newsfeed__content__writer">
                 <div className="newsfeed__content__writer__img">
                     <img src={sample} alt="writer profile img" />
@@ -16,13 +22,8 @@ const NewsfeedContent = () => {
                     </span>
                 </div>
             </div>
-            <div className="newsfeed__content__body">
-                <span>
-                    {" "}
-                    더미 데이터 입니다. 더미 데이터 입니다. 더미 데이터 입니다.
-                    더미 데이터 입니다. 더미 데이터 입니다. 더미 데이터 입니다.
-                    더미 데이터 입니다.{" "}
-                </span>
+            <div className="newsfeed__content__body mde-preview-content">
+                <ReactMarkdown>{post.body}</ReactMarkdown>
             </div>
         </div>
     );

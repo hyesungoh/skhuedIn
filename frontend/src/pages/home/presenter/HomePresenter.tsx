@@ -4,13 +4,18 @@ import Newsfeed from "components/Home/Newsfeed";
 import Profile from "components/Home/Profile";
 import Honor from "components/Home/Honor";
 
+import { IPost } from "types/types";
 import "pages/home/Home.scss";
 
-const HomePresenter = () => {
+interface IHomePresenter {
+    loading: boolean;
+    posts: IPost[];
+}
+const HomePresenter = ({ loading, posts }: IHomePresenter) => {
     return (
         <div className="home">
             <Profile />
-            <Newsfeed />
+            <Newsfeed posts={posts} />
             <Honor />
         </div>
     );
