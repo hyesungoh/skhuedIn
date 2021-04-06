@@ -93,6 +93,13 @@ npm i react-markdown
 
 ```
 
+#### React-clock
+
+```terminal
+npm i react-clock
+npm i @types/react-clock
+```
+
 ## Issue
 
 -   `ERROR` Modal: `ref` is not a prop.

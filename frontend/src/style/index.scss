@@ -11,6 +11,9 @@
 .page {
     width: 100vw;
     min-height: 100vh;
+    height: auto;
+
+
     background-color: $background_color;
     padding-top: 20px;
 }

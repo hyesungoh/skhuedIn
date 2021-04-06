@@ -1,0 +1,34 @@
+@import "style/variable.scss";
+
+.writing {
+    width: 100vw;
+    min-height: 100%;
+    max-height: auto;
+
+    display: flex;
+    justify-content: center;
+
+    &__form {
+        width: 50%;
+        height: auto;
+    }
+}
+
+.react-mde {
+    background-color: white;
+}
+
+.mde-text,
+.mde-preview {
+    min-height: 80vh !important;
+}
+
+.react-clock {
+    &__face {
+        background-color: white;
+    }
+
+    &__second-hand {
+        transition: transform 0.5s;
+    }
+}
