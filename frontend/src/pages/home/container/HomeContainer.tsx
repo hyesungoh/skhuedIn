@@ -9,10 +9,10 @@ class HomeContainer extends Component {
                 body: `# test 입니다.\n### 테스트1\n > asd`,
             },
             {
-                body: `# test 입니다.\n### 테스트2`,
+                body: `# test 입니다.\n##### 테스트2\n \`\`\`python\nprint\n\`\`\` `,
             },
             {
-                body: `# test 입니다.\n### 테스트3`,
+                body: `# test 입니다.\n### 테스트3\n *asdasd*`,
             },
             {
                 body: `# test 입니다.\n### 테스트4`,

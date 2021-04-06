@@ -81,6 +81,9 @@ const WritingPresenter = () => {
                             tabIndex: -1,
                         },
                     }}
+                    minEditorHeight={72}
+                    minPreviewHeight={72}
+                    heightUnits={"vh"}
                 ></ReactMde>
 
                 <span className="writing__form__ps">

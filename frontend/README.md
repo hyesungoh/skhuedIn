@@ -93,6 +93,56 @@ npm i react-markdown
 
 ```
 
+## Development
+
+-   #### React-mde
+    마크다운 에디터를 사용하기 위해 설치
+
+```tsx
+import ReactMde from "react-mde";
+import ReactMarkdown from "react-markdown";
+
+function Compo() {
+    const [value, setValue] = useState<string | undefined>("");
+    const [selectedTab, setSelectedTab] = useState<"write" | "preview">(
+        "write"
+    );
+
+    return (
+        <ReactMde
+            value={value}
+            onChange={setValue}
+            selectedTab={selectedTab}
+            onTabChange={setSelectedTab}
+            generateMarkdownPreview={(markdown) =>
+                Promise.resolve(<ReactMarkdown source={markdown} />)
+            }
+            childProps={{
+                writeButton: {
+                    tabIndex: -1,
+                },
+            }}
+            minEditorHeight={72} // 에디터 최소 높이
+            minPreviewHeight={72} // 프리뷰 최소 높이
+            heightUnits={"vh"} // 높이 단위
+            // loadSuggestions={function} // 자동 추천
+        ></ReactMde>
+    );
+}
+```
+
+-   #### React-markdown
+    `React-mde`의 Preview와 마크다운 포맷을 보여주기 위해 사용
+
+```tsx
+import ReactMarkdown from "react-markdown";
+
+function Compo() {
+    const md = `# Title\n### Something\n> blahblah`;
+    return <ReactMarkdown>{md}</ReactMarkdown>;
+}
+```
+
 ## Issue
 
 -   `ERROR` Modal: `ref` is not a prop.
