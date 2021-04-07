@@ -9,7 +9,7 @@ import InterviewPresenter from "pages/interview/presenter/InterviewPresenter";
 import IntroducePresenter from "pages/introduce/presenter/IntroducePresenter";
 import LibraryPresenter from "pages/library/presenter/LibraryPresenter";
 import BookContainer from "pages/book/container/BookContainer";
-import SignInPresenter from "pages/SignIn/presenter/SignInPresenter";
+import SignInContainer from "pages/SignIn/container/SignInContainer";
 import SignUpPresenter from "pages/SignUp/presenter/SignUpPresenter";
 import MypagePresenter from "pages/mypage/presenter/MypagePresenter";
 import WritingPresenter from "pages/Writing/presenter/WritingPresenter";
@@ -23,7 +23,7 @@ const TransitionRouter = withRouter(({ location }) => (
                 <Route path="/library" exact component={LibraryPresenter} />
                 <Route path="/library/:id" component={BookContainer} />
                 <Route path="/interview" component={InterviewPresenter} />
-                <Route path="/signin" component={SignInPresenter} />
+                <Route path="/signin" component={SignInContainer} />
                 <Route path="/signup" component={SignUpPresenter} />
                 <Route path="/mypage/:id" component={MypagePresenter} />
                 <Route path="/write" component={WritingPresenter} />

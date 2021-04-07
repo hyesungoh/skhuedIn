@@ -8,12 +8,14 @@
     font-family: "Noto Sans KR", sans-serif;
 }
 
+#root {
+    background-color: $background_color;
+}
+
 .page {
     width: 100vw;
     min-height: 100vh;
-    height: auto;
-
-
+    
     background-color: $background_color;
     padding-top: 20px;
 }

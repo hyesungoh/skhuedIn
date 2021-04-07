@@ -4,8 +4,9 @@ import HomePresenter from "../presenter/HomePresenter";
 import { RootState } from "modules";
 import { useDispatch, useSelector } from "react-redux";
 import { signin, signinBy, signout } from "modules/user/user";
+import { RouteComponentProps } from "react-router";
 
-const HomeContainer = () => {
+const HomeContainer = ({ history }: RouteComponentProps) => {
     const [state, setState] = useState({
         loading: false,
         posts: [
@@ -48,7 +49,6 @@ const HomeContainer = () => {
         dispatch(signinBy(diff));
     };
 
-    
     const { loading, posts } = state;
     return <HomePresenter loading={loading} posts={posts} />;
 };

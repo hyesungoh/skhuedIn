@@ -1,11 +1,13 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createBrowserHistory } from "history";
 
 import NavPresenter from "pages/nav/presenter/NavPresenter";
-import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "modules";
 import { signout } from "modules/user/user";
 
 const NavContainer = () => {
+    const history = createBrowserHistory();
     const categorys = [
         { path: "", name: "이야기" },
         { path: "introduce", name: "소개" },
@@ -18,6 +20,7 @@ const NavContainer = () => {
 
     const onSignOut = () => {
         dispatch(signout());
+        history.push("/signin");
     };
 
     return (

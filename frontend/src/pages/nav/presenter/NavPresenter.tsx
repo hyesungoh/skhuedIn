@@ -21,7 +21,7 @@ const Nav = ({ categorys, currentUser, onSignOut }: INav) => {
 
             <div className="nav__dropdown--content">
                 <Link to="/mypage/1">마이페이지</Link>
-                <Link to="/signin">설정</Link>
+                <Link to="/">설정</Link>
                 <span onClick={onSignOut}>로그아웃</span>
             </div>
         </div>

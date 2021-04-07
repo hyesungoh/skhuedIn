@@ -11,7 +11,12 @@ import SignInput from "components/Sign/SignInput";
 
 import "pages/SignIn/SignIn.scss";
 
-const SignInPresenter = () => {
+interface ISignInPresenter {
+    onSignIn: () => void;
+    onSignInBy: (diff: string) => void;
+}
+
+const SignInPresenter = ({ onSignIn, onSignInBy }: ISignInPresenter) => {
     const [id, setId] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
@@ -51,7 +56,9 @@ const SignInPresenter = () => {
                     <Link to="/signup">회원가입 하러가기</Link>
                 </span>
 
-                <button className="signinform__btn">Sign In</button>
+                <button className="signinform__btn" onClick={onSignIn}>
+                    Sign In
+                </button>
             </div>
         </div>
     );
