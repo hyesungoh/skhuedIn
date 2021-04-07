@@ -17,7 +17,7 @@ type UserAction =
     | ReturnType<typeof signout>
     | ReturnType<typeof signinBy>;
 
-type UserState = {
+export type UserState = {
     isSignedIn: boolean;
     id?: number;
     email?: string;
