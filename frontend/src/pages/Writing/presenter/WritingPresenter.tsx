@@ -8,33 +8,37 @@ import "pages/Writing/Writing.scss";
 import Clock from "components/Clock/Clock";
 
 // Suggestion
-// function loadSuggestions(text: string): any {
-//     return new Promise((accept, reject) => {
-//         setTimeout(() => {
-//             const suggestions = [
-//                 {
-//                     preview: "hyesung",
-//                     value: "@hyesung",
-//                 },
-//                 {
-//                     preview: "hyesungoh123",
-//                     value: "@hyesungoh123",
-//                 },
-//                 {
-//                     preview: "David",
-//                     value: "@david",
-//                 },
-//                 {
-//                     preview: "Louise",
-//                     value: "@louise",
-//                 },
-//             ].filter((i) =>
-//                 i.preview.toLowerCase().includes(text.toLowerCase())
-//             );
-//             accept(suggestions);
-//         }, 250);
-//     });
-// }
+function loadSuggestions(text: string): any {
+    return new Promise((accept, reject) => {
+        setTimeout(() => {
+            const suggestions = [
+                {
+                    preview: "제목",
+                    value: "# ",
+                },
+                {
+                    preview: "인용",
+                    value: "> ",
+                },
+                {
+                    preview: "강조",
+                    value: "** **",
+                },
+                {
+                    preview: "링크 달기",
+                    value: "[링크](url)",
+                },
+                {
+                    preview: "이미지",
+                    value: "![이미지 글](url)",
+                },
+            ].filter((i) =>
+                i.preview.toLowerCase().includes(text.toLowerCase())
+            );
+            accept(suggestions);
+        }, 250);
+    });
+}
 
 const WritingPresenter = () => {
     const [value, setValue] = useState<string | undefined>(
@@ -81,6 +85,7 @@ const WritingPresenter = () => {
                             tabIndex: -1,
                         },
                     }}
+                    loadSuggestions={loadSuggestions}
                     minEditorHeight={72}
                     minPreviewHeight={72}
                     heightUnits={"vh"}

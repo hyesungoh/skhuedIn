@@ -8,7 +8,7 @@ import Nav from "components/nav/Nav";
 import InterviewPresenter from "pages/interview/presenter/InterviewPresenter";
 import IntroducePresenter from "pages/introduce/presenter/IntroducePresenter";
 import LibraryPresenter from "pages/library/presenter/LibraryPresenter";
-import BookPresenter from "pages/book/presenter/BookPresenter";
+import BookContainer from "pages/book/container/BookContainer";
 import SignInPresenter from "pages/SignIn/presenter/SignInPresenter";
 import SignUpPresenter from "pages/SignUp/presenter/SignUpPresenter";
 import MypagePresenter from "pages/mypage/presenter/MypagePresenter";
@@ -21,7 +21,7 @@ const TransitionRouter = withRouter(({ location }) => (
                 <Route path="/" exact component={HomeContainer} />
                 <Route path="/introduce" component={IntroducePresenter} />
                 <Route path="/library" exact component={LibraryPresenter} />
-                <Route path="/library/:id" component={BookPresenter} />
+                <Route path="/library/:id" component={BookContainer} />
                 <Route path="/interview" component={InterviewPresenter} />
                 <Route path="/signin" component={SignInPresenter} />
                 <Route path="/signup" component={SignUpPresenter} />
