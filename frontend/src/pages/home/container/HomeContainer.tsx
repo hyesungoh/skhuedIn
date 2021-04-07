@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import HomePresenter from "../presenter/HomePresenter";
 
+import { RootState } from "modules";
+
 class HomeContainer extends Component {
     state = {
         loading: false,
@@ -9,7 +11,7 @@ class HomeContainer extends Component {
                 body: `# test 입니다.\n### 테스트1\n > asd`,
             },
             {
-                body: `# test 입니다.\n##### 테스트2\n \`\`\`python\nprint\n\`\`\` `,
+                body: `# test 입니다.\n##### 테스트2\n\n\n# asd\n\n# asd\n\n# asda\n\n\n# asd\n\n# asd\n \`\`\`python\nprint\n\`\`\` `,
             },
             {
                 body: `# test 입니다.\n### 테스트3\n *asdasd*`,
@@ -28,6 +30,11 @@ class HomeContainer extends Component {
             },
         ],
     };
+
+    // constructor(props) {
+    //     super(props);
+    // }
+
     componentDidMount() {}
 
     render() {
@@ -35,5 +42,9 @@ class HomeContainer extends Component {
         return <HomePresenter loading={loading} posts={posts} />;
     }
 }
+
+const mapStateToProps = (state: RootState) => ({
+    user: state.user,
+});
 
 export default HomeContainer;
