@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, Dispatch, useState } from "react";
 import HomePresenter from "../presenter/HomePresenter";
 
 import { RootState } from "modules";
+import { useDispatch, useSelector } from "react-redux";
+import { signin, signinBy, signout } from "modules/user/user";
 
-class HomeContainer extends Component {
-    state = {
+const HomeContainer = () => {
+    const [state, setState] = useState({
         loading: false,
         posts: [
             {
@@ -29,22 +31,26 @@ class HomeContainer extends Component {
                 body: `# test 입니다.\n### 테스트7`,
             },
         ],
+    });
+
+    const user = useSelector((state: RootState) => state.user);
+    const dispatch = useDispatch();
+
+    const onSignIn = () => {
+        dispatch(signin());
     };
 
-    // constructor(props) {
-    //     super(props);
-    // }
+    const onSignOut = () => {
+        dispatch(signout());
+    };
 
-    componentDidMount() {}
+    const onSignInBy = (diff: string) => {
+        dispatch(signinBy(diff));
+    };
 
-    render() {
-        const { loading, posts } = this.state;
-        return <HomePresenter loading={loading} posts={posts} />;
-    }
-}
-
-const mapStateToProps = (state: RootState) => ({
-    user: state.user,
-});
+    
+    const { loading, posts } = state;
+    return <HomePresenter loading={loading} posts={posts} />;
+};
 
 export default HomeContainer;

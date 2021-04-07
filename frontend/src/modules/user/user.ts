@@ -12,7 +12,7 @@ export const signinBy = (diff: string) => ({
     payload: diff,
 });
 
-export type UserAction =
+type UserAction =
     | ReturnType<typeof signin>
     | ReturnType<typeof signout>
     | ReturnType<typeof signinBy>;
