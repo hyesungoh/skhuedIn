@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Category from "components/nav/Category";
 
-import "components/nav/nav.scss";
+import "pages/nav/nav.scss";
 
 const Nav = () => {
     const categorys = [

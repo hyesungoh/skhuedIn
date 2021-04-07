@@ -3,8 +3,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
+import NavContainer from "pages/nav/container/NavContainer";
 import HomeContainer from "pages/home/container/HomeContainer";
-import Nav from "components/nav/Nav";
 import InterviewPresenter from "pages/interview/presenter/InterviewPresenter";
 import IntroducePresenter from "pages/introduce/presenter/IntroducePresenter";
 import LibraryPresenter from "pages/library/presenter/LibraryPresenter";
@@ -35,7 +35,7 @@ const TransitionRouter = withRouter(({ location }) => (
 const MyRouter = () => {
     return (
         <BrowserRouter>
-            <Nav />
+            <NavContainer />
             <TransitionRouter />
         </BrowserRouter>
     );
