@@ -1,14 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
 import BookPresenter from "pages/book/presenter/BookPresenter";
 
-class BookContainer extends Component {
-    // 블로그 정보
-    // 해당 블로그 유저 정보
-    // 해당 블로그에 소속된 post 리스트
-    // 블로그에 소속된 questions 리스트
-
-    state = {
+const BookContainer = () => {
+    const [state, setState] = useState({
         isLoaded: false,
         questions: [
             {
@@ -47,14 +42,10 @@ class BookContainer extends Component {
                 comments: [{ username: "허수진", text: "우왕쩔어요4" }],
             },
         ],
-    };
+    });
 
-    componentDidMount() {}
-
-    render() {
-        const { isLoaded, questions } = this.state;
-        return <BookPresenter isLoaded={isLoaded} questions={questions} />;
-    }
-}
+    const { isLoaded, questions } = state;
+    return <BookPresenter isLoaded={isLoaded} questions={questions} />;
+};
 
 export default BookContainer;
