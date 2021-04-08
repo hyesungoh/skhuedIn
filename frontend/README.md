@@ -90,7 +90,6 @@ markdown converter
 
 ```terminal
 npm i react-markdown
-
 ```
 
 ## Development
@@ -140,6 +139,57 @@ import ReactMarkdown from "react-markdown";
 function Compo() {
     const md = `# Title\n### Something\n> blahblah`;
     return <ReactMarkdown>{md}</ReactMarkdown>;
+}
+```
+
+-   #### Redux useSelector
+    리덕스의 상태값을 조회하기 위한 Hook, `mapStateToProps`
+
+```tsx
+import { useSelector } from "react-redux";
+import { RootState } from "modules";
+...
+
+const currentUser = useSelector((state: RootState) => state.user);
+```
+
+-   ##### equalityFn
+
+    이전 값과 다음 값을 비교하여 렌더링 여부를 결정
+
+```tsx
+const test = useSelector(
+    (state) => state.test,
+    (prev, next) => prev.count === next.count
+);
+```
+
+-   ##### shallowEqual
+    비교할 것이 여러 개일 경우 `equalityFn`는 번거로워지기 때문에, 최상위 값들에 한해서 비교를 수행해주는 `shallowEqual`이 존재
+
+```tsx
+import { useSelector, shallowEqual } from "react-redux";
+...
+
+const test = useSelector((state) => state.test, shallowEqual);
+```
+
+-   #### useDispatch
+    리덕스 상태를 dispatch하기 위한 Hook, `mapDispatchToProps`
+
+```tsx
+import { useDispatch } from "react-reudx";
+import { actionCreator } from "modules/something";
+...
+
+const dispatch = useDispatch();
+
+const withActionType = () => {
+    dispatch({type: ACTION_TYPE })
+}
+
+const withActionCreator = (args) => {
+    dispatch(actionCreator(args));
 }
 ```
 
