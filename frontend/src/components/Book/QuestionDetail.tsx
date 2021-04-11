@@ -1,4 +1,4 @@
-const RoadmapDetail = () => {
+const QuestionDetail = () => {
     return (
         <div className="book__roadmap__detail">
             <div className="book__roadmap__detail__month">
@@ -23,4 +23,4 @@ const RoadmapDetail = () => {
     );
 };
 
-export default RoadmapDetail;
+export default QuestionDetail;

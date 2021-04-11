@@ -1,5 +1,5 @@
 import BookProfile from "components/Book/BookProfile";
-import Roadmap from "components/Book/Roadmap";
+import Question from "components/Book/Questions";
 
 import "pages/book/Book.scss";
 import { IQuestion } from "types/types";
@@ -14,7 +14,7 @@ const BookPresenter = ({ isLoaded, questions }: IBookPresenter) => {
     return (
         <div className="book">
             <BookProfile />
-            <Roadmap />
+            <Question />
         </div>
     );
 };

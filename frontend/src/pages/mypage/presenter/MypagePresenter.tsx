@@ -1,7 +1,7 @@
 import React from "react";
 
 import BookProfile from "components/Book/BookProfile";
-import Roadmap from "components/Book/Roadmap";
+import Question from "components/Book/Questions";
 
 const MypagePresenter = () => {
     return (
