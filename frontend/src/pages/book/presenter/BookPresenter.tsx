@@ -2,8 +2,8 @@ import BookProfile from "components/Book/BookProfile";
 import BookProfilePosts from "components/Book/BookProfilePosts";
 import Questions from "components/Book/Questions";
 
-import "pages/book/Book.scss";
 import { IQuestion, IPost } from "types/types";
+import "pages/book/Book.scss";
 
 interface IBookPresenter {
     isLoaded: boolean;
@@ -16,7 +16,7 @@ const BookPresenter = ({ isLoaded, questions, posts }: IBookPresenter) => {
         <div className="book">
             <div className="book__profile">
                 <BookProfile />
-                <BookProfilePosts />
+                <BookProfilePosts posts={posts ? posts : []} />
             </div>
 
             <Questions questions={questions ? questions : []} />

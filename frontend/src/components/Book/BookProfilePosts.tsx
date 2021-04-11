@@ -2,8 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import BookProfilePostDetail from "./BookProfilePostDetail";
+import { IPost } from "types/types";
 
-const BookProfilePosts = () => {
+interface IBookProfilePosts {
+    posts: IPost[];
+}
+
+const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
     return (
         <div className="book__profile__question">
             <Link to="/write">
@@ -12,19 +17,17 @@ const BookProfilePosts = () => {
                 </div>
             </Link>
 
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
-            <BookProfilePostDetail />
+            {posts.map((post, index) => {
+                const { title, content, created, view } = post;
+                return (
+                    <BookProfilePostDetail
+                        title={title}
+                        content={content}
+                        created={created}
+                        view={view}
+                    />
+                );
+            })}
         </div>
     );
 };
