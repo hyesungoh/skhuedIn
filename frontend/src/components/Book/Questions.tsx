@@ -8,7 +8,6 @@ interface IQuestions {
 }
 
 const Questions = ({ questions }: IQuestions) => {
-    console.log(questions);
     return (
         <div className="book__roadmap">
             {questions.map((question, index) => (

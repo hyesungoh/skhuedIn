@@ -12,12 +12,15 @@ const QuestionDetail = ({
     title,
     content,
     comments,
-}: IQuestionDetail) => {
+}: IQuestionDetail) => {    
+    const createdYear = created.slice(0, 4);
+    const createdDate = created.slice(4, 8);
+
     return (
         <div className="book__roadmap__detail">
             <div className="book__roadmap__detail__month">
-                <p>2019</p>
-                <p>April</p>
+                <p>{createdYear}</p>
+                <p>{createdDate}</p>
             </div>
             <div className="book__roadmap__detail__icon">
                 <div className="book__roadmap__detail__icon__circle"></div>

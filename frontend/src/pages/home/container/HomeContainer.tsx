@@ -11,25 +11,34 @@ const HomeContainer = ({ history }: RouteComponentProps) => {
         loading: false,
         posts: [
             {
-                body: `# test 입니다.\n### 테스트1\n > asd`,
+                title: "글입니다 1",
+                content: "### 글 내용입니다\n안녕하세요 어쩌구 저쩌구\n> 제가 한 거는\n\n 어쩌구저쩌구점ㄴㅇㅁㄴㅇ asd asd asd asd",
+                created: "20201212",
+                view: 10,
             },
             {
-                body: `# test 입니다.\n##### 테스트2\n\n\n# asd\n\n# asd\n\n# asda\n\n\n# asd\n\n# asd\n \`\`\`python\nprint\n\`\`\` `,
+                title: "글입니다 2",
+                content: "### 글 내용입니다 2\n안녕하세요 어쩌구 저쩌구\n> 제가 한 거는\n\n 어쩌구저쩌구점ㄴㅇㅁㄴㅇ asd asd asd asd",
+                created: "20201212",
+                view: 10,
             },
             {
-                body: `# test 입니다.\n### 테스트3\n *asdasd*`,
+                title: "글입니다 3",
+                content: "### 글 내용입니다 3\n안녕하세요 어쩌구 저쩌구\n> 제가 한 거는\n\n 어쩌구저쩌구점ㄴㅇㅁㄴㅇ asd asd asd asd",
+                created: "20201212",
+                view: 10,
             },
             {
-                body: `# test 입니다.\n### 테스트4`,
+                title: "글입니다 4",
+                content: "### 글 내용입니다 4\n안녕하세요 어쩌구 저쩌구\n> 제가 한 거는\n\n 어쩌구저쩌구점ㄴㅇㅁㄴㅇ asd asd asd asd",
+                created: "20201212",
+                view: 10,
             },
             {
-                body: `# test 입니다.\n### 테스트5`,
-            },
-            {
-                body: `# test 입니다.\n### 테스트6`,
-            },
-            {
-                body: `# test 입니다.\n### 테스트7`,
+                title: "글입니다 5",
+                content: "### 글 내용입니다 5\n안녕하세요 어쩌구 저쩌구\n> 제가 한 거는\n\n 어쩌구저쩌구점ㄴㅇㅁㄴㅇ asd asd asd asd",
+                created: "20201212",
+                view: 10,
             },
         ],
     });

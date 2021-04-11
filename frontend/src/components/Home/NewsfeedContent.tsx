@@ -4,11 +4,7 @@ import ReactMarkdown from "react-markdown";
 import { IPost } from "types/types";
 import sample from "static/images/profile.png";
 
-interface INewsfeedContent {
-    post: IPost;
-}
-
-const NewsfeedContent = ({ post }: INewsfeedContent) => {
+const NewsfeedContent = ({ title, content, created, view }: IPost) => {
     return (
         <div className="newsfeed__content mde-preview">
             <div className="newsfeed__content__writer">
@@ -23,7 +19,7 @@ const NewsfeedContent = ({ post }: INewsfeedContent) => {
                 </div>
             </div>
             <div className="newsfeed__content__body mde-preview-content">
-                <ReactMarkdown>{post.body}</ReactMarkdown>
+                <ReactMarkdown>{content}</ReactMarkdown>
             </div>
         </div>
     );

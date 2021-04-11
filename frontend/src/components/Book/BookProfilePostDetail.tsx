@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const BookProfileQuestionSummary = () => {
+const BookProfilePostDetail = () => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
     // 모든 컴포넌트마다 모달을 만들어서 보여주게 ?
     // 
@@ -17,4 +17,4 @@ const BookProfileQuestionSummary = () => {
     );
 };
 
-export default BookProfileQuestionSummary;
+export default BookProfilePostDetail;

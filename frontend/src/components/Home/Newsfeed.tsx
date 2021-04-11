@@ -12,7 +12,13 @@ const Newsfeed = ({ posts }: INewsfeed) => {
     return (
         <div className="home__newsfeed">
             {posts.map((post, index) => (
-                <NewsfeedContent key={index} post={post} />
+                <NewsfeedContent
+                    key={index}
+                    title={post.title}
+                    content={post.content}
+                    created={post.created}
+                    view={post.view}
+                />
             ))}
         </div>
     );

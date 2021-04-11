@@ -1,5 +1,8 @@
 export interface IPost {
-    body: string;
+    title: string;
+    content: string;
+    created: string;
+    view: number;
 }
 
 export interface IQuestion {
