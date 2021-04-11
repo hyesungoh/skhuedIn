@@ -1,16 +1,27 @@
 import React from "react";
 import QuestionDetail from "./QuestionDetail";
 
-const Question = () => {
+import { IQuestion } from "types/types";
+
+interface IQuestions {
+    questions: IQuestion[];
+}
+
+const Questions = ({ questions }: IQuestions) => {
+    console.log(questions);
     return (
         <div className="book__roadmap">
-            <QuestionDetail />
-            <QuestionDetail />
-            <QuestionDetail />
-            <QuestionDetail />
-            <QuestionDetail />
+            {questions.map((question, index) => (
+                <QuestionDetail
+                    key={index}
+                    created={question.created}
+                    title={question.title}
+                    content={question.content}
+                    comments={question.comments}
+                />
+            ))}
         </div>
     );
 };
 
-export default Question;
+export default Questions;

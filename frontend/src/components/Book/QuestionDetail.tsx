@@ -1,4 +1,18 @@
-const QuestionDetail = () => {
+import { IComment } from "types/types";
+
+interface IQuestionDetail {
+    created: string;
+    title: string;
+    content: string;
+    comments: IComment[];
+}
+
+const QuestionDetail = ({
+    created,
+    title,
+    content,
+    comments,
+}: IQuestionDetail) => {
     return (
         <div className="book__roadmap__detail">
             <div className="book__roadmap__detail__month">
@@ -10,13 +24,9 @@ const QuestionDetail = () => {
                 <div className="book__roadmap__detail__icon__line"></div>
             </div>
             <div className="book__roadmap__detail__summary">
-                <p className="book__roadmap__detail__summary__title">
-                    어쩌구 저쩌구
-                </p>
+                <p className="book__roadmap__detail__summary__title">{title}</p>
                 <p className="book__roadmap__detail__summary__content">
-                    어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구
-                    어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구
-                    어쩌구 저쩌구 어쩌구 저쩌구
+                    {content}
                 </p>
             </div>
         </div>

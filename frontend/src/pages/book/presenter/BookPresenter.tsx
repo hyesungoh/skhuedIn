@@ -1,5 +1,5 @@
 import BookProfile from "components/Book/BookProfile";
-import Question from "components/Book/Questions";
+import Questions from "components/Book/Questions";
 
 import "pages/book/Book.scss";
 import { IQuestion } from "types/types";
@@ -10,11 +10,10 @@ interface IBookPresenter {
 }
 
 const BookPresenter = ({ isLoaded, questions }: IBookPresenter) => {
-    console.log(questions);
     return (
         <div className="book">
             <BookProfile />
-            <Question />
+            <Questions questions={questions}/>
         </div>
     );
 };
