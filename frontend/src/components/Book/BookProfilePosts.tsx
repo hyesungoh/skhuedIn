@@ -13,6 +13,8 @@ interface IBookProfilePosts {
 const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
     const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
 
+    console.log(openModalIndex);
+
     return (
         <div className="book__profile__question">
             <Link to="/write">
@@ -25,16 +27,27 @@ const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
                 const { title, content, created, view } = post;
                 return (
                     <BookProfilePostDetail
+                        key={index}
+                        index={index}
                         title={title}
                         content={content}
                         created={created}
                         view={view}
+                        setOpenModalIndex={setOpenModalIndex}
                     />
                 );
             })}
 
             <ModalPortal>
-                <PostModal />
+                {openModalIndex !== null ? (
+                    <PostModal
+                        setOpenModalIndex={setOpenModalIndex}
+                        title={posts[openModalIndex].title}
+                        content={posts[openModalIndex].content}
+                        created={posts[openModalIndex].created}
+                        view={posts[openModalIndex].view}
+                    />
+                ) : null}
             </ModalPortal>
         </div>
     );

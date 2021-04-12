@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import { IPost } from "types/types";
 
-const BookProfilePostDetail = ({ title, content, created, view }: IPost) => {
-    const [isVisible, setIsVisible] = useState<boolean>(false);
-    // 모든 컴포넌트마다 모달을 만들어서 보여주게 ?
-    //
+interface IBookProfilePostDetail extends IPost {
+    index: number;
+    setOpenModalIndex: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
+const BookProfilePostDetail = ({
+    index,
+    title,
+    content,
+    created,
+    view,
+    setOpenModalIndex,
+}: IBookProfilePostDetail) => {
+    const onPostClick = () => {
+        setOpenModalIndex(index);
+    };
 
     return (
-        <div className="book__profile__question__summary">
+        <div className="book__profile__question__summary" onClick={onPostClick}>
             <span className="book__profile__question__summary__question">
                 {title} 오혜성
             </span>

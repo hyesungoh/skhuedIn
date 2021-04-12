@@ -193,6 +193,13 @@ const withActionCreator = (args) => {
 }
 ```
 
+-   #### createPortal
+    부모 컴포넌트의 DOM 계층 구조 바깥에 있는 DOM 노드로 자식을 렌더링하는 방법, 리액트 v16에서 도입된 기능
+
+```tsx
+ReactDOM.createPortal(그릴 DOM, 그릴 곳);
+```
+
 ## Issue
 
 -   `ERROR` Modal: `ref` is not a prop.
