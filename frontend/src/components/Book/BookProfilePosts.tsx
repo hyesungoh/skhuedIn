@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import BookProfilePostDetail from "./BookProfilePostDetail";
 import { IPost } from "types/types";
+import ModalPortal from "components/ModalPortal";
+import PostModal from "components/PostModal";
 
 interface IBookProfilePosts {
     posts: IPost[];
 }
 
 const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
+    const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
+
     return (
         <div className="book__profile__question">
             <Link to="/write">
@@ -28,6 +32,10 @@ const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
                     />
                 );
             })}
+
+            <ModalPortal>
+                <PostModal />
+            </ModalPortal>
         </div>
     );
 };

@@ -9,10 +9,10 @@ const BookProfilePostDetail = ({ title, content, created, view }: IPost) => {
     return (
         <div className="book__profile__question__summary">
             <span className="book__profile__question__summary__question">
-                Q. 어쩌구 저쩌구 입니까? {title}
+                {title} 오혜성
             </span>
             <span className="book__profile__question__summary__answer">
-                A. 저쩌구 어쩌구 입니다.
+                {created}
             </span>
         </div>
     );
