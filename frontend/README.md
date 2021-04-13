@@ -228,3 +228,17 @@ interface ISomething {
     refs: React.RefObject<HTMLDivElement>;
 }
 ```
+
+
+
+
+<!--
+로그인은 소셜로만,
+회원가입 없이,
+
+포스트 url을 따로 파서,
+메인에 글을 축약해서 > 누르면 해당 포스트 url로,
+
+
+
+ -->

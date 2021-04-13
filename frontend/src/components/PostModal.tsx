@@ -12,10 +12,17 @@ const PostModal = ({
     created,
     view,
 }: IPostModal) => {
+    const onModalClose = () => {
+        setOpenModalIndex(null);
+    };
+
     return (
-        <div>
-            <h1>{title}</h1>
-            <p>{content}</p>
+        <div className="modal">
+            <div className="modal__content">
+                <h1>{title}</h1>
+                <p>{content}</p>
+                <button onClick={onModalClose}>CLose</button>
+            </div>
         </div>
     );
 };

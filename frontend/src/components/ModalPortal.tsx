@@ -6,7 +6,8 @@ interface IModalPortal {
 
 const ModalPortal = ({ children }: IModalPortal) => {
     const el = document.getElementById("modal");
-    return el && children ? ReactDOM.createPortal(children, el) : null;
+    if (el && children) return ReactDOM.createPortal(children, el);
+    return null;
 };
 
 export default ModalPortal;
