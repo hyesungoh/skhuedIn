@@ -18,6 +18,7 @@ const Newsfeed = ({ posts }: INewsfeed) => {
             {posts.map((post, index) => (
                 <NewsfeedContent
                     key={index}
+                    id={post.id}
                     title={post.title}
                     content={setContentFormat(post.content)}
                     created={post.created}

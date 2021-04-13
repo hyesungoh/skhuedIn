@@ -11,9 +11,7 @@ interface IBookProfilePosts {
 }
 
 const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
-    const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
-
-    console.log(openModalIndex);
+    // const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
 
     return (
         <div className="book__profile__question">
@@ -24,16 +22,16 @@ const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
             </Link>
 
             {posts.map((post, index) => {
-                const { title, content, created, view } = post;
+                const { id, title, content, created, view } = post;
                 return (
                     <BookProfilePostDetail
                         key={index}
+                        id={id}
                         index={index}
                         title={title}
                         content={content}
                         created={created}
                         view={view}
-                        setOpenModalIndex={setOpenModalIndex}
                     />
                 );
             })}
