@@ -49,6 +49,7 @@ const BookContainer = () => {
         ],
         posts: [
             {
+                id: 1,
                 title: "글입니다 1",
                 content:
                     "### 글 내용입니다\n안녕하세요 어쩌구 저쩌구\n> 제가 한 거는\n\n 어쩌구저쩌구점ㄴㅇㅁㄴㅇ asd asd asd asd",
@@ -56,6 +57,7 @@ const BookContainer = () => {
                 view: 10,
             },
             {
+                id: 2,
                 title: "글입니다 2",
                 content:
                     "### 글 내용입니다 2\n안녕하세요 어쩌구 저쩌구\n> 제가 한 거는\n\n 어쩌구저쩌구점ㄴㅇㅁㄴㅇ asd asd asd asd",
@@ -63,6 +65,7 @@ const BookContainer = () => {
                 view: 10,
             },
             {
+                id: 3,
                 title: "글입니다 3",
                 content:
                     "### 글 내용입니다 3\n안녕하세요 어쩌구 저쩌구\n> 제가 한 거는\n\n 어쩌구저쩌구점ㄴㅇㅁㄴㅇ asd asd asd asd",
@@ -70,6 +73,7 @@ const BookContainer = () => {
                 view: 10,
             },
             {
+                id: 4,
                 title: "글입니다 4",
                 content:
                     "### 글 내용입니다 4\n안녕하세요 어쩌구 저쩌구\n> 제가 한 거는\n\n 어쩌구저쩌구점ㄴㅇㅁㄴㅇ asd asd asd asd",
@@ -77,6 +81,7 @@ const BookContainer = () => {
                 view: 10,
             },
             {
+                id: 5,
                 title: "글입니다 5",
                 content:
                     "### 글 내용입니다 5\n안녕하세요 어쩌구 저쩌구\n> 제가 한 거는\n\n 어쩌구저쩌구점ㄴㅇㅁㄴㅇ asd asd asd asd",

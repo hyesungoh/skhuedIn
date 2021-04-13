@@ -3,8 +3,12 @@ import { RouteComponentProps } from "react-router";
 
 import PostPresenter from "pages/post/presenter/PostPresenter";
 
-const PostContainer = ({ history }: RouteComponentProps) => {
-    console.log(history);
+interface IMatchParams {
+    id: string;
+}
+
+const PostContainer = ({ match }: RouteComponentProps<IMatchParams>) => {
+    console.log(match.params.id);
     return <PostPresenter />;
 };
 

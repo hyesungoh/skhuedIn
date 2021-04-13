@@ -9,13 +9,17 @@ interface INewsfeed {
 }
 
 const Newsfeed = ({ posts }: INewsfeed) => {
+    const setContentFormat = (ogContent: string) => {
+        const fmContent = ogContent.split("\n").slice(0, 3).join("\n");
+        return fmContent;
+    };
     return (
         <div className="home__newsfeed">
             {posts.map((post, index) => (
                 <NewsfeedContent
                     key={index}
                     title={post.title}
-                    content={post.content}
+                    content={setContentFormat(post.content)}
                     created={post.created}
                     view={post.view}
                 />

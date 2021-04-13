@@ -1,5 +1,6 @@
 export interface IPost {
     // 작성자 추가돼야함
+    // 포스트 아이디도 추가돼야함
     title: string;
     content: string;
     created: string;

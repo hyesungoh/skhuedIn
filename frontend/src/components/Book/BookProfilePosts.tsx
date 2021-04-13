@@ -38,7 +38,7 @@ const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
                 );
             })}
 
-            <ModalPortal>
+            {/* <ModalPortal>
                 {openModalIndex !== null ? (
                     <PostModal
                         setOpenModalIndex={setOpenModalIndex}
@@ -48,7 +48,7 @@ const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
                         view={posts[openModalIndex].view}
                     />
                 ) : null}
-            </ModalPortal>
+            </ModalPortal> */}
         </div>
     );
 };
