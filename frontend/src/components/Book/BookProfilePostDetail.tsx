@@ -20,13 +20,21 @@ const BookProfilePostDetail = ({
     const onPostClick = () => {
         history.push(`/post/${id}`);
     };
+
+    const getFormattedDate = (date: string) => {
+        const year = date.slice(0, 4) + "년";
+        const month = date.slice(4, 6) + "월";
+        const day = date.slice(6, 8) + "일";
+        return `${year} ${month} ${day}`;
+    };
+
     return (
         <div className="book__profile__question__summary" onClick={onPostClick}>
             <div className="book__profile__question__summary__question">
                 <span className="book__profile__question__summary__question--title">
                     {title}
                 </span>
-                <span>{created} 올린 글</span>
+                <span>{getFormattedDate(created)} 올린 글</span>
             </div>
 
             <div className="book__profile__question__summary__answer mde-preview">
