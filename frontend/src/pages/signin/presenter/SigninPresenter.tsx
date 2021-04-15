@@ -21,11 +21,25 @@ const SignInPresenter = ({ onSignIn, onSignInBy }: ISignInPresenter) => {
     // const [id, setId] = useState<string>("");
     // const [password, setPassword] = useState<string>("");
 
+    const onSignGoogle = () => {
+        onSignIn();
+    };
+
+    const onSignKakao = () => {
+        onSignIn();
+    };
+
+    const onSignNaver = () => {
+        onSignIn();
+    };
+
     return (
         <div className="center">
             <div className="signinform">
                 <div className="signinform__text">
-                    <span>스쿠드인에 로그인하고 취뽀하기</span>
+                    <span>
+                        SKHUED <b>IN</b>에 로그인하고 <b>취뽀</b>하기
+                    </span>
                 </div>
 
                 {/* <SignInput text={"ID"} setState={setId} />
@@ -33,13 +47,22 @@ const SignInPresenter = ({ onSignIn, onSignInBy }: ISignInPresenter) => {
                 <SignInput text={"Password"} setState={setPassword} /> */}
 
                 <div className="signinform__social">
-                    <div className="signinform__social__logo">
+                    <div
+                        className="signinform__social__logo"
+                        onClick={onSignGoogle}
+                    >
                         <img src={logoGoogle} alt="google" />
                     </div>
-                    <div className="signinform__social__logo">
+                    <div
+                        className="signinform__social__logo"
+                        onClick={onSignKakao}
+                    >
                         <img src={logoKakao} alt="google" />
                     </div>
-                    <div className="signinform__social__logo">
+                    <div
+                        className="signinform__social__logo"
+                        onClick={onSignNaver}
+                    >
                         <img src={logoNaver} alt="google" />
                     </div>
                 </div>
