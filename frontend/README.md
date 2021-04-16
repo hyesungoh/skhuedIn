@@ -200,6 +200,17 @@ const withActionCreator = (args) => {
 ReactDOM.createPortal(그릴 DOM, 그릴 곳);
 ```
 
+-   #### Cursor
+
+```css
+cursor: pointer;
+cursor: text; /* input의 커서 */
+cursor: help; /* 도움말 */
+cursor: wait; /* 기다림 */
+cursor: grab; /* 드래그할 수 있는 것 같이 */
+cursor: zoom-in; /* 확대할 수 있는 것 같이 */
+```
+
 ## Issue
 
 -   `ERROR` Modal: `ref` is not a prop.
