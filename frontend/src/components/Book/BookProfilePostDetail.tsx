@@ -29,8 +29,9 @@ const BookProfilePostDetail = ({
     };
 
     const setContentFormat = (ogContent: string) => {
-        const fmContent = ogContent.split("\n").slice(0, 2).join("\n");
-        return fmContent;
+        const fmContent: string = ogContent.split("\n").slice(0, 2).join("\n");
+        const plusContent: string = "    ...";
+        return fmContent + plusContent;
     };
 
     return (
