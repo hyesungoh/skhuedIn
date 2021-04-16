@@ -21,11 +21,16 @@ const BookProfilePostDetail = ({
         history.push(`/post/${id}`);
     };
 
-    const getFormattedDate = (date: string) => {
+    const setDateFormat = (date: string) => {
         const year = date.slice(0, 4) + "년";
         const month = date.slice(4, 6) + "월";
         const day = date.slice(6, 8) + "일";
         return `${year} ${month} ${day}`;
+    };
+
+    const setContentFormat = (ogContent: string) => {
+        const fmContent = ogContent.split("\n").slice(0, 2).join("\n");
+        return fmContent;
     };
 
     return (
@@ -34,12 +39,12 @@ const BookProfilePostDetail = ({
                 <span className="book__profile__question__summary__question--title">
                     {title}
                 </span>
-                <span>{getFormattedDate(created)} 올린 글</span>
+                <span>{setDateFormat(created)} 올린 글</span>
             </div>
 
             <div className="book__profile__question__summary__answer mde-preview">
                 <div className="mde-preview-content">
-                    <ReactMarkdown>{content}</ReactMarkdown>
+                    <ReactMarkdown>{setContentFormat(content)}</ReactMarkdown>
                 </div>
             </div>
         </div>

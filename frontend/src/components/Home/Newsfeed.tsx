@@ -13,6 +13,7 @@ const Newsfeed = ({ posts }: INewsfeed) => {
         const fmContent = ogContent.split("\n").slice(0, 3).join("\n");
         return fmContent;
     };
+    
     return (
         <div className="home__newsfeed">
             {posts.map((post, index) => (
