@@ -72,26 +72,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
         background-color: white;
+
+        // transform-origin: center center;
+        // transform: rotateX(0);
+        // transition: 0.7s transform ease-in-out;
+        // animation: clocking 1s ease-in-out infinite;
 
         &:nth-child(even) {
             margin-right: 6px;
-        }
-
-        &::before {
-            content: " ";
-            width: 100%;
-            height: 50%;
-            transform-origin: center top;
-            transform: rotateX(180deg);
-            background: black;
-
-            transition: 0.7s transform ease-in-out;
-        }
-
-        &:hover::before {
-            transform: rotateX(0);
         }
     }
 }
