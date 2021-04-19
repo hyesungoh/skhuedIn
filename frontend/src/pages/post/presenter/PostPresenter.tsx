@@ -1,9 +1,25 @@
 import React from "react";
+import { IPost } from "types/types";
 
-const PostPresenter = () => {
+interface IPostPresenter extends IPost {
+    loading: boolean;
+}
+
+const PostPresenter = ({
+    loading,
+    id,
+    title,
+    content,
+    created,
+    view,
+}: IPostPresenter) => {
     return (
         <div>
-            <h1>Im post</h1>
+            <h1>
+                {id}
+                {title}
+                {content}
+            </h1>
         </div>
     );
 };
