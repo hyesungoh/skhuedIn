@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import ReactMde from "react-mde";
 import ReactMarkdown from "react-markdown";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMarkdown } from "@fortawesome/free-brands-svg-icons";
+
 import "react-mde/lib/styles/css/react-mde-all.css";
 
 import "pages/Writing/Writing.scss";
@@ -94,9 +97,13 @@ const WritingPresenter = () => {
                     heightUnits={"vh"}
                 ></ReactMde>
 
-                <span className="writing__form__ps">
-                    좋은 글을 통해 좋은 영향을
-                </span>
+                <a
+                    href="https://guides.github.com/features/mastering-markdown/"
+                    className="writing__form__ps"
+                >
+                    <FontAwesomeIcon icon={faMarkdown} />
+                    &nbsp;마크다운 문법을 지원합니다
+                </a>
             </div>
         </div>
     );
