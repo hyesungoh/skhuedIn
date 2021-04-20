@@ -24,7 +24,9 @@
     }
 
     &__peoples {
-        width: 50%;
+        // width: 50%;
+        // 왼쪽 카테고리가 없을 때
+        width: 60%;
         min-height: 100vh;
 
         display: flex;
@@ -55,6 +57,9 @@
         margin-bottom: 10px;
 
         display: flex;
+        // 왼쪽 카테고리가 없을 때
+        align-self: flex-start;
+
         justify-content: flex-end;
         align-items: center;
 
@@ -79,7 +84,10 @@
 
             transform: translateX(10%);
             top: 110%;
-            right: 0;
+            // right: 0;
+
+            // 왼쪽 카테고리가 없을 때
+            left: 0;
 
             background-color: $white_color;
             transition: all 0.5s;

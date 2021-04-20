@@ -8,7 +8,7 @@ import Recommend from "components/Library/Recommend";
 const LibraryPresenter = () => {
     return (
         <div className="library">
-            <Category />
+            {/* <Category /> */}
             <List />
             <Recommend />
         </div>
