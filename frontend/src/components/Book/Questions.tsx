@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import QuestionDetail from "./QuestionDetail";
 import ModalPortal from "components/Modal/ModalPortal";
 import QuestionModal from "components/Modal/QuestionModal";
@@ -27,27 +28,27 @@ const Questions = ({ questions }: IQuestions) => {
                 {questions.map((question, index) => (
                     <QuestionDetail
                         key={index}
-                        created={question.created}
+                        id={question.id}
                         title={question.title}
                         content={question.content}
+                        created={question.created}
                         comments={question.comments}
+                        setOpenQuesIndex={setOpenQuesIndex}
                     />
                 ))}
             </div>
 
             <ModalPortal>
-                <ModalPortal>
-                    {curQuestion !== null ? (
-                        <QuestionModal
-                            setOpenQuesIndex={setOpenQuesIndex}
-                            id={curQuestion.id}
-                            title={curQuestion.title}
-                            content={curQuestion.content}
-                            created={curQuestion.created}
-                            comments={curQuestion.comments}
-                        />
-                    ) : null}
-                </ModalPortal>
+                {curQuestion !== null ? (
+                    <QuestionModal
+                        setOpenQuesIndex={setOpenQuesIndex}
+                        id={curQuestion.id}
+                        title={curQuestion.title}
+                        content={curQuestion.content}
+                        created={curQuestion.created}
+                        comments={curQuestion.comments}
+                    />
+                ) : null}
             </ModalPortal>
         </>
     );

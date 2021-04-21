@@ -1,23 +1,25 @@
-import { IComment } from "types/types";
+import { IQuestion } from "types/types";
 
-interface IQuestionDetail {
-    created: string;
-    title: string;
-    content: string;
-    comments: IComment[];
+interface IQuestionDetail extends IQuestion {
+    setOpenQuesIndex: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
 const QuestionDetail = ({
+    id,
     created,
     title,
     content,
-    comments,
-}: IQuestionDetail) => {    
+    setOpenQuesIndex,
+}: IQuestionDetail) => {
     const createdYear = created.slice(0, 4);
     const createdDate = created.slice(4, 8);
 
+    const onQuesClick = () => {
+        setOpenQuesIndex(id);
+    };
+
     return (
-        <div className="book__roadmap__detail">
+        <div className="book__roadmap__detail" onClick={onQuesClick}>
             <div className="book__roadmap__detail__month">
                 <p>{createdYear}</p>
                 <p>{createdDate}</p>
