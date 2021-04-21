@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import { CSSTransition } from "react-transition-group";
 
 import { IQuestion } from "types/types";
 
@@ -14,27 +15,30 @@ const QuestionModal = ({
     created,
     comments,
 }: IQuestionModal) => {
-    const currentModal = useRef<HTMLDivElement>(null);
+    const MODAL_TRANSITION_DURATION = 1000;
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    useEffect(() => {
+        setIsOpen(true);
+    }, []);
 
     const closeModal = (e: React.MouseEvent) => {
         if (e.target !== e.currentTarget) return;
-        setOpenQuesIndex(null);
+
+        setIsOpen(false);
+        setTimeout(() => setOpenQuesIndex(null), MODAL_TRANSITION_DURATION);
     };
 
-    useEffect(() => {
-        console.log(currentModal.current?.classList);
-
-        currentModal.current?.classList.add("modal--open");
-        
-        return () => {
-            console.log("return ");
-        };
-    }, []);
-
     return (
-        <div className="modal" onClick={closeModal} ref={currentModal}>
-            <div className="modal__content"></div>
-        </div>
+        <CSSTransition
+            in={isOpen}
+            timeout={MODAL_TRANSITION_DURATION}
+            classNames="modal--transition"
+        >
+            <div className="modal" onClick={closeModal}>
+                <div className="modal__content"></div>
+            </div>
+        </CSSTransition>
     );
 };
 

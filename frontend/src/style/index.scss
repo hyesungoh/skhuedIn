@@ -66,15 +66,41 @@
         width: 34vw;
         height: 60vh;
         background-color: white;
+        transition: all 1s;
     }
 
-    &--open {
-       & > .modal__content {
-        background-color: red;
-       }
-    }
+    &--transition {
+        &-enter,
+        &-exit {
+            transition: all 500ms ease-in-out;
+        }
 
-    &--close {
+        &-enter {
+            opacity: 0;
+            .modal__content {
+                transform: translateX(20%);
+            }
+        }
 
+        &-enter-active {
+            opacity: 1;
+            .modal__content {
+                transform: translateX(0);
+            }
+        }
+
+        &-exit {
+            opacity: 1;
+            .modal__content {
+                transform: translateX(0%);
+            }
+        }
+
+        &-exit-active {
+            opacity: 0;
+            .modal__content {
+                transform: translateX(-20%);
+            }
+        }
     }
 }
