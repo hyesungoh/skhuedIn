@@ -19,18 +19,20 @@ const QuestionDetail = ({
     };
 
     return (
-        <div className="book__roadmap__detail" onClick={onQuesClick}>
-            <div className="book__roadmap__detail__month">
+        <div className="book__right__question__detail" onClick={onQuesClick}>
+            <div className="book__right__question__detail__month">
                 <p>{createdYear}</p>
                 <p>{createdDate}</p>
             </div>
-            <div className="book__roadmap__detail__icon">
-                <div className="book__roadmap__detail__icon__circle"></div>
-                <div className="book__roadmap__detail__icon__line"></div>
+            <div className="book__right__question__detail__icon">
+                <div className="book__right__question__detail__icon__circle"></div>
+                <div className="book__right__question__detail__icon__line"></div>
             </div>
-            <div className="book__roadmap__detail__summary">
-                <p className="book__roadmap__detail__summary__title">{title}</p>
-                <p className="book__roadmap__detail__summary__content">
+            <div className="book__right__question__detail__summary">
+                <p className="book__right__question__detail__summary__title">
+                    {title}
+                </p>
+                <p className="book__right__question__detail__summary__content">
                     {content}
                 </p>
             </div>

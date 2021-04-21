@@ -15,7 +15,7 @@ const QuestionModal = ({
     created,
     comments,
 }: IQuestionModal) => {
-    const MODAL_TRANSITION_DURATION = 1000;
+    const MODAL_TRANSITION_DURATION = 500;
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     useEffect(() => {

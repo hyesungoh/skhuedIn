@@ -19,12 +19,9 @@
         border-radius: $border_intensity;
     }
 
-    &__roadmap {
+    &__right {
         width: 40%;
-        height: 610px;
-        background-color: $white_color;
-        border-radius: $border_intensity;
-        overflow: scroll;
+        height: 100%;
         position: sticky;
         top: 80px;
     }
@@ -206,7 +203,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            
+
             font-size: 0.8rem;
             font-weight: 100;
 
@@ -222,75 +219,114 @@
     }
 }
 
-.book__roadmap__detail {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 12px;
+.book__right__question {
+    height: 74vh;
+    background-color: $white_color;
+    border-radius: $border_intensity;
+    overflow: scroll;
 
-    &__month {
+    &__detail {
         display: flex;
-        flex-direction: column;
+        justify-content: space-evenly;
+        margin-top: 12px;
 
-        margin-top: 7px;
-        color: $bold_color;
+        &__month {
+            display: flex;
+            flex-direction: column;
 
-        & p:first-child {
-            font-size: 0.7rem;
-            color: black;
-            opacity: 0.5;
-        }
-    }
+            margin-top: 7px;
+            color: $bold_color;
 
-    &__icon {
-        position: relative;
-
-        display: flex;
-        justify-content: center;
-
-        &__circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: solid 6px $background_color;
-            background-color: $emph_color;
+            & p:first-child {
+                font-size: 0.7rem;
+                color: black;
+                opacity: 0.5;
+            }
         }
 
-        &__line {
-            position: absolute;
-            z-index: -1;
-            width: 10px;
-            height: 100%;
-            margin-top: 14px;
+        &__icon {
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+
+            &__circle {
+                width: 40px;
+                height: 40px;
+                z-index: 1;
+
+                border-radius: 50%;
+                border: solid 6px $background_color;
+                background-color: $emph_color;
+            }
+
+            &__line {
+                position: absolute;
+                width: 10px;
+                height: 100%;
+                margin-top: 14px;
+                background-color: $background_color;
+            }
+        }
+
+        &__summary {
+            width: 64%;
+            padding: 10px 12px;
+            border-radius: 12px;
+
+            color: $bold_color;
             background-color: $background_color;
+
+            cursor: pointer;
+            transition: box-shadow 300ms;
+
+            &:hover {
+                box-shadow: $normal_shadow;
+            }
+
+            &__title {
+                height: 2rem;
+                font-weight: bold;
+                border-bottom: solid 1px $emph_color;
+            }
+
+            &__content {
+                margin-top: 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        &:nth-child(even) .book__roadmap__detail__summary {
+            color: $white_color;
+            background-color: $emph_color;
+
+            &__title {
+                border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+            }
         }
     }
+}
 
-    &__summary {
-        width: 64%;
-        padding: 10px 12px;
-        border-radius: 12px;
+.book__right__new {
+    margin-top: 12px;
+    height: 10vh;
 
-        color: $bold_color;
-        background-color: $background_color;
+    border-radius: $border_intensity;
+    background-color: $white_color;
 
-        &__title {
-            height: 2rem;
-            font-weight: bold;
-            border-bottom: solid 1px $emph_color;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        &__content {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-        }
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        box-shadow: $normal_shadow;
     }
 
-    &:nth-child(even) .book__roadmap__detail__summary {
-        color: $white_color;
-        background-color: $emph_color;
-
-        &__title {
-            border-bottom: solid 1px rgba(255, 255, 255, 0.5);
-        }
+    &:active {
+        background-color: $bold_color;
+        color: white;
     }
 }

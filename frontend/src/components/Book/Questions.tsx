@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 
 import QuestionDetail from "./QuestionDetail";
 import ModalPortal from "components/Modal/ModalPortal";
@@ -23,19 +23,25 @@ const Questions = ({ questions }: IQuestions) => {
     }, [openQuesIndex]);
 
     return (
-        <>
-            <div className="book__roadmap">
-                {questions.map((question, index) => (
-                    <QuestionDetail
-                        key={index}
-                        id={question.id}
-                        title={question.title}
-                        content={question.content}
-                        created={question.created}
-                        comments={question.comments}
-                        setOpenQuesIndex={setOpenQuesIndex}
-                    />
-                ))}
+        <Fragment>
+            <div className="book__right">
+                <div className="book__right__question">
+                    {questions.map((question, index) => (
+                        <QuestionDetail
+                            key={index}
+                            id={question.id}
+                            title={question.title}
+                            content={question.content}
+                            created={question.created}
+                            comments={question.comments}
+                            setOpenQuesIndex={setOpenQuesIndex}
+                        />
+                    ))}
+                </div>
+
+                <div className="book__right__new">
+                    <span>새로운 질문하기</span>
+                </div>
             </div>
 
             <ModalPortal>
@@ -50,7 +56,7 @@ const Questions = ({ questions }: IQuestions) => {
                     />
                 ) : null}
             </ModalPortal>
-        </>
+        </Fragment>
     );
 };
 
