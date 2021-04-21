@@ -50,6 +50,14 @@ const HomeContainer = ({ history }: RouteComponentProps) => {
                 created: "20201212",
                 view: 10,
             },
+            {
+                id: 6,
+                title: "asdasdasdasd5",
+                content:
+                    "# 123123\n# 1231123\n# 123 123 123\n# 123 123 123",
+                created: "20201212",
+                view: 10,
+            },
         ],
     });
 

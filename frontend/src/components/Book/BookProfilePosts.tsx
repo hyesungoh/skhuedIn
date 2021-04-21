@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+
 import { Link } from "react-router-dom";
 
 import BookProfilePostDetail from "./BookProfilePostDetail";
 import { IPost } from "types/types";
-import ModalPortal from "components/ModalPortal";
-import PostModal from "components/PostModal";
 
 interface IBookProfilePosts {
     posts: IPost[];
