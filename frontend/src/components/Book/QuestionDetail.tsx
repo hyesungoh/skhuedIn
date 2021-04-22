@@ -1,11 +1,13 @@
 import { IQuestion } from "types/types";
 
 interface IQuestionDetail extends IQuestion {
+    index: number;
     setOpenQuesIndex: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
 const QuestionDetail = ({
     id,
+    index,
     created,
     title,
     content,
@@ -15,7 +17,7 @@ const QuestionDetail = ({
     const createdDate = created.slice(4, 8);
 
     const onQuesClick = () => {
-        setOpenQuesIndex(id);
+        setOpenQuesIndex(index);
     };
 
     return (

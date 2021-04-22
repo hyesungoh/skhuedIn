@@ -330,3 +330,35 @@
         color: white;
     }
 }
+
+.questionModal {   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+
+        &__closeBtn {
+            all: unset;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            background-color: green;
+        }
+    }
+
+    &__content {
+        height: 50%;
+
+        
+        overflow: scroll;
+    }
+
+    &__comments {
+        height: 50%;
+        background-color: red;
+        overflow: scroll;
+    }
+}

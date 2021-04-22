@@ -29,6 +29,7 @@ const Questions = ({ questions }: IQuestions) => {
                     {questions.map((question, index) => (
                         <QuestionDetail
                             key={index}
+                            index={index}
                             id={question.id}
                             title={question.title}
                             content={question.content}
