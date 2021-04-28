@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
 import { IQuestion } from "types/types";
+import QuestionModalInput from "./QuestionModalInput";
 
 interface IQuestionModal extends IQuestion {
     setOpenQuesIndex: React.Dispatch<React.SetStateAction<number | null>>;
@@ -17,6 +18,7 @@ const QuestionModal = ({
 }: IQuestionModal) => {
     const MODAL_TRANSITION_DURATION = 500;
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [comment, setComment] = useState<string>("");
 
     useEffect(() => {
         setIsOpen(true);
@@ -41,7 +43,10 @@ const QuestionModal = ({
                         <div className="questionModal__top__title">
                             <h1>{title}</h1>
                         </div>
-                        <button className="questionModal__top__closeBtn" onClick={closeModal}>
+                        <button
+                            className="questionModal__top__closeBtn"
+                            onClick={closeModal}
+                        >
                             X
                         </button>
                     </div>
@@ -84,8 +89,11 @@ const QuestionModal = ({
                     </div>
                     <div className="questionModal__comments"></div>
                     <div className="questionModal__writeComment">
-                        <input type="text" />
-                        <button type="submit">제출</button>
+                        <QuestionModalInput
+                            id={id}
+                            comment={comment}
+                            setComment={setComment}
+                        />
                     </div>
                 </div>
             </div>

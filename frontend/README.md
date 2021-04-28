@@ -23,6 +23,12 @@ npm i react-redux
 npm i @types/react-redux
 ```
 
+#### Styled-components
+
+```terminal
+npm i styled-components
+```
+
 #### React-testing-library
 
 ```terminal
