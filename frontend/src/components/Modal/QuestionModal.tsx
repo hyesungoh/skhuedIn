@@ -88,13 +88,11 @@ const QuestionModal = ({
                         </p>
                     </div>
                     <div className="questionModal__comments"></div>
-                    <div className="questionModal__writeComment">
-                        <QuestionModalInput
-                            id={id}
-                            comment={comment}
-                            setComment={setComment}
-                        />
-                    </div>
+                    <QuestionModalInput
+                        id={id}
+                        comment={comment}
+                        setComment={setComment}
+                    />
                 </div>
             </div>
         </CSSTransition>

@@ -334,9 +334,9 @@
 .questionModal {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     overflow: scroll;
-
+    
     &__top {
         display: flex;
         justify-content: space-between;
@@ -360,12 +360,14 @@
     }
 
     &__content {
-        height: 50%;
+        height: auto;
+        max-height: 40%;
+
         overflow: scroll;
     }
 
     &__comments {
-        height: 50%;
+        height: 40%;
         background-color: green;
         overflow: scroll;
     }

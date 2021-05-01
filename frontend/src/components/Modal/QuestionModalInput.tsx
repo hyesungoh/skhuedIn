@@ -13,7 +13,7 @@ const QuestionModalInput = ({
     setComment,
 }: IQuestionModalInput) => {
     const onCommentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value);
+        setComment(e.target.value);
     };
 
     const onCommentSubmit = () => {
@@ -23,15 +23,34 @@ const QuestionModalInput = ({
     };
 
     return (
-        <React.Fragment>
-            <input type="text" value={comment} onChange={onCommentChange} />
-            <button type="submit" onClick={onCommentSubmit}>
+        <CommentWriteDiv>
+            <CommentInput
+                type="text"
+                value={comment}
+                onChange={onCommentChange}
+            />
+            <CommentBtn type="submit" onClick={onCommentSubmit}>
                 제출
-            </button>
-        </React.Fragment>
+            </CommentBtn>
+        </CommentWriteDiv>
     );
 };
 
 export default QuestionModalInput;
 
-const commentInput = styled.input``;
+const CommentWriteDiv = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+`;
+
+const CommentInput = styled.input`
+    all: unset;
+    width: 80%;
+`;
+
+const CommentBtn = styled.button`
+    all: unset;
+    width: 20%;
+    text-align: center;
+`;
