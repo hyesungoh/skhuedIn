@@ -53,4 +53,6 @@ const CommentBtn = styled.button`
     all: unset;
     width: 20%;
     text-align: center;
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.background};
 `;
