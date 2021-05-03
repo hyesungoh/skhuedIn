@@ -1,3 +1,5 @@
+import { DefaultTheme } from "styled-components";
+
 const colors = {
     white: "#f6f5f5",
     background: "#d3e0ea",
@@ -10,7 +12,7 @@ const shadows = {
     strong: "0 19px 38px rgba(0, 0, 0, 0.2), 0 15px 12px rgba(0, 0, 0, 0.1)",
 };
 
-const theme = {
+const theme: DefaultTheme = {
     colors,
     shadows,
     border_intensity: "20px",
