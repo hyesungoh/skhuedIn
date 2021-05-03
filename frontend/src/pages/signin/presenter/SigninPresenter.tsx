@@ -10,7 +10,7 @@ import logoGoogle from "static/images/google.png";
 import logoKakao from "static/images/kakao.png";
 import logoNaver from "static/images/naver.png";
 
-import "pages/SignIn/SignIn.scss";
+import "pages/signIn/SignIn.scss";
 
 interface ISignInPresenter {
     onSignIn: () => void;

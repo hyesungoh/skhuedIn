@@ -7,12 +7,12 @@ import NavContainer from "pages/nav/container/NavContainer";
 import HomeContainer from "pages/home/container/HomeContainer";
 import InterviewPresenter from "pages/interview/presenter/InterviewPresenter";
 import IntroducePresenter from "pages/introduce/presenter/IntroducePresenter";
-import LibraryPresenter from "pages/library/presenter/LibraryPresenter";
+import LibraryContainer from "pages/library/container/LibraryContainer";
 import BookContainer from "pages/book/container/BookContainer";
-import SignInContainer from "pages/SignIn/container/SignInContainer";
-import SignUpPresenter from "pages/SignUp/presenter/SignUpPresenter";
+import SignInContainer from "pages/signIn/container/SignInContainer";
+import SignUpPresenter from "pages/signUp/presenter/SignUpPresenter";
 import MypagePresenter from "pages/mypage/presenter/MypagePresenter";
-import WritingPresenter from "pages/Writing/presenter/WritingPresenter";
+import WritingPresenter from "pages/writing/presenter/WritingPresenter";
 import PostContainer from "pages/post/container/PostContainer";
 
 const TransitionRouter = withRouter(({ location }) => (
@@ -21,7 +21,7 @@ const TransitionRouter = withRouter(({ location }) => (
             <Switch location={location}>
                 <Route path="/" exact component={HomeContainer} />
                 <Route path="/introduce" component={IntroducePresenter} />
-                <Route path="/library" exact component={LibraryPresenter} />
+                <Route path="/library" exact component={LibraryContainer} />
                 <Route path="/library/:id" component={BookContainer} />
                 <Route path="/interview" component={InterviewPresenter} />
                 <Route path="/signin" component={SignInContainer} />

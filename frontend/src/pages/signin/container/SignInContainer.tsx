@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import SignInPresenter from "pages/SignIn/presenter/SignInPresenter";
+import SignInPresenter from "pages/signIn/presenter/SignInPresenter";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "modules";
 import { signin, signinBy } from "modules/user/user";

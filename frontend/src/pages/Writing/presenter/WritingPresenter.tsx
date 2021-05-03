@@ -7,7 +7,7 @@ import { faMarkdown } from "@fortawesome/free-brands-svg-icons";
 
 import "react-mde/lib/styles/css/react-mde-all.css";
 
-import "pages/Writing/Writing.scss";
+import "pages/writing/Writing.scss";
 import Clock from "components/Clock/Clock";
 
 // Suggestion

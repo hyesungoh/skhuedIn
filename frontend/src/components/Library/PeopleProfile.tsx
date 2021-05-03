@@ -4,11 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 
 import sample from "static/images/profile.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const PeopleProfile = () => {
+    const history = useHistory();
+
+    const onClick = () => {
+        history.push("/library/1");
+    };
+
     return (
-        <Link to="/library/1" className="peoples__list__profile">
+        <div className="peoples__list__profile" onClick={onClick}>
             <div className="peoples__list__profile__logo">
                 <div className="peoples__list__profile__logo__img">
                     <img src={sample} alt="test profile" />
@@ -32,7 +38,7 @@ const PeopleProfile = () => {
                     어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구
                 </p>
             </div>
-        </Link>
+        </div>
     );
 };
 
