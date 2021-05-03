@@ -28,6 +28,8 @@ const QuestionModalInput = ({
                 type="text"
                 value={comment}
                 onChange={onCommentChange}
+                placeholder="정말 도움되는 질문이였어요 !"
+                maxLength={50}
             />
             <CommentBtn type="submit" onClick={onCommentSubmit}>
                 제출
@@ -46,13 +48,21 @@ const CommentWriteDiv = styled.div`
 
 const CommentInput = styled.input`
     all: unset;
-    width: 80%;
+    width: 84%;
 `;
 
 const CommentBtn = styled.button`
     all: unset;
-    width: 20%;
+    width: 16%;
+    height: 40px;
+
     text-align: center;
     cursor: pointer;
+    border-radius: ${({ theme }) => theme.border_intensity};
     background-color: ${({ theme }) => theme.colors.background};
+    transition: box-shadow 0.3s;
+
+    &:hover {
+        box-shadow: ${({ theme }) => theme.shadows.normal};
+    }
 `;

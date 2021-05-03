@@ -217,6 +217,38 @@ cursor: grab; /* 드래그할 수 있는 것 같이 */
 cursor: zoom-in; /* 확대할 수 있는 것 같이 */
 ```
 
+-   #### Styled-components declaration
+
+```ts
+// style/styled.d.ts
+import "styled-components";
+
+declare module "styled-components" {
+    export interface DefaultTheme {
+        colors: {
+            white: string;
+            background: string;
+        };
+        something: string;
+        youWant: string;
+    }
+}
+```
+
+```ts
+// style/theme.ts
+import { DefaultTheme } from "styled-components";
+
+const theme: DefaultTheme = {
+    colors: {
+        white: "#ffffff",
+        background: "#000000",
+    },
+    something: "0px",
+    youWant: "1rem",
+};
+```
+
 ## Issue
 
 -   `ERROR` Modal: `ref` is not a prop.
