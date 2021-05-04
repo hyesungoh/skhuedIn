@@ -98,6 +98,13 @@ markdown converter
 npm i react-markdown
 ```
 
+#### React-query
+
+```terminal
+npm i react-query
+npm i @types/react-query
+```
+
 ## Development
 
 -   #### React-mde
@@ -246,6 +253,28 @@ const theme: DefaultTheme = {
     },
     something: "0px",
     youWant: "1rem",
+};
+```
+
+-   #### React-query useQuery
+
+basic usage
+
+```tsx
+import { useQuery } from "react-query";
+
+const someComponent = () => {
+    const { data, isLoading, error } = useQuery("someData", () => {
+        axiois.get(GET_API_URL);
+    });
+
+    if (isLoading) return <Loading />;
+    if (error) return <Error />;
+    return (
+        <div>
+            <h1>{data.name}</h1>
+        </div>
+    );
 };
 ```
 
