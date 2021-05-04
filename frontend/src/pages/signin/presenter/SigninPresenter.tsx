@@ -13,25 +13,18 @@ import logoNaver from "static/images/naver.png";
 import "pages/signIn/SignIn.scss";
 
 interface ISignInPresenter {
-    onSignIn: () => void;
-    onSignInBy: (diff: string) => void;
+    onGoogleLogin: () => void;
+    onKakaoLogin: () => void;
+    onNaverLogin: () => void;
 }
 
-const SignInPresenter = ({ onSignIn, onSignInBy }: ISignInPresenter) => {
+const SignInPresenter = ({
+    onGoogleLogin,
+    onKakaoLogin,
+    onNaverLogin,
+}: ISignInPresenter) => {
     // const [id, setId] = useState<string>("");
     // const [password, setPassword] = useState<string>("");
-
-    const onSignGoogle = () => {
-        onSignIn();
-    };
-
-    const onSignKakao = () => {
-        onSignIn();
-    };
-
-    const onSignNaver = () => {
-        onSignIn();
-    };
 
     return (
         <div className="center">
@@ -48,22 +41,25 @@ const SignInPresenter = ({ onSignIn, onSignInBy }: ISignInPresenter) => {
 
                 <div className="signinform__social">
                     <div
+                        id="google"
                         className="signinform__social__logo"
-                        onClick={onSignGoogle}
+                        onClick={onGoogleLogin}
                     >
                         <img src={logoGoogle} alt="google" />
                     </div>
                     <div
+                        id="kakao"
                         className="signinform__social__logo"
-                        onClick={onSignKakao}
+                        onClick={onKakaoLogin}
                     >
-                        <img src={logoKakao} alt="google" />
+                        <img src={logoKakao} alt="kakao" />
                     </div>
                     <div
+                        id="naver"
                         className="signinform__social__logo"
-                        onClick={onSignNaver}
+                        onClick={onNaverLogin}
                     >
-                        <img src={logoNaver} alt="google" />
+                        <img src={logoNaver} alt="naver" />
                     </div>
                 </div>
 
