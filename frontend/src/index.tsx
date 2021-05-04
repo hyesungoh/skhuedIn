@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-// for redux provider
+// for redux providers
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "modules/index";
@@ -18,7 +18,6 @@ import App from "./App";
 import "style/index.scss";
 
 const store = createStore(rootReducer);
-
 const queryClient = new QueryClient();
 
 ReactDOM.render(
