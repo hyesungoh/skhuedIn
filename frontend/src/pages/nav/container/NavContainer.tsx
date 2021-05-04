@@ -18,7 +18,17 @@ const NavContainer = () => {
     const currentUser = useSelector((state: RootState) => state.user);
     const dispatch = useDispatch();
 
-    const onSignOut = () => {
+    const onMypageClick = () => {
+        // user id도 교환
+        history.push(`mypage/1`);
+    };
+
+    const onSettingClick = () => {
+        // setting route 생성 후 교환
+        history.push("/");
+    };
+
+    const onSignOutClick = () => {
         dispatch(signout());
         history.push("/signin");
     };
@@ -27,7 +37,9 @@ const NavContainer = () => {
         <NavPresenter
             categorys={categorys}
             currentUser={currentUser}
-            onSignOut={onSignOut}
+            onMypageClick={onMypageClick}
+            onSettingClick={onSettingClick}
+            onSignOutClick={onSignOutClick}
         />
     );
 };

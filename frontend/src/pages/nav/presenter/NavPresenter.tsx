@@ -9,10 +9,18 @@ import "pages/nav/nav.scss";
 interface INav {
     categorys: { path: string; name: string }[];
     currentUser: UserState;
-    onSignOut: () => void;
+    onMypageClick: () => void;
+    onSettingClick: () => void;
+    onSignOutClick: () => void;
 }
 
-const Nav = ({ categorys, currentUser, onSignOut }: INav) => {
+const Nav = ({
+    categorys,
+    currentUser,
+    onMypageClick,
+    onSettingClick,
+    onSignOutClick,
+}: INav) => {
     const SignedInCategory = () => (
         <div className="nav__category__element nav__dropdown">
             <span></span>
@@ -20,9 +28,9 @@ const Nav = ({ categorys, currentUser, onSignOut }: INav) => {
             <span className="nav__dropdown__border"></span>
 
             <div className="nav__dropdown--content">
-                <Link to="/mypage/1">마이페이지</Link>
-                <Link to="/">설정</Link>
-                <span onClick={onSignOut}>로그아웃</span>
+                <span onClick={onMypageClick}>마이페이지</span>
+                <span onClick={onSettingClick}>설정</span>
+                <span onClick={onSignOutClick}>로그아웃</span>
             </div>
         </div>
     );

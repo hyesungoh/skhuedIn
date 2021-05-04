@@ -136,7 +136,8 @@
 
         box-shadow: $strong_shadow;
 
-        & > a {
+        & > span {
+            cursor: pointer;
             transition: color 0.5s;
 
             &:hover {
