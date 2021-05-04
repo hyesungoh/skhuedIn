@@ -37,14 +37,26 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
     };
 
     const onKakaoLogin = () => {
-        window.Kakao.Auth.login({
-            success: (response: object) => {
-                console.log(response);
-            },
-            fail: (response: object) => {
-                console.log(response);
-            },
-        });
+        try {
+            window.Kakao.Auth.login({
+                success: (response: object) => {
+                    const json = JSON.stringify(response);
+                    console.log(json);
+                    const data = axios({
+                        method: "get",
+                        url: "http://localhost:8080/auth/kakao/callback",
+                        params: response,
+                    });
+                    console.log(data);
+                    // 데이터의 토큰을 세션 아니면 리덕스에 저장 > 다른 행동할 때 토큰을 같이 보내주면 됑
+                },
+                fail: (response: object) => {
+                    console.log(response);
+                },
+            });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const onNaveLogin = () => {
