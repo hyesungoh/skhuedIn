@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Loading = () => {
-    return <LoadingDiv></LoadingDiv>;
+    return <LoadingDiv>Im loading</LoadingDiv>;
 };
 
 export default Loading;

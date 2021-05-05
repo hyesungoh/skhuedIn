@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
-import SignInput from "components/Sign/SignInput";
+// text for login
+// import SignInput from "components/Sign/SignInput";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+// social login to fontAwesomeIcon
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+// import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+// import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
+import { GoogleLogin } from "react-google-login";
 
 import logoGoogle from "static/images/google.png";
 import logoKakao from "static/images/kakao.png";
@@ -13,7 +16,7 @@ import logoNaver from "static/images/naver.png";
 import "pages/signIn/SignIn.scss";
 
 interface ISignInPresenter {
-    onGoogleLogin: () => void;
+    onGoogleLogin: (result: any) => void;
     onKakaoLogin: () => void;
     onNaverLogin: () => void;
 }
@@ -40,13 +43,30 @@ const SignInPresenter = ({
                 <SignInput text={"Password"} setState={setPassword} /> */}
 
                 <div className="signinform__social">
-                    <div
+                    <GoogleLogin
+                        clientId={
+                            process.env.REACT_APP_GOOGLE_CLIENT_ID as string
+                        }
+                        onSuccess={(result) => onGoogleLogin(result)}
+                        onFailure={(result) => console.log(result)}
+                        render={(props: any) => (
+                            <div
+                                className="signinform__social__logo"
+                                onClick={props.onClick}
+                            >
+                                <img src={logoGoogle} alt="google" />
+                            </div>
+                        )}
+                    />
+
+                    {/* <div
                         id="google"
                         className="signinform__social__logo"
                         onClick={onGoogleLogin}
                     >
                         <img src={logoGoogle} alt="google" />
-                    </div>
+                    </div> */}
+
                     <div
                         id="kakao"
                         className="signinform__social__logo"

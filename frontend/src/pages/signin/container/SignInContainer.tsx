@@ -13,6 +13,7 @@ import SignInPresenter from "pages/signIn/presenter/SignInPresenter";
 declare global {
     interface Window {
         Kakao: any;
+        googleSDKLoaded: any;
     }
 }
 
@@ -32,8 +33,8 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
         history.push("/");
     };
 
-    const onGoogleLogin = () => {
-        console.log("google login");
+    const onGoogleLogin = (result: any) => {
+        console.log(result);
     };
 
     const onKakaoLogin = () => {

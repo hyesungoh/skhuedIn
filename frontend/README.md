@@ -105,6 +105,12 @@ npm i react-query
 npm i @types/react-query
 ```
 
+#### React-google-login
+
+```terminal
+npm i react-google-login
+```
+
 ## Development
 
 -   #### React-mde
