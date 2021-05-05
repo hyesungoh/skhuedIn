@@ -287,7 +287,10 @@ const someComponent = () => {
 ## Issue
 
 -   `ERROR` Modal: `ref` is not a prop.
+
     prop의 이름은 ref가 안됨
+
+`Fix`
 
 ```tsx
 // refs로 이름을 바꾸어 해결
@@ -307,11 +310,21 @@ const NextCompo = ({ refs }: INextCompo) => {
 
 -   `ERROR` Type 'RefObject<HTMLDivElement>' is missing the following properties
 
+`Fix`
+
 ```tsx
 interface ISomething {
     refs: React.RefObject<HTMLDivElement>;
 }
 ```
+
+-   `ERROR` `idpiframe_initialization_failed` when google login
+
+mount시 Client ID가 틀렸다고 말하며, 구글 로그인 시 `popup_closed_by_user` 오류를 뱉는 현상
+
+`Fix`
+
+브라우저의 모든 쿠키과 캐시를 삭제하여 해결 ...
 
 <!--
 
