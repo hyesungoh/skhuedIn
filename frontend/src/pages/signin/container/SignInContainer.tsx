@@ -8,6 +8,8 @@ import { RouteComponentProps } from "react-router";
 
 import axios from "axios";
 
+import { LOGIN_GOOGLE, LOGIN_KAKAO } from "api/url";
+import { UserState } from "modules/user/user";
 import SignInPresenter from "pages/signIn/presenter/SignInPresenter";
 
 declare global {
@@ -28,27 +30,72 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
         }
     }, []);
 
-    const onSignIn = () => {
-        dispatch(signin());
+    const onSignIn = (response: UserState) => {
+        dispatch(signin(response));
         history.push("/");
     };
 
+    const onTest = (res: any) => {
+        console.log(res);
+    };
+
+    const setFormatForUser = (response: any, provider: string) => {
+        const getEmptyWhenNull = (data: string) => {
+            return data ? data : "";
+        };
+
+        const currentUserState: UserState = {
+            isSignedIn: true,
+            id: parseInt(response.id),
+            provider,
+            email: getEmptyWhenNull(response.email),
+            name: getEmptyWhenNull(response.name),
+            userImageUrl: getEmptyWhenNull(response.userImageUrl),
+            entranceYear: getEmptyWhenNull(response.entranceYear),
+            graduationYear: getEmptyWhenNull(response.graduationYear),
+        };
+
+        return currentUserState;
+    };
+
     const onGoogleLogin = (result: any) => {
-        console.log(result);
+        const { accessToken } = result;
+        // const data = axios({
+        //     method = "get",
+        //     url = LOGIN_GOOGLE,
+        //     params = { accessToken },
+        // });
     };
 
     const onKakaoLogin = () => {
         try {
             window.Kakao.Auth.login({
-                success: (response: object) => {
-                    const { access_token } = response as any;
-                    const data = axios({
+                success: (response: any) => {
+                    const { access_token } = response;
+                    axios({
                         method: "get",
-                        url: "http://localhost:8080/auth/kakao/callback",
+                        url: LOGIN_KAKAO,
                         params: response,
                         // params: { access_token }
+                    }).then((response) => {
+                        const token = response.data.token;
+
+                        // API 요청하는 콜마다 헤더에 토큰을 담아 보내도록 설정
+                        axios.defaults.headers.common[
+                            "Authorization"
+                        ] = `Bearer ${token}`;
+
+                        // 해당 토큰을 세션에 저장 >
+                        // 요청 시에 세션에서 꺼내서 같이 보냄 >
+                        // 반환될 때 유저 정보를 같이 반환 >
+                        // 유저 정보를 리덕스에 저장
+
+                        const currentUserData = setFormatForUser(
+                            response.data.data,
+                            "kakao"
+                        );
                     });
-                    console.log(data);
+
                     // 데이터의 토큰을 세션 아니면 리덕스에 저장 > 다른 행동할 때 토큰을 같이 보내주면 됑
                 },
                 fail: (response: object) => {
