@@ -13,7 +13,7 @@ import SignInPresenter from "pages/signIn/presenter/SignInPresenter";
 declare global {
     interface Window {
         Kakao: any;
-        googleSDKLoaded: any;
+        naver: any;
     }
 }
 
@@ -41,12 +41,12 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
         try {
             window.Kakao.Auth.login({
                 success: (response: object) => {
-                    const json = JSON.stringify(response);
-                    console.log(json);
+                    const { access_token } = response as any;
                     const data = axios({
                         method: "get",
                         url: "http://localhost:8080/auth/kakao/callback",
                         params: response,
+                        // params: { access_token }
                     });
                     console.log(data);
                     // 데이터의 토큰을 세션 아니면 리덕스에 저장 > 다른 행동할 때 토큰을 같이 보내주면 됑

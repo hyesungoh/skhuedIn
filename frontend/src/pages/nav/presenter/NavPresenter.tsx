@@ -46,9 +46,12 @@ const Nav = ({
                         </Link>
                     </h2>
                 </div>
+                {/*
+                검색창
                 <div className="nav__right__search">
                     <input type="text"></input>
                 </div>
+                */}
             </div>
 
             <div className="nav__category">

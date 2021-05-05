@@ -45,10 +45,12 @@ const SignInPresenter = ({
                 <div className="signinform__social">
                     <GoogleLogin
                         clientId={
-                            process.env.REACT_APP_GOOGLE_CLIENT_ID as string
+                            "26388048524-72oe5ceuu1n8b51204ub9bmhochpp7gg.apps.googleusercontent.com"
+                            // process.env.REACT_APP_GOOGLE_CLIENT_ID as string
                         }
                         onSuccess={(result) => onGoogleLogin(result)}
                         onFailure={(result) => console.log(result)}
+                        cookiePolicy={"single_host_origin"}
                         render={(props: any) => (
                             <div
                                 className="signinform__social__logo"
