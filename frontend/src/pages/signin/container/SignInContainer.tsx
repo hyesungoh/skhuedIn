@@ -56,6 +56,9 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
 
     const onGoogleLogin = (result: any) => {
         const { accessToken } = result;
+        console.log("GOOGLE LOGIN SUCCESS");
+        console.log(accessToken);
+
         // const data = axios({
         //     method = "get",
         //     url = LOGIN_GOOGLE,
@@ -68,6 +71,11 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
             window.Kakao.Auth.login({
                 success: (response: any) => {
                     const { access_token } = response;
+
+                    console.log("KAKAO LOGIN SUCCESS");
+                    console.log(access_token);
+
+                    // BE에 엑세스토큰을 보내서 우리 토큰을 발급받자
                     axios({
                         method: "get",
                         url: LOGIN_KAKAO,
@@ -105,17 +113,11 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
     const initializeNaverLogin = () => {
         const naverLogin = new window.naver.LoginWithNaverId({
             clientId: process.env.REACT_APP_NAVER_CLIENT_ID,
-            callbackUrl: "http://localhost:3000/signin",
+            callbackUrl: "http://localhost:3000/signin/naver",
             isPopup: false,
             loginButton: { color: "green", type: 1, height: "110" },
         });
         naverLogin.init();
-
-        // const naver_id_login = new window.naver.naver_id_login(
-        //     process.env.REACT_APP_NAVER_CLIENT_ID,
-        //     "http://localhost:3000/signin"
-        // );
-        // console.log(naver_id_login.oauthParams.access_token);
     };
 
     return (
