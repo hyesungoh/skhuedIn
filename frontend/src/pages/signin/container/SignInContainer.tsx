@@ -110,6 +110,12 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
             loginButton: { color: "green", type: 1, height: "110" },
         });
         naverLogin.init();
+
+        // const naver_id_login = new window.naver.naver_id_login(
+        //     process.env.REACT_APP_NAVER_CLIENT_ID,
+        //     "http://localhost:3000/signin"
+        // );
+        // console.log(naver_id_login.oauthParams.access_token);
     };
 
     return (
