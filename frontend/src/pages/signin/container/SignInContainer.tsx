@@ -35,10 +35,6 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
         history.push("/");
     };
 
-    const onTest = (res: any) => {
-        console.log(res);
-    };
-
     const setFormatForUser = (response: any, provider: string) => {
         const getEmptyWhenNull = (data: string) => {
             return data ? data : "";
@@ -79,7 +75,6 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
                         // params: { access_token }
                     }).then((response) => {
                         const token = response.data.token;
-
                         // API 요청하는 콜마다 헤더에 토큰을 담아 보내도록 설정
                         axios.defaults.headers.common[
                             "Authorization"
@@ -107,15 +102,21 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
         }
     };
 
-    const onNaveLogin = () => {
-        console.log("naver login");
+    const initializeNaverLogin = () => {
+        const naverLogin = new window.naver.LoginWithNaverId({
+            clientId: process.env.REACT_APP_NAVER_CLIENT_ID,
+            callbackUrl: "http://localhost:3000/signin",
+            isPopup: false,
+            loginButton: { color: "green", type: 1, height: "110" },
+        });
+        naverLogin.init();
     };
 
     return (
         <SignInPresenter
             onGoogleLogin={onGoogleLogin}
             onKakaoLogin={onKakaoLogin}
-            onNaverLogin={onNaveLogin}
+            initializeNaverLogin={initializeNaverLogin}
         />
     );
 };

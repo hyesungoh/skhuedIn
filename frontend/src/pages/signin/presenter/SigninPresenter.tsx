@@ -7,46 +7,43 @@
 // import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 // import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
+import { useEffect } from "react";
 import { GoogleLogin } from "react-google-login";
 
 import logoGoogle from "static/images/google.png";
 import logoKakao from "static/images/kakao.png";
-import logoNaver from "static/images/naver.png";
 
 import "pages/signIn/SignIn.scss";
 
 interface ISignInPresenter {
     onGoogleLogin: (result: any) => void;
     onKakaoLogin: () => void;
-    onNaverLogin: () => void;
+    initializeNaverLogin: () => void;
 }
 
 const SignInPresenter = ({
     onGoogleLogin,
     onKakaoLogin,
-    onNaverLogin,
+    initializeNaverLogin,
 }: ISignInPresenter) => {
-    // const [id, setId] = useState<string>("");
-    // const [password, setPassword] = useState<string>("");
+    useEffect(() => {
+        initializeNaverLogin();
+    }, []);
 
     return (
         <div className="center">
             <div className="signinform">
                 <div className="signinform__text">
                     <span>
-                        SKHUED <b>IN</b>에 로그인하고 <b>취뽀</b>하기
+                        SKHUED <strong>IN</strong>에 로그인하고{" "}
+                        <strong>취뽀</strong>하기
                     </span>
                 </div>
-
-                {/* <SignInput text={"ID"} setState={setId} />
-
-                <SignInput text={"Password"} setState={setPassword} /> */}
 
                 <div className="signinform__social">
                     <GoogleLogin
                         clientId={
-                            "26388048524-72oe5ceuu1n8b51204ub9bmhochpp7gg.apps.googleusercontent.com"
-                            // process.env.REACT_APP_GOOGLE_CLIENT_ID as string
+                            process.env.REACT_APP_GOOGLE_CLIENT_ID as string
                         }
                         onSuccess={(result) => onGoogleLogin(result)}
                         onFailure={(result) => console.log(result)}
@@ -61,14 +58,6 @@ const SignInPresenter = ({
                         )}
                     />
 
-                    {/* <div
-                        id="google"
-                        className="signinform__social__logo"
-                        onClick={onGoogleLogin}
-                    >
-                        <img src={logoGoogle} alt="google" />
-                    </div> */}
-
                     <div
                         id="kakao"
                         className="signinform__social__logo"
@@ -76,23 +65,11 @@ const SignInPresenter = ({
                     >
                         <img src={logoKakao} alt="kakao" />
                     </div>
-                    <div
-                        id="naver"
-                        className="signinform__social__logo"
-                        onClick={onNaverLogin}
-                    >
-                        <img src={logoNaver} alt="naver" />
+
+                    <div className="signinform__social__logo">
+                        <div id="naverIdLogin"></div>
                     </div>
                 </div>
-
-                {/* <span className="signinform__link">
-                    아직 회원이 아니신가요?{" "}
-                    <Link to="/signup">회원가입 하러가기</Link>
-                </span>
-
-                <button className="signinform__btn" onClick={onSignIn}>
-                    Sign In
-                </button> */}
             </div>
         </div>
     );
