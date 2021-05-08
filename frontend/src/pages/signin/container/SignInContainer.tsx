@@ -8,7 +8,7 @@ import { RouteComponentProps } from "react-router";
 
 import axios from "axios";
 
-import { LOGIN_GOOGLE, LOGIN_KAKAO } from "api/url";
+import { LOGIN_GOOGLE_URL, LOGIN_KAKAO_URL } from "api/blog/url";
 import { UserState } from "modules/user/user";
 import SignInPresenter from "pages/signIn/presenter/SignInPresenter";
 
@@ -61,7 +61,7 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
 
         // const data = axios({
         //     method = "get",
-        //     url = LOGIN_GOOGLE,
+        //     url = LOGIN_GOOGLE_URL,
         //     params = { accessToken },
         // });
     };
@@ -78,7 +78,7 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
                     // BE에 엑세스토큰을 보내서 우리 토큰을 발급받자
                     axios({
                         method: "get",
-                        url: LOGIN_KAKAO,
+                        url: LOGIN_KAKAO_URL,
                         params: response,
                         // params: { access_token }
                     }).then((response) => {

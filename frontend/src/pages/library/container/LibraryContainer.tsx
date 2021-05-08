@@ -4,23 +4,14 @@ import LibraryPresenter from "pages/library/presenter/LibraryPresenter";
 import { useQuery } from "react-query";
 import axios from "axios";
 
-import { GET_BLOGS } from "api/url";
-import Loading from "components/Loading/Loading";
-import Error from "components/Error/Error";
+import { getBlogs } from "api/blog/fetch";
 
 const LibraryContainer = () => {
     // const [blogs, setBlogs] = useState<>()
     // get axios list and recommend
 
-    const { data, isLoading, error } = useQuery("blogs", () =>
-        axios.get(GET_BLOGS)
-    );
-
-    console.log(data, isLoading, error);
-
-    if (isLoading) return <Loading />;
-    if (error) return <Error />;
-    return <LibraryPresenter />;
+    const { data, status, error } = useQuery("blogs", getBlogs);
+    return <LibraryPresenter data={data} status={status} error={error} />;
 };
 
 export default LibraryContainer;

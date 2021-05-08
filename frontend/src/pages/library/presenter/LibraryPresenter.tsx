@@ -1,11 +1,20 @@
 import React from "react";
 
-import "pages/library/Library.scss";
 import List from "components/Library/List";
 import Recommend from "components/Library/Recommend";
-// import Category from "components/Library/Category";
+import Loading from "components/Loading/Loading";
+import Error from "components/Error/Error";
+import { IBlog } from "api";
 
-const LibraryPresenter = () => {
+import "pages/library/Library.scss";
+
+interface ILibraryPresenter {
+    data: IBlog[] | undefined;
+    status: string;
+    error: any;
+}
+
+const LibraryPresenter = ({ data, status, error }: ILibraryPresenter) => {
     return (
         <div className="library">
             {/* <Category /> */}
