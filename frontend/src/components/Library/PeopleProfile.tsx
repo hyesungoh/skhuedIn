@@ -6,18 +6,32 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import sample from "static/images/profile.png";
 import { Link, useHistory } from "react-router-dom";
 
-const PeopleProfile = () => {
+interface IPeopleProfile {
+    userId: number;
+    name: string;
+    entranceYear: string;
+    profileImageUrl: string;
+    content: string;
+}
+
+const PeopleProfile = ({
+    userId,
+    name,
+    entranceYear,
+    profileImageUrl,
+    content,
+}: IPeopleProfile) => {
     const history = useHistory();
 
     const onClick = () => {
-        history.push("/library/1");
+        history.push(`/library/${userId}`);
     };
 
     return (
         <div className="peoples__list__profile" onClick={onClick}>
             <div className="peoples__list__profile__logo">
                 <div className="peoples__list__profile__logo__img">
-                    <img src={sample} alt="test profile" />
+                    <img src={profileImageUrl} alt="test profile" />
                 </div>
 
                 <div className="peoples__list__profile__logo__div">
@@ -30,13 +44,11 @@ const PeopleProfile = () => {
             </div>
 
             <div className="peoples__list__profile__info">
-                <p className="peoples__list__profile__info__name">오혜성</p>
+                <p className="peoples__list__profile__info__name">{name}</p>
                 <p className="peoples__list__profile__info__major">
-                    소프트웨어 공학과, 20년 졸업
+                    소프트웨어 공학과, {entranceYear} 입학
                 </p>
-                <p>
-                    어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구
-                </p>
+                <p>{content}</p>
             </div>
         </div>
     );

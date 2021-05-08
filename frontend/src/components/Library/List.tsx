@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
+import { IBlog } from "api";
 import PeopleProfile from "components/Library/PeopleProfile";
-const List = () => {
+
+interface IList {
+    data: IBlog[];
+}
+
+const List = ({ data }: IList) => {
     const categories: string[] = [
         "경력순",
         "졸업순",
@@ -28,6 +34,16 @@ const List = () => {
             </div>
 
             <div className="peoples__list">
+                {data.map((blog) => (
+                    <PeopleProfile
+                        userId={blog.user.id}
+                        name={blog.user.name}
+                        entranceYear={blog.user.entranceYear}
+                        profileImageUrl={blog.profileImageUrl}
+                        content={blog.content}
+                    />
+                ))}
+                {/* <PeopleProfile />
                 <PeopleProfile />
                 <PeopleProfile />
                 <PeopleProfile />
@@ -39,8 +55,7 @@ const List = () => {
                 <PeopleProfile />
                 <PeopleProfile />
                 <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile />
+                <PeopleProfile /> */}
             </div>
         </div>
     );
