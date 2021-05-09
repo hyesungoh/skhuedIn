@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { RouteChildrenProps } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-import { UserState } from "modules/user/user";
 import SignInSettingPresenter from "pages/signinSetting/presenter/SignInSettingPresenter";
-import { useSelector } from "react-redux";
+
 import { RootState } from "modules";
+import { UserState, signin } from "modules/user/user";
 
 export interface ISignInSetting {}
 
@@ -19,17 +19,23 @@ export interface ILocationState {
 
 const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
     const currentUser = useSelector((state: RootState) => state.user);
+    const dispatch = useDispatch();
 
-    const checkValidAccess = () => {
-        if (currentUser.isSignedIn) history.push("/");
-        if (location.state === undefined) history.push("/signin");
-    };
-    checkValidAccess();
-    
+    // const checkValidAccess = () => {
+    //     if (currentUser.isSignedIn) history.push("/");
+    //     if (location.state === undefined) history.push("/signin");
+    // };
+    // checkValidAccess();
+
     const { userData, token } = location.state as ILocationState;
-    console.log(userData, token);
+    const userName = userData.name;
 
-    return <SignInSettingPresenter />;
+    const onSignin = () => {
+        dispatch(signin(userData));
+        history.push("/");
+    };
+
+    return <SignInSettingPresenter userName={userName} onSignin={onSignin} />;
 };
 
 export default SignInSettingContainer;

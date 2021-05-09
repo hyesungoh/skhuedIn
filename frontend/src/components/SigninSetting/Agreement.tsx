@@ -7,7 +7,11 @@ import {
     NextBtn,
 } from "pages/signinSetting/presenter/SignInSettingPresenter";
 
-const Agreement = ({ onNextClick }: ISignSettingChild) => {
+interface IAgreement extends ISignSettingChild {
+    userName: string | undefined;
+}
+
+const Agreement = ({ onNextClick, userName }: IAgreement) => {
     const [isAgree, setIsAgree] = useState<boolean>(false);
 
     const onChange = () => {
@@ -27,6 +31,9 @@ const Agreement = ({ onNextClick }: ISignSettingChild) => {
 
     return (
         <SettingChildDiv>
+            <AgreementWelcome>
+                안녕하세요 <strong>{userName}</strong>님 !
+            </AgreementWelcome>
             <AgreementHeading>회원약관</AgreementHeading>
             <AgreementDiv>
                 <p>{memberAgreement}</p>
@@ -53,8 +60,19 @@ const Agreement = ({ onNextClick }: ISignSettingChild) => {
 
 export default Agreement;
 
+const AgreementWelcome = styled.h2`
+    color: ${({ theme }) => theme.colors.emph};
+    margin-bottom: 12px;
+    font-weight: 100;
+
+    & strong {
+        font-weight: 700;
+    }
+`;
+
 const AgreementHeading = styled.h2`
     color: ${({ theme }) => theme.colors.emph};
+    font-size: 1rem;
     margin-bottom: 6px;
 `;
 

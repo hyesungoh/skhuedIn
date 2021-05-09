@@ -6,17 +6,30 @@ import CheckStatus from "components/SigninSetting/CheckStatus";
 import WriteYear from "components/SigninSetting/WriteYear";
 import Agreement from "components/SigninSetting/Agreement";
 
-const SignInSettingPresenter = () => {
+interface ISignInSettingPresenter {
+    userName: string | undefined;
+    onSignin: () => void;
+}
+
+const SignInSettingPresenter = ({
+    userName,
+    onSignin,
+}: ISignInSettingPresenter) => {
     const [contentId, setContentId] = useState<number>(0);
+    const [status, setStatus] = useState<string>("Student");
 
     const onNextClick = () => {
         setContentId((prev) => prev + 1);
     };
-
+    
     const seeingContent = [
-        <Agreement onNextClick={onNextClick} />,
-        <CheckStatus onNextClick={onNextClick} />,
-        <WriteYear onNextClick={onNextClick} />,
+        <Agreement onNextClick={onNextClick} userName={userName} />,
+        <CheckStatus
+            onNextClick={onNextClick}
+            status={status}
+            setStatus={setStatus}
+        />,
+        <WriteYear onSignin={onSignin} />,
     ];
 
     return (
@@ -63,6 +76,7 @@ export const NextBtn = styled.button`
     width: 50px;
     height: 35px;
     text-align: center;
+    color: ${({ theme }) => theme.colors.emph};
     background-color: ${({ theme }) => theme.colors.white};
     clip-path: polygon(85% 0, 100% 50%, 85% 100%, 0% 100%, 15% 50%, 0% 0%);
 
@@ -71,7 +85,7 @@ export const NextBtn = styled.button`
 
     transition: all 0.3s;
     &:hover {
-        background-color: ${({ theme }) => theme.colors.emph};
         color: ${({ theme }) => theme.colors.white};
+        background-color: ${({ theme }) => theme.colors.emph};
     }
 `;

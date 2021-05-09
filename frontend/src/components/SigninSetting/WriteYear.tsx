@@ -1,7 +1,19 @@
-import { ISignSettingChild } from "pages/signinSetting/presenter/SignInSettingPresenter";
+import {
+    
+    SettingChildDiv,
+    NextBtn,
+} from "pages/signinSetting/presenter/SignInSettingPresenter";
 
-const WriteYear = ({ onNextClick }: ISignSettingChild) => {
-    return <div>write</div>;
+interface IWriteYear {
+    onSignin: () => void;
+};
+
+const WriteYear = ({ onSignin }: IWriteYear) => {
+    return (
+        <SettingChildDiv>
+            <NextBtn onClick={onSignin}>다음</NextBtn>
+        </SettingChildDiv>
+    );
 };
 
 export default WriteYear;
