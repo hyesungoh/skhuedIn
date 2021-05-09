@@ -59,8 +59,7 @@ const HomeContainer = ({ history }: RouteComponentProps) => {
         ],
     });
 
-    const user = useSelector((state: RootState) => state.user);
-    const dispatch = useDispatch();
+    const currentUser = useSelector((state: RootState) => state.user);
 
     const { loading, posts } = state;
     return <HomePresenter loading={loading} posts={posts} />;
