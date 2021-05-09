@@ -11,6 +11,7 @@ import LibraryContainer from "pages/library/container/LibraryContainer";
 import BookContainer from "pages/book/container/BookContainer";
 import SignInContainer from "pages/signIn/container/SignInContainer";
 import SignInNaverContainer from "pages/signinNaver/containter/SignInNaverContainer";
+import SignInSettingContainer from "pages/signinSetting/container/SignInSettingContainer";
 import SignUpPresenter from "pages/signUp/presenter/SignUpPresenter";
 import MypagePresenter from "pages/mypage/presenter/MypagePresenter";
 import WritingPresenter from "pages/writing/presenter/WritingPresenter";
@@ -27,6 +28,10 @@ const TransitionRouter = withRouter(({ location }) => (
                 <Route path="/interview" component={InterviewPresenter} />
                 <Route path="/signin" exact component={SignInContainer} />
                 <Route path="/signin/naver" component={SignInNaverContainer} />
+                <Route
+                    path="/signin/setting"
+                    component={SignInSettingContainer}
+                />
                 <Route path="/signup" component={SignUpPresenter} />
                 <Route path="/mypage/:id" component={MypagePresenter} />
                 <Route path="/write" component={WritingPresenter} />

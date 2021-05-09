@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
-import { useDispatch, useSelector } from "react-redux";
-import { signin } from "modules/user/user";
+import { useSelector } from "react-redux";
 import { RootState } from "modules";
 
 import { RouteComponentProps } from "react-router";
@@ -21,18 +20,17 @@ declare global {
 
 const SignInContainer = ({ history, location }: RouteComponentProps) => {
     const currentUser = useSelector((state: RootState) => state.user);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         // 이미 로그인 된 사용자일 시
-        if (currentUser.isSignedIn) {
-            history.push("/");
-        }
+        if (currentUser.isSignedIn) history.push("/");
     }, []);
 
-    const onSignIn = (response: UserState) => {
-        dispatch(signin(response));
-        history.push("/");
+    const pushSettingWithData = (userData: UserState, token: string) => {
+        history.push({
+            pathname: "signin/setting",
+            state: { userData, token },
+        });
     };
 
     const setFormatForUser = (response: any, provider: string) => {
@@ -75,7 +73,6 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
                     console.log("KAKAO LOGIN SUCCESS");
                     console.log(access_token);
 
-                    // BE에 엑세스토큰을 보내서 우리 토큰을 발급받자
                     axios({
                         method: "get",
                         url: LOGIN_KAKAO_URL,
@@ -83,20 +80,18 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
                         // params: { access_token }
                     }).then((response) => {
                         const token = response.data.token;
-                        // API 요청하는 콜마다 헤더에 토큰을 담아 보내도록 설정
-                        axios.defaults.headers.common[
-                            "Authorization"
-                        ] = `Bearer ${token}`;
 
-                        // 해당 토큰을 세션에 저장 >
-                        // 요청 시에 세션에서 꺼내서 같이 보냄 >
-                        // 반환될 때 유저 정보를 같이 반환 >
-                        // 유저 정보를 리덕스에 저장
+                        // API 요청하는 콜마다 헤더에 토큰을 담아 보내도록 설정
+                        // axios.defaults.headers.common[
+                        //     "Authorization"
+                        // ] = `Bearer ${token}`;
 
                         const currentUserData = setFormatForUser(
                             response.data.data,
                             "kakao"
                         );
+
+                        pushSettingWithData(currentUserData, token);
                     });
 
                     // 데이터의 토큰을 세션 아니면 리덕스에 저장 > 다른 행동할 때 토큰을 같이 보내주면 됑
