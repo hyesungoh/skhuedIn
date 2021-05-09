@@ -46,7 +46,7 @@ const PeopleProfile = ({
             <div className="peoples__list__profile__info">
                 <p className="peoples__list__profile__info__name">{name}</p>
                 <p className="peoples__list__profile__info__major">
-                    소프트웨어 공학과, {entranceYear} 입학
+                    소프트웨어 공학과, {entranceYear.slice(0, 4)} 입학
                 </p>
                 <p>{content}</p>
             </div>

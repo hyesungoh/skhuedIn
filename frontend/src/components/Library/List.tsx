@@ -9,10 +9,10 @@ interface IList {
 
 const List = ({ data }: IList) => {
     const categories: string[] = [
-        "경력순",
+        "최신업데이트순",
+        "입학순",
         "졸업순",
         "인기순",
-        "최신업데이트순",
     ];
     const [category, setCategory] = useState<string>(categories[0]);
 
@@ -34,8 +34,9 @@ const List = ({ data }: IList) => {
             </div>
 
             <div className="peoples__list">
-                {data.map((blog) => (
+                {data.map((blog, index) => (
                     <PeopleProfile
+                        key={index}
                         userId={blog.user.id}
                         name={blog.user.name}
                         entranceYear={blog.user.entranceYear}
