@@ -1,10 +1,24 @@
+import { useState } from "react";
+import styled from "styled-components";
+
 import {
     ISignSettingChild,
     SettingChildDiv,
+    NextBtn,
 } from "pages/signinSetting/presenter/SignInSettingPresenter";
-import styled from "styled-components";
 
 const Agreement = ({ onNextClick }: ISignSettingChild) => {
+    const [isAgree, setIsAgree] = useState<boolean>(false);
+
+    const onChange = () => {
+        setIsAgree(!isAgree);
+    };
+
+    const checkValidation = () => {
+        if (isAgree) onNextClick();
+        else alert("약관 동의 부탁드립니다 !");
+    };
+
     const memberAgreement: string =
         "1. 본 약관의 스쿠드인 사이트가 제공하는 모든 서비스(이하 '서비스')의 이용조건 및 절차, 이용자와 스쿠드인 사이트의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다. 2. 약관의 효력과 변경 - 스쿠드인 사이트는 귀하가 본 약관 내용에 동의하는 경우 스쿠드인 사이트의 서비스 제공 행위 및 귀화의 서비스 사용 행위에 본 약관이 우선적으로 적용됩니다. - 스쿠드인 사이트는 본 약관을 사전 고지 없이 변경할 수 있고 변경된 약관은 스쿠드인 사이트 내에 공지하거나 e-mail을 통해 회원에게 공지하며, 공지와 동시에 그 효력이 발생됩니다.";
 
@@ -22,7 +36,17 @@ const Agreement = ({ onNextClick }: ISignSettingChild) => {
                 <p>{privacyAgreement}</p>
             </AgreementDiv>
 
-            <NextBtn onClick={onNextClick}>다음</NextBtn>
+            <CheckDiv>
+                <Check
+                    id="agreement"
+                    type="checkbox"
+                    checked={isAgree}
+                    onChange={onChange}
+                />
+                <CheckLabel htmlFor="agreement">전체 약관 동의</CheckLabel>
+            </CheckDiv>
+
+            <NextBtn onClick={checkValidation}>다음</NextBtn>
         </SettingChildDiv>
     );
 };
@@ -36,15 +60,44 @@ const AgreementHeading = styled.h2`
 
 const AgreementDiv = styled.div`
     width: 100%;
-    height: 50px;
+    height: 60px;
     overflow: scroll;
     margin-bottom: 18px;
 `;
 
-const NextBtn = styled.button`
-    all: unset;
+const CheckDiv = styled.div`
+    width: 100%;
+    height: 50px;
 
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Check = styled.input`
+    all: unset;
+    width: 1rem;
+    height: 1rem;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:checked {
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.emph} inset;
+        background-color: ${({ theme }) => theme.colors.bold};
+    }
+`;
+
+const CheckLabel = styled.label`
+    font-size: 1rem;
+    font-weight: bold;
+    color: ${({ theme }) => theme.colors.emph};
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    ${Check}:checked + & {
+        color: ${({ theme }) => theme.colors.bold};
+    }
 `;

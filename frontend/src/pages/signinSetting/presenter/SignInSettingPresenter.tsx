@@ -31,7 +31,7 @@ const SignInSettingPresenter = () => {
 export default SignInSettingPresenter;
 
 const SettingDiv = styled.div`
-    width: 100%;
+    width: 100vw;
     height: calc(100vh - 100px);
 
     display: flex;
@@ -52,4 +52,26 @@ export const SettingChildDiv = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: start;
+`;
+
+export const NextBtn = styled.button`
+    all: unset;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    width: 50px;
+    height: 35px;
+    text-align: center;
+    background-color: ${({ theme }) => theme.colors.white};
+    clip-path: polygon(85% 0, 100% 50%, 85% 100%, 0% 100%, 15% 50%, 0% 0%);
+
+    font-size: 12px;
+    cursor: pointer;
+
+    transition: all 0.3s;
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.emph};
+        color: ${({ theme }) => theme.colors.white};
+    }
 `;

@@ -1,6 +1,7 @@
 import {
     ISignSettingChild,
     SettingChildDiv,
+    NextBtn,
 } from "pages/signinSetting/presenter/SignInSettingPresenter";
 import styled from "styled-components";
 
@@ -23,11 +24,3 @@ const CheckStatus = ({ onNextClick }: ISignSettingChild) => {
 };
 
 export default CheckStatus;
-
-const NextBtn = styled.button`
-    all: unset;
-
-    position: absolute;
-    bottom: 0;
-    right: 0;
-`;
