@@ -74,9 +74,9 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
                     console.log(access_token);
 
                     axios({
-                        method: "get",
+                        method: "post",
                         url: LOGIN_KAKAO_URL,
-                        params: response,
+                        data: { accessToken: access_token },
                         // params: { access_token }
                     }).then((response) => {
                         const token = response.data.token;
