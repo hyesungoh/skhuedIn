@@ -77,7 +77,6 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
                         method: "post",
                         url: LOGIN_KAKAO_URL,
                         data: { accessToken: access_token },
-                        // params: { access_token }
                     }).then((response) => {
                         const token = response.data.token;
 
