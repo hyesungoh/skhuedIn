@@ -4,6 +4,7 @@ import axios from "axios";
 
 import Loading from "components/Loading/Loading";
 import { LOGIN_NAVER_URL } from "api/socialLogin/url";
+import getFormatedUser from "components/Sign/getFormatedUser";
 
 const SignInNaverContainer = ({ history }: RouteComponentProps) => {
     const location = useLocation();
@@ -16,15 +17,16 @@ const SignInNaverContainer = ({ history }: RouteComponentProps) => {
             console.log("NAVER LOGIN SUCCESS");
             console.log(accessToken);
 
-            const data = await axios({
+            const userData = await axios({
                 method: "post",
                 url: LOGIN_NAVER_URL,
                 data: { accessToken },
             }).then((response) => {
-                console.log(response);
-                return response;
+                return response.data.data;
             });
-            console.log(data);
+
+            const formatedUserDate = getFormatedUser(userData, "naver");
+            
         };
 
         getNaverToken();

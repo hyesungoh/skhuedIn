@@ -10,6 +10,7 @@ import axios from "axios";
 import { UserState } from "modules/user/user";
 import { LOGIN_GOOGLE_URL, LOGIN_KAKAO_URL } from "api/socialLogin/url";
 import getFormatedUser from "components/Sign/getFormatedUser";
+import usePushSigninSetting from "hook/usePushSigninSetting";
 
 import SignInPresenter from "pages/signIn/presenter/SignInPresenter";
 
@@ -22,46 +23,29 @@ declare global {
 
 const SignInContainer = ({ history, location }: RouteComponentProps) => {
     const currentUser = useSelector((state: RootState) => state.user);
+    const pushSettingWithData = usePushSigninSetting();
 
     useEffect(() => {
         // 이미 로그인 된 사용자일 시
         if (currentUser.isSignedIn) history.push("/");
     }, []);
 
-    const pushSettingWithData = (userData: UserState, token: string) => {
-        history.push({
-            pathname: "signin/setting",
-            state: { userData, token },
-        });
-    };
-
-    // const setFormatForUser = (response: any, provider: string) => {
-    //     const getEmptyWhenNull = (data: string) => {
-    //         return data ? data : "";
-    //     };
-
-    //     const currentUserState: UserState = {
-    //         isSignedIn: true,
-    //         id: parseInt(response.id),
-    //         provider,
-    //         email: getEmptyWhenNull(response.email),
-    //         name: getEmptyWhenNull(response.name),
-    //         userImageUrl: getEmptyWhenNull(response.userImageUrl),
-    //         entranceYear: getEmptyWhenNull(response.entranceYear),
-    //         graduationYear: getEmptyWhenNull(response.graduationYear),
-    //     };
-
-    //     return currentUserState;
+    // const pushSettingWithData = (userData: UserState, token: string) => {
+    //     history.push({
+    //         pathname: "signin/setting",
+    //         state: { userData, token },
+    //     });
     // };
 
     const onGoogleLogin = async (result: any) => {
         const { accessToken } = result;
+        const { tokenId } = result;
         const {
             tokenObj: { id_token },
         } = result;
-
+        const { googleId } = result;
         console.log("GOOGLE LOGIN SUCCESS");
-        console.log(accessToken);
+        console.log(result);
         console.log(id_token);
 
         const data = await axios({
