@@ -9,7 +9,8 @@ import axios from "axios";
 
 import { UserState } from "modules/user/user";
 import { LOGIN_GOOGLE_URL, LOGIN_KAKAO_URL } from "api/socialLogin/url";
-import getFormatedUser from "components/Sign/getFormatedUser";
+
+import useFormatedUser from "hook/useFormatedUser";
 import usePushSigninSetting from "hook/usePushSigninSetting";
 
 import SignInPresenter from "pages/signIn/presenter/SignInPresenter";
@@ -24,6 +25,7 @@ declare global {
 const SignInContainer = ({ history, location }: RouteComponentProps) => {
     const currentUser = useSelector((state: RootState) => state.user);
     const pushSettingWithData = usePushSigninSetting();
+    const getFormatedUser = useFormatedUser();
 
     useEffect(() => {
         // 이미 로그인 된 사용자일 시
