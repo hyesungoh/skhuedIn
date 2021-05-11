@@ -6,7 +6,7 @@ const usePushSigninSetting = () => {
 
     const pushToSigninSetting = (userData: UserState, token: string) => {
         history.push({
-            pathname: "signin/setting",
+            pathname: "/signin/setting",
             state: { userData, token },
         });
     };
