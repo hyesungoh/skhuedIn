@@ -7,8 +7,10 @@ import { RouteComponentProps } from "react-router";
 
 import axios from "axios";
 
-import { LOGIN_GOOGLE_URL, LOGIN_KAKAO_URL } from "api/blog/url";
 import { UserState } from "modules/user/user";
+import { LOGIN_GOOGLE_URL, LOGIN_KAKAO_URL } from "api/socialLogin/url";
+import getFormatedUser from "components/Sign/getFormatedUser";
+
 import SignInPresenter from "pages/signIn/presenter/SignInPresenter";
 
 declare global {
@@ -33,35 +35,44 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
         });
     };
 
-    const setFormatForUser = (response: any, provider: string) => {
-        const getEmptyWhenNull = (data: string) => {
-            return data ? data : "";
-        };
+    // const setFormatForUser = (response: any, provider: string) => {
+    //     const getEmptyWhenNull = (data: string) => {
+    //         return data ? data : "";
+    //     };
 
-        const currentUserState: UserState = {
-            isSignedIn: true,
-            id: parseInt(response.id),
-            provider,
-            email: getEmptyWhenNull(response.email),
-            name: getEmptyWhenNull(response.name),
-            userImageUrl: getEmptyWhenNull(response.userImageUrl),
-            entranceYear: getEmptyWhenNull(response.entranceYear),
-            graduationYear: getEmptyWhenNull(response.graduationYear),
-        };
+    //     const currentUserState: UserState = {
+    //         isSignedIn: true,
+    //         id: parseInt(response.id),
+    //         provider,
+    //         email: getEmptyWhenNull(response.email),
+    //         name: getEmptyWhenNull(response.name),
+    //         userImageUrl: getEmptyWhenNull(response.userImageUrl),
+    //         entranceYear: getEmptyWhenNull(response.entranceYear),
+    //         graduationYear: getEmptyWhenNull(response.graduationYear),
+    //     };
 
-        return currentUserState;
-    };
+    //     return currentUserState;
+    // };
 
-    const onGoogleLogin = (result: any) => {
+    const onGoogleLogin = async (result: any) => {
         const { accessToken } = result;
+        const {
+            tokenObj: { id_token },
+        } = result;
+
         console.log("GOOGLE LOGIN SUCCESS");
         console.log(accessToken);
+        console.log(id_token);
 
-        // const data = axios({
-        //     method = "get",
-        //     url = LOGIN_GOOGLE_URL,
-        //     params = { accessToken },
-        // });
+        const data = await axios({
+            method: "post",
+            url: LOGIN_GOOGLE_URL,
+            data: { accessToken: id_token },
+        }).then((response) => {
+            console.log(response);
+            return response;
+        });
+        console.log(data);
     };
 
     const onKakaoLogin = () => {
@@ -73,7 +84,7 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
                     console.log("KAKAO LOGIN SUCCESS");
                     console.log(access_token);
 
-                    axios({
+                    const userData = axios({
                         method: "post",
                         url: LOGIN_KAKAO_URL,
                         data: { accessToken: access_token },
@@ -85,7 +96,7 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
                         //     "Authorization"
                         // ] = `Bearer ${token}`;
 
-                        const currentUserData = setFormatForUser(
+                        const currentUserData = getFormatedUser(
                             response.data.data,
                             "kakao"
                         );
