@@ -32,13 +32,6 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
         if (currentUser.isSignedIn) history.push("/");
     }, []);
 
-    // const pushSettingWithData = (userData: UserState, token: string) => {
-    //     history.push({
-    //         pathname: "signin/setting",
-    //         state: { userData, token },
-    //     });
-    // };
-
     const onGoogleLogin = async (result: any) => {
         const { accessToken } = result;
         const { tokenId } = result;

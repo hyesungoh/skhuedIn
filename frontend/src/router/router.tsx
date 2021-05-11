@@ -17,6 +17,9 @@ import MypagePresenter from "pages/mypage/presenter/MypagePresenter";
 import WritingPresenter from "pages/writing/presenter/WritingPresenter";
 import PostContainer from "pages/post/container/PostContainer";
 
+import Loading from "components/Loading/Loading";
+import Error from "components/Error/Error";
+
 const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup className="page">
         <CSSTransition key={location.key} classNames="slide" timeout={1200}>
@@ -36,6 +39,8 @@ const TransitionRouter = withRouter(({ location }) => (
                 <Route path="/mypage/:id" component={MypagePresenter} />
                 <Route path="/write" component={WritingPresenter} />
                 <Route path="/post/:id" component={PostContainer} />
+                <Route path="/loading" component={Loading} />
+                <Route path="/error" component={Error} />
             </Switch>
         </CSSTransition>
     </TransitionGroup>
