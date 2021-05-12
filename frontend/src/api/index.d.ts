@@ -18,6 +18,28 @@ export interface IBlog {
     lastModifiedDate: string;
 }
 
+export interface IPost {
+    blogId: number;
+    title: string;
+    content: string;
+    view: number;
+    createdDate: string;
+    lastModifiedDate: string;
+    user: IUser;
+}
+
 export interface IFetchBlog {
     data: IBlog[];
+}
+
+export interface IGetBlogById {
+    data: {
+        content: string;
+        createdDate: string;
+        id: number;
+        lastModifiedDate: string;
+        profileImageUrl: string;
+        posts: IPost[];
+        user: IUser;
+    };
 }
