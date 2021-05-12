@@ -1,6 +1,13 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 
+import { getBlogsById } from "api/book/fetch";
 import BookPresenter from "pages/book/presenter/BookPresenter";
+
+interface IParams {
+    id: string;
+}
 
 const BookContainer = () => {
     const [state, setState] = useState({
@@ -116,6 +123,14 @@ const BookContainer = () => {
     });
 
     const { isLoaded, questions, posts } = state;
+    const { id } = useParams<IParams>();
+
+    const { data, isLoading, error } = useQuery("blogs", () =>
+        getBlogsById(id)
+    );
+
+    console.log(data, isLoading, error);
+
     return (
         <BookPresenter
             isLoaded={isLoaded}
