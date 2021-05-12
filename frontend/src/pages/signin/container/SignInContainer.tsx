@@ -33,25 +33,23 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
     }, []);
 
     const onGoogleLogin = async (result: any) => {
-        const { accessToken } = result;
-        const { tokenId } = result;
         const {
             tokenObj: { id_token },
         } = result;
-        const { googleId } = result;
+
         console.log("GOOGLE LOGIN SUCCESS");
-        console.log(result);
         console.log(id_token);
 
-        const data = await axios({
+        const userData = await axios({
             method: "post",
             url: LOGIN_GOOGLE_URL,
             data: { accessToken: id_token },
         }).then((response) => {
-            console.log(response);
-            return response;
+            return response.data.data;
         });
-        console.log(data);
+
+        const currentUserData = getFormatedUser(userData, "google");
+        pushSettingWithData(currentUserData, id_token);
     };
 
     const onKakaoLogin = () => {
