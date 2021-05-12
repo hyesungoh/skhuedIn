@@ -1,16 +1,24 @@
 import React from "react";
 
-const BookProfileInfoSummaryElement = () => {
+interface IBookProfileInfoSummaryElement {
+    category: string;
+    element: string;
+}
+
+const BookProfileInfoSummaryElement = ({
+    category,
+    element,
+}: IBookProfileInfoSummaryElement) => {
     return (
         <div
             className="book__profile__info__summary__element
     "
         >
             <span className="book__profile__info__summary__element__title">
-                학과
+                {category}
             </span>
             <span className="book__profile__info__summary__element__body">
-                소프트웨어 공학과
+                {element}
             </span>
         </div>
     );

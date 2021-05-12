@@ -3,8 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 
-import sample from "static/images/profile.png";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 interface IPeopleProfile {
     userId: number;

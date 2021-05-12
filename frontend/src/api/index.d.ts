@@ -19,6 +19,7 @@ export interface IBlog {
 }
 
 export interface IPost {
+    id: number;
     blogId: number;
     title: string;
     content: string;

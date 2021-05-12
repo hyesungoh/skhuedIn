@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 
 import BookProfilePostDetail from "./BookProfilePostDetail";
-import { IPost } from "types/types";
+import { IPost } from "api/index";
 
 interface IBookProfilePosts {
     posts: IPost[];
@@ -20,7 +20,7 @@ const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
             </Link>
 
             {posts.map((post, index) => {
-                const { id, title, content, created, view } = post;
+                const { id, title, content, createdDate, view } = post;
                 return (
                     <BookProfilePostDetail
                         key={index}
@@ -28,7 +28,7 @@ const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
                         index={index}
                         title={title}
                         content={content}
-                        created={created}
+                        createdDate={createdDate}
                         view={view}
                     />
                 );

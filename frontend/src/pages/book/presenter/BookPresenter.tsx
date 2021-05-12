@@ -2,24 +2,31 @@ import BookProfile from "components/Book/BookProfile";
 import BookProfilePosts from "components/Book/BookProfilePosts";
 import Questions from "components/Book/Questions";
 
-import { IQuestion, IPost } from "types/types";
+import { IPost, IUser } from "api/index";
+
 import "pages/book/Book.scss";
+import Loading from "components/Loading/Loading";
+import Error from "components/Error/Error";
 
 interface IBookPresenter {
-    isLoaded: boolean;
-    questions: IQuestion[] | null;
-    posts: IPost[] | null;
+    isLoading: boolean;
+    error: any;
+    posts: IPost[];
+    user: IUser;
 }
 
-const BookPresenter = ({ isLoaded, questions, posts }: IBookPresenter) => {
+const BookPresenter = ({ isLoading, error, posts, user }: IBookPresenter) => {
+    if (isLoading) return <Loading />;
+    if (error || !posts) return <Error />;
+
     return (
         <div className="book">
             <div className="book__profile">
-                <BookProfile />
+                <BookProfile user={user} />
                 <BookProfilePosts posts={posts ? posts : []} />
             </div>
 
-            <Questions questions={questions ? questions : []} />
+            {/* <Questions questions={questions ? questions : []} /> */}
         </div>
     );
 };

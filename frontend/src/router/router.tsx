@@ -27,7 +27,7 @@ const TransitionRouter = withRouter(({ location }) => (
                 <Route path="/" exact component={HomeContainer} />
                 <Route path="/introduce" component={IntroducePresenter} />
                 <Route path="/library" exact component={LibraryContainer} />
-                <Route path="/library/:id" component={BookContainer} />
+                <Route path="/library/:id" exact component={BookContainer} />
                 <Route path="/interview" component={InterviewPresenter} />
                 <Route path="/signin" exact component={SignInContainer} />
                 <Route path="/signin/naver" component={SignInNaverContainer} />

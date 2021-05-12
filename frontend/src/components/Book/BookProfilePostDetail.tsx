@@ -1,11 +1,15 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { IPost } from "types/types";
 
 import ReactMarkdown from "react-markdown";
 
-interface IBookProfilePostDetail extends IPost {
+interface IBookProfilePostDetail {
     index: number;
+    id: number;
+    title: string;
+    content: string;
+    createdDate: string;
+    view: number;
 }
 
 const BookProfilePostDetail = ({
@@ -13,7 +17,7 @@ const BookProfilePostDetail = ({
     index,
     title,
     content,
-    created,
+    createdDate,
     view,
 }: IBookProfilePostDetail) => {
     const history = useHistory();
@@ -40,7 +44,7 @@ const BookProfilePostDetail = ({
                 <span className="book__profile__question__summary__question--title">
                     {title}
                 </span>
-                <span>{setDateFormat(created)} 올린 글</span>
+                <span>{setDateFormat(createdDate)} 올린 글</span>
             </div>
 
             <div className="book__profile__question__summary__answer mde-preview">

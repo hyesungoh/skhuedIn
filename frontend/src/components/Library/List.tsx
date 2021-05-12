@@ -4,10 +4,10 @@ import { IBlog } from "api";
 import PeopleProfile from "components/Library/PeopleProfile";
 
 interface IList {
-    data: IBlog[];
+    blogs: IBlog[];
 }
 
-const List = ({ data }: IList) => {
+const List = ({ blogs }: IList) => {
     const categories: string[] = [
         "최신업데이트순",
         "입학순",
@@ -34,7 +34,7 @@ const List = ({ data }: IList) => {
             </div>
 
             <div className="peoples__list">
-                {data.map((blog, index) => (
+                {blogs.map((blog, index) => (
                     <PeopleProfile
                         key={index}
                         userId={blog.user.id}
@@ -44,19 +44,6 @@ const List = ({ data }: IList) => {
                         content={blog.content}
                     />
                 ))}
-                {/* <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile />
-                <PeopleProfile /> */}
             </div>
         </div>
     );

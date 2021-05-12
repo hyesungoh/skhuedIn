@@ -7,19 +7,19 @@ import { IBlog } from "api";
 import "pages/library/Library.scss";
 
 interface ILibraryPresenter {
-    data: IBlog[] | undefined;
     isLoading: boolean;
     error: any;
+    blogs: IBlog[];
 }
 
-const LibraryPresenter = ({ data, isLoading, error }: ILibraryPresenter) => {
+const LibraryPresenter = ({ blogs, isLoading, error }: ILibraryPresenter) => {
     if (isLoading) return <Loading />;
-    if (error || !data) return <Error />;
+    if (error || !blogs) return <Error />;
 
     return (
         <div className="library">
             {/* <Category /> */}
-            <List data={data} />
+            <List blogs={blogs} />
             <Recommend />
         </div>
     );
