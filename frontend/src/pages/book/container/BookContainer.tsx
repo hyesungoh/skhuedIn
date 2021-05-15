@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 
-import { getBlogsById } from "api/book/fetch";
+import { getBlogsById, getQuestionsById } from "api/book/fetch";
 import BookPresenter from "pages/book/presenter/BookPresenter";
 import Loading from "components/Loading/Loading";
 
@@ -14,6 +14,12 @@ const BookContainer = () => {
     const { data, isLoading, error } = useQuery("posts", () =>
         getBlogsById(id)
     );
+
+    // const question = useQuery("bookQuestion", () => {
+    //     getQuestionsById(id);
+    // });
+
+    // console.log(question);
 
     if (!data) return <Loading />;
     return (

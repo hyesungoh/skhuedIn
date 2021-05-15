@@ -12,7 +12,6 @@ interface IBookProfile {
 }
 
 const BookProfile = ({ user }: IBookProfile) => {
-    console.log(user);
 
     return (
         <div className="book__profile__info">
@@ -28,6 +27,7 @@ const BookProfile = ({ user }: IBookProfile) => {
                     <button>인터뷰 요청하기</button>
                 </div>
             </div>
+
             <BookProfileInfoSummary
                 name={user.name}
                 email={user.email}

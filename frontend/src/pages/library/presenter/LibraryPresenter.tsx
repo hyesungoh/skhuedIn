@@ -16,6 +16,7 @@ const LibraryPresenter = ({ blogs, isLoading, error }: ILibraryPresenter) => {
     if (isLoading) return <Loading />;
     if (error || !blogs) return <Error />;
 
+    console.log(blogs);
     return (
         <div className="library">
             {/* <Category /> */}
