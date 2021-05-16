@@ -8,6 +8,8 @@ export async function getBlogs() {
 }
 
 export const getBlogsByCategory = async (category: string) => {
+
+    
     const response = await axios.get<IFetchBlog>(
         GET_BLOGS_BY_CATEGORY_URL({ sort: category })
     );

@@ -1,26 +1,22 @@
 import { useState } from "react";
-import { useQuery, useMutation } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 
 import LibraryPresenter from "pages/library/presenter/LibraryPresenter";
 import Loading from "components/Loading/Loading";
 import { getBlogs, getBlogsByCategory } from "api/blog/fetch";
-import { IFetchBlog } from "types/fetch";
-
-export const categories: string[] = [
-    "최신업데이트순",
-    "입학순",
-    "졸업순",
-    "인기순",
-];
 
 const LibraryContainer = () => {
     const { data, isLoading, error } = useQuery("blogs", getBlogs);
+    const queryClient = useQueryClient();
 
-    const [category, setCategory] = useState<string>(categories[0]);
+    const [category, setCategory] = useState<string>("최신업데이트순");
 
-    const mutationBlog = useMutation((curCategory: { sort: string }): any => {
-        getBlogsByCategory(curCategory.sort);
-    });
+    const changeCategory = useMutation(
+        (value: string) => getBlogsByCategory(value),
+        {
+            onSuccess: () => queryClient.invalidateQueries("blogs"),
+        }
+    );
 
     if (!data) return <Loading />;
     return (
