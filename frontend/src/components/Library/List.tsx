@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQueryClient } from "react-query";
 
 import { IBlog } from "types";
@@ -8,13 +8,9 @@ import { getBlogsByCategory } from "api/blog/fetch";
 
 interface IList {
     blogs: IBlog[];
-    category: string;
-    setCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const List = ({ blogs, category, setCategory }: IList) => {
-    const queryClient = useQueryClient();
-
+const List = ({ blogs }: IList) => {
     const categories: string[] = [
         "최신업데이트순",
         "입학순",
@@ -22,12 +18,38 @@ const List = ({ blogs, category, setCategory }: IList) => {
         "인기순",
     ];
 
+    const [category, setCategory] = useState<string>(categories[0]);
+    const queryClient = useQueryClient();
+
     const changeCategory = useMutation(
         (value: string) => getBlogsByCategory(value),
         {
             onSuccess: () => queryClient.invalidateQueries("blogs"),
+            // onSuccess: () => queryClient.invalidateQueries("blogs"),
         }
     );
+
+    const reducingCategory = (tempCategory: string): string => {
+        switch (tempCategory) {
+            case "최신업데이트순":
+                return "user.lastModifiedDate,ASC";
+            case "입학순":
+                return "user.entranceYear,ASC";
+            case "졸업순":
+                return "user.graduationYear,ASC";
+            case "인기순":
+                return "popular";
+            default:
+                return "";
+        }
+    };
+
+    const onCategoryClick = (tempCategory: string) => {
+        setCategory(tempCategory);
+        const formatedCategory = reducingCategory(tempCategory);
+        changeCategory.mutate(formatedCategory);
+    };
+
     return (
         <div className="library__peoples">
             <div className="peoples__category">
@@ -38,9 +60,7 @@ const List = ({ blogs, category, setCategory }: IList) => {
                         <span
                             key={index}
                             onClick={() => {
-                                setCategory(tempCategory);
-                                changeCategory.mutate("lastModifiedDate,ASC");
-                                console.log("fuck");
+                                onCategoryClick(tempCategory);
                             }}
                         >
                             {tempCategory}

@@ -13,25 +13,17 @@ interface ILibraryPresenter {
     isLoading: boolean;
     error: any;
     blogs: IBlog[];
-    category: string;
-    setCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const LibraryPresenter = ({
-    blogs,
-    isLoading,
-    error,
-    category,
-    setCategory,
-}: ILibraryPresenter) => {
+const LibraryPresenter = ({ blogs, isLoading, error }: ILibraryPresenter) => {
     if (isLoading) return <Loading />;
     if (error || !blogs) return <Error />;
 
     return (
         <div className="library">
             {/* <Category /> */}
-            <List blogs={blogs} category={category} setCategory={setCategory} />
-            <Recommend />
+            <List blogs={blogs} />
+            {/* <Recommend /> */}
         </div>
     );
 };
