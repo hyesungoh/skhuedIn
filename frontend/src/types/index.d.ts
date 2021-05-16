@@ -44,3 +44,28 @@ export interface ISort {
     sorted: boolean;
     empty: boolean;
 }
+
+export interface IComment {
+    id: number;
+    questionId: number;
+    writerUser: IUser;
+    content: string;
+    parentId: number | null;
+    createdDate: string;
+    lastModifiedDate: string;
+    children: IComment[];
+}
+
+export interface IQuestion {
+    id: number;
+    targetUser: IUser;
+    writerUser: IUser;
+    title: string;
+    content: string;
+    comments: IComment[];
+    status: boolean;
+    fix: boolean;
+    view: number;
+    createdDate: string;
+    lastModifiedDate: string;
+}

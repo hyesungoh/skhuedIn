@@ -4,7 +4,7 @@ import Newsfeed from "components/Home/Newsfeed";
 import Profile from "components/Home/Profile";
 import Honor from "components/Home/Honor";
 
-import { IPost } from "types/types";
+import { IPost } from "types";
 import "pages/home/Home.scss";
 
 interface IHomePresenter {

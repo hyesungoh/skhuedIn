@@ -1,10 +1,15 @@
 import React from "react";
 
-import { IPost } from "types/types";
+import { IPost } from "types";
 import "pages/post/Post.scss";
 
-interface IPostPresenter extends IPost {
+interface IPostPresenter {
     loading: boolean;
+    id: number;
+    title: string;
+    content: string;
+    createdDate: string;
+    view: number;
 }
 
 const PostPresenter = ({
@@ -12,7 +17,7 @@ const PostPresenter = ({
     id,
     title,
     content,
-    created,
+    createdDate,
     view,
 }: IPostPresenter) => {
     return (

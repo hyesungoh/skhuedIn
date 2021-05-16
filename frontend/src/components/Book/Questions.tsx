@@ -4,7 +4,7 @@ import QuestionDetail from "./QuestionDetail";
 import ModalPortal from "components/Modal/ModalPortal";
 import QuestionModal from "components/Modal/QuestionModal";
 
-import { IQuestion } from "types/types";
+import { IQuestion } from "types";
 
 interface IQuestions {
     questions: IQuestion[];
@@ -33,7 +33,7 @@ const Questions = ({ questions }: IQuestions) => {
                             id={question.id}
                             title={question.title}
                             content={question.content}
-                            created={question.created}
+                            createdDate={question.createdDate}
                             comments={question.comments}
                             setOpenQuesIndex={setOpenQuesIndex}
                         />
@@ -52,7 +52,7 @@ const Questions = ({ questions }: IQuestions) => {
                         id={curQuestion.id}
                         title={curQuestion.title}
                         content={curQuestion.content}
-                        created={curQuestion.created}
+                        createdDate={curQuestion.createdDate}
                         comments={curQuestion.comments}
                     />
                 ) : null}

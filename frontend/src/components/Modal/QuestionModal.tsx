@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
+import { IComment } from "types";
 
-import { IQuestion } from "types/types";
 import QuestionModalInput from "./QuestionModalInput";
 
-interface IQuestionModal extends IQuestion {
+interface IQuestionModal {
+    id: number;
+    title: string;
+    content: string;
+    createdDate: string;
+    comments: IComment[];
     setOpenQuesIndex: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
@@ -13,7 +18,7 @@ const QuestionModal = ({
     id,
     title,
     content,
-    created,
+    createdDate,
     comments,
 }: IQuestionModal) => {
     const MODAL_TRANSITION_DURATION = 500;

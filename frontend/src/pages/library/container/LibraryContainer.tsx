@@ -11,12 +11,7 @@ const LibraryContainer = () => {
 
     const [category, setCategory] = useState<string>("최신업데이트순");
 
-    const changeCategory = useMutation(
-        (value: string) => getBlogsByCategory(value),
-        {
-            onSuccess: () => queryClient.invalidateQueries("blogs"),
-        }
-    );
+    
 
     if (!data) return <Loading />;
     return (

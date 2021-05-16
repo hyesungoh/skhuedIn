@@ -1,7 +1,11 @@
 import React from "react";
-import { IPost } from "types/types";
+import { IPost } from "types";
 
-interface IPostModal extends IPost {
+interface IPostModal {
+    title: string;
+    content: string;
+    createdDate: string;
+    view: number;
     setOpenModalIndex: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
@@ -9,7 +13,7 @@ const PostModal = ({
     setOpenModalIndex,
     title,
     content,
-    created,
+    createdDate,
     view,
 }: IPostModal) => {
     const onModalClose = () => {

@@ -2,7 +2,7 @@ import React from "react";
 
 import NewsfeedContent from "components/Home/NewsfeedContent";
 
-import { IPost } from "types/types";
+import { IPost } from "types";
 
 interface INewsfeed {
     posts: IPost[];
@@ -13,7 +13,7 @@ const Newsfeed = ({ posts }: INewsfeed) => {
         const fmContent = ogContent.split("\n").slice(0, 3).join("\n");
         return fmContent;
     };
-    
+
     return (
         <div className="home__newsfeed">
             {posts.map((post, index) => (
@@ -22,7 +22,7 @@ const Newsfeed = ({ posts }: INewsfeed) => {
                     id={post.id}
                     title={post.title}
                     content={setContentFormat(post.content)}
-                    created={post.created}
+                    createdDate={post.createdDate}
                     view={post.view}
                 />
             ))}

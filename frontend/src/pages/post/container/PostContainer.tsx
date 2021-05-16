@@ -25,7 +25,7 @@ const PostContainer = ({ match }: RouteComponentProps<IMatchParams>) => {
             id={post.id}
             title={post.title}
             content={post.content}
-            created={post.created}
+            createdDate={post.created}
             view={post.view}
         />
     );

@@ -62,7 +62,8 @@ const HomeContainer = ({ history }: RouteComponentProps) => {
     const currentUser = useSelector((state: RootState) => state.user);
 
     const { loading, posts } = state;
-    return <HomePresenter loading={loading} posts={posts} />;
+    // return <HomePresenter loading={loading} posts={posts} />;
+    return <div></div>;
 };
 
 export default HomeContainer;

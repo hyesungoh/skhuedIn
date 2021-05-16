@@ -1,10 +1,22 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
-import { IPost } from "types/types";
 import sample from "static/images/profile.png";
 
-const NewsfeedContent = ({ title, content, created, view }: IPost) => {
+interface INewsfeedContent {
+    id: number;
+    title: string;
+    content: string;
+    createdDate: string;
+    view: number;
+}
+
+const NewsfeedContent = ({
+    title,
+    content,
+    createdDate,
+    view,
+}: INewsfeedContent) => {
     return (
         <div className="newsfeed__content mde-preview">
             <div className="newsfeed__content__writer">
