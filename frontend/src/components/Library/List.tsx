@@ -1,21 +1,16 @@
-import { useState } from "react";
+import React from "react";
 
 import { IBlog } from "types";
+import { categories } from "pages/library/container/LibraryContainer";
 import PeopleProfile from "components/Library/PeopleProfile";
 
 interface IList {
     blogs: IBlog[];
+    category: string;
+    setCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const List = ({ blogs }: IList) => {
-    const categories: string[] = [
-        "최신업데이트순",
-        "입학순",
-        "졸업순",
-        "인기순",
-    ];
-    const [category, setCategory] = useState<string>(categories[0]);
-
+const List = ({ blogs, category, setCategory }: IList) => {
     return (
         <div className="library__peoples">
             <div className="peoples__category">
