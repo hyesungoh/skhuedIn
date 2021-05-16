@@ -2,7 +2,7 @@ import BookProfile from "components/Book/BookProfile";
 import BookProfilePosts from "components/Book/BookProfilePosts";
 import Questions from "components/Book/Questions";
 
-import { IPost, IUser } from "api/index";
+import { IPost, IUser } from "types";
 
 import "pages/book/Book.scss";
 import Loading from "components/Loading/Loading";

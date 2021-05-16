@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { IBlog } from "api";
+import { IBlog } from "types";
 import PeopleProfile from "components/Library/PeopleProfile";
 
 interface IList {

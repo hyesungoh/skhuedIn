@@ -1,8 +1,7 @@
-
 import { Link } from "react-router-dom";
 
 import BookProfilePostDetail from "./BookProfilePostDetail";
-import { IPost } from "api/index";
+import { IPost } from "types";
 
 interface IBookProfilePosts {
     posts: IPost[];

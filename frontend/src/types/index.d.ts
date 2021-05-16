@@ -10,6 +10,7 @@ export interface IUser {
 }
 
 export interface IBlog {
+    posts: any[];
     id: number;
     user: IUser;
     profileImageUrl: string;
@@ -29,18 +30,17 @@ export interface IPost {
     user: IUser;
 }
 
-export interface IFetchBlog {
-    data: IBlog[];
+export interface IPageable {
+    sort: ISort;
+    offset: number;
+    pageNumber: number;
+    pageSize: number;
+    paged: boolean;
+    unpaged: boolean;
 }
 
-export interface IGetBlogById {
-    data: {
-        content: string;
-        createdDate: string;
-        id: number;
-        lastModifiedDate: string;
-        profileImageUrl: string;
-        posts: IPost[];
-        user: IUser;
-    };
+export interface ISort {
+    unsorted: boolean;
+    sorted: boolean;
+    empty: boolean;
 }

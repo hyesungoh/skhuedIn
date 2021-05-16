@@ -2,7 +2,7 @@ import List from "components/Library/List";
 import Recommend from "components/Library/Recommend";
 import Loading from "components/Loading/Loading";
 import Error from "components/Error/Error";
-import { IBlog } from "api";
+import { IBlog } from "types";
 
 import "pages/library/Library.scss";
 

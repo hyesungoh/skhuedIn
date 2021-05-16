@@ -5,7 +5,7 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 
 import sample from "static/images/profile.png";
 import BookProfileInfoSummary from "./BookProfileInfoSummary";
-import { IUser } from "api";
+import { IUser } from "types";
 
 interface IBookProfile {
     user: IUser;
