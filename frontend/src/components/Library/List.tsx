@@ -24,7 +24,10 @@ const List = ({ blogs }: IList) => {
     const changeCategory = useMutation(
         (value: string) => getBlogsByCategory(value),
         {
-            onSuccess: () => queryClient.invalidateQueries("blogs"),
+            onSuccess: (data) => {
+                queryClient.setQueryData("blogs", data);
+            },
+            // onSuccess: () => queryClient.invalidateQueries("blogs"),
             // onSuccess: () => queryClient.invalidateQueries("blogs"),
         }
     );
