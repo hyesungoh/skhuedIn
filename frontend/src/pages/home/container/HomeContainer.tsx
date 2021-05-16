@@ -2,7 +2,7 @@ import React, { Component, Dispatch, useState } from "react";
 import HomePresenter from "../presenter/HomePresenter";
 
 import { RootState } from "modules";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { RouteComponentProps } from "react-router";
 
