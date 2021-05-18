@@ -26,9 +26,10 @@ const BookProfilePostDetail = ({
     };
 
     const setDateFormat = (date: string) => {
+        console.log(date);
         const year = date.slice(0, 4) + "년";
-        const month = date.slice(4, 6) + "월";
-        const day = date.slice(6, 8) + "일";
+        const month = date.slice(5, 7) + "월";
+        const day = date.slice(8, 10) + "일";
         return `${year} ${month} ${day}`;
     };
 
