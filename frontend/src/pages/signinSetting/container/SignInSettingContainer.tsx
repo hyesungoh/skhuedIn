@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { RouteChildrenProps } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -5,6 +6,7 @@ import SignInSettingPresenter from "pages/signinSetting/presenter/SignInSettingP
 
 import { RootState } from "modules";
 import { UserState, signin } from "modules/user/user";
+import axios from "axios";
 
 export interface ISignInSetting {}
 
@@ -21,11 +23,9 @@ const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
     const currentUser = useSelector((state: RootState) => state.user);
     const dispatch = useDispatch();
 
-    // const checkValidAccess = () => {
-    //     if (currentUser.isSignedIn) history.push("/");
-    //     if (location.state === undefined) history.push("/signin");
-    // };
-    // checkValidAccess();
+    const [status, setStatus] = useState<string>("Student");
+    const [entranceYear, setEntranceYear] = useState<number>(2017);
+    const [graduationYear, setGraduationYear] = useState<number>(2021);
 
     const { userData, token } = location.state as ILocationState;
     const userName = userData.name;
@@ -35,7 +35,18 @@ const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
         history.push("/");
     };
 
-    return <SignInSettingPresenter userName={userName} onSignin={onSignin} />;
+    return (
+        <SignInSettingPresenter
+            userName={userName}
+            onSignin={onSignin}
+            status={status}
+            setStatus={setStatus}
+            entranceYear={entranceYear}
+            setEntranceYear={setEntranceYear}
+            graduationYear={graduationYear}
+            setGraduationYear={setGraduationYear}
+        />
+    );
 };
 
 export default SignInSettingContainer;

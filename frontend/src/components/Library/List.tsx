@@ -27,8 +27,6 @@ const List = ({ blogs }: IList) => {
             onSuccess: (data) => {
                 queryClient.setQueryData("blogs", data);
             },
-            // onSuccess: () => queryClient.invalidateQueries("blogs"),
-            // onSuccess: () => queryClient.invalidateQueries("blogs"),
         }
     );
 

@@ -9,27 +9,44 @@ import Agreement from "components/SigninSetting/Agreement";
 interface ISignInSettingPresenter {
     userName: string | undefined;
     onSignin: () => void;
+    status: string;
+    setStatus: React.Dispatch<React.SetStateAction<string>>;
+    entranceYear: number;
+    setEntranceYear: React.Dispatch<React.SetStateAction<number>>;
+    graduationYear: number;
+    setGraduationYear: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const SignInSettingPresenter = ({
     userName,
     onSignin,
+    status,
+    setStatus,
+    entranceYear,
+    setEntranceYear,
+    graduationYear,
+    setGraduationYear,
 }: ISignInSettingPresenter) => {
     const [contentId, setContentId] = useState<number>(0);
-    const [status, setStatus] = useState<string>("Student");
 
     const onNextClick = () => {
         setContentId((prev) => prev + 1);
     };
-    
+
     const seeingContent = [
+        <WriteYear
+            onSignin={onSignin}
+            entranceYear={entranceYear}
+            setEntranceYear={setEntranceYear}
+            graduationYear={graduationYear}
+            setGraduationYear={setGraduationYear}
+        />,
         <Agreement onNextClick={onNextClick} userName={userName} />,
         <CheckStatus
             onNextClick={onNextClick}
             status={status}
             setStatus={setStatus}
         />,
-        <WriteYear onSignin={onSignin} />,
     ];
 
     return (
