@@ -15,19 +15,20 @@ const BookContainer = () => {
         getBlogsById(id)
     );
 
-    // const question = useQuery("bookQuestion", () => {
-    //     getQuestionsById(id);
-    // });
+    const {
+        data: quesData,
+        isLoading: quesIsLoading,
+        error: quesError,
+    } = useQuery("questions", () => getQuestionsById(id));
 
-    // console.log(question);
-
-    if (!data) return <Loading />;
+    if (!data || !quesData) return <Loading />;
     return (
         <BookPresenter
             isLoading={isLoading}
             error={error}
             posts={data.posts}
             user={data.user}
+            questions={quesData?.content}
         />
     );
 };

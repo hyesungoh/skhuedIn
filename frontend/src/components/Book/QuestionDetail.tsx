@@ -19,12 +19,13 @@ const QuestionDetail = ({
     setOpenQuesIndex,
 }: IQuestionDetail) => {
     const curCreatedYear = createdDate.slice(0, 4);
-    const curCreatedDate = createdDate.slice(4, 8);
+    const curCreatedDate = createdDate.slice(5, 10).replace("-", "");
 
     const onQuesClick = () => {
         setOpenQuesIndex(index);
     };
 
+    console.log(createdDate);
     return (
         <div className="book__right__question__detail" onClick={onQuesClick}>
             <div className="book__right__question__detail__month">

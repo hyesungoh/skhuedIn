@@ -7,6 +7,7 @@ import SignInSettingPresenter from "pages/signinSetting/presenter/SignInSettingP
 import { RootState } from "modules";
 import { UserState, signin } from "modules/user/user";
 import axios from "axios";
+import { SETTING_USER_URL } from "api/socialLogin/url";
 
 export interface ISignInSetting {}
 
@@ -36,6 +37,19 @@ const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
         console.log("유저 정보");
         console.table(userData);
         console.log(`토큰 : ${token}`);
+
+        if (userData.id) {
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+            axios({
+                method: "post",
+                url: SETTING_USER_URL(userData.id),
+                data: {
+                    entranceYear: entranceYear.toString(),
+                    graduationYear: graduationYear.toString(),
+                    id: userData.id,
+                },
+            });
+        }
         // dispatch(signin(userData));
         // history.push("/");
     };

@@ -9,7 +9,7 @@ const RecommendProfile = () => {
                 <img src={sample} alt="honorProfile img" />
             </div>
             <div className="honorProfile__container">
-                <div className="honorProfile__container__ame">
+                <div className="honorProfile__container__name">
                     <span>오혜성</span>
                 </div>
                 <div className="honorProfile__container__info">

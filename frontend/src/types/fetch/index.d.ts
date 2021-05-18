@@ -1,4 +1,4 @@
-import { IBlog, IPageable, ISort } from "types";
+import { IBlog, IPageable, IQuestion, ISort } from "types";
 
 export interface IFetchBase {
     data: {
@@ -31,5 +31,11 @@ export interface IGetBlogById {
         profileImageUrl: string;
         posts: IPost[];
         user: IUser;
+    };
+}
+
+export interface IGetQuestionsByUserId extends IFetchBase {
+    data: {
+        content: IQuestion[];
     };
 }

@@ -45,7 +45,7 @@ const CheckStatus = ({ onNextClick, status, setStatus }: ICheckStatus) => {
                     <strong>졸업생</strong>입니다 !
                 </RadioLabel>
             </RadioDiv>
-            <RadioDiv>
+            {/* <RadioDiv>
                 <RadioInput
                     type="radio"
                     id="Other"
@@ -55,7 +55,7 @@ const CheckStatus = ({ onNextClick, status, setStatus }: ICheckStatus) => {
                 <RadioLabel htmlFor="Other">
                     그 외 <strong>관계자</strong>입니다 !
                 </RadioLabel>
-            </RadioDiv>
+            </RadioDiv> */}
 
             <NextBtn onClick={onNextClick}>다음</NextBtn>
         </SettingChildDiv>

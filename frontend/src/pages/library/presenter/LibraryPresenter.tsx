@@ -23,7 +23,7 @@ const LibraryPresenter = ({ blogs, isLoading, error }: ILibraryPresenter) => {
         <div className="library">
             {/* <Category /> */}
             <List blogs={blogs} />
-            {/* <Recommend /> */}
+            <Recommend />
         </div>
     );
 };

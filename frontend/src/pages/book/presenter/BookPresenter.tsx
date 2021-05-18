@@ -2,7 +2,7 @@ import BookProfile from "components/Book/BookProfile";
 import BookProfilePosts from "components/Book/BookProfilePosts";
 import Questions from "components/Book/Questions";
 
-import { IPost, IUser } from "types";
+import { IPost, IQuestion, IUser } from "types";
 
 import "pages/book/Book.scss";
 import Loading from "components/Loading/Loading";
@@ -13,9 +13,16 @@ interface IBookPresenter {
     error: any;
     posts: IPost[];
     user: IUser;
+    questions: IQuestion[];
 }
 
-const BookPresenter = ({ isLoading, error, posts, user }: IBookPresenter) => {
+const BookPresenter = ({
+    isLoading,
+    error,
+    posts,
+    user,
+    questions,
+}: IBookPresenter) => {
     if (isLoading) return <Loading />;
     if (error || !posts) return <Error />;
 
@@ -26,7 +33,7 @@ const BookPresenter = ({ isLoading, error, posts, user }: IBookPresenter) => {
                 <BookProfilePosts posts={posts ? posts : []} />
             </div>
 
-            {/* <Questions questions={questions ? questions : []} /> */}
+            <Questions questions={questions ? questions : []} />
         </div>
     );
 };

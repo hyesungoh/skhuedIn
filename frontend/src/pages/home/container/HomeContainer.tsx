@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 
 import { RouteComponentProps } from "react-router";
 
+import "pages/home/Home.scss";
+
 const HomeContainer = ({ history }: RouteComponentProps) => {
     const [state, setState] = useState({
         loading: false,

@@ -5,6 +5,7 @@ import ModalPortal from "components/Modal/ModalPortal";
 import QuestionModal from "components/Modal/QuestionModal";
 
 import { IQuestion } from "types";
+import EmptyQuestion from "./EmptyQuestion";
 
 interface IQuestions {
     questions: IQuestion[];
@@ -21,6 +22,8 @@ const Questions = ({ questions }: IQuestions) => {
             setCurQuestion(questions[openQuesIndex]);
         }
     }, [openQuesIndex]);
+
+    if (questions.length === 0) return <EmptyQuestion></EmptyQuestion>;
 
     return (
         <Fragment>
