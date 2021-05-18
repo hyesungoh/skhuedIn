@@ -34,18 +34,19 @@ const SignInSettingPresenter = ({
     };
 
     const seeingContent = [
-        <WriteYear
-            onSignin={onSignin}
-            entranceYear={entranceYear}
-            setEntranceYear={setEntranceYear}
-            graduationYear={graduationYear}
-            setGraduationYear={setGraduationYear}
-        />,
         <Agreement onNextClick={onNextClick} userName={userName} />,
         <CheckStatus
             onNextClick={onNextClick}
             status={status}
             setStatus={setStatus}
+        />,
+        <WriteYear
+            onSignin={onSignin}
+            status={status}
+            entranceYear={entranceYear}
+            setEntranceYear={setEntranceYear}
+            graduationYear={graduationYear}
+            setGraduationYear={setGraduationYear}
         />,
     ];
 
