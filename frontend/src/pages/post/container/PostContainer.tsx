@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
+import { useQuery } from "react-query";
 
 import PostPresenter from "pages/post/presenter/PostPresenter";
+import { getPostById } from "api/post/fetch";
 
 interface IParams {
     id: string;
@@ -18,7 +20,7 @@ const PostContainer = () => {
     });
 
     const { id } = useParams<IParams>();
-    console.log(id);
+    const { data, isLoading, error } = useQuery("post", () => getPostById(id));
 
     return (
         <PostPresenter
