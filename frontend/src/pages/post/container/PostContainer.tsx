@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { RouteComponentProps } from "react-router";
+import { useParams } from "react-router";
 
 import PostPresenter from "pages/post/presenter/PostPresenter";
 
-interface IMatchParams {
+interface IParams {
     id: string;
 }
 
-const PostContainer = ({ match }: RouteComponentProps<IMatchParams>) => {
-    // 넘어온 ID 확인
-    // console.log(match.params.id);
+const PostContainer = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [post, setPost] = useState({
         id: 1,
@@ -18,6 +16,9 @@ const PostContainer = ({ match }: RouteComponentProps<IMatchParams>) => {
         created: "20201212",
         view: 10,
     });
+
+    const { id } = useParams<IParams>();
+    console.log(id);
 
     return (
         <PostPresenter
