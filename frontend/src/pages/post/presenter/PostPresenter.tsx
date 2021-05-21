@@ -25,7 +25,7 @@ const PostPresenter = ({
     writer,
 }: IPostPresenter) => {
     return (
-        <StyledMain className="mde-preview">
+        <StyledMain>
             <PostSection
                 title={title}
                 content={content}
