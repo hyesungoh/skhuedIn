@@ -4,6 +4,6 @@ import { IGetPostById } from "types/fetch";
 
 export const getPostById = async (id: string) => {
     const response = await axios.get<IGetPostById>(GET_POST_BY_ID_URL(id));
-    console.log(response.data.data);
+    
     return response.data.data;
 };

@@ -1,37 +1,50 @@
 import React from "react";
+import styled from "styled-components";
 
-import { IPost } from "types";
-import "pages/post/Post.scss";
+import { IUser } from "types";
+import PostSection from "components/Post/PostSection";
+import WriterSection from "components/Post/WriterSection";
 
 interface IPostPresenter {
-    loading: boolean;
-    id: number;
+    isLoading: boolean;
     title: string;
     content: string;
-    createdDate: string;
     view: number;
+    createdDate: string;
+    lastModifiedDate: string;
+    writer: IUser;
 }
 
 const PostPresenter = ({
-    loading,
-    id,
+    isLoading,
     title,
     content,
-    createdDate,
     view,
+    createdDate,
+    lastModifiedDate,
+    writer,
 }: IPostPresenter) => {
     return (
-        <main>
-            <div className="post">
-                <div className="post__writer">{id}</div>
-                <div className="post__content">
-                    {title}
-                    {content}
-                </div>
-                <div className="post__question"></div>
-            </div>
-        </main>
+        <StyledMain className="mde-preview">
+            <PostSection
+                title={title}
+                content={content}
+                view={view}
+                createdDate={createdDate}
+                lastModifiedDate={lastModifiedDate}
+            />
+            <WriterSection writer={writer} />
+        </StyledMain>
     );
 };
 
 export default PostPresenter;
+
+const StyledMain = styled.main`
+    position: relative;
+    width: 100vw;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+`;

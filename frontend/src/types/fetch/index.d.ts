@@ -1,4 +1,4 @@
-import { IBlog, IPageable, IQuestion, ISort, IUser } from "types";
+import { IBlog, IPageable, IPost, IQuestion, ISort, IUser } from "types";
 
 export interface IFetchBase {
     data: {
@@ -41,14 +41,5 @@ export interface IGetQuestionsByUserId extends IFetchBase {
 }
 
 export interface IGetPostById {
-    data: {
-        id: number;
-        blogId: number;
-        user: IUser;
-    };
-    title: string;
-    content: string;
-    view: number;
-    createdDate: string;
-    lastModifiedDate: string;
+    data: IPost;
 }

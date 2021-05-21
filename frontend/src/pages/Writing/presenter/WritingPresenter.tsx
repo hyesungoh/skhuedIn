@@ -58,9 +58,8 @@ const WritingPresenter = () => {
 
 `
     );
-    const [selectedTab, setSelectedTab] = useState<"write" | "preview">(
-        "write"
-    );
+    const [selectedTab, setSelectedTab] =
+        useState<"write" | "preview">("write");
 
     return (
         <div className="writing">
