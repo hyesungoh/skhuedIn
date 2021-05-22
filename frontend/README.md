@@ -111,6 +111,13 @@ npm i @types/react-query
 npm i react-google-login
 ```
 
+#### lodash
+
+```terminal
+npm i lodash
+npm i @types/lodash
+```
+
 ## Development
 
 -   #### React-mde

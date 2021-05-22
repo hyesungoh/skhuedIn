@@ -14,12 +14,14 @@ type UserAction = ReturnType<typeof signin> | ReturnType<typeof signout>;
 export type UserState = {
     isSignedIn: boolean;
     id?: number;
-    provider?: string;
     email?: string;
     name?: string;
     userImageUrl?: string;
     entranceYear?: string;
     graduationYear?: string;
+
+    provider?: string;
+    token?: string;
 };
 
 const initialState: UserState = {

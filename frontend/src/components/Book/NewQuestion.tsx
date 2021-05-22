@@ -1,3 +1,4 @@
+import useQuestion from "hook/useQuestion";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -14,11 +15,13 @@ interface Params {
 
 const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
     const MODAL_TRANSITION_DURATION = 500;
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const {id} = useParams<Params>();
-    
-    console.log(id);
 
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [title, setTitle] = useState<string>("");
+    const [content, setContent] = useState<string>("");
+
+    const { saveQuestion } = useQuestion();
+    const { id } = useParams<Params>();
 
     useEffect(() => {
         setIsOpen(true);
@@ -31,6 +34,17 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
         setTimeout(() => setIsNewQuestion(false), MODAL_TRANSITION_DURATION);
     };
 
+    const onSubmit = () => {
+        // useQuestion에 token 추가해야 됨
+        // saveQuestion({
+        //     targetUserId: parseInt(id),
+        //     title: "test",
+        //     content: "testContent",
+        // });
+
+        console.log("submit");
+    };
+
     return (
         <CSSTransition
             in={isOpen}
@@ -38,8 +52,14 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
             classNames="modal--transition"
         >
             <div className="modal" onClick={closeModal}>
-                <div className="modal__content">this is new question</div>
-
+                <div className="modal__content">
+                    <h1>this is new question for {id}</h1>
+                    <input type="text" />
+                    <input type="text" />
+                    <button type="submit" onClick={onSubmit}>
+                        submit
+                    </button>
+                </div>
             </div>
         </CSSTransition>
     );
