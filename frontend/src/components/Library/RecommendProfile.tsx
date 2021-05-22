@@ -1,12 +1,16 @@
 import React from "react";
 
 import sample from "static/images/profile.png";
+import { css } from "styled-components";
 
 const RecommendProfile = () => {
     return (
         <div className="honorProfile">
-            <div className="honorProfile__img">
-                <img src={sample} alt="honorProfile img" />
+            <div
+                className="honorProfile__img"
+                style={{ backgroundColor: "blue" }}
+            >
+                {/* <img src={sample} alt="honorProfile img" /> */}
             </div>
             <div className="honorProfile__container">
                 <div className="honorProfile__container__name">

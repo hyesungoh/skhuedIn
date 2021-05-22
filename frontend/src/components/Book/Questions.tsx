@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState } from "react";
 
 import QuestionDetail from "./QuestionDetail";
 import ModalPortal from "components/Modal/ModalPortal";
@@ -26,7 +26,7 @@ const Questions = ({ questions }: IQuestions) => {
     if (questions.length === 0) return <EmptyQuestion></EmptyQuestion>;
 
     return (
-        <Fragment>
+        <React.Fragment>
             <div className="book__right">
                 <div className="book__right__question">
                     {questions.map((question, index) => (
@@ -60,7 +60,7 @@ const Questions = ({ questions }: IQuestions) => {
                     />
                 ) : null}
             </ModalPortal>
-        </Fragment>
+        </React.Fragment>
     );
 };
 

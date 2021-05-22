@@ -41,10 +41,10 @@ const PostPresenter = ({
 export default PostPresenter;
 
 const StyledMain = styled.main`
-    position: relative;
     width: 100vw;
     height: auto;
 
     display: flex;
     justify-content: center;
+    gap: 20px;
 `;

@@ -36,11 +36,11 @@ const WriterSection = ({ writer }: WriterSectionProps) => {
 export default WriterSection;
 
 const StyledSection = styled.section`
-    position: fixed;
-    left: calc(50vw + 300px + 12px);
+    position: sticky;
     top: 90px;
 
     width: 300px;
+    height: 320px;
     padding: 10px 10px;
     background-color: ${({ theme }) => theme.colors.white};
     border-radius: ${({ theme }) => theme.border_intensity};
