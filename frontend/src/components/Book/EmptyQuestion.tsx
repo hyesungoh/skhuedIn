@@ -1,13 +1,32 @@
-import theme from "style/theme";
+import ModalPortal from "components/Modal/ModalPortal";
+import React, { useState } from "react";
 import styled from "styled-components";
+import NewQuestion from "./NewQuestion";
 
 const EmptyQuestion = () => {
+    const [isNewQuestion, setIsNewQuestion] = useState<boolean>(false);
+
+    const onClickNewQuestion = () => {
+        setIsNewQuestion(true);
+    };
+
     return (
-        <StyledDiv>
-            <span>
-                첫 질문의 <strong>주인공</strong>이 되어 보세요 !
-            </span>
-        </StyledDiv>
+        <React.Fragment>
+            <StyledDiv onClick={onClickNewQuestion}>
+                <span>
+                    첫 질문의 <strong>주인공</strong>이 되어 보세요 !
+                </span>
+            </StyledDiv>
+
+            <ModalPortal>
+                {isNewQuestion ? (
+                    <NewQuestion
+                        isNewQuestion={isNewQuestion}
+                        setIsNewQuestion={setIsNewQuestion}
+                    ></NewQuestion>
+                ) : null}
+            </ModalPortal>
+        </React.Fragment>
     );
 };
 
