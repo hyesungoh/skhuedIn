@@ -1,4 +1,5 @@
 import { IComment } from "types";
+import convertDate from "utils/convertDate";
 
 interface IQuestionDetail {
     id: number;
@@ -18,19 +19,17 @@ const QuestionDetail = ({
     content,
     setOpenQuesIndex,
 }: IQuestionDetail) => {
-    const curCreatedYear = createdDate.slice(0, 4);
-    const curCreatedDate = createdDate.slice(5, 10).replace("-", "");
+    const { year, month, day } = convertDate(createdDate);
 
     const onQuesClick = () => {
         setOpenQuesIndex(index);
     };
 
-    console.log(createdDate);
     return (
         <div className="book__right__question__detail" onClick={onQuesClick}>
             <div className="book__right__question__detail__month">
-                <p>{curCreatedYear}</p>
-                <p>{curCreatedDate}</p>
+                <p>{year}</p>
+                <p>{`${month}${day}`}</p>
             </div>
             <div className="book__right__question__detail__icon">
                 <div className="book__right__question__detail__icon__circle"></div>

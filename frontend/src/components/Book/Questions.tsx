@@ -6,6 +6,7 @@ import QuestionModal from "components/Modal/QuestionModal";
 
 import { IQuestion } from "types";
 import EmptyQuestion from "./EmptyQuestion";
+import NewQuestion from "./NewQuestion";
 
 interface IQuestions {
     questions: IQuestion[];
@@ -14,6 +15,7 @@ interface IQuestions {
 const Questions = ({ questions }: IQuestions) => {
     const [openQuesIndex, setOpenQuesIndex] = useState<number | null>(null);
     const [curQuestion, setCurQuestion] = useState<IQuestion | null>(null);
+    const [isNewQuestion, setIsNewQuestion] = useState<boolean>(false);
 
     useEffect(() => {
         if (openQuesIndex === null) {
@@ -23,7 +25,11 @@ const Questions = ({ questions }: IQuestions) => {
         }
     }, [openQuesIndex]);
 
-    if (questions.length === 0) return <EmptyQuestion></EmptyQuestion>;
+    const onClickNewQuestion = () => {
+        setIsNewQuestion(true);
+    };
+
+    if (questions.length === 0) return <EmptyQuestion />;
 
     return (
         <React.Fragment>
@@ -43,7 +49,7 @@ const Questions = ({ questions }: IQuestions) => {
                     ))}
                 </div>
 
-                <div className="book__right__new">
+                <div className="book__right__new" onClick={onClickNewQuestion}>
                     <span>새로운 질문하기</span>
                 </div>
             </div>
@@ -58,6 +64,8 @@ const Questions = ({ questions }: IQuestions) => {
                         createdDate={curQuestion.createdDate}
                         comments={curQuestion.comments}
                     />
+                ) : isNewQuestion ? (
+                    <NewQuestion isNewQuestion={isNewQuestion} setIsNewQuestion={setIsNewQuestion}/>
                 ) : null}
             </ModalPortal>
         </React.Fragment>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import ReactMarkdown from "react-markdown";
+import convertDate from "utils/convertDate";
 
 interface IBookProfilePostDetail {
     index: number;
@@ -26,11 +27,8 @@ const BookProfilePostDetail = ({
     };
 
     const setDateFormat = (date: string) => {
-        console.log(date);
-        const year = date.slice(0, 4) + "년";
-        const month = date.slice(5, 7) + "월";
-        const day = date.slice(8, 10) + "일";
-        return `${year} ${month} ${day}`;
+        const { year, month, day } = convertDate(date);
+        return `${year}년 ${month}월 ${day}일`;
     };
 
     const setContentFormat = (ogContent: string) => {
