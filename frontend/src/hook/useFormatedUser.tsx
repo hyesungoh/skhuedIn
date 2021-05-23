@@ -1,13 +1,11 @@
-import { UserState } from "modules/user/user";
-
 const useFormatedUser = () => {
     const getEmptyWhenNull = (data: string) => {
         return data ? data : "";
     };
 
     const getFormatedUser = (response: any, provider: string) => {
-        const currentUserState: UserState = {
-            isSignedIn: true,
+        const currentUserState = {
+            isSigned: true,
             id: parseInt(response.id),
             provider,
             email: getEmptyWhenNull(response.email),

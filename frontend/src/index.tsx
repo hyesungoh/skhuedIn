@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-// for redux providers
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import rootReducer from "modules/index";
+// for Recoil
+import { RecoilRoot } from "recoil";
 
 // for styled-components provider
 import { ThemeProvider } from "styled-components";
@@ -17,16 +15,15 @@ import theme from "style/theme";
 import App from "./App";
 import "style/index.scss";
 
-const store = createStore(rootReducer);
 const queryClient = new QueryClient();
 
 ReactDOM.render(
-    <Provider store={store}>
+    <RecoilRoot>
         <QueryClientProvider client={queryClient}>
             <ThemeProvider theme={theme}>
                 <App />,
             </ThemeProvider>
         </QueryClientProvider>
-    </Provider>,
+    </RecoilRoot>,
     document.getElementById("root")
 );

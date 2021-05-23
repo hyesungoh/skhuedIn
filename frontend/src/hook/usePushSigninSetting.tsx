@@ -1,10 +1,10 @@
 import { useHistory } from "react-router-dom";
-import { UserState } from "modules/user/user";
+import { IUser } from "types";
 
 const usePushSigninSetting = () => {
     const history = useHistory();
 
-    const pushToSigninSetting = (userData: UserState, token: string) => {
+    const pushToSigninSetting = (userData: IUser, token: string) => {
         history.push({
             pathname: "/signin/setting",
             state: { userData, token },

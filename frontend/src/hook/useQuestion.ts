@@ -1,7 +1,8 @@
 import axios from "axios";
-import { RootState } from "modules";
+
 import { useQuery, useMutation } from "react-query";
-import { useSelector } from "react-redux";
+import { useRecoilValue } from "recoil";
+import { currentUserState } from "store/user";
 
 interface ISaveQuestion {
     targetUserId: number;
@@ -10,14 +11,14 @@ interface ISaveQuestion {
 }
 
 const useQuestion = () => {
-    const currentUser = useSelector((state: RootState) => state.user);
-    
+    const currentUser = useRecoilValue(currentUserState);
+
     const saveQuestion = useMutation((newQuestion: ISaveQuestion) =>
         axios.post("http://localhost:8080/api/questions", {
             fix: true,
             status: true,
             targetUserId: newQuestion.targetUserId,
-            writerUserId: currentUser.id,
+            writerUserId: currentUser.data?.id,
             title: newQuestion.title,
             content: newQuestion.content,
         })

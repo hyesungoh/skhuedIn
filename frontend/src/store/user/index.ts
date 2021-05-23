@@ -1,8 +1,8 @@
 import { atom, selector } from "recoil";
 import { ICurrentUser } from "types";
 
-export const user = atom<ICurrentUser>({
-    key: "user",
+export const currentUserState = atom<ICurrentUser>({
+    key: "currentUserState",
     default: { isSigned: false },
 });
 

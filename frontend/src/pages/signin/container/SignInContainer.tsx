@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
-
-import { useSelector } from "react-redux";
-import { RootState } from "modules";
-
 import { RouteComponentProps } from "react-router";
+
+import { useRecoilState } from "recoil";
+import { currentUserState } from "store/user";
 
 import axios from "axios";
 
-import { UserState } from "modules/user/user";
 import { LOGIN_GOOGLE_URL, LOGIN_KAKAO_URL } from "api/socialLogin/url";
 
 import useFormatedUser from "hook/useFormatedUser";
@@ -23,13 +21,14 @@ declare global {
 }
 
 const SignInContainer = ({ history, location }: RouteComponentProps) => {
-    const currentUser = useSelector((state: RootState) => state.user);
+    const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+
     const pushSettingWithData = usePushSigninSetting();
     const getFormatedUser = useFormatedUser();
 
     useEffect(() => {
         // 이미 로그인 된 사용자일 시
-        if (currentUser.isSignedIn) history.push("/");
+        if (currentUser.isSigned) history.push("/");
     }, []);
 
     const onGoogleLogin = async (result: any) => {

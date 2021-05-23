@@ -1,10 +1,8 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { createBrowserHistory } from "history";
+import { useRecoilState } from "recoil";
 
+import { currentUserState } from "store/user";
 import NavPresenter from "pages/nav/presenter/NavPresenter";
-import { RootState } from "modules";
-import { signout } from "modules/user/user";
 
 const NavContainer = () => {
     const history = createBrowserHistory();
@@ -15,8 +13,7 @@ const NavContainer = () => {
         { path: "interview", name: "인터뷰" },
     ];
 
-    const currentUser = useSelector((state: RootState) => state.user);
-    const dispatch = useDispatch();
+    const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
 
     const onMypageClick = () => {
         // user id도 교환
@@ -29,7 +26,7 @@ const NavContainer = () => {
     };
 
     const onSignOutClick = () => {
-        dispatch(signout());
+        setCurrentUser({ isSigned: false });
         history.push("/signin");
     };
 

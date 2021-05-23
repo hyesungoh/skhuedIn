@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Category from "components/nav/Category";
-import { UserState } from "modules/user/user";
+import { ICurrentUser } from "types";
 
 import "pages/nav/nav.scss";
 
 interface INav {
     categorys: { path: string; name: string }[];
-    currentUser: UserState;
+    currentUser: ICurrentUser;
     onMypageClick: () => void;
     onSettingClick: () => void;
     onSignOutClick: () => void;
@@ -63,7 +63,7 @@ const Nav = ({
                     />
                 ))}
 
-                {currentUser.isSignedIn ? (
+                {currentUser.isSigned ? (
                     <SignedInCategory />
                 ) : (
                     <Category path="signin" name="로그인" />

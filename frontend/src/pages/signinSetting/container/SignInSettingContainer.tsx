@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { RouteChildrenProps } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 
 import SignInSettingPresenter from "pages/signinSetting/presenter/SignInSettingPresenter";
 
-import { RootState } from "modules";
-import { UserState, signin } from "modules/user/user";
+// import { RootState } from "modules";
+// import { UserState, signin } from "modules/user/user";
 import axios from "axios";
 import { SETTING_USER_URL } from "api/socialLogin/url";
-
-export interface ISignInSetting {}
+import { IUser } from "types";
 
 export interface ILocationState {
-    userData: UserState;
+    userData: IUser;
     token: string;
 }
 // 해당 토큰을 세션에 저장 >
@@ -21,9 +20,6 @@ export interface ILocationState {
 // 유저 정보를 리덕스에 저장
 
 const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
-    const currentUser = useSelector((state: RootState) => state.user);
-    const dispatch = useDispatch();
-
     const [status, setStatus] = useState<string>("Student");
     const [entranceYear, setEntranceYear] = useState<number>(2017);
     const [graduationYear, setGraduationYear] = useState<number>(0);

@@ -1,13 +1,12 @@
-import React from "react";
-import { useSelector } from "react-redux";
-
-import { RootState } from "modules";
 import sample from "static/images/profile.png";
 import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { currentUserState } from "store/user";
 
 const Profile = () => {
-    const currentUser = useSelector((state: RootState) => state.user);
-    if (!currentUser.isSignedIn) {
+    const currentUser = useRecoilValue(currentUserState);
+
+    if (!currentUser.isSigned) {
         return (
             <div className="home__profile home__profile--notsigned">
                 <div className="profile__info">

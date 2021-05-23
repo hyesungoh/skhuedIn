@@ -1,9 +1,6 @@
 import React, { Component, Dispatch, useState } from "react";
 import HomePresenter from "../presenter/HomePresenter";
 
-import { RootState } from "modules";
-import { useSelector } from "react-redux";
-
 import { RouteComponentProps } from "react-router";
 
 import "pages/home/Home.scss";
@@ -60,8 +57,6 @@ const HomeContainer = ({ history }: RouteComponentProps) => {
             },
         ],
     });
-
-    const currentUser = useSelector((state: RootState) => state.user);
 
     const { loading, posts } = state;
     // return <HomePresenter loading={loading} posts={posts} />;
