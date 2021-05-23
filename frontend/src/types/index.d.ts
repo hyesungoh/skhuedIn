@@ -1,3 +1,9 @@
+export interface ICurrentUser {
+    data?: IUser;
+    token?: string;
+    isSigned: boolean;
+}
+
 export interface IUser {
     id: number;
     email: string;

@@ -15,12 +15,10 @@ npm i node-sass
 npm i @types/node-sass
 ```
 
-#### Redux
+#### Recoil
 
 ```terminal
-npm i redux
-npm i react-redux
-npm i @types/react-redux
+npm i recoil
 ```
 
 #### Styled-components
