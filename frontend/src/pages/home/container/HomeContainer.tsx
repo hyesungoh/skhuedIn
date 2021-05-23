@@ -1,4 +1,4 @@
-import React, { Component, Dispatch, useState } from "react";
+import React, { useState } from "react";
 import HomePresenter from "../presenter/HomePresenter";
 
 import { RouteComponentProps } from "react-router";

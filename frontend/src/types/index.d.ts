@@ -6,6 +6,7 @@ export interface ICurrentUser {
 
 export interface IUser {
     id: number;
+    provider: string;
     email: string;
     name: string;
     userImageUrl: string;

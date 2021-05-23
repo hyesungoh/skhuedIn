@@ -4,12 +4,12 @@ import axios from "axios";
 
 import Loading from "components/Loading/Loading";
 import { LOGIN_NAVER_URL } from "api/socialLogin/url";
-import useFormatedUser from "hook/useFormatedUser";
+
 import usePushSigninSetting from "hook/usePushSigninSetting";
+import { getFormatedUser } from "utils/getFormatedUser";
 
 const SignInNaverContainer = ({ history }: RouteComponentProps) => {
     const location = useLocation();
-    const getFormatedUser = useFormatedUser();
     const pushToSigninSetting = usePushSigninSetting();
 
     useEffect(() => {
@@ -28,8 +28,12 @@ const SignInNaverContainer = ({ history }: RouteComponentProps) => {
                 return response.data.data;
             });
 
-            const formatedUserData = getFormatedUser(userData, "naver");
-            pushToSigninSetting(formatedUserData, accessToken);
+            const formatedUserData = getFormatedUser(
+                userData,
+                "naver",
+                accessToken
+            );
+            pushToSigninSetting(formatedUserData);
         };
 
         getNaverToken();

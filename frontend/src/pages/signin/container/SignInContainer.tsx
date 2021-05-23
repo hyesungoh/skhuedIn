@@ -8,8 +8,8 @@ import axios from "axios";
 
 import { LOGIN_GOOGLE_URL, LOGIN_KAKAO_URL } from "api/socialLogin/url";
 
-import useFormatedUser from "hook/useFormatedUser";
 import usePushSigninSetting from "hook/usePushSigninSetting";
+import { getFormatedUser } from "utils/getFormatedUser";
 
 import SignInPresenter from "pages/signIn/presenter/SignInPresenter";
 
@@ -22,9 +22,7 @@ declare global {
 
 const SignInContainer = ({ history, location }: RouteComponentProps) => {
     const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
-
     const pushSettingWithData = usePushSigninSetting();
-    const getFormatedUser = useFormatedUser();
 
     useEffect(() => {
         // 이미 로그인 된 사용자일 시
@@ -47,8 +45,8 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
             return response.data.data;
         });
 
-        const currentUserData = getFormatedUser(userData, "google");
-        pushSettingWithData(currentUserData, id_token);
+        const currentUserData = getFormatedUser(userData, "google", id_token);
+        pushSettingWithData(currentUserData);
     };
 
     const onKakaoLogin = () => {
@@ -74,10 +72,11 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
 
                         const currentUserData = getFormatedUser(
                             response.data.data,
-                            "kakao"
+                            "kakao",
+                            token
                         );
 
-                        pushSettingWithData(currentUserData, token);
+                        pushSettingWithData(currentUserData);
                     });
 
                     // 데이터의 토큰을 세션 아니면 리덕스에 저장 > 다른 행동할 때 토큰을 같이 보내주면 됑
