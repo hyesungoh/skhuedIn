@@ -78,8 +78,6 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
 
                         pushSettingWithData(currentUserData);
                     });
-
-                    // 데이터의 토큰을 세션 아니면 리덕스에 저장 > 다른 행동할 때 토큰을 같이 보내주면 됑
                 },
                 fail: (response: object) => {
                     console.log(response);
