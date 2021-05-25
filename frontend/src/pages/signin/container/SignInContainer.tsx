@@ -70,13 +70,14 @@ const SignInContainer = ({ history, location }: RouteComponentProps) => {
                         //     "Authorization"
                         // ] = `Bearer ${token}`;
 
-                        const currentUserData = getFormatedUser(
-                            response.data.data,
-                            "kakao",
-                            token
-                        );
+                        // const currentUserData = getFormatedUser(
+                        //     response.data.data,
+                        //     "kakao",
+                        //     token
+                        // );
 
-                        pushSettingWithData(currentUserData);
+                        // pushSettingWithData(currentUserData);
+                        console.log(response);
                     });
                 },
                 fail: (response: object) => {

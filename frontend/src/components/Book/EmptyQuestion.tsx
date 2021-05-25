@@ -1,7 +1,7 @@
 import ModalPortal from "components/Modal/ModalPortal";
 import React, { useState } from "react";
 import styled from "styled-components";
-import NewQuestion from "./NewQuestion";
+import NewQuestion from "../Modal/NewQuestion";
 
 const EmptyQuestion = () => {
     const [isNewQuestion, setIsNewQuestion] = useState<boolean>(false);

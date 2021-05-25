@@ -6,7 +6,7 @@ import QuestionModal from "components/Modal/QuestionModal";
 
 import { IQuestion } from "types";
 import EmptyQuestion from "./EmptyQuestion";
-import NewQuestion from "./NewQuestion";
+import NewQuestion from "../Modal/NewQuestion";
 
 interface IQuestions {
     questions: IQuestion[];

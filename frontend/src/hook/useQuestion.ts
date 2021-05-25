@@ -3,6 +3,7 @@ import axios from "axios";
 import { useQuery, useMutation } from "react-query";
 import { useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
+import { newQuestionState } from "store/question";
 
 interface ISaveQuestion {
     targetUserId: number;
@@ -12,12 +13,13 @@ interface ISaveQuestion {
 
 const useQuestion = () => {
     const currentUser = useRecoilValue(currentUserState);
+    const newQuestion = useRecoilValue(newQuestionState);
 
-    const saveQuestion = useMutation((newQuestion: ISaveQuestion) =>
+    const saveQuestion = useMutation((targetId: number) =>
         axios.post("http://localhost:8080/api/questions", {
             fix: true,
             status: true,
-            targetUserId: newQuestion.targetUserId,
+            targetUserId: targetId,
             writerUserId: currentUser.data?.id,
             title: newQuestion.title,
             content: newQuestion.content,

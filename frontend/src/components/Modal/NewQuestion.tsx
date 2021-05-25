@@ -1,9 +1,12 @@
 import useQuestion from "hook/useQuestion";
 import React, { useEffect, useState, useCallback, useRef } from "react";
+import { useRecoilState } from "recoil";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
 import _ from "lodash";
-
 import { CSSTransition } from "react-transition-group";
+
+import { newQuestionState } from "store/question";
 
 interface NewQuestionProps {
     isNewQuestion: boolean;
@@ -18,13 +21,7 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
     const MODAL_TRANSITION_DURATION = 500;
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [question, setQuestion] = useState<{
-        title: string;
-        content: string;
-    }>({
-        title: "",
-        content: "",
-    });
+    const [newQuestion, setNewQuestion] = useRecoilState(newQuestionState);
 
     const { saveQuestion } = useQuestion();
     const { id } = useParams<Params>();
@@ -42,7 +39,7 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        setQuestion({ ...question, [e.target.name]: value });
+        setNewQuestion({ ...newQuestion, [e.target.name]: value });
     };
 
     // const handleDebounceChange = useRef(
@@ -85,3 +82,5 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
 };
 
 export default NewQuestion;
+
+const StyledH1 = styled.h1``;
