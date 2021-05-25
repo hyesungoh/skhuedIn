@@ -43,3 +43,8 @@ export interface IGetQuestionsByUserId extends IFetchBase {
 export interface IGetPostById {
     data: IPost;
 }
+
+export interface IGetUserById {
+    data: IUser;
+    count: number;
+}

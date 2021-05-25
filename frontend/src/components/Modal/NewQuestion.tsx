@@ -1,12 +1,13 @@
-import useQuestion from "hook/useQuestion";
 import React, { useEffect, useState, useCallback, useRef } from "react";
-import { useRecoilState } from "recoil";
+import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import _ from "lodash";
-import { CSSTransition } from "react-transition-group";
 
+import useQuestion from "hook/useQuestion";
 import { newQuestionState } from "store/question";
+import useUserById from "hook/useUserById";
 
 interface NewQuestionProps {
     isNewQuestion: boolean;
@@ -19,12 +20,13 @@ interface Params {
 
 const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
     const MODAL_TRANSITION_DURATION = 500;
+    const { id } = useParams<Params>();
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [newQuestion, setNewQuestion] = useRecoilState(newQuestionState);
 
     const { saveQuestion } = useQuestion();
-    const { id } = useParams<Params>();
+    const { data: targetUserData } = useUserById(id);
 
     useEffect(() => {
         setIsOpen(true);
@@ -69,7 +71,7 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
         >
             <div className="modal" onClick={closeModal}>
                 <div className="modal__content">
-                    <h1>this is new question for {id}</h1>
+                    <h1>{targetUserData?.data.name} 님에게 질문하기</h1>
                     <input type="text" name="title" onChange={handleChange} />
                     <input type="text" name="content" onChange={handleChange} />
                     <button type="submit" onClick={onSubmit}>

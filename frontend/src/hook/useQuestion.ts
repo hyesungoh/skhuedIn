@@ -5,12 +5,6 @@ import { useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
 import { newQuestionState } from "store/question";
 
-interface ISaveQuestion {
-    targetUserId: number;
-    title: string;
-    content: string;
-}
-
 const useQuestion = () => {
     const currentUser = useRecoilValue(currentUserState);
     const newQuestion = useRecoilValue(newQuestionState);
