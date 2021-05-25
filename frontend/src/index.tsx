@@ -9,6 +9,7 @@ import { ThemeProvider } from "styled-components";
 
 // for react-query provider
 import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 import theme from "style/theme";
 
@@ -22,6 +23,7 @@ ReactDOM.render(
         <QueryClientProvider client={queryClient}>
             <ThemeProvider theme={theme}>
                 <App />,
+                <ReactQueryDevtools />
             </ThemeProvider>
         </QueryClientProvider>
     </RecoilRoot>,

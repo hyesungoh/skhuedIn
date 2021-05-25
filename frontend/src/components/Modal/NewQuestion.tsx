@@ -8,6 +8,7 @@ import _ from "lodash";
 import useQuestion from "hook/useQuestion";
 import { newQuestionState } from "store/question";
 import useUserById from "hook/useUserById";
+import TextInputWithLabel from "components/TextInputWithLabel";
 
 interface NewQuestionProps {
     isNewQuestion: boolean;
@@ -71,7 +72,16 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
         >
             <div className="modal" onClick={closeModal}>
                 <div className="modal__content">
-                    <h1>{targetUserData?.data.name} 님에게 질문하기</h1>
+                    <StyledH2>
+                        <strong>{targetUserData?.data.name}</strong>님에게
+                        질문하기
+                    </StyledH2>
+                    <TextInputWithLabel
+                        placeholder="제목"
+                        name="title"
+                        value=""
+                        onChange={handleChange}
+                    ></TextInputWithLabel>
                     <input type="text" name="title" onChange={handleChange} />
                     <input type="text" name="content" onChange={handleChange} />
                     <button type="submit" onClick={onSubmit}>
@@ -85,4 +95,7 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
 
 export default NewQuestion;
 
-const StyledH1 = styled.h1``;
+const StyledH2 = styled.h2`
+    font-weight: 500;
+    font-size: 1.2rem;
+`;
