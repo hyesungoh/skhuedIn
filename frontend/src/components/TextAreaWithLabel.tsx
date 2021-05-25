@@ -14,7 +14,13 @@ const TextAreaWithLabel = ({
 }: TextAreaWithLabelProps) => {
     return (
         <Wrapper>
-            <Textarea id={name} name={name} onChange={onChange} required />
+            <Textarea
+                id={name}
+                name={name}
+                rows={10}
+                onChange={onChange}
+                required
+            />
             <Placeholder htmlFor={name}>{placeholder}</Placeholder>
             <BaseSpan></BaseSpan>
             <OverSpan></OverSpan>
@@ -26,25 +32,26 @@ export default TextAreaWithLabel;
 
 const Wrapper = styled.div`
     position: relative;
+    margin-top: 2rem;
 `;
 
 const Textarea = styled.textarea`
     all: unset;
     width: 100%;
     height: 100px;
-    margin-top: 1rem;
+    white-space: pre-line;
 `;
 
 const Placeholder = styled.label`
     position: absolute;
-    top: 2rem;
+    top: 0;
     left: 0;
     transform-origin: left;
     transition: all 0.3s;
 
     ${Textarea}:focus ~ &,
     ${Textarea}:valid ~ & {
-        transform: scale(0.7) translateY(-2rem);
+        transform: scale(0.8) translateY(-2rem);
     }
 `;
 

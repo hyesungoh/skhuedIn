@@ -10,7 +10,7 @@ export const getFormatedUser = (
     token: string
 ) => {
     const currentUserState: ICurrentUser = {
-        isSigned: true,
+        isSigned: false,
         token,
         data: {
             id: parseInt(response.id),

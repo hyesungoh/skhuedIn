@@ -41,15 +41,13 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
         setTimeout(() => setIsNewQuestion(false), MODAL_TRANSITION_DURATION);
     };
 
-    const handleDebounceChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-        const value = e.target.value;
-        _.debounce(
-            () => setNewQuestion({ ...newQuestion, [e.target.name]: value }),
-            500
-        );
-    };
+    const handleDebounceChange = _.debounce(
+        (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+            console.log(newQuestion);
+            setNewQuestion({ ...newQuestion, [e.target.name]: e.target.value });
+        },
+        300
+    );
 
     // const handleDebounceChange = useRef(
     //     _.debounce(

@@ -1,12 +1,3 @@
-// text for login
-// import SignInput from "components/Sign/SignInput";
-
-// social login to fontAwesomeIcon
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-// import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-// import { faGithub } from "@fortawesome/free-brands-svg-icons";
-
 import { useEffect } from "react";
 import { GoogleLogin } from "react-google-login";
 
@@ -14,18 +5,12 @@ import logoGoogle from "static/images/google.png";
 import logoKakao from "static/images/kakao.png";
 
 import "pages/signIn/SignIn.scss";
+import useSocialLogin from "hook/useSocialLogin";
 
-interface ISignInPresenter {
-    onGoogleLogin: (result: any) => void;
-    onKakaoLogin: () => void;
-    initializeNaverLogin: () => void;
-}
+const SignInPresenter = () => {
+    const { initializeNaverLogin, OnGoogleLogin, OnKakaoLogin } =
+        useSocialLogin();
 
-const SignInPresenter = ({
-    onGoogleLogin,
-    onKakaoLogin,
-    initializeNaverLogin,
-}: ISignInPresenter) => {
     useEffect(() => {
         initializeNaverLogin();
     }, []);
@@ -45,7 +30,7 @@ const SignInPresenter = ({
                         clientId={
                             process.env.REACT_APP_GOOGLE_CLIENT_ID as string
                         }
-                        onSuccess={(result) => onGoogleLogin(result)}
+                        onSuccess={(result) => OnGoogleLogin(result)}
                         onFailure={(result) => console.log(result)}
                         cookiePolicy={"single_host_origin"}
                         render={(props: any) => (
@@ -61,7 +46,7 @@ const SignInPresenter = ({
                     <div
                         id="kakao"
                         className="signinform__social__logo"
-                        onClick={onKakaoLogin}
+                        onClick={OnKakaoLogin}
                     >
                         <img src={logoKakao} alt="kakao" />
                     </div>
