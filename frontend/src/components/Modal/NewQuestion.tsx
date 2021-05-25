@@ -9,6 +9,7 @@ import useQuestion from "hook/useQuestion";
 import { newQuestionState } from "store/question";
 import useUserById from "hook/useUserById";
 import TextInputWithLabel from "components/TextInputWithLabel";
+import TextAreaWithLabel from "components/TextAreaWithLabel";
 
 interface NewQuestionProps {
     isNewQuestion: boolean;
@@ -40,7 +41,9 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
         setTimeout(() => setIsNewQuestion(false), MODAL_TRANSITION_DURATION);
     };
 
-    const handleDebounceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleDebounceChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
         const value = e.target.value;
         _.debounce(
             () => setNewQuestion({ ...newQuestion, [e.target.name]: value }),
@@ -84,16 +87,11 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
                         name="title"
                         onChange={handleDebounceChange}
                     ></TextInputWithLabel>
-                    <input
-                        type="text"
-                        name="title"
-                        onChange={handleDebounceChange}
-                    />
-                    <input
-                        type="text"
+                    <TextAreaWithLabel
+                        placeholder="내용"
                         name="content"
                         onChange={handleDebounceChange}
-                    />
+                    ></TextAreaWithLabel>
                     <button type="submit" onClick={onSubmit}>
                         submit
                     </button>

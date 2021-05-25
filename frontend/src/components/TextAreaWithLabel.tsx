@@ -1,26 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-interface TextInputWithLabelProps {
+interface TextAreaWithLabelProps {
     placeholder: string;
     name: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const TextInputWithLabel = ({
+const TextAreaWithLabel = ({
     placeholder,
     name,
     onChange,
-}: TextInputWithLabelProps) => {
+}: TextAreaWithLabelProps) => {
     return (
         <Wrapper>
-            <Input
-                type="text"
-                id={name}
-                name={name}
-                onChange={onChange}
-                required
-            />
+            <Textarea id={name} name={name} onChange={onChange} required />
             <Placeholder htmlFor={name}>{placeholder}</Placeholder>
             <BaseSpan></BaseSpan>
             <OverSpan></OverSpan>
@@ -28,16 +22,16 @@ const TextInputWithLabel = ({
     );
 };
 
-export default TextInputWithLabel;
+export default TextAreaWithLabel;
 
 const Wrapper = styled.div`
     position: relative;
 `;
 
-const Input = styled.input`
+const Textarea = styled.textarea`
     all: unset;
     width: 100%;
-    height: 50px;
+    height: 100px;
     margin-top: 1rem;
 `;
 
@@ -48,8 +42,8 @@ const Placeholder = styled.label`
     transform-origin: left;
     transition: all 0.3s;
 
-    ${Input}:focus ~ &,
-    ${Input}:valid ~ & {
+    ${Textarea}:focus ~ &,
+    ${Textarea}:valid ~ & {
         transform: scale(0.7) translateY(-2rem);
     }
 `;
@@ -69,8 +63,8 @@ const OverSpan = styled(BaseSpan)`
     transform-origin: left;
     transition: transform 0.3s;
 
-    ${Input}:focus ~ &,
-    ${Input}:valid ~ & {
+    ${Textarea}:focus ~ &,
+    ${Textarea}:valid ~ & {
         transform: scaleX(1);
     }
 `;
