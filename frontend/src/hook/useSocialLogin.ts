@@ -42,21 +42,31 @@ const useSocialLogin = () => {
 
         if (userData.data.firstVisit) {
             setCurrentUser({
+                isSigned: false,
+                token: userData.data.token,
+                data: {
+                    ...userData.data.data,
+                },
+            });
+            history.push("/signin/setting");
+            // const formatedUser = getFormatedUser(
+            //     userData.data.data,
+            //     provider,
+            //     userData.data.token
+            // );
+            // pushToSigninSetting(formatedUser);
+        } else {
+            setCurrentUser({
                 isSigned: true,
                 token: userData.data.token,
-                ...userData.data.data,
+                data: {
+                    ...userData.data.data,
+                },
             });
 
             console.log(userData.data.data.name + "님 로그인 됐습니다");
             console.log(userData);
             history.push("/");
-        } else {
-            const formatedUser = getFormatedUser(
-                userData.data.data,
-                provider,
-                userData.data.token
-            );
-            pushToSigninSetting(formatedUser);
         }
     };
 

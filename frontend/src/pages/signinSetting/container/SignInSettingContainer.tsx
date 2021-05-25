@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RouteChildrenProps } from "react-router-dom";
 // import { useSelector, useDispatch } from "react-redux";
 
@@ -8,10 +8,12 @@ import SignInSettingPresenter from "pages/signinSetting/presenter/SignInSettingP
 // import { UserState, signin } from "modules/user/user";
 import axios from "axios";
 import { SETTING_USER_URL } from "api/socialLogin/url";
-import { IUser } from "types";
+import { ICurrentUser } from "types";
+import { useRecoilValue } from "recoil";
+import { currentUserState } from "store/user";
 
 export interface ILocationState {
-    userData: IUser;
+    userData: ICurrentUser;
     token: string;
 }
 // 해당 토큰을 세션에 저장 >
@@ -20,39 +22,43 @@ export interface ILocationState {
 // 유저 정보를 리덕스에 저장
 
 const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
+    useEffect(() => {
+        if (currentUser.isSigned || !currentUser.token) history.push("/signin");
+    }, []);
+
     const [status, setStatus] = useState<string>("Student");
     const [entranceYear, setEntranceYear] = useState<number>(2017);
     const [graduationYear, setGraduationYear] = useState<number>(0);
-
-    const { userData, token } = location.state as ILocationState;
-    const userName = userData.name;
+    const currentUser = useRecoilValue(currentUserState);
 
     const onSignin = () => {
         console.log(`입학년도 : ${entranceYear}`);
         console.log(`졸업년도 : ${graduationYear}`);
-        console.log("유저 정보");
-        console.table(userData);
-        console.log(`토큰 : ${token}`);
 
-        if (userData.id) {
-            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        if (currentUser.data?.id) {
+            axios.defaults.headers.common[
+                "Authorization"
+            ] = `Bearer ${currentUser.token}`;
+
+            // 재학생이면 어떻게 보내야될까나 ??
+            
             axios({
                 method: "post",
-                url: SETTING_USER_URL(userData.id),
+                url: SETTING_USER_URL(currentUser.data.id),
                 data: {
                     entranceYear: entranceYear.toString(),
                     graduationYear: graduationYear.toString(),
-                    id: userData.id,
+                    id: currentUser.data.id,
                 },
             });
+
+            history.push("/");
         }
-        // dispatch(signin(userData));
-        // history.push("/");
     };
 
     return (
         <SignInSettingPresenter
-            userName={userName}
+            userName={currentUser.data?.name}
             onSignin={onSignin}
             status={status}
             setStatus={setStatus}
