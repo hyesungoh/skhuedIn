@@ -40,9 +40,12 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
         setTimeout(() => setIsNewQuestion(false), MODAL_TRANSITION_DURATION);
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleDebounceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        setNewQuestion({ ...newQuestion, [e.target.name]: value });
+        _.debounce(
+            () => setNewQuestion({ ...newQuestion, [e.target.name]: value }),
+            500
+        );
     };
 
     // const handleDebounceChange = useRef(
@@ -79,11 +82,18 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
                     <TextInputWithLabel
                         placeholder="제목"
                         name="title"
-                        value=""
-                        onChange={handleChange}
+                        onChange={handleDebounceChange}
                     ></TextInputWithLabel>
-                    <input type="text" name="title" onChange={handleChange} />
-                    <input type="text" name="content" onChange={handleChange} />
+                    <input
+                        type="text"
+                        name="title"
+                        onChange={handleDebounceChange}
+                    />
+                    <input
+                        type="text"
+                        name="content"
+                        onChange={handleDebounceChange}
+                    />
                     <button type="submit" onClick={onSubmit}>
                         submit
                     </button>

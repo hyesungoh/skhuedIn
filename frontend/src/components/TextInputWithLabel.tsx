@@ -4,19 +4,23 @@ import styled from "styled-components";
 interface TextInputWithLabelProps {
     placeholder: string;
     name: string;
-    value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const TextInputWithLabel = ({
     placeholder,
     name,
-    value,
     onChange,
 }: TextInputWithLabelProps) => {
     return (
         <Wrapper>
-            <Input type="text" id={name} name={name} required />
+            <Input
+                type="text"
+                id={name}
+                name={name}
+                onChange={onChange}
+                required
+            />
             <Placeholder htmlFor={name}>{placeholder}</Placeholder>
             <BaseSpan></BaseSpan>
             <OverSpan></OverSpan>
@@ -42,8 +46,8 @@ const Placeholder = styled.label`
     top: 40%;
     left: 0;
     transform-origin: left;
-    transition: all .3s;
-    
+    transition: all 0.3s;
+
     ${Input}:focus ~ &,
     ${Input}:valid ~ & {
         transform: scale(0.7) translateY(-1.6rem);
