@@ -4,9 +4,9 @@ import { useMutation } from "react-query";
 import { baseUrl } from "api/url";
 
 interface IYears {
-    userId: string;
-    entranceYear: string;
-    graduationYear: string;
+    userId: number;
+    entranceYear: number;
+    graduationYear: number;
 }
 
 const useUser = () => {

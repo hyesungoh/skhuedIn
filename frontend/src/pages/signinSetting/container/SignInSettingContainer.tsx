@@ -9,8 +9,9 @@ import SignInSettingPresenter from "pages/signinSetting/presenter/SignInSettingP
 import axios from "axios";
 import { SETTING_USER_URL } from "api/socialLogin/url";
 import { ICurrentUser } from "types";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { currentUserState } from "store/user";
+import useUser from "hook/useUser";
 
 export interface ILocationState {
     userData: ICurrentUser;
@@ -29,7 +30,9 @@ const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
     const [status, setStatus] = useState<string>("Student");
     const [entranceYear, setEntranceYear] = useState<number>(2017);
     const [graduationYear, setGraduationYear] = useState<number>(0);
-    const currentUser = useRecoilValue(currentUserState);
+    const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+
+    const { userYearUpdateWithId } = useUser();
 
     const onSignin = () => {
         console.log(`입학년도 : ${entranceYear}`);
@@ -40,18 +43,21 @@ const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
                 "Authorization"
             ] = `Bearer ${currentUser.token}`;
 
-            // 재학생이면 어떻게 보내야될까나 ??
-            
-            axios({
-                method: "post",
-                url: SETTING_USER_URL(currentUser.data.id),
-                data: {
-                    entranceYear: entranceYear.toString(),
-                    graduationYear: graduationYear.toString(),
-                    id: currentUser.data.id,
-                },
+            userYearUpdateWithId({
+                userId: currentUser.data.id,
+                graduationYear,
+                entranceYear,
             });
 
+            setCurrentUser({
+                ...currentUser,
+                isSigned: true,
+                data: {
+                    ...currentUser.data,
+                    entranceYear: entranceYear.toString(),
+                    graduationYear: graduationYear.toString(),
+                },
+            });
             history.push("/");
         }
     };
