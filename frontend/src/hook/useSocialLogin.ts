@@ -7,7 +7,6 @@ import {
     LOGIN_NAVER_URL,
 } from "api/socialLogin/url";
 import { IUser } from "types";
-import { getFormatedUser } from "utils/getFormatedUser";
 import { useRecoilState } from "recoil";
 import { currentUserState } from "store/user";
 import usePushSigninSetting from "./usePushSigninSetting";
@@ -28,7 +27,6 @@ declare global {
 const useSocialLogin = () => {
     const history = useHistory();
     const location = useLocation();
-    const pushToSigninSetting = usePushSigninSetting();
     const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
 
     const PushPathWithUserData = async (
@@ -49,13 +47,13 @@ const useSocialLogin = () => {
                 },
             });
             history.push("/signin/setting");
-            // const formatedUser = getFormatedUser(
-            //     userData.data.data,
-            //     provider,
-            //     userData.data.token
-            // );
-            // pushToSigninSetting(formatedUser);
         } else {
+            
+            // set token to axios defaults header
+            axios.defaults.headers.common[
+                "Authorization"
+            ] = `Bearer ${currentUser.token}`;
+
             setCurrentUser({
                 isSigned: true,
                 token: userData.data.token,
