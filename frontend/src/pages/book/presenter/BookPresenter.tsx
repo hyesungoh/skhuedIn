@@ -30,7 +30,7 @@ const BookPresenter = ({
         <div className="book">
             <div className="book__profile">
                 <BookProfile user={user} />
-                <BookProfilePosts posts={posts ? posts : []} />
+                <BookProfilePosts posts={posts ? posts : []} user={user} />
             </div>
 
             <Questions questions={questions ? questions : []} />

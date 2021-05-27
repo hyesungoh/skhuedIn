@@ -1,22 +1,27 @@
 import { Link } from "react-router-dom";
 
 import BookProfilePostDetail from "./BookProfilePostDetail";
-import { IPost } from "types";
+import { IPost, IUser } from "types";
+import { useRecoilValue } from "recoil";
+import { currentUserState } from "store/user";
 
 interface IBookProfilePosts {
     posts: IPost[];
+    user: IUser;
 }
 
-const BookProfilePosts = ({ posts }: IBookProfilePosts) => {
-    // const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
+const BookProfilePosts = ({ posts, user }: IBookProfilePosts) => {
+    const currentUser = useRecoilValue(currentUserState);
 
     return (
         <div className="book__profile__question">
-            <Link to="/write">
-                <div className="book__profile__question__write">
-                    <span>새로운 글 작성하기</span>
-                </div>
-            </Link>
+            {currentUser.data?.id === user.id ? (
+                <Link to="/write">
+                    <div className="book__profile__question__write">
+                        <span>새로운 글 작성하기</span>
+                    </div>
+                </Link>
+            ) : null}
 
             {posts.map((post, index) => {
                 const { id, title, content, createdDate, view } = post;
