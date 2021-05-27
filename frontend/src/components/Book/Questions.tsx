@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import QuestionDetail from "./QuestionDetail";
 import ModalPortal from "components/Modal/ModalPortal";
@@ -9,6 +9,7 @@ import { IQuestion } from "types";
 import EmptyQuestion from "./EmptyQuestion";
 import NewQuestion from "../Modal/NewQuestion";
 import { currentUserState } from "store/user";
+import { isNewQuestionModalOpenState } from "store/question";
 
 interface IQuestions {
     questions: IQuestion[];
@@ -17,7 +18,10 @@ interface IQuestions {
 const Questions = ({ questions }: IQuestions) => {
     const [openQuesIndex, setOpenQuesIndex] = useState<number | null>(null);
     const [curQuestion, setCurQuestion] = useState<IQuestion | null>(null);
-    const [isNewQuestion, setIsNewQuestion] = useState<boolean>(false);
+
+    const [isNewQuestionModalOpen, setIsNewQuestionModalOpen] = useRecoilState(
+        isNewQuestionModalOpenState
+    );
 
     const currentUser = useRecoilValue(currentUserState);
 
@@ -31,13 +35,14 @@ const Questions = ({ questions }: IQuestions) => {
 
     const onClickNewQuestion = () => {
         if (currentUser.isSigned) {
-            setIsNewQuestion(true);
+            setIsNewQuestionModalOpen(true);
             return;
         }
         alert("로그인 후 댓글을 남겨주세요 !");
     };
 
-    if (questions.length === 0) return <EmptyQuestion />;
+    if (questions.length === 0)
+        return <EmptyQuestion onClickNewQuestion={onClickNewQuestion} />;
 
     return (
         <React.Fragment>
@@ -72,11 +77,8 @@ const Questions = ({ questions }: IQuestions) => {
                         createdDate={curQuestion.createdDate}
                         comments={curQuestion.comments}
                     />
-                ) : isNewQuestion ? (
-                    <NewQuestion
-                        isNewQuestion={isNewQuestion}
-                        setIsNewQuestion={setIsNewQuestion}
-                    />
+                ) : isNewQuestionModalOpen ? (
+                    <NewQuestion />
                 ) : null}
             </ModalPortal>
         </React.Fragment>

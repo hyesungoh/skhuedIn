@@ -6,27 +6,24 @@ import styled from "styled-components";
 import _ from "lodash";
 
 import useQuestion from "hook/useQuestion";
-import { newQuestionState } from "store/question";
+import { isNewQuestionModalOpenState, newQuestionState } from "store/question";
 import useUserById from "hook/useUserById";
 import TextInputWithLabel from "components/TextInputWithLabel";
 import TextAreaWithLabel from "components/TextAreaWithLabel";
-import { currentUserState } from "store/user";
-
-interface NewQuestionProps {
-    isNewQuestion: boolean;
-    setIsNewQuestion: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 interface Params {
     id: string;
 }
 
-const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
+const NewQuestion = () => {
     const MODAL_TRANSITION_DURATION = 500;
     const { id } = useParams<Params>();
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [newQuestion, setNewQuestion] = useRecoilState(newQuestionState);
+    const [isNewQuestionModalOpen, setIsNewQuestionModalOpen] = useRecoilState(
+        isNewQuestionModalOpenState
+    );
 
     const { saveQuestion } = useQuestion();
     const { data: targetUserData } = useUserById(id);
@@ -39,7 +36,10 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
         if (e.target !== e.currentTarget) return;
 
         setIsOpen(false);
-        setTimeout(() => setIsNewQuestion(false), MODAL_TRANSITION_DURATION);
+        setTimeout(
+            () => setIsNewQuestionModalOpen(false),
+            MODAL_TRANSITION_DURATION
+        );
     };
 
     const handleDebounceChange = _.debounce(

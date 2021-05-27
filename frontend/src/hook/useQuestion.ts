@@ -1,17 +1,23 @@
 import axios from "axios";
 
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
-import { newQuestionState } from "store/question";
+import { isNewQuestionModalOpenState, newQuestionState } from "store/question";
 
 const useQuestion = () => {
+    const queryClient = useQueryClient();
+
     const currentUser = useRecoilValue(currentUserState);
     const newQuestion = useRecoilValue(newQuestionState);
-    const queryClient = useQueryClient();
+
+    const [isNewQuestionModalOpen, setIsnNewQuestionModalOpen] = useRecoilState(
+        isNewQuestionModalOpenState
+    );
 
     const refresh = () => {
         queryClient.invalidateQueries(["questions"]);
+        setIsnNewQuestionModalOpen(false);
     };
 
     const saveQuestion = useMutation(

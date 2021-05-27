@@ -1,21 +1,19 @@
 import ModalPortal from "components/Modal/ModalPortal";
 import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { currentUserState } from "store/user";
+import { isNewQuestionModalOpenState } from "store/question";
+
 import styled from "styled-components";
 import NewQuestion from "../Modal/NewQuestion";
 
-const EmptyQuestion = () => {
-    const [isNewQuestion, setIsNewQuestion] = useState<boolean>(false);
-    const currentUser = useRecoilValue(currentUserState);
+interface EmptyQuestionProps {
+    onClickNewQuestion: () => void;
+}
 
-    const onClickNewQuestion = () => {
-        if (currentUser.isSigned) {
-            setIsNewQuestion(true);
-            return;
-        }
-        alert("로그인 후 댓글을 남겨주세요 !");
-    };
+const EmptyQuestion = ({ onClickNewQuestion }: EmptyQuestionProps) => {
+    const currentUser = useRecoilValue(currentUserState);
+    const isNewQuestionModalOpen = useRecoilValue(isNewQuestionModalOpenState);
 
     return (
         <React.Fragment>
@@ -26,12 +24,7 @@ const EmptyQuestion = () => {
             </StyledDiv>
 
             <ModalPortal>
-                {isNewQuestion ? (
-                    <NewQuestion
-                        isNewQuestion={isNewQuestion}
-                        setIsNewQuestion={setIsNewQuestion}
-                    ></NewQuestion>
-                ) : null}
+                {isNewQuestionModalOpen ? <NewQuestion /> : null}
             </ModalPortal>
         </React.Fragment>
     );
