@@ -52,7 +52,7 @@ const useSocialLogin = () => {
             // set token to axios defaults header
             axios.defaults.headers.common[
                 "Authorization"
-            ] = `Bearer ${currentUser.token}`;
+            ] = `Bearer ${userData.data.token}`;
 
             setCurrentUser({
                 isSigned: true,
