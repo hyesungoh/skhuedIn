@@ -51,9 +51,7 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
     );
 
     const onSubmit = () => {
-        // useQuestion에 token 추가해야 됨
         if (targetUserData) saveQuestion(targetUserData.data.id);
-        
         console.log("submit");
     };
 
@@ -70,8 +68,9 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
                         질문하기
                     </StyledH2>
                     <TextInputWithLabel
-                        placeholder="제목"
                         name="title"
+                        maxLength={15}
+                        placeholder="제목"
                         onChange={handleDebounceChange}
                     ></TextInputWithLabel>
                     <TextAreaWithLabel

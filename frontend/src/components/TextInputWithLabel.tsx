@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 interface TextInputWithLabelProps {
-    placeholder: string;
     name: string;
+    maxLength?: number;
+    placeholder: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -11,6 +12,7 @@ const TextInputWithLabel = ({
     placeholder,
     name,
     onChange,
+    maxLength,
 }: TextInputWithLabelProps) => {
     return (
         <Wrapper>
@@ -19,6 +21,7 @@ const TextInputWithLabel = ({
                 id={name}
                 name={name}
                 onChange={onChange}
+                maxLength={maxLength ? maxLength : 100}
                 required
             />
             <Placeholder htmlFor={name}>{placeholder}</Placeholder>

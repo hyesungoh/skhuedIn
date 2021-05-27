@@ -34,7 +34,6 @@ const Questions = ({ questions }: IQuestions) => {
             setIsNewQuestion(true);
             return;
         }
-        
         alert("로그인 후 댓글을 남겨주세요 !");
     };
 

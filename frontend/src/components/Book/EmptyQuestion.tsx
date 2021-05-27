@@ -14,7 +14,6 @@ const EmptyQuestion = () => {
             setIsNewQuestion(true);
             return;
         }
-        
         alert("로그인 후 댓글을 남겨주세요 !");
     };
 
