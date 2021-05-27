@@ -1,13 +1,21 @@
 import ModalPortal from "components/Modal/ModalPortal";
 import React, { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { currentUserState } from "store/user";
 import styled from "styled-components";
 import NewQuestion from "../Modal/NewQuestion";
 
 const EmptyQuestion = () => {
     const [isNewQuestion, setIsNewQuestion] = useState<boolean>(false);
+    const currentUser = useRecoilValue(currentUserState);
 
     const onClickNewQuestion = () => {
-        setIsNewQuestion(true);
+        if (currentUser.isSigned) {
+            setIsNewQuestion(true);
+            return;
+        }
+        
+        alert("로그인 후 댓글을 남겨주세요 !");
     };
 
     return (

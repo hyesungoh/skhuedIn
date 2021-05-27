@@ -12,7 +12,6 @@ interface IBookProfile {
 }
 
 const BookProfile = ({ user }: IBookProfile) => {
-
     return (
         <div className="book__profile__info">
             <div className="book__profile__info__vertical">

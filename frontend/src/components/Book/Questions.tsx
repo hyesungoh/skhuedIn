@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 
 import QuestionDetail from "./QuestionDetail";
 import ModalPortal from "components/Modal/ModalPortal";
@@ -7,6 +8,7 @@ import QuestionModal from "components/Modal/QuestionModal";
 import { IQuestion } from "types";
 import EmptyQuestion from "./EmptyQuestion";
 import NewQuestion from "../Modal/NewQuestion";
+import { currentUserState } from "store/user";
 
 interface IQuestions {
     questions: IQuestion[];
@@ -17,6 +19,8 @@ const Questions = ({ questions }: IQuestions) => {
     const [curQuestion, setCurQuestion] = useState<IQuestion | null>(null);
     const [isNewQuestion, setIsNewQuestion] = useState<boolean>(false);
 
+    const currentUser = useRecoilValue(currentUserState);
+
     useEffect(() => {
         if (openQuesIndex === null) {
             setCurQuestion(null);
@@ -26,7 +30,12 @@ const Questions = ({ questions }: IQuestions) => {
     }, [openQuesIndex]);
 
     const onClickNewQuestion = () => {
-        setIsNewQuestion(true);
+        if (currentUser.isSigned) {
+            setIsNewQuestion(true);
+            return;
+        }
+        
+        alert("로그인 후 댓글을 남겨주세요 !");
     };
 
     if (questions.length === 0) return <EmptyQuestion />;
@@ -65,7 +74,10 @@ const Questions = ({ questions }: IQuestions) => {
                         comments={curQuestion.comments}
                     />
                 ) : isNewQuestion ? (
-                    <NewQuestion isNewQuestion={isNewQuestion} setIsNewQuestion={setIsNewQuestion}/>
+                    <NewQuestion
+                        isNewQuestion={isNewQuestion}
+                        setIsNewQuestion={setIsNewQuestion}
+                    />
                 ) : null}
             </ModalPortal>
         </React.Fragment>

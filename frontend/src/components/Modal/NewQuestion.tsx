@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 import _ from "lodash";
 
@@ -10,6 +10,7 @@ import { newQuestionState } from "store/question";
 import useUserById from "hook/useUserById";
 import TextInputWithLabel from "components/TextInputWithLabel";
 import TextAreaWithLabel from "components/TextAreaWithLabel";
+import { currentUserState } from "store/user";
 
 interface NewQuestionProps {
     isNewQuestion: boolean;
@@ -49,22 +50,10 @@ const NewQuestion = ({ isNewQuestion, setIsNewQuestion }: NewQuestionProps) => {
         300
     );
 
-    // const handleDebounceChange = useRef(
-    //     _.debounce(
-    //         (e: React.ChangeEvent<HTMLInputElement>) =>
-    //             setQuestion({ ...question, [e.target.name]: e.target.value }),
-    //         300
-    //     )
-    // );
-
     const onSubmit = () => {
         // useQuestion에 token 추가해야 됨
-        // saveQuestion({
-        //     targetUserId: parseInt(id),
-        //     title: "test",
-        //     content: "testContent",
-        // });
-
+        if (targetUserData) saveQuestion(targetUserData.data.id);
+        
         console.log("submit");
     };
 
