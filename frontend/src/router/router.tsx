@@ -13,7 +13,7 @@ import SignInContainer from "pages/signIn/container/SignInContainer";
 import SignInNaverContainer from "pages/signinNaver/containter/SignInNaverContainer";
 import SignInSettingContainer from "pages/signinSetting/container/SignInSettingContainer";
 import SignUpPresenter from "pages/signUp/presenter/SignUpPresenter";
-import MypagePresenter from "pages/mypage/presenter/MypagePresenter";
+import MypageContainer from "pages/mypage/container/MypageContainer";
 import WritingPresenter from "pages/writing/presenter/WritingPresenter";
 import PostContainer from "pages/post/container/PostContainer";
 import Notfound from "pages/notfound/Notfound";
@@ -37,7 +37,7 @@ const TransitionRouter = withRouter(({ location }) => (
                     component={SignInSettingContainer}
                 />
                 <Route path="/signup" component={SignUpPresenter} />
-                <Route path="/mypage/:id" component={MypagePresenter} />
+                <Route path="/mypage/:id" component={MypageContainer} />
                 <Route path="/write" component={WritingPresenter} />
                 <Route path="/post/:id" component={PostContainer} />
                 <Route path="/loading" component={Loading} />
