@@ -38,7 +38,7 @@ const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
         console.log(`입학년도 : ${entranceYear}`);
         console.log(`졸업년도 : ${graduationYear}`);
 
-        if (currentUser.data?.id) {
+        if (currentUser.data && currentUser.token) {
             axios.defaults.headers.common[
                 "Authorization"
             ] = `Bearer ${currentUser.token}`;
@@ -58,6 +58,9 @@ const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
                     graduationYear: graduationYear.toString(),
                 },
             });
+
+            window.sessionStorage.setItem("userToken", currentUser.token);
+
             history.push("/");
         }
     };

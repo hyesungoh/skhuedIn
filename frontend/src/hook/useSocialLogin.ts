@@ -9,7 +9,6 @@ import {
 import { IUser } from "types";
 import { useRecoilState } from "recoil";
 import { currentUserState } from "store/user";
-import usePushSigninSetting from "./usePushSigninSetting";
 
 interface ISignin {
     data: IUser;
@@ -38,6 +37,7 @@ const useSocialLogin = () => {
             accessToken,
         });
 
+        // 유저가 첫 방문, 즉 회원 가입을 해야할 시
         if (userData.data.firstVisit) {
             setCurrentUser({
                 isSigned: false,
@@ -48,7 +48,7 @@ const useSocialLogin = () => {
             });
             history.push("/signin/setting");
         } else {
-            
+            // 회원 가입을 했던 유저일 시
             // set token to axios defaults header
             axios.defaults.headers.common[
                 "Authorization"
@@ -61,6 +61,9 @@ const useSocialLogin = () => {
                     ...userData.data.data,
                 },
             });
+
+            // 세션에 유저 토큰 정보를 저장
+            window.sessionStorage.setItem("userToken", userData.data.token);
 
             console.log(userData.data.data.name + "님 로그인 됐습니다");
             console.log(userData);
