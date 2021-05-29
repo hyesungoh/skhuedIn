@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
 import MyRouter from "router/router";
+import useUserSession from "hook/useUserSession";
+import { useEffect } from "react";
 
 function App() {
-    useEffect(()=> {
-        const userToken = window.sessionStorage.getItem("userToken");
-        console.log(userToken);
-
-    }, [])
+    const { getUserDataWithSession } = useUserSession();
+    useEffect(() => {
+        getUserDataWithSession();
+    }, []);
+    
     return <MyRouter />;
 }
 
