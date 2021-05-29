@@ -6,7 +6,7 @@ import { baseUrl } from "api/url";
 
 interface SetUserTokenAndIdProps {
     token: string;
-    id: string;
+    id: number;
 }
 
 const useUserSession = () => {
@@ -30,7 +30,7 @@ const useUserSession = () => {
 
     const setUserTokenAndId = ({ token, id }: SetUserTokenAndIdProps) => {
         window.sessionStorage.setItem(TOKEN_SESSION_NAME, token);
-        window.sessionStorage.setItem(ID_SESSION_NAME, id);
+        window.sessionStorage.setItem(ID_SESSION_NAME, JSON.stringify(id));
     };
 
     return { setUserTokenAndId, getUserDataWithSession };

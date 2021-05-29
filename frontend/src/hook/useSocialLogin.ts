@@ -9,6 +9,7 @@ import {
 import { IUser } from "types";
 import { useRecoilState } from "recoil";
 import { currentUserState } from "store/user";
+import useUserSession from "./useUserSession";
 
 interface ISignin {
     data: IUser;
@@ -33,6 +34,7 @@ const useSocialLogin = () => {
         fetchURL: string,
         accessToken: string
     ) => {
+        const { setUserTokenAndId } = useUserSession();
         const userData = await axios.post<ISignin>(fetchURL, {
             accessToken,
         });
@@ -62,8 +64,10 @@ const useSocialLogin = () => {
                 },
             });
 
-            // 세션에 유저 토큰 정보를 저장
-            window.sessionStorage.setItem("userToken", userData.data.token);
+            setUserTokenAndId({
+                token: userData.data.token,
+                id: userData.data.data.id,
+            });
 
             console.log(userData.data.data.name + "님 로그인 됐습니다");
             console.log(userData);
