@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 import { currentUserState } from "store/user";
 import NavPresenter from "pages/nav/presenter/NavPresenter";
@@ -14,7 +14,8 @@ const NavContainer = () => {
         { path: "interview", name: "인터뷰" },
     ];
 
-    const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+    const setCurrentUser = useSetRecoilState(currentUserState);
+
     const { clearUserSession } = useUserSession();
 
     const onMypageClick = () => {
@@ -36,7 +37,6 @@ const NavContainer = () => {
     return (
         <NavPresenter
             categorys={categorys}
-            currentUser={currentUser}
             onMypageClick={onMypageClick}
             onSettingClick={onSettingClick}
             onSignOutClick={onSignOutClick}

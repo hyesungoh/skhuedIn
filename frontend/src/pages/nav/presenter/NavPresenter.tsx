@@ -5,10 +5,11 @@ import Category from "components/nav/Category";
 import { ICurrentUser } from "types";
 
 import "pages/nav/nav.scss";
+import { useRecoilValue } from "recoil";
+import { currentUserState } from "store/user";
 
 interface INav {
     categorys: { path: string; name: string }[];
-    currentUser: ICurrentUser;
     onMypageClick: () => void;
     onSettingClick: () => void;
     onSignOutClick: () => void;
@@ -16,11 +17,12 @@ interface INav {
 
 const Nav = ({
     categorys,
-    currentUser,
     onMypageClick,
     onSettingClick,
     onSignOutClick,
 }: INav) => {
+    const currentUser = useRecoilValue(currentUserState);
+
     const SignedInCategory = () => (
         <div className="nav__category__element nav__dropdown">
             <span></span>
