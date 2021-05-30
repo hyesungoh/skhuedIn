@@ -36,10 +36,16 @@ const useUserSession = () => {
             `${baseUrl}/api/users/${sessionId}`
         );
 
+        // 글로벌 상태관리를 위한 저장
         setCurrentUser({
             ...userData.data,
             isSigned: true,
         });
+
+        // axios 호출 시에 토큰 정보를 포함하기 위해 저장
+        axios.defaults.headers.common[
+            "Authorization"
+        ] = `Bearer ${sessionToken}`;
     };
 
     const setUserTokenAndId = ({ token, id }: SetUserTokenAndIdProps) => {
