@@ -10,6 +10,7 @@ import { isNewQuestionModalOpenState, newQuestionState } from "store/question";
 import useUserById from "hook/useUserById";
 import TextInputWithLabel from "components/TextInputWithLabel";
 import TextAreaWithLabel from "components/TextAreaWithLabel";
+import StyledButton from "components/StyledButton";
 
 interface Params {
     id: string;
@@ -62,7 +63,7 @@ const NewQuestion = () => {
             classNames="modal--transition"
         >
             <div className="modal" onClick={closeModal}>
-                <div className="modal__content">
+                <ModalBox className="modal__content">
                     <StyledH2>
                         <strong>{targetUserData?.data.name}</strong>님에게
                         질문하기
@@ -78,10 +79,8 @@ const NewQuestion = () => {
                         name="content"
                         onChange={handleDebounceChange}
                     ></TextAreaWithLabel>
-                    <button type="submit" onClick={onSubmit}>
-                        submit
-                    </button>
-                </div>
+                    <StyledButton type="submit" label="질문 완료" onClick={onSubmit}/>
+                </ModalBox>
             </div>
         </CSSTransition>
     );
@@ -92,4 +91,12 @@ export default NewQuestion;
 const StyledH2 = styled.h2`
     font-weight: 500;
     font-size: 1.2rem;
+`;
+
+const ModalBox = styled.div`
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: ${({ theme }) => theme.border_intensity};
 `;

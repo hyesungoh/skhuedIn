@@ -38,7 +38,7 @@ const Wrapper = styled.div`
 const Textarea = styled.textarea`
     all: unset;
     width: 100%;
-    height: 100px;
+    height: 150px;
     white-space: pre-line;
 `;
 
