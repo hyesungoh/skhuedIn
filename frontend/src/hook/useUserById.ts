@@ -5,7 +5,7 @@ import { baseUrl } from "api/url";
 import { IGetUserById } from "types/fetch";
 
 const useUserById = (userId: string) => {
-    const { data, isLoading } = useQuery(["user", userId], () =>
+    const { data } = useQuery(["user", userId], () =>
         axios.get<IGetUserById>(`${baseUrl}/api/users/${userId}`)
     );
 

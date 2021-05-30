@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 function App() {
     const { getUserDataWithSession } = useUserSession();
+
     useEffect(() => {
         getUserDataWithSession();
     }, []);

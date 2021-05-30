@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useMutation } from "react-query";
+import { useQuery, useMutation } from "react-query";
 
 import { baseUrl } from "api/url";
+import { IGetUserById } from "types/fetch";
 
 interface IYears {
     userId: number;

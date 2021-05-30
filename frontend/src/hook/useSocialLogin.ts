@@ -27,6 +27,7 @@ declare global {
 const useSocialLogin = () => {
     const history = useHistory();
     const location = useLocation();
+    const { setUserTokenAndId } = useUserSession();
     const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
 
     const PushPathWithUserData = async (
@@ -34,7 +35,7 @@ const useSocialLogin = () => {
         fetchURL: string,
         accessToken: string
     ) => {
-        const { setUserTokenAndId } = useUserSession();
+        
         const userData = await axios.post<ISignin>(fetchURL, {
             accessToken,
         });
