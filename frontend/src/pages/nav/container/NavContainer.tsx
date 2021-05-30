@@ -1,4 +1,4 @@
-import { createBrowserHistory } from "history";
+import { useHistory } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 import { currentUserState } from "store/user";
@@ -6,7 +6,7 @@ import NavPresenter from "pages/nav/presenter/NavPresenter";
 import useUserSession from "hook/useUserSession";
 
 const NavContainer = () => {
-    const history = createBrowserHistory();
+    const history = useHistory();
     const categorys = [
         { path: "", name: "이야기" },
         { path: "introduce", name: "소개" },
