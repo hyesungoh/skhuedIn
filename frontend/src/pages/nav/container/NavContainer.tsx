@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 
 import { currentUserState } from "store/user";
 import NavPresenter from "pages/nav/presenter/NavPresenter";
+import useUserSession from "hook/useUserSession";
 
 const NavContainer = () => {
     const history = createBrowserHistory();
@@ -14,6 +15,7 @@ const NavContainer = () => {
     ];
 
     const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+    const { clearUserSession } = useUserSession();
 
     const onMypageClick = () => {
         // user id도 교환
@@ -27,7 +29,8 @@ const NavContainer = () => {
 
     const onSignOutClick = () => {
         setCurrentUser({ isSigned: false });
-        history.push("/signin");
+        clearUserSession();
+        history.push("/");
     };
 
     return (

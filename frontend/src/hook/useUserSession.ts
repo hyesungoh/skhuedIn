@@ -47,8 +47,12 @@ const useUserSession = () => {
         window.sessionStorage.setItem(ID_SESSION_NAME, JSON.stringify(id));
     };
 
-    
-    return { setUserTokenAndId, getUserDataWithSession };
+    const clearUserSession = () => {
+        window.sessionStorage.removeItem(TOKEN_SESSION_NAME);
+        window.sessionStorage.removeItem(ID_SESSION_NAME);
+    };
+
+    return { setUserTokenAndId, getUserDataWithSession, clearUserSession };
 };
 
 export default useUserSession;
