@@ -127,9 +127,8 @@ import ReactMarkdown from "react-markdown";
 
 function Compo() {
     const [value, setValue] = useState<string | undefined>("");
-    const [selectedTab, setSelectedTab] = useState<"write" | "preview">(
-        "write"
-    );
+    const [selectedTab, setSelectedTab] =
+        useState<"write" | "preview">("write");
 
     return (
         <ReactMde
@@ -287,6 +286,59 @@ const someComponent = () => {
         </div>
     );
 };
+```
+
+-   #### Styled-components props with TS
+
+```tsx
+
+const StyledBtn = styled.button<{width: string}>`
+    width: ${({width}) => `${width}px`}
+`;
+
+
+interface StyledSpanProps {
+    fontSize: string;
+    color: string;
+    ...
+}
+
+const StyledSpan = styled.span<StyledSpanProps>`
+    color: ${({color}) => color};
+    ...
+`;
+```
+
+-   #### Recoil atom usage
+
+```ts
+// store/user.ts
+import { atom } from "recoil";
+import { ICurrentUser } from "types";
+
+export const currentUserState = atom<ICurrentUser>({
+    key: "currentUserState",
+    default: { isSigned: false },
+});
+
+// when using state
+import { useRecoilState } from "recoil";
+import { currentUserState } from "store/user";
+...
+
+const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+
+// when using state's value
+import {useRecoilValue} from "recoil";
+...
+
+const currentUser = useRecoilValue(currentUserState);
+
+// when using state's set method
+import {useSetRecoilState} from "recoil";
+...
+
+const setCurrentUser = useSetRecoilState(currentUserState);
 ```
 
 ## Issue
