@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
 import { isNewQuestionModalOpenState, newQuestionState } from "store/question";
+import { baseUrl } from "api/url";
 
 const useQuestion = () => {
     const queryClient = useQueryClient();
@@ -22,7 +23,7 @@ const useQuestion = () => {
 
     const saveQuestion = useMutation(
         (targetId: number) => {
-            return axios.post("http://localhost:8080/api/questions", {
+            return axios.post(`${baseUrl}/api/questions`, {
                 fix: true,
                 status: true,
                 targetUserId: targetId,
