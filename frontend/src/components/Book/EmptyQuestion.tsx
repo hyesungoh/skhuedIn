@@ -33,6 +33,9 @@ const EmptyQuestion = ({ onClickNewQuestion }: EmptyQuestionProps) => {
 export default EmptyQuestion;
 
 const StyledDiv = styled.div`
+    position: sticky;
+    top: 80px;
+
     width: 40%;
     height: 110px;
     background-color: ${({ theme }) => theme.colors.white};
