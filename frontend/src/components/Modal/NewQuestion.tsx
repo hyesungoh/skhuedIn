@@ -45,7 +45,6 @@ const NewQuestion = () => {
 
     const handleDebounceChange = _.debounce(
         (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-            console.log(newQuestion);
             setNewQuestion({ ...newQuestion, [e.target.name]: e.target.value });
         },
         300
@@ -79,7 +78,11 @@ const NewQuestion = () => {
                         name="content"
                         onChange={handleDebounceChange}
                     ></TextAreaWithLabel>
-                    <StyledButton type="submit" label="질문 완료" onClick={onSubmit}/>
+                    <StyledButton
+                        type="submit"
+                        label="질문 완료"
+                        onClick={onSubmit}
+                    />
                 </ModalBox>
             </div>
         </CSSTransition>

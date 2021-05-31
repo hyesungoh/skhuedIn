@@ -221,7 +221,9 @@
 }
 
 .book__right__question {
-    height: 74vh;
+    max-height: 74vh;
+    height: auto;
+    padding: 2px 0px 12px 0px;
     background-color: $white_color;
     border-radius: $border_intensity;
     overflow: scroll;
