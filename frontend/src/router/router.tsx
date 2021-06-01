@@ -5,7 +5,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import NavContainer from "pages/nav/container/NavContainer";
 import HomeContainer from "pages/home/container/HomeContainer";
-import InterviewPresenter from "pages/interview/presenter/InterviewPresenter";
+import SuggestionPresenter from "pages/suggestion/presenter/SuggestionPresenter";
 import IntroducePresenter from "pages/introduce/presenter/IntroducePresenter";
 import LibraryContainer from "pages/library/container/LibraryContainer";
 import BookContainer from "pages/book/container/BookContainer";
@@ -29,7 +29,7 @@ const TransitionRouter = withRouter(({ location }) => (
                 <Route path="/introduce" component={IntroducePresenter} />
                 <Route path="/library" exact component={LibraryContainer} />
                 <Route path="/library/:id" exact component={BookContainer} />
-                <Route path="/interview" component={InterviewPresenter} />
+                <Route path="/suggestion" component={SuggestionPresenter} />
                 <Route path="/signin" exact component={SignInContainer} />
                 <Route path="/signin/naver" component={SignInNaverContainer} />
                 <Route
