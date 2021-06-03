@@ -14,7 +14,7 @@ const useMainPosts = () => {
     const [mainPosts, setMainPosts] = useRecoilState(mainPostsState);
 
     const { data, isLoading } = useQuery("mainPosts", () =>
-        axios.get<IGetMainPosts>(`${baseUrl}/api/main?page=0&size=10`)
+        axios.get<IGetMainPosts>(`${baseUrl}/api/main?page=0&size=3`)
     );
 
     const refresh = () => {
@@ -25,13 +25,17 @@ const useMainPosts = () => {
         () => {
             setMainPostsPage(mainPostsPage + 1);
             return axios.get<IGetMainPosts>(
-                `${baseUrl}/api/main?page=${mainPostsPage}&size=10`
+                `${baseUrl}/api/main?page=${mainPostsPage}&size=3`
             );
         },
         {
             onSuccess: () => refresh(),
         }
     );
+
+    useEffect(() => {
+        setMainPosts([]);
+    }, []);
 
     useEffect(() => {
         if (data) {
