@@ -9,7 +9,7 @@ const useMainPosts = () => {
         axios.get<IGetMainPosts>(`${baseUrl}/api/main?page=0&size=10`)
     );
 
-    console.log(data);
+    console.log(data?.data.data);
 };
 
 export default useMainPosts;
