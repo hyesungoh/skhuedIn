@@ -6,7 +6,8 @@ import useMainPosts from "hook/useMainPosts";
 const HomeContainer = ({ history }: RouteComponentProps) => {
     // return <HomePresenter loading={loading} posts={posts} />;
 
-    useMainPosts();
+    const { data } = useMainPosts();
+    
     return <div></div>;
 };
 
