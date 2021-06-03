@@ -1,14 +1,10 @@
-import React from "react";
-
 import NewsfeedContent from "components/Home/NewsfeedContent";
+import { useRecoilValue } from "recoil";
+import { mainPostsState } from "store/posts";
 
-import { IPost } from "types";
+const Newsfeed = () => {
+    const posts = useRecoilValue(mainPostsState);
 
-interface INewsfeed {
-    posts: IPost[];
-}
-
-const Newsfeed = ({ posts }: INewsfeed) => {
     const setContentFormat = (ogContent: string) => {
         const fmContent = ogContent.split("\n").slice(0, 3).join("\n");
         return fmContent;

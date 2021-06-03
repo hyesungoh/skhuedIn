@@ -1,21 +1,15 @@
-import React from "react";
-
 import Newsfeed from "components/Home/Newsfeed";
 import Profile from "components/Home/Profile";
 import Honor from "components/Home/Honor";
+import useMainPosts from "hook/useMainPosts";
 
-import { IPost } from "types";
-import "pages/home/Home.scss";
-
-interface IHomePresenter {
-    loading: boolean;
-    posts: IPost[];
-}
-const HomePresenter = ({ loading, posts }: IHomePresenter) => {
+const HomePresenter = () => {
+    const { isLoading } = useMainPosts();
+    
     return (
         <div className="home">
             <Profile />
-            <Newsfeed posts={posts} />
+            <Newsfeed />
             <Honor />
         </div>
     );
