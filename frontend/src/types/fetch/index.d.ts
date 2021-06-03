@@ -22,6 +22,16 @@ export interface IFetchBlog extends IFetchBase {
     };
 }
 
+export interface IMainPosts {
+    categoryName: string;
+    posts: IPost[];
+    weight: number;
+}
+
+export interface IGetMainPosts {
+    data: IMainPosts[];
+}
+
 export interface IGetBlogById {
     data: {
         content: string;
