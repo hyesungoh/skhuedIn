@@ -4,7 +4,7 @@ interface PropTypes {
     root?: null;
     rootMargin?: string;
     threshold?: number;
-    target: Element | null;
+    target: HTMLDivElement | null;
     onIntersect: IntersectionObserverCallback;
 }
 
@@ -16,12 +16,12 @@ const useInfinityScroll = ({
     onIntersect,
 }: PropTypes) => {
     useEffect(() => {
+        if (!target) return;
+        
         const observer: IntersectionObserver = new IntersectionObserver(
             onIntersect,
             { root, rootMargin, threshold }
         );
-
-        if (!target) return;
 
         observer.observe(target);
         return () => observer.unobserve(target);

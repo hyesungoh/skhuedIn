@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import NewsfeedContent from "components/Home/NewsfeedContent";
 import { useRecoilValue } from "recoil";
 import { mainPostsState } from "store/posts";
@@ -6,6 +7,7 @@ import Loading from "components/Loading/Loading";
 import useInfinityScroll from "hook/useInfinityScroll";
 
 const Newsfeed = () => {
+    const observeTarget = useRef<HTMLDivElement>(null);
     const posts = useRecoilValue(mainPostsState);
 
     const { isLoading, onIntersect } = useMainPosts();
@@ -15,7 +17,13 @@ const Newsfeed = () => {
         return fmContent;
     };
 
-    // useInfinityScroll(target);
+    useInfinityScroll({
+        target: observeTarget.current,
+        onIntersect: ([{ isIntersecting }]) => {
+            if (isIntersecting) onIntersect();
+        },
+        rootMargin: "20px",
+    });
 
     if (isLoading) return <Loading />;
 
@@ -31,6 +39,7 @@ const Newsfeed = () => {
                     view={post.view}
                 />
             ))}
+            <div ref={observeTarget} />
         </div>
     );
 };
