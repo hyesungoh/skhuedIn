@@ -1,9 +1,17 @@
+import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 import HomePresenter from "../presenter/HomePresenter";
-import { RouteComponentProps } from "react-router";
+
 import "pages/home/Home.scss";
-import useMainPosts from "hook/useMainPosts";
+import { mainPostsPageState } from "store/posts";
 
 const HomeContainer = () => {
+    const setMainPostsPage = useSetRecoilState(mainPostsPageState);
+    
+    useEffect(() => {
+        setMainPostsPage(0);
+    }, []);
+
     return <HomePresenter />;
 
     // const { data } = useMainPosts();
