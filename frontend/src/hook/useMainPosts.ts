@@ -11,11 +11,17 @@ const useMainPosts = () => {
     const [mainPostsPage, setMainPostsPage] =
         useRecoilState(mainPostsPageState);
     const [mainPosts, setMainPosts] = useRecoilState(mainPostsState);
+    const 
 
     const setDataToPosts = (data: AxiosResponse<IGetMainPosts>) => {
+        if (data.data.data[0].posts.length === 0) {
+
+        }
+
         for (const tempData of data.data.data) {
             setMainPosts([...mainPosts, ...tempData.posts]);
         }
+        console.log(mainPosts);
     };
 
     const { isLoading } = useQuery(
@@ -34,7 +40,6 @@ const useMainPosts = () => {
     // hasMore 를 통해서 한 번 더 부를 수 있는 지 확인하자
     const onIntersect = useMutation(
         () => {
-            console.log("fecth");
             setMainPostsPage(mainPostsPage + 1);
             return axios.get<IGetMainPosts>(
                 `${baseUrl}/api/main?page=${mainPostsPage}&size=5`

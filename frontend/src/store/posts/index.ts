@@ -10,3 +10,8 @@ export const mainPostsState = atom<IPost[]>({
     key: "mainPostsState",
     default: [],
 });
+
+export const hasMorePostsState = atom<boolean>({
+    key: "hasMorePostsState",
+    default: true,
+});
