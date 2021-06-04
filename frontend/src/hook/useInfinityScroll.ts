@@ -17,7 +17,7 @@ const useInfinityScroll = ({
 }: PropTypes) => {
     useEffect(() => {
         if (!target) return;
-        
+
         const observer: IntersectionObserver = new IntersectionObserver(
             onIntersect,
             { root, rootMargin, threshold }

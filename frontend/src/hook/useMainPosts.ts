@@ -2,47 +2,59 @@ import { useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 import { useQueryClient, useQuery, useMutation } from "react-query";
 import { useRecoilState } from "recoil";
-import { mainPostsPageState, mainPostsState } from "store/posts";
+import {
+    hasMorePostsState,
+    mainPostsPageState,
+    mainPostsState,
+} from "store/posts";
 
 import { baseUrl } from "api/url";
 import { IGetMainPosts } from "types/fetch";
+import { IPost } from "types";
 
 const useMainPosts = () => {
     const [mainPostsPage, setMainPostsPage] =
         useRecoilState(mainPostsPageState);
     const [mainPosts, setMainPosts] = useRecoilState(mainPostsState);
-    const 
+    const [hasMorePosts, setHasMorePosts] = useRecoilState(hasMorePostsState);
 
     const setDataToPosts = (data: AxiosResponse<IGetMainPosts>) => {
-        if (data.data.data[0].posts.length === 0) {
-
-        }
+        let isAllEmpty = false;
+        let tempArray: IPost[] = [];
 
         for (const tempData of data.data.data) {
-            setMainPosts([...mainPosts, ...tempData.posts]);
+            if (tempData.posts.length !== 0) {
+                isAllEmpty = true;
+            }
+            tempArray = [...tempArray, ...tempData.posts];
         }
-        console.log(mainPosts);
+
+        setMainPosts([...mainPosts, ...tempArray]);
+        setHasMorePosts(isAllEmpty);
     };
 
     const { isLoading } = useQuery(
         "mainPosts",
         () => {
-            console.log("FUCK");
             return axios.get<IGetMainPosts>(
-                `${baseUrl}/api/main?page=0&size=5`
+                `${baseUrl}/api/main?page=${mainPostsPage}&size=1`
             );
         },
         {
-            onSuccess: (data) => setDataToPosts(data),
+            onSuccess: (data) => {
+                setMainPosts([]);
+                setDataToPosts(data);
+            },
         }
     );
 
     // hasMore 를 통해서 한 번 더 부를 수 있는 지 확인하자
     const onIntersect = useMutation(
         () => {
+            console.log("observe");
             setMainPostsPage(mainPostsPage + 1);
             return axios.get<IGetMainPosts>(
-                `${baseUrl}/api/main?page=${mainPostsPage}&size=5`
+                `${baseUrl}/api/main?page=${mainPostsPage}&size=1`
             );
         },
         {
