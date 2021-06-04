@@ -1,32 +1,28 @@
+import { userInfo } from "node:os";
 import React from "react";
 import ReactMarkdown from "react-markdown";
-
-import sample from "static/images/profile.png";
-
-interface INewsfeedContent {
-    id: number;
-    title: string;
-    content: string;
-    createdDate: string;
-    view: number;
-}
+import { IPost } from "types";
 
 const NewsfeedContent = ({
+    id,
+    blogId,
     title,
     content,
-    createdDate,
     view,
-}: INewsfeedContent) => {
+    createdDate,
+    lastModifiedDate,
+    user,
+}: IPost) => {
     return (
         <div className="newsfeed__content mde-preview">
             <div className="newsfeed__content__writer">
                 <div className="newsfeed__content__writer__img">
-                    <img src={sample} alt="writer profile img" />
+                    <img src={user.userImageUrl} alt="writer profile img" />
                 </div>
                 <div className="newsfeed__content__writer__info">
-                    <span>Hyesung Oh</span>
+                    <span>{user.name}</span>
                     <span className="newsfeed__content__writer__info--major">
-                        소프트웨어공학과
+                        {title}
                     </span>
                 </div>
             </div>

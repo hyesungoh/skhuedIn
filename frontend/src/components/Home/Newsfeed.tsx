@@ -36,10 +36,13 @@ const Newsfeed = () => {
                 <NewsfeedContent
                     key={index}
                     id={post.id}
+                    blogId={post.blogId}
                     title={post.title}
-                    content={setContentFormat(post.content)}
-                    createdDate={post.createdDate}
+                    content={post.content}
                     view={post.view}
+                    createdDate={post.createdDate}
+                    lastModifiedDate={post.lastModifiedDate}
+                    user={post.user}
                 />
             ))}
             <div ref={observeTarget} />
