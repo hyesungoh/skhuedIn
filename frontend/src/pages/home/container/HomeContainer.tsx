@@ -7,15 +7,12 @@ import { mainPostsPageState } from "store/posts";
 
 const HomeContainer = () => {
     const setMainPostsPage = useSetRecoilState(mainPostsPageState);
-    
+
     useEffect(() => {
         setMainPostsPage(0);
     }, []);
 
     return <HomePresenter />;
-
-    // const { data } = useMainPosts();
-    // return <div></div>;
 };
 
 export default HomeContainer;

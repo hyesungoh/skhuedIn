@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
-import { useQueryClient, useQuery, useMutation } from "react-query";
+import { useQuery } from "react-query";
 import { useRecoilState } from "recoil";
 import {
     hasMorePostsState,
@@ -26,7 +25,7 @@ const useMainPosts = () => {
             if (tempData.posts.length !== 0) {
                 isAllEmpty = true;
             }
-            tempArray = [...tempArray, ...tempData.posts];
+            Array.prototype.push.apply(tempArray, tempData.posts);
         }
 
         setMainPosts([...mainPosts, ...tempArray]);
@@ -36,35 +35,43 @@ const useMainPosts = () => {
     const { isLoading } = useQuery(
         "mainPosts",
         () => {
+            setMainPosts([]);
+            setMainPostsPage(1);
             return axios.get<IGetMainPosts>(
-                `${baseUrl}/api/main?page=${mainPostsPage}&size=1`
+                `${baseUrl}/api/main?page=${0}&size=1`
             );
         },
         {
             onSuccess: (data) => {
-                setMainPosts([]);
                 setDataToPosts(data);
             },
         }
     );
 
-    // hasMore 를 통해서 한 번 더 부를 수 있는 지 확인하자
-    const onIntersect = useMutation(
-        () => {
-            console.log("observe");
-            setMainPostsPage(mainPostsPage + 1);
-            return axios.get<IGetMainPosts>(
-                `${baseUrl}/api/main?page=${mainPostsPage}&size=1`
-            );
-        },
-        {
-            onSuccess: (data) => setDataToPosts(data),
-        }
-    );
+    const onIntersect = async () => {
+        const data = await axios.get<IGetMainPosts>(
+            `${baseUrl}/api/main?page=${mainPostsPage + 1}&size=1`
+        );
+        setMainPostsPage(mainPostsPage + 1);
+        setDataToPosts(data);
+    };
+
+    // const onIntersect = useMutation(
+    //     () => {
+    //         console.log("observe");
+    //         setMainPostsPage(mainPostsPage + 1);
+    //         return axios.get<IGetMainPosts>(
+    //             `${baseUrl}/api/main?page=${mainPostsPage}&size=1`
+    //         );
+    //     },
+    //     {
+    //         onSuccess: (data) => setDataToPosts(data),
+    //     }
+    // );
 
     return {
         isLoading,
-        onIntersect: onIntersect.mutate,
+        onIntersect,
     };
 };
 

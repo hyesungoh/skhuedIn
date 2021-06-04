@@ -1,10 +1,12 @@
 import { useRef } from "react";
-import NewsfeedContent from "components/Home/NewsfeedContent";
 import { useRecoilValue } from "recoil";
-import { hasMorePostsState, mainPostsState } from "store/posts";
+import _ from "lodash";
+
 import useMainPosts from "hook/useMainPosts";
 import Loading from "components/Loading/Loading";
 import useInfinityScroll from "hook/useInfinityScroll";
+import NewsfeedContent from "components/Home/NewsfeedContent";
+import { hasMorePostsState, mainPostsState } from "store/posts";
 
 const Newsfeed = () => {
     const observeTarget = useRef<HTMLDivElement>(null);
