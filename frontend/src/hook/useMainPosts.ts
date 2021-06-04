@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { useQuery } from "react-query";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
     hasMorePostsState,
     mainPostsPageState,
@@ -15,7 +15,7 @@ const useMainPosts = () => {
     const [mainPostsPage, setMainPostsPage] =
         useRecoilState(mainPostsPageState);
     const [mainPosts, setMainPosts] = useRecoilState(mainPostsState);
-    const [hasMorePosts, setHasMorePosts] = useRecoilState(hasMorePostsState);
+    const setHasMorePosts = useSetRecoilState(hasMorePostsState);
 
     const setDataToPosts = (data: AxiosResponse<IGetMainPosts>) => {
         let isAllEmpty = false;
