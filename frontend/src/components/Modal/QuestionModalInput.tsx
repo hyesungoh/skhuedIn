@@ -42,8 +42,10 @@ export default QuestionModalInput;
 
 const CommentWriteDiv = styled.div`
     width: 100%;
+    height: 10%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `;
 
 const CommentInput = styled.input`
