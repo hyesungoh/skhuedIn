@@ -1,5 +1,6 @@
 import BookProfile from "components/Book/BookProfile";
 import BookProfilePosts from "components/Book/BookProfilePosts";
+import EmptyBookProfilePosts from "components/Book/EmptyBookProfilePosts";
 import Questions from "components/Book/Questions";
 
 import { IPost, IQuestion, IUser } from "types";
@@ -26,11 +27,16 @@ const BookPresenter = ({
     if (isLoading) return <Loading />;
     if (error || !posts) return <Error />;
 
+    console.log(posts);
     return (
         <div className="book">
             <div className="book__profile">
                 <BookProfile user={user} />
-                <BookProfilePosts posts={posts ? posts : []} user={user} />
+                {posts ? (
+                    <BookProfilePosts posts={posts} user={user} />
+                ) : (
+                    <EmptyBookProfilePosts />
+                )}
             </div>
 
             <Questions questions={questions ? questions : []} />

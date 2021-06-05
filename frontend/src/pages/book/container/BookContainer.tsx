@@ -26,7 +26,7 @@ const BookContainer = () => {
         <BookPresenter
             isLoading={isLoading}
             error={error}
-            posts={data.posts}
+            posts={data.posts.content}
             user={data.user}
             questions={quesData?.content}
         />

@@ -6,7 +6,7 @@ interface IBookProfileInfoSummary {
     name: string;
     email: string;
     entranceYear: string;
-    graduationYear: string;
+    graduationYear?: string;
 }
 
 const BookProfileInfoSummary = ({
@@ -19,8 +19,9 @@ const BookProfileInfoSummary = ({
         ["이름", name],
         ["Email", email],
         ["입학 년도", entranceYear.slice(0, 4)],
-        ["졸업 년도", graduationYear.slice(0, 4)],
+        graduationYear ? ["졸업 년도", graduationYear.slice(0, 4)] : ["", ""],
     ];
+    
     return (
         <div className="book__profile__info__summary">
             {categoryElement.map((element, index) => (

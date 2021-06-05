@@ -39,7 +39,10 @@ export interface IGetBlogById {
         id: number;
         lastModifiedDate: string;
         profileImageUrl: string;
-        posts: IPost[];
+        posts: {
+            content: IPost[];
+            pageable: IPageable;
+        };
         user: IUser;
     };
 }

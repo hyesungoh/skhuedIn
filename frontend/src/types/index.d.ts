@@ -29,12 +29,12 @@ export interface IBlog {
 export interface IPost {
     id: number;
     blogId: number;
+    user: IUser;
     title: string;
     content: string;
     view: number;
     createdDate: string;
     lastModifiedDate: string;
-    user: IUser;
 }
 
 export interface IPageable {
