@@ -1,3 +1,4 @@
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import { IUser } from "types";
 
@@ -6,16 +7,27 @@ interface WriterSectionProps {
 }
 
 const WriterSection = ({ writer }: WriterSectionProps) => {
+    const history = useHistory();
+
+    const onNameClick = () => {
+        history.push(`/library/${writer.id}`);
+    };
+
     return (
         <StyledSection>
-            <ProfileImageDiv>
+            <ProfileImageDiv
+                onClick={onNameClick}
+                style={{ cursor: "pointer" }}
+            >
                 <ProfileImage
                     src={writer.userImageUrl}
                     alt={`${writer.name} profile image`}
                 />
             </ProfileImageDiv>
             <ProfileInfoDiv>
-                <BoldSpan>{writer.name}</BoldSpan>
+                <BoldSpan onClick={onNameClick} style={{ cursor: "pointer" }}>
+                    {writer.name}
+                </BoldSpan>
                 <SoftSpan>{writer.email}</SoftSpan>
 
                 <ProfileYearDiv>
@@ -53,7 +65,7 @@ const StyledSection = styled.section`
 const ProfileImageDiv = styled.div`
     position: relative;
     overflow: hidden;
-    
+
     width: 200px;
     height: 200px;
     border-radius: 50%;
