@@ -1,6 +1,7 @@
 import { userInfo } from "node:os";
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import { useHistory } from "react-router";
 import { IPost } from "types";
 
 const NewsfeedContent = ({
@@ -13,8 +14,14 @@ const NewsfeedContent = ({
     lastModifiedDate,
     user,
 }: IPost) => {
+    const history = useHistory();
+
+    const onDivClick = () => {
+        history.push(`/post/${id}`);
+    };
+
     return (
-        <div className="newsfeed__content mde-preview">
+        <div className="newsfeed__content mde-preview" onClick={onDivClick}>
             <div className="newsfeed__content__writer">
                 <div className="newsfeed__content__writer__img">
                     <img src={user.userImageUrl} alt="writer profile img" />

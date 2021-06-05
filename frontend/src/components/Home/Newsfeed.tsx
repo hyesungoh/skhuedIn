@@ -38,7 +38,7 @@ const Newsfeed = () => {
                     id={post.id}
                     blogId={post.blogId}
                     title={post.title}
-                    content={post.content}
+                    content={setContentFormat(post.content)}
                     view={post.view}
                     createdDate={post.createdDate}
                     lastModifiedDate={post.lastModifiedDate}
