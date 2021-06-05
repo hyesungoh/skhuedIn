@@ -1,3 +1,4 @@
+import { baseUrl } from "api/url";
 import { userInfo } from "node:os";
 import React from "react";
 import ReactMarkdown from "react-markdown";
@@ -24,7 +25,14 @@ const NewsfeedContent = ({
         <div className="newsfeed__content mde-preview" onClick={onDivClick}>
             <div className="newsfeed__content__writer">
                 <div className="newsfeed__content__writer__img">
-                    <img src={user.userImageUrl} alt="writer profile img" />
+                    <img
+                        src={
+                            user.userImageUrl
+                                ? user.userImageUrl
+                                : `${baseUrl}/profile/user.png`
+                        }
+                        alt="writer profile img"
+                    />
                 </div>
                 <div className="newsfeed__content__writer__info">
                     <span>{user.name}</span>
