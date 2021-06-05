@@ -8,9 +8,9 @@ import { mainPostsPageState } from "store/posts";
 const HomeContainer = () => {
     const setMainPostsPage = useSetRecoilState(mainPostsPageState);
 
-    useEffect(() => {
-        setMainPostsPage(0);
-    }, []);
+    // useEffect(() => {
+    //     setMainPostsPage(0);
+    // }, []);
 
     return <HomePresenter />;
 };

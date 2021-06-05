@@ -17,7 +17,7 @@ const useMainPosts = () => {
     const [mainPosts, setMainPosts] = useRecoilState(mainPostsState);
     const setHasMorePosts = useSetRecoilState(hasMorePostsState);
 
-    const setDataToPosts = (data: AxiosResponse<IGetMainPosts>) => {
+    const getDataToPosts = (data: AxiosResponse<IGetMainPosts>) => {
         let isAllEmpty = false;
         let tempArray: IPost[] = [];
 
@@ -28,22 +28,31 @@ const useMainPosts = () => {
             Array.prototype.push.apply(tempArray, tempData.posts);
         }
 
-        setMainPosts([...mainPosts, ...tempArray]);
         setHasMorePosts(isAllEmpty);
+        return tempArray;
+    };
+
+    const setOnMount = (data: AxiosResponse<IGetMainPosts>) => {
+        const tempArray = getDataToPosts(data);
+        setMainPosts([...tempArray]);
+    };
+
+    const setOnIntersect = (data: AxiosResponse<IGetMainPosts>) => {
+        const tempArray = getDataToPosts(data);
+        setMainPosts([...mainPosts, ...tempArray]);
     };
 
     const { isLoading } = useQuery(
         "mainPosts",
         () => {
-            setMainPosts([]);
-            setMainPostsPage(1);
+            setMainPostsPage(0);
             return axios.get<IGetMainPosts>(
-                `${baseUrl}/api/main?page=${0}&size=1`
+                `${baseUrl}/api/main?page=$0&size=1`
             );
         },
         {
             onSuccess: (data) => {
-                setDataToPosts(data);
+                setOnMount(data);
             },
         }
     );
@@ -53,21 +62,8 @@ const useMainPosts = () => {
             `${baseUrl}/api/main?page=${mainPostsPage + 1}&size=1`
         );
         setMainPostsPage(mainPostsPage + 1);
-        setDataToPosts(data);
+        setOnIntersect(data);
     };
-
-    // const onIntersect = useMutation(
-    //     () => {
-    //         console.log("observe");
-    //         setMainPostsPage(mainPostsPage + 1);
-    //         return axios.get<IGetMainPosts>(
-    //             `${baseUrl}/api/main?page=${mainPostsPage}&size=1`
-    //         );
-    //     },
-    //     {
-    //         onSuccess: (data) => setDataToPosts(data),
-    //     }
-    // );
 
     return {
         isLoading,
