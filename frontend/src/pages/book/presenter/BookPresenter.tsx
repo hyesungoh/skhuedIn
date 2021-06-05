@@ -27,7 +27,6 @@ const BookPresenter = ({
     if (isLoading) return <Loading />;
     if (error || !posts) return <Error />;
 
-    console.log(posts);
     return (
         <div className="book">
             <div className="book__profile">

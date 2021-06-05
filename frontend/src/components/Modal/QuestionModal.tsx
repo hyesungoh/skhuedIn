@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
 import { IComment } from "types";
+import QuestionModalComments from "./Question/QuestionModalComments";
 
 import QuestionModalInput from "./QuestionModalInput";
 
@@ -37,6 +38,7 @@ const QuestionModal = ({
         setTimeout(() => setOpenQuesIndex(null), MODAL_TRANSITION_DURATION);
     };
 
+    console.log(comments);
     return (
         <CSSTransition
             in={isOpen}
@@ -53,7 +55,9 @@ const QuestionModal = ({
                     <ModalContent>
                         <p>{content}</p>
                     </ModalContent>
-                    <ModalComments></ModalComments>
+                    <ModalComments>
+                        <QuestionModalComments questionId={id} />
+                    </ModalComments>
                     <QuestionModalInput
                         id={id}
                         comment={comment}
@@ -92,15 +96,15 @@ const ModalCloseBtn = styled.button`
 
 const ModalContent = styled.div`
     width: 100%;
-    height: 40%;
+    height: 35%;
 
     overflow: scroll;
 `;
 
 const ModalComments = styled.div`
     width: 100%;
-    height: 40%;
+    height: 45%;
+    background-color: ${({ theme }) => theme.colors.background};
 
     overflow: scroll;
-    background-color: blue;
 `;
