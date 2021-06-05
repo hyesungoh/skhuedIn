@@ -2,9 +2,13 @@ import React from "react";
 
 import styled, { keyframes } from "styled-components";
 
-const Loading = () => {
+interface LoadingProps {
+    width?: string;
+}
+
+const Loading = ({ width }: LoadingProps) => {
     return (
-        <LoadingDiv>
+        <LoadingDiv width={width}>
             <LoadingCircle></LoadingCircle>
         </LoadingDiv>
     );
@@ -12,8 +16,8 @@ const Loading = () => {
 
 export default Loading;
 
-const LoadingDiv = styled.div`
-    width: 100vw;
+const LoadingDiv = styled.div<{ width?: string }>`
+    width: ${({ width }) => (width ? width : "100vw")};
     height: 100vh;
 
     display: flex;

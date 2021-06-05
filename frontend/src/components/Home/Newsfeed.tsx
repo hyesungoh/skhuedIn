@@ -28,7 +28,7 @@ const Newsfeed = () => {
         rootMargin: "20px",
     });
 
-    if (isLoading) return <Loading />;
+    if (isLoading) return <Loading width="50%" />;
 
     return (
         <div className="home__newsfeed">
