@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import useQuestionComment from "hook/useQuestionComment";
+import EmptyQuestionModalComments from "./EmptyQuestionModalComments";
 
 interface PropTypes {
     questionId: number;
@@ -7,6 +8,8 @@ interface PropTypes {
 
 const QuestionModalComments = ({ questionId }: PropTypes) => {
     const { data } = useQuestionComment({ questionId });
+
+    if (data.length === 0) return <EmptyQuestionModalComments />;
 
     return (
         <ModalComments>
