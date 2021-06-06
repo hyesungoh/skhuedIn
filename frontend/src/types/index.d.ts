@@ -58,9 +58,9 @@ export interface IComment {
     writerUser: IUser;
     content: string;
     parentId: number | null;
+    children: IComment[];
     createdDate: string;
     lastModifiedDate: string;
-    children: IComment[];
 }
 
 export interface IQuestion {

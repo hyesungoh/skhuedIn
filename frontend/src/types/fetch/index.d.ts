@@ -1,4 +1,12 @@
-import { IBlog, IPageable, IPost, IQuestion, ISort, IUser } from "types";
+import {
+    IBlog,
+    IComment,
+    IPageable,
+    IPost,
+    IQuestion,
+    ISort,
+    IUser,
+} from "types";
 
 export interface IFetchBase {
     data: {
@@ -60,4 +68,8 @@ export interface IGetPostById {
 export interface IGetUserById {
     data: IUser;
     count: number;
+}
+
+export interface IGetCommentsByQuestionId {
+    data: IComment[];
 }

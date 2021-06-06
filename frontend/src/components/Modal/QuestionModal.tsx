@@ -38,7 +38,6 @@ const QuestionModal = ({
         setTimeout(() => setOpenQuesIndex(null), MODAL_TRANSITION_DURATION);
     };
 
-    console.log(comments);
     return (
         <CSSTransition
             in={isOpen}
@@ -55,9 +54,8 @@ const QuestionModal = ({
                     <ModalContent>
                         <p>{content}</p>
                     </ModalContent>
-                    <ModalComments>
-                        <QuestionModalComments questionId={id} />
-                    </ModalComments>
+
+                    <QuestionModalComments questionId={id} />
                     <QuestionModalInput
                         id={id}
                         comment={comment}
@@ -97,14 +95,6 @@ const ModalCloseBtn = styled.button`
 const ModalContent = styled.div`
     width: 100%;
     height: 35%;
-
-    overflow: scroll;
-`;
-
-const ModalComments = styled.div`
-    width: 100%;
-    height: 45%;
-    background-color: ${({ theme }) => theme.colors.background};
 
     overflow: scroll;
 `;
