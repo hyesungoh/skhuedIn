@@ -3,7 +3,9 @@ import styled from "styled-components";
 const EmptyQuestionModalComments = () => {
     return (
         <EmptyComments>
-            <span>아직 댓글이 없습니다 :C</span>
+            <span>
+                아직 댓글이 없습니다 <strong>:C</strong>
+            </span>
         </EmptyComments>
     );
 };

@@ -35,6 +35,7 @@ export default TextInputWithLabel;
 
 const Wrapper = styled.div`
     position: relative;
+    width: 100%;
     margin-top: 2rem;
 `;
 

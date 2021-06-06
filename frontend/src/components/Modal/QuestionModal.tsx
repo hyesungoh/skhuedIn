@@ -1,10 +1,9 @@
+import TextInputWithLabel from "components/TextInputWithLabel";
 import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
 import { IComment } from "types";
 import QuestionModalComments from "./Question/QuestionModalComments";
-
-import QuestionModalInput from "./QuestionModalInput";
 
 interface IQuestionModal {
     id: number;
@@ -49,18 +48,26 @@ const QuestionModal = ({
                     <ModalHeader>
                         <ModalTitle>{title}</ModalTitle>
 
-                        <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
+                        <ModalCloseBtn onClick={closeModal}>
+                            <strong>X</strong>
+                        </ModalCloseBtn>
                     </ModalHeader>
                     <ModalContent>
                         <p>{content}</p>
                     </ModalContent>
 
                     <QuestionModalComments questionId={id} />
-                    <QuestionModalInput
-                        id={id}
-                        comment={comment}
-                        setComment={setComment}
-                    />
+
+                    <ModalWrite>
+                        <TextInputWithLabel
+                            name="comment"
+                            placeholder="댓글"
+                            onChange={() => {
+                                console.log("dd");
+                            }}
+                        ></TextInputWithLabel>
+                        <button>댓글 달기</button>
+                    </ModalWrite>
                 </Modal>
             </div>
         </CSSTransition>
@@ -86,10 +93,22 @@ const ModalHeader = styled.div`
     margin-bottom: 6px;
 `;
 
-const ModalTitle = styled.h1``;
+const ModalTitle = styled.h1`
+    font-size: 24px;
+`;
 
 const ModalCloseBtn = styled.button`
     all: unset;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: background-color 0.3s;
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.background};
+    }
 `;
 
 const ModalContent = styled.div`
@@ -97,4 +116,26 @@ const ModalContent = styled.div`
     height: 35%;
 
     overflow: scroll;
+`;
+
+const ModalWrite = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    & > button {
+        all: unset;
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        margin-left: 12px;
+
+        cursor: pointer;
+
+        transition: background-color 0.3s;
+        &:hover {
+            background-color: ${({ theme }) => theme.colors.background};
+        }
+    }
 `;
