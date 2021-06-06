@@ -1,35 +1,40 @@
 import styled from "styled-components";
-import useQuestionComment from "hook/useQuestionComment";
-import EmptyQuestionModalComments from "./EmptyQuestionModalComments";
+
 import { IComment } from "types";
+import convertDate from "utils/convertDate";
+import EmptyQuestionModalComments from "./EmptyQuestionModalComments";
 
 interface PropTypes {
     comments: IComment[];
 }
 
 const QuestionModalComments = ({ comments }: PropTypes) => {
-    
-
     if (comments.length === 0) return <EmptyQuestionModalComments />;
 
     return (
         <ModalComments>
-            {comments.map((comment, index) => (
-                <Comment key={index}>
-                    <CommentHeader>
-                        <CommentHeaderImage>
-                            <img
-                                src={comment.writerUser.userImageUrl}
-                                alt={comment.writerUser.name}
-                            />
-                        </CommentHeaderImage>
-                        <h3>{comment.writerUser.name}</h3>
-                        <CommentDate>{comment.createdDate}</CommentDate>
-                    </CommentHeader>
+            {comments.map((comment, index) => {
+                const { year, month, day, hour, minute } = convertDate(
+                    comment.createdDate
+                );
 
-                    <CommentContent>{comment.content}</CommentContent>
-                </Comment>
-            ))}
+                return (
+                    <Comment key={index}>
+                        <CommentHeader>
+                            <CommentHeaderImage>
+                                <img
+                                    src={comment.writerUser.userImageUrl}
+                                    alt={comment.writerUser.name}
+                                />
+                            </CommentHeaderImage>
+                            <h3>{comment.writerUser.name}</h3>
+                            <CommentDate>{`${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분`}</CommentDate>
+                        </CommentHeader>
+
+                        <CommentContent>{comment.content}</CommentContent>
+                    </Comment>
+                );
+            })}
         </ModalComments>
     );
 };

@@ -62,10 +62,13 @@ const QuestionModal = ({
         createComment(id);
     };
 
-    // 커밋 - 댓글 작성 완료
     // 댓글 날짜 형식 고치기
     // 퀘스쳔 모달에 작성자 추가
     // 메인 프로필 설정
+
+    // 사서에게
+    // 블로그 등록 로직 -> 졸업생만
+    // 마이페이지
 
     return (
         <CSSTransition
