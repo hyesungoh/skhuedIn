@@ -8,7 +8,7 @@ import useQuestionComment from "hook/useQuestionComment";
 import TextInputWithLabel from "components/TextInputWithLabel";
 import { questionCommentContentState } from "store/question/comment";
 import QuestionModalComments from "./Question/QuestionModalComments";
-import { IComment } from "types";
+import { IComment, IUser } from "types";
 import { currentUserState } from "store/user";
 
 interface IQuestionModal {
@@ -18,6 +18,8 @@ interface IQuestionModal {
     createdDate: string;
     comments: IComment[];
     setOpenQuesIndex: React.Dispatch<React.SetStateAction<number | null>>;
+    targetUser: IUser;
+    writerUser: IUser;
 }
 
 const QuestionModal = ({
@@ -27,6 +29,8 @@ const QuestionModal = ({
     content,
     createdDate,
     comments,
+    targetUser,
+    writerUser,
 }: IQuestionModal) => {
     const MODAL_TRANSITION_DURATION = 500;
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -40,6 +44,9 @@ const QuestionModal = ({
     }, []);
 
     const closeModal = (e: React.MouseEvent) => {
+        console.log(e.target);
+        console.log(e.currentTarget);
+
         if (e.target !== e.currentTarget) return;
 
         setIsOpen(false);
@@ -62,8 +69,6 @@ const QuestionModal = ({
         createComment(id);
     };
 
-    // 댓글 날짜 형식 고치기
-    // 퀘스쳔 모달에 작성자 추가
     // 메인 프로필 설정
 
     // 사서에게
@@ -79,11 +84,14 @@ const QuestionModal = ({
             <div className="modal" onClick={closeModal}>
                 <Modal className="modal__content">
                     <ModalHeader>
-                        <ModalTitle>{title}</ModalTitle>
-
-                        <ModalCloseBtn onClick={closeModal}>
-                            <strong>X</strong>
-                        </ModalCloseBtn>
+                        <ModalHeaderLeft>
+                            <ModalTitle>{title}</ModalTitle>
+                            <ModalInfo>
+                                {writerUser.name}님이 {targetUser.name}에게 한
+                                질문
+                            </ModalInfo>
+                        </ModalHeaderLeft>
+                        <ModalCloseBtn onClick={closeModal}>X</ModalCloseBtn>
                     </ModalHeader>
                     <ModalContent>
                         <p>{content}</p>
@@ -124,8 +132,19 @@ const ModalHeader = styled.div`
     margin-bottom: 6px;
 `;
 
+const ModalHeaderLeft = styled.div`
+    display: flex;
+    align-items: flex-end;
+`;
+
 const ModalTitle = styled.h1`
     font-size: 24px;
+    margin-right: 6px;
+`;
+
+const ModalInfo = styled.span`
+    font-size: 12px;
+    opacity: 0.5;
 `;
 
 const ModalCloseBtn = styled.button`
@@ -135,7 +154,7 @@ const ModalCloseBtn = styled.button`
     text-align: center;
     border-radius: 50%;
     cursor: pointer;
-
+    font-weight: bold;
     transition: background-color 0.3s;
     &:hover {
         background-color: ${({ theme }) => theme.colors.background};

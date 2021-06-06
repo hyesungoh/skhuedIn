@@ -14,23 +14,23 @@ const Profile = () => {
         <div className="home__profile">
             <div className="profile__info">
                 <div className="profile__info__image">
-                    <img src={sample} alt="profile" />
+                    <img src={currentUser.data?.userImageUrl} alt="profile" />
                 </div>
                 <div className="profile__info__container">
                     <span className="profile__info__container__name">
-                        Hyesung Oh
+                        {currentUser.data?.name}
                     </span>
                     <span className="profile__info__container__major">
-                        소프트웨어공학과
+                        {currentUser.data?.entranceYear}년도 입학생
                     </span>
                 </div>
             </div>
 
             <div className="profile__follow">
                 <div className="profile__follow__follower">
-                    <span>팔로우</span>
+                    <span>이부분</span>
                     <span className="profile__follow__follower--number">
-                        123 명
+                        몰로하지
                     </span>
                 </div>
                 <div className="profile__follow__navigate">

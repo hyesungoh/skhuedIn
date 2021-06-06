@@ -76,6 +76,8 @@ const Questions = ({ questions }: IQuestions) => {
                         content={curQuestion.content}
                         createdDate={curQuestion.createdDate}
                         comments={curQuestion.comments}
+                        targetUser={curQuestion.targetUser}
+                        writerUser={curQuestion.writerUser}
                     />
                 ) : isNewQuestionModalOpen ? (
                     <NewQuestion />
