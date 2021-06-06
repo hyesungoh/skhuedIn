@@ -1,19 +1,20 @@
 import styled from "styled-components";
 import useQuestionComment from "hook/useQuestionComment";
 import EmptyQuestionModalComments from "./EmptyQuestionModalComments";
+import { IComment } from "types";
 
 interface PropTypes {
-    questionId: number;
+    comments: IComment[];
 }
 
-const QuestionModalComments = ({ questionId }: PropTypes) => {
-    const { data } = useQuestionComment({ questionId });
+const QuestionModalComments = ({ comments }: PropTypes) => {
+    
 
-    if (data.length === 0) return <EmptyQuestionModalComments />;
+    if (comments.length === 0) return <EmptyQuestionModalComments />;
 
     return (
         <ModalComments>
-            {data.map((comment, index) => (
+            {comments.map((comment, index) => (
                 <Comment key={index}>
                     <CommentHeader>
                         <CommentHeaderImage>

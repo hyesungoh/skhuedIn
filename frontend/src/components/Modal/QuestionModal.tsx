@@ -1,9 +1,15 @@
-import TextInputWithLabel from "components/TextInputWithLabel";
 import React, { useEffect, useState } from "react";
-import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
-import { IComment } from "types";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { CSSTransition } from "react-transition-group";
+import _ from "lodash";
+
+import useQuestionComment from "hook/useQuestionComment";
+import TextInputWithLabel from "components/TextInputWithLabel";
+import { questionCommentContentState } from "store/question/comment";
 import QuestionModalComments from "./Question/QuestionModalComments";
+import { IComment } from "types";
+import { currentUserState } from "store/user";
 
 interface IQuestionModal {
     id: number;
@@ -24,7 +30,10 @@ const QuestionModal = ({
 }: IQuestionModal) => {
     const MODAL_TRANSITION_DURATION = 500;
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [comment, setComment] = useState<string>("");
+    const currentUser = useRecoilValue(currentUserState);
+    const setComment = useSetRecoilState(questionCommentContentState);
+
+    const { data, createComment } = useQuestionComment({ questionId: id });
 
     useEffect(() => {
         setIsOpen(true);
@@ -36,6 +45,27 @@ const QuestionModal = ({
         setIsOpen(false);
         setTimeout(() => setOpenQuesIndex(null), MODAL_TRANSITION_DURATION);
     };
+
+    const handleDebounceChange = _.debounce(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            setComment(e.target.value);
+        },
+        300
+    );
+
+    const handleSubmit = () => {
+        if (!currentUser.isSigned) {
+            alert("로그인을 후, 댓글 작성해주세요 !");
+            return;
+        }
+
+        createComment(id);
+    };
+
+    // 커밋 - 댓글 작성 완료
+    // 댓글 날짜 형식 고치기
+    // 퀘스쳔 모달에 작성자 추가
+    // 메인 프로필 설정
 
     return (
         <CSSTransition
@@ -56,17 +86,15 @@ const QuestionModal = ({
                         <p>{content}</p>
                     </ModalContent>
 
-                    <QuestionModalComments questionId={id} />
+                    <QuestionModalComments comments={data} />
 
                     <ModalWrite>
                         <TextInputWithLabel
                             name="comment"
                             placeholder="댓글"
-                            onChange={() => {
-                                console.log("dd");
-                            }}
+                            onChange={handleDebounceChange}
                         ></TextInputWithLabel>
-                        <button>댓글 달기</button>
+                        <button onClick={handleSubmit}>댓글 달기</button>
                     </ModalWrite>
                 </Modal>
             </div>

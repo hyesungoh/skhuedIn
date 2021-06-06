@@ -11,9 +11,9 @@ const SignInPresenter = () => {
     const { initializeNaverLogin, OnGoogleLogin, OnKakaoLogin } =
         useSocialLogin();
 
-    useEffect(() => {
-        initializeNaverLogin();
-    }, []);
+    // useEffect(() => {
+    // initializeNaverLogin();
+    // }, []);
 
     return (
         <div className="center">
@@ -43,7 +43,7 @@ const SignInPresenter = () => {
                         )}
                     />
 
-                    <div
+                    {/* <div
                         id="kakao"
                         className="signinform__social__logo"
                         onClick={OnKakaoLogin}
@@ -53,7 +53,7 @@ const SignInPresenter = () => {
 
                     <div className="signinform__social__logo">
                         <div id="naverIdLogin"></div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

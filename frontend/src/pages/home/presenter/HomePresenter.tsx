@@ -7,7 +7,7 @@ const HomePresenter = () => {
         <div className="home">
             <Profile />
             <Newsfeed />
-            <Honor />
+            {/* <Honor /> */}
         </div>
     );
 };
