@@ -69,7 +69,6 @@ const QuestionModal = ({
         createComment(id);
     };
 
-    // 메인 프로필 설정
 
     // 사서에게
     // 블로그 등록 로직 -> 졸업생만
