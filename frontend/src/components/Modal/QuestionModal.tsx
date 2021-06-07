@@ -69,11 +69,6 @@ const QuestionModal = ({
         createComment(id);
     };
 
-
-    // 사서에게
-    // 블로그 등록 로직 -> 졸업생만
-    // 마이페이지
-
     return (
         <CSSTransition
             in={isOpen}
