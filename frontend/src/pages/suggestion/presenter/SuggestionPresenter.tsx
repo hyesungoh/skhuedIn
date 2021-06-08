@@ -1,13 +1,23 @@
 import styled from "styled-components";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
+import _ from "lodash";
 
 import { suggestionState } from "store/suggestion";
 import TextAreaWithLabel from "components/TextAreaWithLabel";
 import TextInputWithLabel from "components/TextInputWithLabel";
 import StyledButton from "components/StyledButton";
+import useSuggestion from "hook/useSuggestion";
 
 const SuggestionPresenter = () => {
-    const setSuggestion = useSetRecoilState(suggestionState);
+    const [suggestion, setSuggestion] = useRecoilState(suggestionState);
+    const { createSuggestion } = useSuggestion();
+
+    const handleDebounceChange = _.debounce(
+        (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+            setSuggestion({ ...suggestion, [e.target.name]: e.target.value });
+        },
+        300
+    );
 
     return (
         <Wrapepr>
@@ -17,16 +27,20 @@ const SuggestionPresenter = () => {
             </Notify>
             <InputWrapper>
                 <TextInputWithLabel
-                    name=""
+                    name="title"
                     placeholder="제목"
-                    onChange={() => {}}
+                    onChange={handleDebounceChange}
                 />
                 <TextAreaWithLabel
-                    name=""
+                    name="content"
                     placeholder="내용"
-                    onChange={() => {}}
+                    onChange={handleDebounceChange}
                 />
-                <StyledButton type="submit" label="보내기" onClick={() => {}} />
+                <StyledButton
+                    type="submit"
+                    label="보내기"
+                    onClick={createSuggestion}
+                />
             </InputWrapper>
         </Wrapepr>
     );
