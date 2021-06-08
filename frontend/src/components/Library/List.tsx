@@ -5,6 +5,9 @@ import { IBlog } from "types";
 import PeopleProfile from "components/Library/PeopleProfile";
 import { useMutation } from "react-query";
 import { getBlogsByCategory } from "api/blog/fetch";
+import { useRecoilValue } from "recoil";
+import { currentUserState } from "store/user";
+import SuggestBlogCard from "./SuggestBlogCard";
 
 interface IList {
     blogs: IBlog[];
@@ -19,6 +22,8 @@ const List = ({ blogs }: IList) => {
     ];
 
     const [category, setCategory] = useState<string>(categories[0]);
+    const currentUser = useRecoilValue(currentUserState);
+
     const queryClient = useQueryClient();
 
     const changeCategory = useMutation(
@@ -29,6 +34,16 @@ const List = ({ blogs }: IList) => {
             },
         }
     );
+
+    const CanMakeBlog = () => {
+        console.log(currentUser.data);
+
+        if (currentUser.data?.graduationYear !== "0") {
+            if (!currentUser.data?.isBlog) return true;
+        }
+
+        return false;
+    };
 
     const reducingCategory = (tempCategory: string): string => {
         switch (tempCategory) {
@@ -71,6 +86,7 @@ const List = ({ blogs }: IList) => {
             </div>
 
             <div className="peoples__list">
+                {CanMakeBlog() ? <SuggestBlogCard /> : null}
                 {blogs.map((blog, index) => (
                     <PeopleProfile
                         key={index}

@@ -14,6 +14,7 @@ export interface IUser {
     graduationYear: string;
     createdDate: string;
     lastModifiedDate: string;
+    isBlog: boolean;
 }
 
 export interface IBlog {

@@ -65,12 +65,8 @@ export interface IGetPostById {
     data: IPost;
 }
 
-interface IGetUser extends IUser {
-    isBlog: boolean;
-}
-
 export interface IGetUserById {
-    data: IGetUsers;
+    data: IUser;
     count: number;
 }
 

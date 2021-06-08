@@ -22,6 +22,7 @@ export const getFormatedUser = (
             graduationYear: getEmptyWhenNull(response.graduationYear),
             createdDate: getEmptyWhenNull(response.createdDate),
             lastModifiedDate: getEmptyWhenNull(response.lastModifiedDate),
+            isBlog: response.isBlog ? true : false,
         },
     };
 

@@ -24,7 +24,7 @@ const SuggestionPresenter = () => {
             <Box>
                 <Heading>서비스 이용에 불편한 점을 말해주세요</Heading>
                 <Notify>
-                    작성된 모든 사항은 익명이며, 관리자만 확인할 수 있습니다.
+                    작성된 모든 사항은 <strong>익명</strong>이며, 관리자만 확인할 수 있습니다.
                 </Notify>
                 <InputWrapper>
                     <TextInputWithLabel
