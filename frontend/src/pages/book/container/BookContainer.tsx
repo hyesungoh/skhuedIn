@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getBlogsById, getQuestionsById } from "api/book/fetch";
 import BookPresenter from "pages/book/presenter/BookPresenter";
 import Loading from "components/Loading/Loading";
+import Notfound from "pages/notfound/Notfound";
 
 interface IParams {
     id: string;
@@ -21,6 +22,7 @@ const BookContainer = () => {
         error: quesError,
     } = useQuery("questions", () => getQuestionsById(id));
 
+    if (error) return <Notfound />;
     if (!data || !quesData) return <Loading />;
     return (
         <BookPresenter

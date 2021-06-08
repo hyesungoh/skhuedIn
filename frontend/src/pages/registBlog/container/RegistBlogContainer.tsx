@@ -1,4 +1,6 @@
-import RegistBlogPresenter from "../presenter/RegistBlogPresenter";
+import { useState } from "react";
+
+import RegistBlogPresenter from "pages/registBlog/presenter/RegistBlogPresenter";
 
 const RegistBlogContainer = () => {
     return <RegistBlogPresenter />;
