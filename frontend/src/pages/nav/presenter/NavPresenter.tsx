@@ -1,24 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import Category from "components/nav/Category";
-import { ICurrentUser } from "types";
-
-import "pages/nav/nav.scss";
 import { useRecoilValue } from "recoil";
+
 import { currentUserState } from "store/user";
+import Category from "components/nav/Category";
+import "pages/nav/nav.scss";
 
 interface INav {
     categorys: { path: string; name: string }[];
     onMypageClick: () => void;
-    onSettingClick: () => void;
     onSignOutClick: () => void;
 }
 
 const Nav = ({
     categorys,
     onMypageClick,
-    onSettingClick,
     onSignOutClick,
 }: INav) => {
     const currentUser = useRecoilValue(currentUserState);
@@ -31,7 +27,7 @@ const Nav = ({
 
             <div className="nav__dropdown--content">
                 <span onClick={onMypageClick}>마이페이지</span>
-                <span onClick={onSettingClick}>설정</span>
+                {/* <span onClick={onSettingClick}>설정</span> */}
                 <span onClick={onSignOutClick}>로그아웃</span>
             </div>
         </div>

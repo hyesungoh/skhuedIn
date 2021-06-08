@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
 import { currentUserState } from "store/user";
 import NavPresenter from "pages/nav/presenter/NavPresenter";
@@ -14,18 +14,11 @@ const NavContainer = () => {
         { path: "suggestion", name: "사서에게" },
     ];
 
-    const setCurrentUser = useSetRecoilState(currentUserState);
-
+    const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
     const { clearUserSession } = useUserSession();
 
     const onMypageClick = () => {
-        // user id도 교환
-        history.push(`mypage/1`);
-    };
-
-    const onSettingClick = () => {
-        // setting route 생성 후 교환
-        history.push("/");
+        history.push(`/mypage/${currentUser.data?.id}`);
     };
 
     const onSignOutClick = () => {
@@ -38,7 +31,6 @@ const NavContainer = () => {
         <NavPresenter
             categorys={categorys}
             onMypageClick={onMypageClick}
-            onSettingClick={onSettingClick}
             onSignOutClick={onSignOutClick}
         />
     );
