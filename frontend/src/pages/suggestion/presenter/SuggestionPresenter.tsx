@@ -20,35 +20,45 @@ const SuggestionPresenter = () => {
     );
 
     return (
-        <Wrapepr>
-            <Heading>서비스 이용에 불편한 점을 말해주세요</Heading>
-            <Notify>
-                작성된 모든 사항은 익명이며, 관리자만 확인할 수 있습니다.
-            </Notify>
-            <InputWrapper>
-                <TextInputWithLabel
-                    name="title"
-                    placeholder="제목"
-                    onChange={handleDebounceChange}
-                />
-                <TextAreaWithLabel
-                    name="content"
-                    placeholder="내용"
-                    onChange={handleDebounceChange}
-                />
-                <StyledButton
-                    type="submit"
-                    label="보내기"
-                    onClick={createSuggestion}
-                />
-            </InputWrapper>
-        </Wrapepr>
+        <Wrapper>
+            <Box>
+                <Heading>서비스 이용에 불편한 점을 말해주세요</Heading>
+                <Notify>
+                    작성된 모든 사항은 익명이며, 관리자만 확인할 수 있습니다.
+                </Notify>
+                <InputWrapper>
+                    <TextInputWithLabel
+                        name="title"
+                        placeholder="제목"
+                        onChange={handleDebounceChange}
+                    />
+                    <TextAreaWithLabel
+                        name="content"
+                        placeholder="내용"
+                        onChange={handleDebounceChange}
+                    />
+                    <StyledButton
+                        type="submit"
+                        label="보내기"
+                        onClick={createSuggestion}
+                    />
+                </InputWrapper>
+            </Box>
+        </Wrapper>
     );
 };
 
 export default SuggestionPresenter;
 
-const Wrapepr = styled.main`
+const Wrapper = styled.main`
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Box = styled.section`
     width: 520px;
     height: auto;
     padding: 24px 18px;
