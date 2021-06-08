@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SuggestBlogCard = () => {
     return (
         <Box>
-            <Link to="/suggestion">
+            <Link to="/regist">
                 책장에 등록하고, 좋은 정보를 나눠주세요 !<UnderSpan></UnderSpan>
             </Link>
         </Box>

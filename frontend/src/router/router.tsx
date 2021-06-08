@@ -20,6 +20,7 @@ import Notfound from "pages/notfound/Notfound";
 
 import Loading from "components/Loading/Loading";
 import Error from "components/Error/Error";
+import RegistBlogContainer from "pages/registBlog/container/RegistBlogContainer";
 
 const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup className="page">
@@ -42,7 +43,7 @@ const TransitionRouter = withRouter(({ location }) => (
                 <Route path="/post/:id" component={PostContainer} />
                 <Route path="/loading" component={Loading} />
                 <Route path="/error" component={Error} />
-
+                <Route path="/regist" component={RegistBlogContainer} />
                 <Route component={Notfound} />
             </Switch>
         </CSSTransition>
