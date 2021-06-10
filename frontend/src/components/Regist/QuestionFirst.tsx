@@ -1,8 +1,6 @@
-interface QuestionFirstProps {
-    onClickNext: () => void;
-}
+import useSlide from "hook/useSlide";
 
-const QuestionFirst = ({ onClickNext }: QuestionFirstProps) => {
+const QuestionFirst = () => {
     return <div>ques 1</div>;
 };
 
