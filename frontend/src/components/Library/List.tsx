@@ -36,7 +36,7 @@ const List = ({ blogs }: IList) => {
     );
 
     const CanMakeBlog = () => {
-        console.log(currentUser.data);
+        if (!currentUser.data) return false;
 
         if (currentUser.data?.graduationYear !== "0") {
             if (!currentUser.data?.isBlog) return true;
