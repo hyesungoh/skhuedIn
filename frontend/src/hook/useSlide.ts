@@ -4,10 +4,10 @@ import { useRecoilState } from "recoil";
 import { slideIdState } from "store/regist";
 
 interface useSlideProps {
-    slideList: any[];
+    slideLength: number;
 }
 
-const useSlide = ({ slideList }: useSlideProps) => {
+const useSlide = ({ slideLength }: useSlideProps) => {
     const [slideId, setSlideId] = useRecoilState(slideIdState);
 
     useEffect(() => {
@@ -16,7 +16,9 @@ const useSlide = ({ slideList }: useSlideProps) => {
         };
     }, []);
 
-    const onClickNext = () => {};
+    const onClickNext = () => {
+        setSlideId(slideId + 1);
+    };
     return { onClickNext };
 };
 
