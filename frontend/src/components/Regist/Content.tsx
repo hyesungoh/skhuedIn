@@ -1,3 +1,5 @@
+import useSlide from "hook/useSlide";
+
 interface ContentProps {
     onClickNext: () => void;
 }
