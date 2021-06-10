@@ -1,22 +1,74 @@
 import styled from "styled-components";
+import _ from "lodash";
 
 import useSlide from "hook/useSlide";
 import TextInputWithLabel from "components/TextInputWithLabel";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { currentUserState } from "store/user";
 import StyledButton from "components/StyledButton";
+import React, { useState } from "react";
+import { contentState, profileImageState } from "store/regist";
+import useRegist from "hook/useRegist";
 
 const Content = () => {
-    const currentUser = useRecoilValue(currentUserState);
     const { onClickNext } = useSlide();
+    const { registBlog } = useRegist();
+
+    const currentUser = useRecoilValue(currentUserState);
+    const [content, setContent] = useRecoilState(contentState);
+    const setProfileImage = useSetRecoilState(profileImageState);
+
+    const [previewImage, setPreviewImage] = useState<string>("");
+
+    const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {
+            target: { files },
+        } = e;
+        const targetFile = files?.[0];
+        setProfileImage(targetFile); // for recoil
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreviewImage(reader.result as string);
+        };
+        reader.readAsDataURL(targetFile as Blob);
+    };
+
+    const handleClear = () => {
+        setPreviewImage("");
+    };
+
+    const handleDebounceChange = _.debounce(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            setContent(e.target.value);
+        },
+        300
+    );
+
+    const handleSubmit = () => {
+        if (content === "") {
+            alert("자기 소개를 작성해주세요 !");
+            return;
+        }
+        registBlog();
+        onClickNext();
+    };
 
     return (
         <Wrapper>
             <ImageInputDiv>
+                <ClearPreviewBtn onClick={handleClear} src={previewImage}>
+                    비우기
+                </ClearPreviewBtn>
+                <PreviewImage src={previewImage} alt="" />
                 <ImageInputLabel htmlFor="profileImage">
                     프로필 사진 등록
                 </ImageInputLabel>
-                <ImageInput id="profileImage" type="file" />
+                <ImageInput
+                    id="profileImage"
+                    type="file"
+                    onChange={handleUpload}
+                />
             </ImageInputDiv>
 
             <Info>
@@ -32,9 +84,13 @@ const Content = () => {
                 <TextInputWithLabel
                     name="content"
                     placeholder="자기소개"
-                    onChange={() => {}}
+                    onChange={handleDebounceChange}
                 />
-                <StyledButton type="submit" label="다음 문항"></StyledButton>
+                <StyledButton
+                    type="submit"
+                    label="다음 문항"
+                    onClick={handleSubmit}
+                ></StyledButton>
             </Info>
         </Wrapper>
     );
@@ -45,19 +101,53 @@ export default Content;
 const Wrapper = styled.div`
     width: 700px;
     height: 300px;
-    padding: 12px 16px;
+
     background-color: white;
 
     display: flex;
 `;
 
 const ImageInputDiv = styled.div`
+    position: relative;
     width: 40%;
     height: 100%;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+`;
+
+const PreviewImage = styled.img<{ src: string }>`
+    all: unset;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transform: translateY(${({ src }) => (src === "" ? "100%" : "0")});
+    transition: transform 1s;
+`;
+
+const ClearPreviewBtn = styled.button<{ src: string }>`
+    all: unset;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    padding: 6px 8px;
+    border-radius: ${({ theme }) => theme.border_intensity};
+    background-color: white;
+    cursor: pointer;
+    z-index: 1;
+
+    transform: translateY(${({ src }) => (src === "" ? "60px" : "0")});
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.bold};
+        color: white;
+    }
 `;
 
 const ImageInputLabel = styled.label`
@@ -82,6 +172,16 @@ const ImageInput = styled.input`
     display: none;
 `;
 
+const Info = styled.div`
+    width: 60%;
+    height: 100%;
+    padding: 12px 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+`;
+
 const Greeting = styled.div`
     width: 100%;
     height: auto;
@@ -93,18 +193,4 @@ const Greeting = styled.div`
     & > span {
         font-size: 12px;
     }
-`;
-
-const Info = styled.div`
-    width: 60%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-`;
-
-const SubmitBtn = styled.button`
-    all: unset;
-    align-self: flex-end;
 `;

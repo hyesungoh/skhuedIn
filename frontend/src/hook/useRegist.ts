@@ -1,31 +1,47 @@
 import { baseUrl } from "api/url";
 import axios from "axios";
 import { useMutation } from "react-query";
-import { useHistory } from "react-router";
 import { useRecoilValue } from "recoil";
 
-import { contentState } from "store/regist";
+import { contentState, profileImageState } from "store/regist";
 import { currentUserState } from "store/user";
 
 const useRegist = () => {
-    const history = useHistory();
-
-    const currentUser = useRecoilValue(currentUserState);
     const content = useRecoilValue(contentState);
+    const currentUser = useRecoilValue(currentUserState);
+    const profileImage = useRecoilValue(profileImageState);
 
-    const onSuccess = () => {
-        history.push("library");
+    const onSuccess = (res: any) => {
+        console.log("BLOG ADD!!!");
+        console.log(res);
     };
 
     const registBlog = useMutation(
         () => {
-            return axios.post(`${baseUrl}/api/blogs`, {
-                userId: currentUser.data?.id,
-                content: content,
+            const formData = new FormData();
+            formData.append("file", profileImage as Blob);
+
+            console.log("mutate");
+
+            return axios({
+                method: "post",
+                url: `${baseUrl}/api/blogs`,
+                params: formData,
+                data: {
+                    userId: currentUser.data?.id,
+                    content,
+                },
             });
+            // return axios.post(`${baseUrl}/api/blogs`, {
+            //     userId: currentUser.data?.id,
+            //     content: content,
+            // });
         },
         {
-            onSuccess: () => onSuccess(),
+            onSuccess: (res) => onSuccess(res),
+            onError: (res) => {
+                console.log(res);
+            },
         }
     );
 
