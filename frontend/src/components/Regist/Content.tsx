@@ -1,4 +1,4 @@
-import useSlide from "hook/useSlide";
+import TextInputWithLabel from "components/TextInputWithLabel";
 
 interface ContentProps {
     onClickNext: () => void;
@@ -7,7 +7,12 @@ interface ContentProps {
 const Content = ({ onClickNext }: ContentProps) => {
     return (
         <div>
-            content
+            <input type="file" />
+            <TextInputWithLabel
+                name="content"
+                placeholder="하이여"
+                onChange={() => {}}
+            />
             <button onClick={onClickNext}>next</button>
         </div>
     );
