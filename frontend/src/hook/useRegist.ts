@@ -26,16 +26,13 @@ const useRegist = () => {
             return axios({
                 method: "post",
                 url: `${baseUrl}/api/blogs`,
-                params: formData,
-                data: {
+                headers: { "Content-Type": "multipart/form-data" },
+                params: {
+                    file: formData,
                     userId: currentUser.data?.id,
                     content,
                 },
             });
-            // return axios.post(`${baseUrl}/api/blogs`, {
-            //     userId: currentUser.data?.id,
-            //     content: content,
-            // });
         },
         {
             onSuccess: (res) => onSuccess(res),
