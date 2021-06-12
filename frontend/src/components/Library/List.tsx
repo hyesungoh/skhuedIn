@@ -90,7 +90,7 @@ const List = ({ blogs }: IList) => {
                 {blogs.map((blog, index) => (
                     <PeopleProfile
                         key={index}
-                        userId={blog.user.id}
+                        blogId={blog.id}
                         name={blog.user.name}
                         entranceYear={blog.user.entranceYear}
                         profileImageUrl={blog.profileImageUrl}

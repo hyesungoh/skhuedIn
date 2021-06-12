@@ -50,7 +50,7 @@ const Content = () => {
             alert("자기 소개를 작성해주세요 !");
             return;
         }
-        // registBlog();
+        registBlog();
         onClickNext();
     };
 

@@ -6,7 +6,7 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { useHistory } from "react-router-dom";
 
 interface IPeopleProfile {
-    userId: number;
+    blogId: number;
     name: string;
     entranceYear: string;
     profileImageUrl: string;
@@ -14,7 +14,7 @@ interface IPeopleProfile {
 }
 
 const PeopleProfile = ({
-    userId,
+    blogId,
     name,
     entranceYear,
     profileImageUrl,
@@ -23,7 +23,7 @@ const PeopleProfile = ({
     const history = useHistory();
 
     const onClick = () => {
-        history.push(`/library/${userId}`);
+        history.push(`/library/${blogId}`);
     };
 
     return (
