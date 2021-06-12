@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import ReactMde from "react-mde";
-import ReactMarkdown from "react-markdown";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMarkdown } from "@fortawesome/free-brands-svg-icons";
@@ -9,11 +7,11 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 
 import "pages/writing/Writing.scss";
 import Clock from "components/Clock/Clock";
-import loadSuggestions from "utils/loadSuggestions";
 import styled from "styled-components";
+import MarkdownEditor from "components/Writing/MarkdownEditor";
 
 const WritingPresenter = () => {
-    const [value, setValue] = useState<string | undefined>(
+    const [value, setValue] = useState<string>(
         `# 큰 글자
 ## 두 번째로 큰 글자
 ### 세 번째로 큰 글자
@@ -27,8 +25,6 @@ const WritingPresenter = () => {
 
 `
     );
-    const [selectedTab, setSelectedTab] =
-        useState<"write" | "preview">("write");
 
     return (
         <div className="writing">
@@ -46,24 +42,7 @@ const WritingPresenter = () => {
                     <Clock />
                 </div>
 
-                <ReactMde
-                    value={value}
-                    onChange={setValue}
-                    selectedTab={selectedTab}
-                    onTabChange={setSelectedTab}
-                    generateMarkdownPreview={(markdown) =>
-                        Promise.resolve(<ReactMarkdown source={markdown} />)
-                    }
-                    childProps={{
-                        writeButton: {
-                            tabIndex: -1,
-                        },
-                    }}
-                    loadSuggestions={loadSuggestions}
-                    minEditorHeight={72}
-                    minPreviewHeight={72}
-                    heightUnits={"vh"}
-                ></ReactMde>
+                <MarkdownEditor defaultValue={value} onChange={setValue} />
 
                 <SubmitDiv>
                     <SubmitAdvice href="https://guides.github.com/features/mastering-markdown/">
