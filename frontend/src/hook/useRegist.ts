@@ -1,18 +1,23 @@
 import { baseUrl } from "api/url";
 import axios from "axios";
 import { useMutation } from "react-query";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 
 import { contentState, profileImageState } from "store/regist";
 import { currentUserState } from "store/user";
 
 const useRegist = () => {
     const content = useRecoilValue(contentState);
-    const currentUser = useRecoilValue(currentUserState);
+    const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
     const profileImage = useRecoilValue(profileImageState);
 
     const onSuccess = (res: any) => {
-        // 성공했을 때 currentUser 재저장
+        if (currentUser.data) {
+            setCurrentUser({
+                ...currentUser,
+                data: { ...currentUser.data, isBlog: true },
+            });
+        }
     };
 
     const registBlog = useMutation(
