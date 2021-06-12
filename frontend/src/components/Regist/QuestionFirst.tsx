@@ -10,7 +10,9 @@ import Clock from "components/Clock/Clock";
 import loadSuggestions from "utils/loadSuggestions";
 
 const QuestionFirst = () => {
-    const [value, setValue] = useState<string | undefined>(``);
+    const [value, setValue] = useState<string | undefined>(`
+    채워주쇼`);
+    
     const [selectedTab, setSelectedTab] =
         useState<"write" | "preview">("write");
 

@@ -39,6 +39,7 @@ const useSocialLogin = () => {
         const userData = await axios.post<ISignin>(fetchURL, {
             accessToken,
         });
+        
 
         // 유저가 첫 방문, 즉 회원 가입을 해야할 시
         if (userData.data.firstVisit) {

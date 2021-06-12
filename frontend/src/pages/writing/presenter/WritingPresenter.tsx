@@ -10,6 +10,7 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 import "pages/writing/Writing.scss";
 import Clock from "components/Clock/Clock";
 import loadSuggestions from "utils/loadSuggestions";
+import styled from "styled-components";
 
 const WritingPresenter = () => {
     const [value, setValue] = useState<string | undefined>(
@@ -64,16 +65,41 @@ const WritingPresenter = () => {
                     heightUnits={"vh"}
                 ></ReactMde>
 
-                <a
-                    href="https://guides.github.com/features/mastering-markdown/"
-                    className="writing__form__ps"
-                >
-                    <FontAwesomeIcon icon={faMarkdown} />
-                    &nbsp;마크다운 문법을 지원합니다
-                </a>
+                <SubmitDiv>
+                    <SubmitAdvice href="https://guides.github.com/features/mastering-markdown/">
+                        <FontAwesomeIcon icon={faMarkdown} />
+                        &nbsp;마크다운 문법을 지원합니다
+                    </SubmitAdvice>
+
+                    <SubmitBtn>asdasd</SubmitBtn>
+                </SubmitDiv>
             </div>
         </div>
     );
 };
 
 export default WritingPresenter;
+
+const SubmitDiv = styled.div`
+    width: 100%;
+    display: flex;
+`;
+
+const SubmitAdvice = styled.a`
+    all: unset;
+    color: black;
+    cursor: pointer;
+
+    width: 100%;
+    font-size: 0.85rem;
+    opacity: 0.8;
+
+    &:hover {
+        text-decoration: underline;
+    }
+`;
+
+const SubmitBtn = styled.button`
+    width: 100px;
+    height: 50px;
+`;
