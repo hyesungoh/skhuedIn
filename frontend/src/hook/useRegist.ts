@@ -12,16 +12,13 @@ const useRegist = () => {
     const profileImage = useRecoilValue(profileImageState);
 
     const onSuccess = (res: any) => {
-        console.log("BLOG ADD!!!");
-        console.log(res);
+        // 성공했을 때 currentUser 재저장
     };
 
     const registBlog = useMutation(
         () => {
             const formData = new FormData();
             formData.append("file", profileImage as Blob);
-
-            console.log("mutate");
 
             return axios({
                 method: "post",
