@@ -78,6 +78,10 @@ export interface IGetUserById {
     count: number;
 }
 
+export interface IGetBlogByUserId {
+    data: IBlog;
+}
+
 export interface IGetCommentsByQuestionId {
     data: IComment[];
 }

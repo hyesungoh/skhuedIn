@@ -9,9 +9,12 @@ import "pages/writing/Writing.scss";
 import Clock from "components/Clock/Clock";
 import styled from "styled-components";
 import MarkdownEditor from "components/Writing/MarkdownEditor";
+import usePost from "hook/usePost";
 
 const WritingPresenter = () => {
-    const [value, setValue] = useState<string>(
+    const { createPost } = usePost();
+    const [title, setTitle] = useState<string>("");
+    const [content, setContent] = useState<string>(
         `# 큰 글자
 ## 두 번째로 큰 글자
 ### 세 번째로 큰 글자
@@ -25,6 +28,10 @@ const WritingPresenter = () => {
 
 `
     );
+
+    const handleSubmit = () => {
+        createPost({ title, content });
+    };
 
     return (
         <div className="writing">
@@ -42,14 +49,14 @@ const WritingPresenter = () => {
                     <Clock />
                 </div>
 
-                <MarkdownEditor defaultValue={value} onChange={setValue} />
+                <MarkdownEditor defaultValue={content} onChange={setContent} />
 
                 <SubmitAdvice href="https://guides.github.com/features/mastering-markdown/">
                     <FontAwesomeIcon icon={faMarkdown} />
                     &nbsp;마크다운 문법을 지원합니다
                 </SubmitAdvice>
             </div>
-            <SubmitBtn>작성 완료</SubmitBtn>
+            <SubmitBtn onClick={handleSubmit}>작성 완료</SubmitBtn>
         </div>
     );
 };
