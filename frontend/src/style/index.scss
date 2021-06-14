@@ -29,7 +29,7 @@
 .slide-enter {
     position: absolute;
     opacity: 0;
-    transform: translateX(20%);
+    transform: translateX(200px);
 }
 
 .slide-enter.slide-enter-active {
@@ -45,7 +45,7 @@
 
 .slide-exit-active {
     opacity: 0;
-    transform: translateX(-20%);
+    transform: translateX(-200px);
 }
 
 .modal {

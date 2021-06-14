@@ -5,11 +5,11 @@ import MarkdownSection from "components/MarkdownSection";
 import useSlide from "hook/useSlide";
 import usePost from "hook/usePost";
 
-const QuestionFirst = () => {
+const QuestionSecond = () => {
     const { onClickNext } = useSlide();
     const { createPost } = usePost();
 
-    const title = "어쩌구 저쩌구 질문1";
+    const title = "어쩌구 저쩌구 질문2";
     const [content, setContent] = useState<string>(`
     채워주쇼`);
 
@@ -29,4 +29,4 @@ const QuestionFirst = () => {
     );
 };
 
-export default QuestionFirst;
+export default QuestionSecond;

@@ -87,7 +87,7 @@ const SubmitAdvice = styled.a`
 
 const SubmitBtn = styled.button`
     all: unset;
-
+    cursor: pointer;
     position: fixed;
     left: calc(75vw + 8px);
 

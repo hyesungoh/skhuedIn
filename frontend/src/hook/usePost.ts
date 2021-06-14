@@ -10,6 +10,7 @@ import useBlogByUserId from "./useBlogByUserId";
 interface createPostProps {
     title: string;
     content: string;
+    isPush?: boolean;
 }
 
 interface IPostResponse {
@@ -21,7 +22,11 @@ const usePost = () => {
     const history = useHistory();
     const { getBlogByUserId } = useBlogByUserId();
 
-    const createPost = async ({ title, content }: createPostProps) => {
+    const createPost = async ({
+        title,
+        content,
+        isPush = true,
+    }: createPostProps) => {
         if (!currentUser.data) return;
 
         const currentBlog = await getBlogByUserId(currentUser.data.id);
@@ -34,6 +39,7 @@ const usePost = () => {
             content,
         });
 
+        if (!isPush) return;
         history.push(`/post/${response.id}`);
     };
 

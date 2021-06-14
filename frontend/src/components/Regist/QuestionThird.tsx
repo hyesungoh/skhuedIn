@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-import "react-mde/lib/styles/css/react-mde-all.css";
 import MarkdownSection from "components/MarkdownSection";
 import useSlide from "hook/useSlide";
 import usePost from "hook/usePost";
+import "react-mde/lib/styles/css/react-mde-all.css";
 
-const QuestionFirst = () => {
+const QuestionThird = () => {
     const { onClickNext } = useSlide();
     const { createPost } = usePost();
 
-    const title = "어쩌구 저쩌구 질문1";
+    const title = "어쩌구 저쩌구 질문3";
     const [content, setContent] = useState<string>(`
     채워주쇼`);
 
@@ -29,4 +29,4 @@ const QuestionFirst = () => {
     );
 };
 
-export default QuestionFirst;
+export default QuestionThird;

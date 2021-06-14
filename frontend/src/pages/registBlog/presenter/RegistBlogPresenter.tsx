@@ -6,20 +6,27 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { slideIdState } from "store/regist";
 import Content from "components/Regist/Content";
 import QuestionFirst from "components/Regist/QuestionFirst";
+import QuestionSecond from "components/Regist/QuestionSecond";
+import QuestionThird from "components/Regist/QuestionThird";
 
 const RegistBlogPresenter = () => {
     const [slideId, setSlideId] = useRecoilState(slideIdState);
 
-    const slideList = [<Content />, <QuestionFirst />];
+    const slideList = [
+        <Content />,
+        <QuestionFirst />,
+        <QuestionSecond />,
+        <QuestionThird />,
+    ];
 
     return (
-        <TransitionGroup>
-            <Wrapper>
-                <CSSTransition key={slideId} classNames="slide" timeout={1200}>
+        <Wrapper>
+            <TransitionGroup>
+                <CSSTransition key={slideId} classNames="modal--transition" timeout={1000}>
                     {slideList[slideId]}
                 </CSSTransition>
-            </Wrapper>
-        </TransitionGroup>
+            </TransitionGroup>
+        </Wrapper>
     );
 };
 

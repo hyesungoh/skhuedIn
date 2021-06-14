@@ -6,7 +6,6 @@ const useSlide = () => {
     const [slideId, setSlideId] = useRecoilState(slideIdState);
 
     const onClickNext = () => {
-        console.log(slideId);
         setSlideId(slideId + 1);
     };
 
