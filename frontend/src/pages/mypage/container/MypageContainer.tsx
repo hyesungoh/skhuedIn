@@ -8,7 +8,10 @@ const MypageContainer = () => {
     const history = useHistory();
 
     useEffect(()=>{
-        if (currentUser.data?.isBlog) history.push(`/library/`)
+        if (currentUser.data?.isBlog) {
+            
+            history.push(`/library/`);
+        }
 
     }, [])
     return <div>나는 마이페이지 입니당</div>;

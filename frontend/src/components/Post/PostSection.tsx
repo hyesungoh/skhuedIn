@@ -35,7 +35,7 @@ export default PostSection;
 
 const StyledSection = styled.section`
     width: 600px;
-    min-height: 200vh;
+    min-height: 100vh;
     height: auto;
     padding: 10px 12px;
 
