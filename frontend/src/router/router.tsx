@@ -21,6 +21,7 @@ import Notfound from "pages/notfound/Notfound";
 import Loading from "components/Loading/Loading";
 import Error from "components/Error/Error";
 import RegistBlogContainer from "pages/registBlog/container/RegistBlogContainer";
+import ScrollToTop from "components/ScrollToTop";
 
 const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup className="page">
@@ -53,6 +54,7 @@ const TransitionRouter = withRouter(({ location }) => (
 const MyRouter = () => {
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <NavContainer />
             <TransitionRouter />
         </BrowserRouter>
