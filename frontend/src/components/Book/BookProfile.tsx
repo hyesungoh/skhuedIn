@@ -6,17 +6,23 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import sample from "static/images/profile.png";
 import BookProfileInfoSummary from "./BookProfileInfoSummary";
 import { IUser } from "types";
+import { baseUrl } from "api/url";
 
 interface IBookProfile {
     user: IUser;
+    blogImage: string;
 }
 
-const BookProfile = ({ user }: IBookProfile) => {
+const BookProfile = ({ user, blogImage }: IBookProfile) => {
+    
     return (
         <div className="book__profile__info">
             <div className="book__profile__info__vertical">
                 <div className="book__profile__info__vertical__image">
-                    <img src={user.userImageUrl} alt="book profile img" />
+                    <img
+                        src={`${baseUrl}${blogImage}`}
+                        alt="book profile img"
+                    />
                 </div>
                 <div className="book__profile__info__vertical__follow">
                     <div className="book__profile__info__vertical__follow__heart">

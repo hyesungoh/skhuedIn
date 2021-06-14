@@ -51,15 +51,20 @@ export interface IGetMainPosts {
 export interface IGetBlogById {
     data: {
         content: string;
-        createdDate: string;
         id: number;
+        createdDate: string;
         lastModifiedDate: string;
-        profileImageUrl: string;
         posts: {
             content: IPost[];
             pageable: IPageable;
         };
         user: IUser;
+        profile: {
+            id: number;
+            originalName: string;
+            name: string;
+            path: string;
+        };
     };
 }
 

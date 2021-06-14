@@ -14,6 +14,7 @@ interface IBookPresenter {
     error: any;
     posts: IPost[];
     user: IUser;
+    blogImage: string;
     questions: IQuestion[];
 }
 
@@ -23,6 +24,7 @@ const BookPresenter = ({
     posts,
     user,
     questions,
+    blogImage,
 }: IBookPresenter) => {
     if (isLoading) return <Loading />;
     if (error || !posts) return <Error />;
@@ -30,7 +32,7 @@ const BookPresenter = ({
     return (
         <div className="book">
             <div className="book__profile">
-                <BookProfile user={user} />
+                <BookProfile user={user} blogImage={blogImage} />
                 {posts ? (
                     <BookProfilePosts posts={posts} user={user} />
                 ) : (

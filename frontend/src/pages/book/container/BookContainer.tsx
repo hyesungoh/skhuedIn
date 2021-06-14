@@ -24,11 +24,13 @@ const BookContainer = () => {
 
     if (error) return <Notfound />;
     if (!data || !quesData) return <Loading />;
+
     return (
         <BookPresenter
             isLoading={isLoading}
             error={error}
             posts={data.posts.content}
+            blogImage={data.profile.path}
             user={data.user}
             questions={quesData?.content}
         />
