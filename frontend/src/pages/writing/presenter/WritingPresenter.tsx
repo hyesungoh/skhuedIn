@@ -44,32 +44,24 @@ const WritingPresenter = () => {
 
                 <MarkdownEditor defaultValue={value} onChange={setValue} />
 
-                <SubmitDiv>
-                    <SubmitAdvice href="https://guides.github.com/features/mastering-markdown/">
-                        <FontAwesomeIcon icon={faMarkdown} />
-                        &nbsp;마크다운 문법을 지원합니다
-                    </SubmitAdvice>
-
-                    <SubmitBtn>asdasd</SubmitBtn>
-                </SubmitDiv>
+                <SubmitAdvice href="https://guides.github.com/features/mastering-markdown/">
+                    <FontAwesomeIcon icon={faMarkdown} />
+                    &nbsp;마크다운 문법을 지원합니다
+                </SubmitAdvice>
             </div>
+            <SubmitBtn>작성 완료</SubmitBtn>
         </div>
     );
 };
 
 export default WritingPresenter;
 
-const SubmitDiv = styled.div`
-    width: 100%;
-    display: flex;
-`;
-
 const SubmitAdvice = styled.a`
     all: unset;
     color: black;
     cursor: pointer;
+    align-self: flex-end;
 
-    width: 100%;
     font-size: 0.85rem;
     opacity: 0.8;
 
@@ -79,6 +71,19 @@ const SubmitAdvice = styled.a`
 `;
 
 const SubmitBtn = styled.button`
+    all: unset;
+
+    position: fixed;
+    left: calc(75vw + 8px);
+
     width: 100px;
     height: 50px;
+    background-color: white;
+    text-align: center;
+    transition: color 0.3s, background-color 0.3s;
+
+    &:hover {
+        color: white;
+        background-color: ${({ theme }) => theme.colors.emph};
+    }
 `;
