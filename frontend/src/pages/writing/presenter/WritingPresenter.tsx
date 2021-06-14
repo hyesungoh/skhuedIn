@@ -10,6 +10,7 @@ import Clock from "components/Clock/Clock";
 import styled from "styled-components";
 import MarkdownEditor from "components/Writing/MarkdownEditor";
 import usePost from "hook/usePost";
+import { values } from "lodash";
 
 const WritingPresenter = () => {
     const { createPost } = usePost();
@@ -29,7 +30,19 @@ const WritingPresenter = () => {
 `
     );
 
+    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {
+            target: { value },
+        } = e;
+        setTitle(value);
+    };
+
     const handleSubmit = () => {
+        if (title.length === 0 || content.length === 0) {
+            alert("조금 더 써주세요 !");
+            return;
+        }
+        
         createPost({ title, content });
     };
 
@@ -38,7 +51,12 @@ const WritingPresenter = () => {
             <div className="writing__form">
                 <div className="writing__form__title">
                     <div className="writing__form__title__input">
-                        <input id="writer" type="text" required />
+                        <input
+                            id="writer"
+                            type="text"
+                            onChange={handleTitleChange}
+                            required
+                        />
                         <label
                             htmlFor="writer"
                             className="writing__form__title__input--placeholder"
