@@ -1,17 +1,19 @@
 import { baseUrl } from "api/url";
 import axios from "axios";
-import { useQuery } from "react-query";
+
 import { IGetBlogByUserId } from "types/fetch";
 
-const useBlogByUserId = (userId: number) => {
-    const { data, isLoading, error } = useQuery(["blog", userId], () =>
-        axios.get<IGetBlogByUserId>(`${baseUrl}/api/users/${userId}/blogs`)
-    );
+const useBlogByUserId = () => {
+    const getBlogByUserId = async (userId: number | undefined) => {
+        const data = await axios.get<IGetBlogByUserId>(
+            `${baseUrl}/api/users/${userId}/blogs`
+        );
+
+        return data?.data.data;
+    };
 
     return {
-        data,
-        isLoading,
-        error,
+        getBlogByUserId,
     };
 };
 

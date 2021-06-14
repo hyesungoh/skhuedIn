@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
 import { IPost } from "types";
 import { IGetBlogByUserId } from "types/fetch";
+import useBlogByUserId from "./useBlogByUserId";
 
 interface createPostProps {
     title: string;
@@ -18,17 +19,12 @@ interface IPostResponse {
 const usePost = () => {
     const currentUser = useRecoilValue(currentUserState);
     const history = useHistory();
+    const { getBlogByUserId } = useBlogByUserId();
 
     const createPost = async ({ title, content }: createPostProps) => {
         if (!currentUser.data) return;
 
-        const {
-            data: { data: currentBlog },
-        } = await axios.get<IGetBlogByUserId>(
-            `${baseUrl}/api/users/${currentUser.data.id}/blogs`
-        );
-
-        if (!currentBlog) return;
+        const currentBlog = await getBlogByUserId(currentUser.data.id);
 
         const {
             data: { data: response },
