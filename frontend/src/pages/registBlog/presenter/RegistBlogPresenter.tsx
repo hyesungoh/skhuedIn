@@ -9,7 +9,6 @@ import QuestionFirst from "components/Regist/QuestionFirst";
 
 const RegistBlogPresenter = () => {
     const [slideId, setSlideId] = useRecoilState(slideIdState);
-    const SLIDE_LENGTH = 2;
 
     const slideList = [<Content />, <QuestionFirst />];
 
@@ -28,7 +27,8 @@ export default RegistBlogPresenter;
 
 const Wrapper = styled.section`
     width: 100vw;
-    height: 84vh;
+    height: auto;
+    min-height: 84vh;
     display: flex;
     justify-content: center;
     align-items: center;

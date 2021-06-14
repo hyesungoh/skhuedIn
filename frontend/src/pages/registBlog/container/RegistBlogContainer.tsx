@@ -12,10 +12,10 @@ const RegistBlogContainer = () => {
     const history = useHistory();
 
     useEffect(() => {
-        if (!currentUser.isSigned || currentUser.data?.isBlog) {
-            history.push("/");
-            return;
-        }
+        // if (!currentUser.isSigned || currentUser.data?.isBlog) {
+        //     history.push("/");
+        //     return;
+        // }
 
         return () => {
             setSlideId(0);
