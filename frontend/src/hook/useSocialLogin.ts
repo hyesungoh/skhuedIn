@@ -6,16 +6,11 @@ import {
     LOGIN_KAKAO_URL,
     LOGIN_NAVER_URL,
 } from "api/socialLogin/url";
-import { IUser } from "types";
+
+import { ISignin } from "types/fetch";
 import { useRecoilState } from "recoil";
 import { currentUserState } from "store/user";
 import useUserSession from "./useUserSession";
-
-interface ISignin {
-    data: IUser;
-    firstVisit: boolean;
-    token: string;
-}
 
 declare global {
     interface Window {
@@ -35,46 +30,47 @@ const useSocialLogin = () => {
         fetchURL: string,
         accessToken: string
     ) => {
-        
-        const userData = await axios.post<ISignin>(fetchURL, {
+        const {
+            data: {
+                data: { firstVisit, token, user },
+            },
+        } = await axios.post<ISignin>(fetchURL, {
             accessToken,
         });
-        
 
         // 유저가 첫 방문, 즉 회원 가입을 해야할 시
-        if (userData.data.firstVisit) {
+        if (firstVisit) {
             setCurrentUser({
                 isSigned: false,
-                token: userData.data.token,
+                token: token,
                 data: {
-                    ...userData.data.data,
+                    ...user,
                 },
             });
             history.push("/signin/setting");
-        } else {
-            // 회원 가입을 했던 유저일 시
-            // set token to axios defaults header
-            axios.defaults.headers.common[
-                "Authorization"
-            ] = `Bearer ${userData.data.token}`;
-
-            setCurrentUser({
-                isSigned: true,
-                token: userData.data.token,
-                data: {
-                    ...userData.data.data,
-                },
-            });
-
-            setUserTokenAndId({
-                token: userData.data.token,
-                id: userData.data.data.id,
-            });
-
-            console.log(userData.data.data.name + "님 로그인 됐습니다");
-            console.log(userData);
-            history.push("/");
+            return;
         }
+        // 회원 가입을 했던 유저일 시
+        // set token to axios defaults header
+        axios.defaults.headers.common[
+            "Authorization"
+        ] = `Bearer ${token}`;
+
+        setCurrentUser({
+            isSigned: true,
+            token: token,
+            data: {
+                ...user,
+            },
+        });
+
+        setUserTokenAndId({
+            token: token,
+            id: user.id,
+        });
+
+        console.log(user.name + "님 로그인 됐습니다");
+        history.push("/");
     };
 
     const OnGoogleLogin = async (result: any) => {

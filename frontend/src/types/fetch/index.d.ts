@@ -8,6 +8,14 @@ import {
     IUser,
 } from "types";
 
+export interface ISignin {
+    data: {
+        firstVisit: boolean;
+        token: string;
+        user: IUser;
+    };
+}
+
 export interface IFetchBase {
     data: {
         pageable: IPageable;
