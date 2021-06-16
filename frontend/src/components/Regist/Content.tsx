@@ -12,7 +12,6 @@ import useRegist from "hook/useRegist";
 
 const Content = () => {
     const { onClickNext } = useSlide();
-    const { registBlog } = useRegist();
 
     const currentUser = useRecoilValue(currentUserState);
     const [content, setContent] = useRecoilState(contentState);
