@@ -15,7 +15,6 @@ export const profileImageState = atom<File | undefined>({
     default: undefined,
 });
 
-
 interface IQuestion {
     title: string;
     content: string;
@@ -23,5 +22,15 @@ interface IQuestion {
 
 export const questionFirstState = atom<IQuestion>({
     key: "questionFirstState",
-    default: {title: "", content: ""}
-})
+    default: { title: "", content: "" },
+});
+
+export const questionSecondState = atom<IQuestion>({
+    key: "questionFirstState",
+    default: { title: "", content: "" },
+});
+
+export const questionThirdState = atom<IQuestion>({
+    key: "questionFirstState",
+    default: { title: "", content: "" },
+});
