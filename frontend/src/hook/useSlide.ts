@@ -7,15 +7,19 @@ const useSlide = () => {
     const [slideId, setSlideId] = useRecoilState(slideIdState);
     const { registBlog } = useRegist();
 
+    const onClickBefore = () => {
+        setSlideId(slideId - 1);
+    };
+
     const onClickNext = () => {
         setSlideId(slideId + 1);
     };
 
-    const onSubmit = () => {
+    const onEndOfSlide = () => {
         // registBlog();
     };
 
-    return { onClickNext };
+    return { onClickNext, onClickBefore, onEndOfSlide };
 };
 
 export default useSlide;

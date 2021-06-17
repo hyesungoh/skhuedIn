@@ -1,29 +1,22 @@
 import React, { useState } from "react";
 
 import MarkdownSection from "components/MarkdownSection";
-import useSlide from "hook/useSlide";
-import usePost from "hook/usePost";
-import "react-mde/lib/styles/css/react-mde-all.css";
+import { useRecoilState } from "recoil";
+import { questionThirdState } from "store/regist";
 
 const QuestionThird = () => {
-    const { onClickNext } = useSlide();
-    const { createPost } = usePost();
+    const TITLE: string = "졸업 후 현재";
+    const [questionThird, setQuestionThird] =
+        useRecoilState(questionThirdState);
 
-    const title = "어쩌구 저쩌구 질문3";
-    const [content, setContent] = useState<string>(`
-    채워주쇼`);
-
-    const onSubmit = () => {
-        // createPost({ title, content, isPush: false });
-        onClickNext();
-    };
+    const onSubmit = () => {};
 
     return (
         <MarkdownSection
             isReadOnly={true}
-            title={title}
-            content={content}
-            onContentChange={setContent}
+            title={TITLE}
+            content={questionThird}
+            onContentChange={setQuestionThird}
             onSubmit={onSubmit}
         />
     );
