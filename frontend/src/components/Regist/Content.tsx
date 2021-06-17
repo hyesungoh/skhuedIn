@@ -8,7 +8,6 @@ import { currentUserState } from "store/user";
 import StyledButton from "components/StyledButton";
 import React, { useState } from "react";
 import { contentState, profileImageState } from "store/regist";
-import useRegist from "hook/useRegist";
 
 const Content = () => {
     const { onClickNext } = useSlide();
@@ -49,7 +48,6 @@ const Content = () => {
             alert("자기 소개를 작성해주세요 !");
             return;
         }
-        // registBlog();
         onClickNext();
     };
 
