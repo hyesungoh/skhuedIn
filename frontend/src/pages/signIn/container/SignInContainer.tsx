@@ -13,7 +13,7 @@ declare global {
     }
 }
 
-const SignInContainer = ({ history, location }: RouteComponentProps) => {
+const SignInContainer = ({ history }: RouteComponentProps) => {
     const currentUser = useRecoilValue(currentUserState);
 
     useEffect(() => {

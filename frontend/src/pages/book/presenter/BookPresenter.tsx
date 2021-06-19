@@ -18,6 +18,15 @@ interface IBookPresenter {
     questions: IQuestion[];
 }
 
+// 댓글 썻을 때 값 비우기
+// 블로그 아이디가 아니라 유저 아이디 쓴 곳 찾기
+// 블로그 등록할 때, 사진이 제대로 안간다  
+// 소개글 작성
+// 북에서 요약되는 내용이 이상하게 나오는 것 해결하기
+// 일반 유저 마이페이지
+// 팔로우
+
+
 const BookPresenter = ({
     isLoading,
     error,

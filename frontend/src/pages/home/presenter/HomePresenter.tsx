@@ -1,6 +1,6 @@
 import Newsfeed from "components/Home/Newsfeed";
 import Profile from "components/Home/Profile";
-import Honor from "components/Home/Honor";
+// import Honor from "components/Home/Honor";
 
 const HomePresenter = () => {
     return (

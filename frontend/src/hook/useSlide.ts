@@ -13,6 +13,7 @@ import usePost from "hook/usePost";
 import useRegist from "hook/useRegist";
 import { useHistory } from "react-router-dom";
 import { currentUserState } from "store/user";
+import QuestionThird from "components/Regist/QuestionThird";
 
 const useSlide = () => {
     const [slideId, setSlideId] = useRecoilState(slideIdState);
@@ -28,8 +29,10 @@ const useSlide = () => {
     const resetQuestionFirst = useResetRecoilState(questionFirstState);
     const questionSecond = useRecoilValue(questionSecondState);
     const resetQuestionSecond = useResetRecoilState(questionSecondState);
+    const questionThird = useRecoilValue(questionThirdState);
     const resetQuestionThird = useResetRecoilState(questionThirdState);
 
+    const profileImage = useRecoilValue(profileImageState);
     // 질문들한테 뒤로가기 넣어주기
     const onClickBefore = () => {
         setSlideId(slideId - 1);
@@ -37,6 +40,8 @@ const useSlide = () => {
 
     const onClickNext = () => {
         setSlideId(slideId + 1);
+        console.log(profileImage);
+
     };
 
     const clearRegistData = () => {
@@ -49,26 +54,29 @@ const useSlide = () => {
 
     const onEndOfSlide = async () => {
         registBlog();
-        await Promise.all([
-            createPost({
-                title: "자기소개",
-                content: questionFirst,
-                isPush: false,
-            }),
-            createPost({
-                title: "학교생활",
-                content: questionSecond,
-                isPush: false,
-            }),
-            createPost({
-                title: "졸업 후 현재",
-                content: questionFirst,
-                isPush: false,
-            }),
-        ]);
-        clearRegistData();
 
-        history.push(`/mypage/${currentUser.data?.id}`);
+        setTimeout(async () => {
+            await Promise.all([
+                createPost({
+                    title: "자기소개",
+                    content: questionFirst,
+                    isPush: false,
+                }),
+                createPost({
+                    title: "학교생활",
+                    content: questionSecond,
+                    isPush: false,
+                }),
+                createPost({
+                    title: "졸업 후 현재",
+                    content: questionThird,
+                    isPush: false,
+                }),
+            ]);
+            clearRegistData();
+
+            history.push(`/mypage/${currentUser.data?.id}`);
+        }, 500);
     };
 
     return { onClickNext, onClickBefore, onEndOfSlide };

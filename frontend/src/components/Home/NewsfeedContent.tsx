@@ -1,6 +1,5 @@
 import { baseUrl } from "api/url";
-import { userInfo } from "node:os";
-import React from "react";
+
 import ReactMarkdown from "react-markdown";
 import { useHistory } from "react-router";
 import { IPost } from "types";

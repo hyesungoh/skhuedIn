@@ -1,5 +1,4 @@
-import List from "components/Library/List";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const setClockFormat = (text: number): string => {
     let value: string = text.toString();

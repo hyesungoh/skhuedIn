@@ -24,7 +24,7 @@ const useRegist = () => {
     const registBlog = useMutation(
         () => {
             const formData = new FormData();
-            formData.append("file", profileImage as Blob);
+            formData.append("file", profileImage as any);
 
             return axios({
                 method: "post",

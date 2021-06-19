@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useQuery, useMutation } from "react-query";
+import { useQuery } from "react-query";
 
 import { baseUrl } from "api/url";
 import { IGetUserById } from "types/fetch";

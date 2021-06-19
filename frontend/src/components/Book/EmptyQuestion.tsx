@@ -1,6 +1,6 @@
 import ModalPortal from "components/Modal/ModalPortal";
-import React, { useState } from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
+import React from "react";
+import { useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
 import { isNewQuestionModalOpenState } from "store/question";
 

@@ -18,8 +18,8 @@ const BookContainer = () => {
 
     const {
         data: quesData,
-        isLoading: quesIsLoading,
-        error: quesError,
+        // isLoading: quesIsLoading,
+        // error: quesError,
     } = useQuery("questions", () => getQuestionsById(id));
 
     if (error) return <Notfound />;

@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { useRecoilValue } from "recoil";
-import _ from "lodash";
 
 import useMainPosts from "hook/useMainPosts";
 import Loading from "components/Loading/Loading";

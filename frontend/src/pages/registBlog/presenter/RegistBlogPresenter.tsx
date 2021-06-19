@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -22,7 +21,11 @@ const RegistBlogPresenter = () => {
     return (
         <Wrapper>
             <TransitionGroup>
-                <CSSTransition key={slideId} classNames="modal--transition" timeout={1000}>
+                <CSSTransition
+                    key={slideId}
+                    classNames="modal--transition"
+                    timeout={1000}
+                >
                     {slideList[slideId]}
                 </CSSTransition>
             </TransitionGroup>

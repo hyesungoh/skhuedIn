@@ -1,5 +1,3 @@
-import sample from "static/images/profile.png";
-import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
 
