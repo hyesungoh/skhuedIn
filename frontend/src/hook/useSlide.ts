@@ -8,21 +8,26 @@ import {
     questionThirdState,
     slideIdState,
 } from "store/regist";
-import useRegist from "./useRegist";
+
+import usePost from "hook/usePost";
+import useRegist from "hook/useRegist";
+import { useHistory } from "react-router-dom";
+import { currentUserState } from "store/user";
 
 const useSlide = () => {
     const [slideId, setSlideId] = useRecoilState(slideIdState);
-    const { registBlog } = useRegist();
 
-    const content = useRecoilValue(contentState);
+    const { registBlog } = useRegist();
+    const { createPost } = usePost();
+    const history = useHistory();
+
+    const currentUser = useRecoilValue(currentUserState);
     const resetContent = useResetRecoilState(contentState);
-    const profileImage = useRecoilValue(profileImageState);
     const resetProfileImage = useResetRecoilState(profileImageState);
     const questionFirst = useRecoilValue(questionFirstState);
     const resetQuestionFirst = useResetRecoilState(questionFirstState);
     const questionSecond = useRecoilValue(questionSecondState);
     const resetQuestionSecond = useResetRecoilState(questionSecondState);
-    const questionThird = useRecoilValue(questionThirdState);
     const resetQuestionThird = useResetRecoilState(questionThirdState);
 
     // 질문들한테 뒤로가기 넣어주기
@@ -42,19 +47,28 @@ const useSlide = () => {
         resetQuestionThird();
     };
 
-    const onEndOfSlide = () => {
-        // 여기서 블로그 레지스트 한 다음에
-        // 글 3개 생성한 다음에
-        // 자기 블로그로 보내버리자
-        // registBlog();
+    const onEndOfSlide = async () => {
+        registBlog();
+        await Promise.all([
+            createPost({
+                title: "자기소개",
+                content: questionFirst,
+                isPush: false,
+            }),
+            createPost({
+                title: "학교생활",
+                content: questionSecond,
+                isPush: false,
+            }),
+            createPost({
+                title: "졸업 후 현재",
+                content: questionFirst,
+                isPush: false,
+            }),
+        ]);
+        clearRegistData();
 
-        console.log(
-            content,
-            profileImage,
-            questionFirst,
-            questionSecond,
-            questionThird
-        );
+        history.push(`/mypage/${currentUser.data?.id}`);
     };
 
     return { onClickNext, onClickBefore, onEndOfSlide };

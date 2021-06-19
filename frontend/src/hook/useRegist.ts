@@ -18,6 +18,7 @@ const useRegist = () => {
                 data: { ...currentUser.data, isBlog: true },
             });
         }
+        return res;
     };
 
     const registBlog = useMutation(
