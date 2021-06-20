@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import { baseUrl } from "api/url";
 import { currentUserState } from "store/user";
@@ -13,7 +13,9 @@ interface PropTypes {
 
 const useQuestionComment = ({ questionId }: PropTypes) => {
     const currentUser = useRecoilValue(currentUserState);
-    const questionCommentContent = useRecoilValue(questionCommentContentState);
+    const [questionCommentContent, setQuestionCommentContent] = useRecoilState(
+        questionCommentContentState
+    );
     const queryClient = useQueryClient();
 
     const { data, error } = useQuery(["QuestionComments", questionId], () =>
@@ -37,7 +39,10 @@ const useQuestionComment = ({ questionId }: PropTypes) => {
             });
         },
         {
-            onSuccess: () => refresh(),
+            onSuccess: () => {
+                setQuestionCommentContent("");
+                refresh();
+            },
         }
     );
 
