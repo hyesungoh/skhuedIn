@@ -13,9 +13,9 @@ const PostContainer = () => {
     const { id } = useParams<IParams>();
     const { data, isLoading } = useQuery("post", () => getPostById(id));
 
+    console.log(data);
     if (!data) return <Loading />;
     return (
-        
         <PostPresenter
             isLoading={isLoading}
             title={data.title}
@@ -24,6 +24,7 @@ const PostContainer = () => {
             createdDate={data.createdDate}
             lastModifiedDate={data.lastModifiedDate}
             writer={data.user}
+            blogId={data.blogId}
         />
     );
 };

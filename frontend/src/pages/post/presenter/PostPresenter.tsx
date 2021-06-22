@@ -13,6 +13,7 @@ interface IPostPresenter {
     createdDate: string;
     lastModifiedDate: string;
     writer: IUser;
+    blogId: number;
 }
 
 const PostPresenter = ({
@@ -23,6 +24,7 @@ const PostPresenter = ({
     createdDate,
     lastModifiedDate,
     writer,
+    blogId,
 }: IPostPresenter) => {
     return (
         <StyledMain>
@@ -33,7 +35,7 @@ const PostPresenter = ({
                 createdDate={createdDate}
                 lastModifiedDate={lastModifiedDate}
             />
-            <WriterSection writer={writer} />
+            <WriterSection writer={writer} blogId={blogId} />
         </StyledMain>
     );
 };

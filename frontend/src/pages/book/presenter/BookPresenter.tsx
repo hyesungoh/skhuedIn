@@ -18,7 +18,6 @@ interface IBookPresenter {
     questions: IQuestion[];
 }
 
-// 댓글 썻을 때 값 비우기
 // 블로그 아이디가 아니라 유저 아이디 쓴 곳 찾기
 // 블로그 등록할 때, 사진이 제대로 안간다  
 // 소개글 작성

@@ -4,13 +4,14 @@ import { IUser } from "types";
 
 interface WriterSectionProps {
     writer: IUser;
+    blogId: number;
 }
 
-const WriterSection = ({ writer }: WriterSectionProps) => {
+const WriterSection = ({ writer, blogId }: WriterSectionProps) => {
     const history = useHistory();
 
     const onNameClick = () => {
-        history.push(`/library/${writer.id}`);
+        history.push(`/library/${blogId}`);
     };
 
     return (
