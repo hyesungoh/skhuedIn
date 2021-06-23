@@ -18,11 +18,9 @@ interface IBookPresenter {
     questions: IQuestion[];
 }
 
-// 블로그 등록할 때, 사진이 제대로 안간다  
-// 세모 소개글 작성 
-
+// 블로그 등록할 때, 사진이 제대로 안간다
+// 세모 소개글 작성
 // 일반 유저 마이페이지
-// 팔로우
 
 
 const BookPresenter = ({

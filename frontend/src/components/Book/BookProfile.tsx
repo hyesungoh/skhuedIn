@@ -1,11 +1,9 @@
-import React from "react";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import BookProfileInfoSummary from "./BookProfileInfoSummary";
 import { IUser } from "types";
 import { baseUrl } from "api/url";
+import BookProfileInfoSummary from "./BookProfileInfoSummary";
 
 interface IBookProfile {
     user: IUser;
@@ -13,12 +11,16 @@ interface IBookProfile {
 }
 
 const BookProfile = ({ user, blogImage }: IBookProfile) => {
+    console.log(blogImage);
+
+
     return (
         <div className="book__profile__info">
             <div className="book__profile__info__vertical">
                 <div className="book__profile__info__vertical__image">
                     <img
-                        src={`${baseUrl}${blogImage}`}
+                        // src={`${baseUrl}${blogImage}`}
+                        src={blogImage}
                         alt="book profile img"
                     />
                 </div>

@@ -1,8 +1,10 @@
-import useBlogByUserId from "hook/useBlogByUserId";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useHistory } from "react-router";
 import { useRecoilValue } from "recoil";
+
 import { currentUserState } from "store/user";
+import useBlogByUserId from "hook/useBlogByUserId";
+import MypagePresenter from "../presenter/MypagePresenter";
 
 const MypageContainer = () => {
     const currentUser = useRecoilValue(currentUserState);
@@ -13,15 +15,14 @@ const MypageContainer = () => {
         const blogData = await getBlogByUserId(currentUser.data?.id);
         history.push(`/library/${blogData.id}`);
     };
-    
+
     useEffect(() => {
         if (currentUser.data?.isBlog) {
             pushWhenBlog();
             return;
         }
-
     }, []);
-    return <div>나는 마이페이지 입니당</div>;
+    return <MypagePresenter />;
 };
 
 export default MypageContainer;

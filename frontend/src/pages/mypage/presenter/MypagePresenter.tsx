@@ -1,13 +1,21 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
 
 import BookProfile from "components/Book/BookProfile";
-import Question from "components/Book/Questions";
+import { currentUserState } from "store/user";
+import Loading from "components/Loading/Loading";
 
 const MypagePresenter = () => {
+    const currentUser = useRecoilValue(currentUserState);
+
+    if (!currentUser.data) return <Loading />;
+
     return (
         <div className="book">
-            {/* <BookProfile />
-            <Roadmap /> */}
+            <BookProfile
+                user={currentUser.data}
+                blogImage={currentUser.data.userImageUrl}
+            />
         </div>
     );
 };
