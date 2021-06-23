@@ -1,19 +1,20 @@
-import { useEffect } from "react";
 import { GoogleLogin } from "react-google-login";
 
 import logoGoogle from "static/images/google.png";
-import logoKakao from "static/images/kakao.png";
+// import logoKakao from "static/images/kakao.png";
 
 import "pages/signIn/SignIn.scss";
 import useSocialLogin from "hook/useSocialLogin";
 
 const SignInPresenter = () => {
-    const { initializeNaverLogin, OnGoogleLogin, OnKakaoLogin } =
-        useSocialLogin();
+    // const { initializeNaverLogin, OnGoogleLogin, OnKakaoLogin } =
+    //     useSocialLogin();
 
     // useEffect(() => {
     // initializeNaverLogin();
     // }, []);
+
+    const { OnGoogleLogin } = useSocialLogin();
 
     return (
         <div className="center">

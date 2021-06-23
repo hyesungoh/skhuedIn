@@ -13,7 +13,6 @@ import usePost from "hook/usePost";
 import useRegist from "hook/useRegist";
 import { useHistory } from "react-router-dom";
 import { currentUserState } from "store/user";
-import QuestionThird from "components/Regist/QuestionThird";
 
 const useSlide = () => {
     const [slideId, setSlideId] = useRecoilState(slideIdState);
@@ -41,7 +40,6 @@ const useSlide = () => {
     const onClickNext = () => {
         setSlideId(slideId + 1);
         console.log(profileImage);
-
     };
 
     const clearRegistData = () => {

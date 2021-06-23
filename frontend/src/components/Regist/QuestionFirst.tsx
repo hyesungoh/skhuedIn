@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 import "react-mde/lib/styles/css/react-mde-all.css";
 import MarkdownSection from "components/MarkdownSection";
 import useSlide from "hook/useSlide";

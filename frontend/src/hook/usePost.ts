@@ -4,7 +4,6 @@ import { useHistory } from "react-router";
 import { useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
 import { IPost } from "types";
-import { IGetBlogByUserId } from "types/fetch";
 import useBlogByUserId from "./useBlogByUserId";
 
 interface createPostProps {

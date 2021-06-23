@@ -8,7 +8,7 @@ import {
 } from "api/socialLogin/url";
 
 import { ISignin } from "types/fetch";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { currentUserState } from "store/user";
 import useUserSession from "./useUserSession";
 
@@ -23,7 +23,7 @@ const useSocialLogin = () => {
     const history = useHistory();
     const location = useLocation();
     const { setUserTokenAndId } = useUserSession();
-    const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+    const setCurrentUser = useSetRecoilState(currentUserState);
 
     const PushPathWithUserData = async (
         provider: string,
@@ -52,9 +52,7 @@ const useSocialLogin = () => {
         }
         // 회원 가입을 했던 유저일 시
         // set token to axios defaults header
-        axios.defaults.headers.common[
-            "Authorization"
-        ] = `Bearer ${token}`;
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
         setCurrentUser({
             isSigned: true,

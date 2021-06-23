@@ -1,18 +1,16 @@
-import ModalPortal from "components/Modal/ModalPortal";
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { currentUserState } from "store/user";
-import { isNewQuestionModalOpenState } from "store/question";
-
 import styled from "styled-components";
+
 import NewQuestion from "../Modal/NewQuestion";
+import ModalPortal from "components/Modal/ModalPortal";
+import { isNewQuestionModalOpenState } from "store/question";
 
 interface EmptyQuestionProps {
     onClickNewQuestion: () => void;
 }
 
 const EmptyQuestion = ({ onClickNewQuestion }: EmptyQuestionProps) => {
-    const currentUser = useRecoilValue(currentUserState);
     const isNewQuestionModalOpen = useRecoilValue(isNewQuestionModalOpenState);
 
     return (

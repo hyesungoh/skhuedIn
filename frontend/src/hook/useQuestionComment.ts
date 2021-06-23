@@ -18,7 +18,7 @@ const useQuestionComment = ({ questionId }: PropTypes) => {
     );
     const queryClient = useQueryClient();
 
-    const { data, error } = useQuery(["QuestionComments", questionId], () =>
+    const { data } = useQuery(["QuestionComments", questionId], () =>
         axios.get<IGetCommentsByQuestionId>(
             `${baseUrl}/api/questions/${questionId}/comments`
         )

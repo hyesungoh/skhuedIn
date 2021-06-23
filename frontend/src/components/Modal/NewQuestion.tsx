@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import _ from "lodash";
 
@@ -22,7 +22,7 @@ const NewQuestion = () => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [newQuestion, setNewQuestion] = useRecoilState(newQuestionState);
-    const [isNewQuestionModalOpen, setIsNewQuestionModalOpen] = useRecoilState(
+    const setIsNewQuestionModalOpen = useSetRecoilState(
         isNewQuestionModalOpenState
     );
 

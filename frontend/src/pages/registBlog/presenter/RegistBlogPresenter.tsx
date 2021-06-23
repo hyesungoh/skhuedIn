@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import { slideIdState } from "store/regist";
@@ -9,7 +9,7 @@ import QuestionSecond from "components/Regist/QuestionSecond";
 import QuestionThird from "components/Regist/QuestionThird";
 
 const RegistBlogPresenter = () => {
-    const [slideId, setSlideId] = useRecoilState(slideIdState);
+    const slideId = useRecoilValue(slideIdState);
 
     const slideList = [
         <Content />,

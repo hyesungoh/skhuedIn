@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 import MarkdownSection from "components/MarkdownSection";
 import { useRecoilState } from "recoil";
 import { questionThirdState } from "store/regist";

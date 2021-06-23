@@ -7,7 +7,7 @@ function App() {
 
     useEffect(() => {
         getUserDataWithSession();
-    }, []);
+    });
     
     return <MyRouter />;
 }

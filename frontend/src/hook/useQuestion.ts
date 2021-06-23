@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import { useQuery, useMutation, useQueryClient } from "react-query";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useMutation, useQueryClient } from "react-query";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { currentUserState } from "store/user";
 import { isNewQuestionModalOpenState, newQuestionState } from "store/question";
 import { baseUrl } from "api/url";
@@ -12,7 +12,7 @@ const useQuestion = () => {
     const currentUser = useRecoilValue(currentUserState);
     const newQuestion = useRecoilValue(newQuestionState);
 
-    const [isNewQuestionModalOpen, setIsnNewQuestionModalOpen] = useRecoilState(
+    const setIsnNewQuestionModalOpen = useSetRecoilState(
         isNewQuestionModalOpenState
     );
 

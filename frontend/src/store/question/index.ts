@@ -1,4 +1,4 @@
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
 
 export const newQuestionState = atom<{ title: string; content: string }>({
     key: "newQuestionState",
