@@ -1,23 +1,23 @@
-import React from "react";
-import { useRecoilValue } from "recoil";
-
-import BookProfile from "components/Book/BookProfile";
-import { currentUserState } from "store/user";
-import Loading from "components/Loading/Loading";
+import styled from "styled-components";
+import Profile from "components/Mypage/Profile";
 
 const MypagePresenter = () => {
-    const currentUser = useRecoilValue(currentUserState);
-
-    if (!currentUser.data) return <Loading />;
-
     return (
-        <div className="book">
-            <BookProfile
-                user={currentUser.data}
-                blogImage={currentUser.data.userImageUrl}
-            />
-        </div>
+        <StyledMain>
+            <Profile />
+        </StyledMain>
     );
 };
 
 export default MypagePresenter;
+
+const StyledMain = styled.main`
+    width: 100vw;
+    height: 70vh;
+    padding: ${({ theme }) => theme.layout_padding};
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+`;
