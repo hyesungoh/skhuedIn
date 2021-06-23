@@ -28,10 +28,10 @@ const Questions = ({ questions }: IQuestions) => {
     useEffect(() => {
         if (openQuesIndex === null) {
             setCurQuestion(null);
-        } else {
-            setCurQuestion(questions[openQuesIndex]);
+            return;
         }
-    }, [openQuesIndex]);
+        setCurQuestion(questions[openQuesIndex]);
+    }, [openQuesIndex, questions]);
 
     const onClickNewQuestion = () => {
         if (currentUser.isSigned) {

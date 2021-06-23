@@ -8,7 +8,7 @@ const SignInNaverContainer = () => {
 
     useEffect(() => {
         OnNaverLogin();
-    }, []);
+    }, [OnNaverLogin]);
 
     return <Loading />;
 };

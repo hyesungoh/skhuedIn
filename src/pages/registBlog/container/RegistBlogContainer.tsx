@@ -16,7 +16,7 @@ const RegistBlogContainer = () => {
         return () => {
             setSlideId(0);
         };
-    }, []);
+    }, [setSlideId]);
 
     return <RegistBlogPresenter />;
 };

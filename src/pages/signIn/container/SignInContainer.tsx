@@ -19,7 +19,7 @@ const SignInContainer = ({ history }: RouteComponentProps) => {
     useEffect(() => {
         // 이미 로그인 된 사용자일 시
         if (currentUser.isSigned) history.push("/");
-    }, [currentUser]);
+    }, [currentUser, history]);
 
     return <SignInPresenter />;
 };

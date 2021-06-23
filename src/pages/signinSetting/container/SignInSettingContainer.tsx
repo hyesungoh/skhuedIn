@@ -16,10 +16,6 @@ export interface ILocationState {
 }
 
 const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
-    useEffect(() => {
-        if (currentUser.isSigned || !currentUser.token) history.push("/signin");
-    }, []);
-
     const [status, setStatus] = useState<string>("Student");
     const [entranceYear, setEntranceYear] = useState<number>(2017);
     const [graduationYear, setGraduationYear] = useState<number>(0);
@@ -27,6 +23,10 @@ const SignInSettingContainer = ({ location, history }: RouteChildrenProps) => {
 
     const { userYearUpdateWithId } = useUser();
     const { setUserTokenAndId } = useUserSession();
+
+    useEffect(() => {
+        if (currentUser.isSigned || !currentUser.token) history.push("/signin");
+    }, [currentUser.isSigned, currentUser.token, history]);
 
     const onSignin = () => {
         console.log(`입학년도 : ${entranceYear}`);

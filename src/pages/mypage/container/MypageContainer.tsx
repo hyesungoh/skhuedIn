@@ -11,17 +11,22 @@ const MypageContainer = () => {
     const history = useHistory();
     const { getBlogByUserId } = useBlogByUserId();
 
-    const pushWhenBlog = async () => {
-        const blogData = await getBlogByUserId(currentUser.data?.id);
-        history.push(`/library/${blogData.id}`);
-    };
-
     useEffect(() => {
+        const pushWhenBlog = async () => {
+            const blogData = await getBlogByUserId(currentUser.data?.id);
+            history.push(`/library/${blogData.id}`);
+        };
+
         if (currentUser.data?.isBlog) {
             pushWhenBlog();
             return;
         }
-    }, []);
+    }, [
+        history,
+        getBlogByUserId,
+        currentUser.data?.id,
+        currentUser.data?.isBlog,
+    ]);
     return <MypagePresenter />;
 };
 
