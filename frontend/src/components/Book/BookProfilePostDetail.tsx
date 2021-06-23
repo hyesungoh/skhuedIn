@@ -31,8 +31,10 @@ const BookProfilePostDetail = ({
     };
 
     const setContentFormat = (ogContent: string) => {
-        const fmContent: string = ogContent.split("\n").slice(0, 2).join("\n");
-        const plusContent: string = "    ...";
+        // const fmContent: string = ogContent.split("\n").slice(0, 2).join("\n");
+        const fmContent: string = ogContent.slice(0, 40);
+
+        const plusContent: string = "...";
         return fmContent + plusContent;
     };
 
