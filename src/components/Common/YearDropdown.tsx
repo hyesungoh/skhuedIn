@@ -4,9 +4,16 @@ import styled from "styled-components";
 interface YearDropdownProps {
     name: string;
     startYear?: number;
+    graduateYear: string;
+    setGraduateYear: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const YearDropdown = ({ name, startYear = 2000 }: YearDropdownProps) => {
+const YearDropdown = ({
+    name,
+    startYear = 2000,
+    graduateYear,
+    setGraduateYear,
+}: YearDropdownProps) => {
     const CheckBokRef = useRef<HTMLInputElement>(null);
 
     const date = new Date();
@@ -20,13 +27,13 @@ const YearDropdown = ({ name, startYear = 2000 }: YearDropdownProps) => {
 
     const onClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         if (CheckBokRef.current) CheckBokRef.current.checked = false;
-        console.log((e.target as Element).id);
+        setGraduateYear((e.target as Element).id);
     };
 
     return (
         <InputDiv>
             <InputCheckbox id={name} type="checkbox" ref={CheckBokRef} />
-            <SelectLabel htmlFor={name}>{name}</SelectLabel>
+            <SelectLabel htmlFor={name}>{graduateYear}</SelectLabel>
             <BackSpan />
             <OverSpan />
             <CandidateDiv>
@@ -57,11 +64,6 @@ const InputDiv = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: start;
-`;
-
-const InputH2 = styled.h2`
-    font-size: 1.3rem;
-    font-weight: 300;
 `;
 
 const InputCheckbox = styled.input`
