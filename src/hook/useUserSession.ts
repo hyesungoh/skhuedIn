@@ -58,7 +58,17 @@ const useUserSession = () => {
         window.sessionStorage.removeItem(ID_SESSION_NAME);
     };
 
-    return { setUserTokenAndId, getUserDataWithSession, clearUserSession };
+    const isUserTokenExist = () => {
+        const sessionToken = window.sessionStorage.getItem(TOKEN_SESSION_NAME);
+        return sessionToken;
+    };
+
+    return {
+        setUserTokenAndId,
+        getUserDataWithSession,
+        clearUserSession,
+        isUserTokenExist,
+    };
 };
 
 export default useUserSession;

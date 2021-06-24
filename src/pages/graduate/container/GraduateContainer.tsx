@@ -1,3 +1,4 @@
+import useUserSession from "hook/useUserSession";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
 import { useRecoilValue } from "recoil";
@@ -6,13 +7,14 @@ import GraduatePresenter from "../presenter/GraduatePresenter";
 
 const GraduateContainer = () => {
     const history = useHistory();
+    const { isUserTokenExist } = useUserSession();
     const currentUser = useRecoilValue(currentUserState);
 
     useEffect(() => {
-        console.log(currentUser.token);
-        
-        if (!currentUser.token) history.push("/");
-    }, [currentUser.data?.isBlog, currentUser.token, history]);
+        const isSignedIn = isUserTokenExist();
+
+        if (isSignedIn === null || currentUser.data?.isBlog) history.push("/");
+    }, [currentUser.data?.isBlog, history, isUserTokenExist]);
 
     return <GraduatePresenter />;
 };
