@@ -1,13 +1,18 @@
 import Error from "components/Error/Error";
+import { useHistory } from "react-router";
 import { useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
 import styled from "styled-components";
 
 const Profile = () => {
+    const history = useHistory();
     const currentUser = useRecoilValue(currentUserState);
 
-    if (!currentUser.data) return <Error />;
+    const onGraduateClick = () => {
+        history.push("/graduate");
+    };
 
+    if (!currentUser.data) return <Error />;
     return (
         <StyledMain>
             <ImageAside>
@@ -31,7 +36,7 @@ const Profile = () => {
                     </InfoArticle>
                 </InfoDiv>
             </InfoSection>
-            <GraduateBtn>졸업 했어요 !</GraduateBtn>
+            <GraduateBtn onClick={onGraduateClick}>졸업 했어요 !</GraduateBtn>
         </StyledMain>
     );
 };

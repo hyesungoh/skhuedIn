@@ -22,6 +22,7 @@ import Loading from "components/Loading/Loading";
 import Error from "components/Error/Error";
 import RegistBlogContainer from "pages/registBlog/container/RegistBlogContainer";
 import ScrollToTop from "components/ScrollToTop";
+import GraduateContainer from "pages/graduate/container/GraduateContainer";
 
 const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup className="page">
@@ -40,6 +41,7 @@ const TransitionRouter = withRouter(({ location }) => (
                 />
                 <Route path="/signup" component={SignUpPresenter} />
                 <Route path="/mypage/:id" component={MypageContainer} />
+                <Route path="/graduate" component={GraduateContainer} />
                 <Route path="/write" component={WritingPresenter} />
                 <Route path="/post/:id" component={PostContainer} />
                 <Route path="/loading" component={Loading} />

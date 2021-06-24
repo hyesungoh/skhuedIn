@@ -7,8 +7,8 @@ function App() {
 
     useEffect(() => {
         getUserDataWithSession();
-    });
-    
+    }, [getUserDataWithSession]);
+
     return <MyRouter />;
 }
 
