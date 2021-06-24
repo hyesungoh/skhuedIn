@@ -19,8 +19,6 @@ interface IBookPresenter {
 }
 
 // 블로그 등록할 때, 사진이 제대로 안간다
-// 일반 유저 마이페이지
-
 
 const BookPresenter = ({
     isLoading,

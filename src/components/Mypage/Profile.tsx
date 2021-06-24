@@ -105,12 +105,12 @@ const Info = styled.span`
 const GraduateBtn = styled.button`
     all: unset;
     text-align: center;
+    font-size: 14px;
 
     position: absolute;
     right: 0;
-    bottom: -56px;
-    width: 200px;
-    height: 50px;
+    bottom: -52px;
+    padding: 12px 16px;
     align-self: flex-end;
     cursor: pointer;
 
