@@ -7,10 +7,11 @@ import _ from "lodash";
 
 import useQuestion from "hook/useQuestion";
 import { isNewQuestionModalOpenState, newQuestionState } from "store/question";
-import useUserById from "hook/useUserById";
 import TextInputWithLabel from "components/TextInputWithLabel";
 import TextAreaWithLabel from "components/TextAreaWithLabel";
 import StyledButton from "components/StyledButton";
+import useBlogByUserId from "hook/useBlogByUserId";
+import { IBlog } from "types";
 
 interface Params {
     id: string;
@@ -21,17 +22,25 @@ const NewQuestion = () => {
     const { id } = useParams<Params>();
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [targetUser, setTargetUser] = useState<IBlog>();
+
     const [newQuestion, setNewQuestion] = useRecoilState(newQuestionState);
     const setIsNewQuestionModalOpen = useSetRecoilState(
         isNewQuestionModalOpenState
     );
 
     const { saveQuestion } = useQuestion();
-    const { data: targetUserData } = useUserById(id);
+    const { getBlogByUserId } = useBlogByUserId();
 
     useEffect(() => {
+        const setTarget = async () => {
+            const target = await getBlogByUserId(parseInt(id));
+            setTargetUser(target);
+        };
+
         setIsOpen(true);
-    }, []);
+        setTarget();
+    }, [getBlogByUserId, id]);
 
     const closeModal = (e: React.MouseEvent) => {
         if (e.target !== e.currentTarget) return;
@@ -51,7 +60,7 @@ const NewQuestion = () => {
     );
 
     const onSubmit = () => {
-        if (targetUserData) saveQuestion(targetUserData.data.id);
+        if (targetUser) saveQuestion(targetUser.id);
         console.log("submit");
     };
 
@@ -64,7 +73,7 @@ const NewQuestion = () => {
             <div className="modal" onClick={closeModal}>
                 <ModalBox className="modal__content">
                     <StyledH2>
-                        <strong>{targetUserData?.data.name}</strong>님에게
+                        <strong>{targetUser?.user.name}</strong>님에게
                         질문하기
                     </StyledH2>
                     <TextInputWithLabel

@@ -1,14 +1,14 @@
 import YearDropdown from "components/Common/YearDropdown";
 import StyledButton from "components/StyledButton";
 import { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
 import styled from "styled-components";
 
 const GraduatePresenter = () => {
     const [graduateYear, setGraduateYear] = useState<string>("2021");
 
-    const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+    const currentUser = useRecoilValue(currentUserState);
     const entranceYear: number = currentUser.data?.entranceYear
         ? parseInt(currentUser.data?.entranceYear)
         : 2017;
