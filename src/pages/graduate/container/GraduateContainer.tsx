@@ -10,11 +10,11 @@ const GraduateContainer = () => {
     const { isUserTokenExist } = useUserSession();
     const currentUser = useRecoilValue(currentUserState);
 
-    useEffect(() => {
-        const isSignedIn = isUserTokenExist();
+    // useEffect(() => {
+    //     const isSignedIn = isUserTokenExist();
 
-        if (isSignedIn === null || currentUser.data?.isBlog) history.push("/");
-    }, [currentUser.data?.isBlog, history, isUserTokenExist]);
+    //     if (isSignedIn === null || currentUser.data?.isBlog) history.push("/");
+    // }, [currentUser.data?.isBlog, history, isUserTokenExist]);
 
     return <GraduatePresenter />;
 };
