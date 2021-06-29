@@ -73,5 +73,5 @@
         "sass": "^1.35.1"
     },
     "proxy": "https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3Df4f3a16b864f2046d38669b4f8a2a482",
-    "homepage": "https://hyesungoh.github.io/skhuedIn"
+    "homepage": "https://www.skhuedin.xyz"
 }
