@@ -13,6 +13,7 @@
         "@testing-library/react": "^11.1.0",
         "@testing-library/user-event": "^12.1.10",
         "@types/axios": "^0.14.0",
+        "@types/gh-pages": "^3.0.0",
         "@types/jest": "^26.0.15",
         "@types/lodash": "^4.14.170",
         "@types/node": "^12.0.0",
@@ -45,7 +46,9 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "predeploy": "yarn build",
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
@@ -66,8 +69,9 @@
         ]
     },
     "devDependencies": {
-        "gh-pages": "^3.1.0",
+        "gh-pages": "^3.2.3",
         "sass": "^1.35.1"
     },
-    "proxy": "https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3Df4f3a16b864f2046d38669b4f8a2a482"
+    "proxy": "https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3Df4f3a16b864f2046d38669b4f8a2a482",
+    "homepage": "https://hyesungoh.github.io/skhuedIn"
 }
