@@ -17,14 +17,21 @@ export interface IUser {
     isBlog: boolean;
 }
 
-export interface IBlog {
-    posts: any[];
+export interface IProfile {
     id: number;
-    user: IUser;
-    profileImageUrl: string;
+    name: string;
+    originalName: string;
+    path: string;
+}
+
+export interface IBlog {
     content: string;
     createdDate: string;
+    id: number;
     lastModifiedDate: string;
+    posts: any[];
+    profile: IProfile;
+    user: IUser;
 }
 
 export interface IPost {

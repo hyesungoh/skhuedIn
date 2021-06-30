@@ -93,7 +93,7 @@ const List = ({ blogs }: IList) => {
                         blogId={blog.id}
                         name={blog.user.name}
                         entranceYear={blog.user.entranceYear}
-                        profileImageUrl={blog.profileImageUrl}
+                        profileImageUrl={blog.profile.name}
                         content={blog.content}
                     />
                 ))}
