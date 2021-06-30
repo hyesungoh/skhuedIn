@@ -19,7 +19,7 @@ const BookProfile = ({ user, blogImage }: IBookProfile) => {
             <div className="book__profile__info__vertical">
                 <div className="book__profile__info__vertical__image">
                     <img
-                        src={`${baseUrl}${blogImage}`}
+                        src={`${baseUrl}/profile/${blogImage}`}
                         // src={blogImage}
                         alt="book profile img"
                     />

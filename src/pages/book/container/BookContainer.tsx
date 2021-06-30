@@ -30,7 +30,7 @@ const BookContainer = () => {
             isLoading={isLoading}
             error={error}
             posts={data.posts.content}
-            blogImage={data.profile.path}
+            blogImage={data.profile.name}
             user={data.user}
             questions={quesData?.content}
         />

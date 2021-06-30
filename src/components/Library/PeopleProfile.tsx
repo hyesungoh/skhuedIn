@@ -2,8 +2,9 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-
 import { useHistory } from "react-router-dom";
+
+import { baseUrl } from "api/url";
 
 interface IPeopleProfile {
     blogId: number;
@@ -30,7 +31,10 @@ const PeopleProfile = ({
         <div className="peoples__list__profile" onClick={onClick}>
             <div className="peoples__list__profile__logo">
                 <div className="peoples__list__profile__logo__img">
-                    <img src={profileImageUrl} alt="test profile" />
+                    <img
+                        src={`${baseUrl}/profile/${profileImageUrl}`}
+                        alt="test profile"
+                    />
                 </div>
 
                 <div className="peoples__list__profile__logo__div">
