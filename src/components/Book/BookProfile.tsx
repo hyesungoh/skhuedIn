@@ -11,9 +11,6 @@ interface IBookProfile {
 }
 
 const BookProfile = ({ user, blogImage }: IBookProfile) => {
-    console.log(blogImage);
-
-
     return (
         <div className="book__profile__info">
             <div className="book__profile__info__vertical">
