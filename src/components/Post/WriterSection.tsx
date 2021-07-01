@@ -63,6 +63,20 @@ const StyledSection = styled.section`
     align-items: center;
 `;
 
+const ProfileInfoDiv = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+`;
+
+const BoldSpan = styled.span`
+    font-size: 1rem;
+
+    &:hover {
+        color: ${({ theme }) => theme.colors.bold};
+    }
+`;
+
 const ProfileImageDiv = styled.div`
     position: relative;
     overflow: hidden;
@@ -72,6 +86,10 @@ const ProfileImageDiv = styled.div`
     border-radius: 50%;
     background-color: red;
     margin-bottom: 8px;
+
+    &:hover ~ ${ProfileInfoDiv} > ${BoldSpan} {
+        color: ${({ theme }) => theme.colors.bold};
+    }
 `;
 
 const ProfileImage = styled.img`
@@ -82,16 +100,6 @@ const ProfileImage = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
-`;
-
-const ProfileInfoDiv = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-`;
-
-const BoldSpan = styled.span`
-    font-size: 1rem;
 `;
 
 const SoftSpan = styled.span`
