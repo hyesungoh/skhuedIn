@@ -29,6 +29,8 @@ const TransitionRouter = withRouter(({ location }) => (
         <CSSTransition key={location.key} classNames="slide" timeout={1200}>
             <Switch location={location}>
                 <Route path="/" exact component={HomeContainer} />
+                {/* <Route path="/" exact component={LibraryContainer} /> */}
+
                 <Route path="/introduce" component={IntroducePresenter} />
                 <Route path="/library" exact component={LibraryContainer} />
                 <Route path="/library/:id" exact component={BookContainer} />
