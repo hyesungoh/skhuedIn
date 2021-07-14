@@ -28,11 +28,12 @@ const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup className="page">
         <CSSTransition key={location.key} classNames="slide" timeout={1200}>
             <Switch location={location}>
-                <Route path="/" exact component={HomeContainer} />
-                {/* <Route path="/" exact component={LibraryContainer} /> */}
+                {/* <Route path="/" exact component={HomeContainer} /> */}
+                <Route path="/" exact component={LibraryContainer} />
+                {/* <Route path="/:id" exact component={BookContainer} /> */}
 
                 <Route path="/introduce" component={IntroducePresenter} />
-                <Route path="/library" exact component={LibraryContainer} />
+                {/* <Route path="/library" exact component={LibraryContainer} /> */}
                 <Route path="/library/:id" exact component={BookContainer} />
                 <Route path="/suggestion" component={SuggestionContainer} />
                 <Route path="/signin" exact component={SignInContainer} />
