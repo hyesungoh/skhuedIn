@@ -24,12 +24,15 @@ import RegistBlogContainer from "pages/registBlog/container/RegistBlogContainer"
 import ScrollToTop from "components/ScrollToTop";
 import GraduateContainer from "pages/graduate/container/GraduateContainer";
 
+import LibraryHome from "pages/libraryHome";
+
 const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup className="page">
         <CSSTransition key={location.key} classNames="slide" timeout={1200}>
             <Switch location={location}>
                 {/* <Route path="/" exact component={HomeContainer} /> */}
-                <Route path="/" exact component={LibraryContainer} />
+                {/* <Route path="/" exact component={LibraryContainer} /> */}
+                <Route path="/" exact component={LibraryHome} />
                 {/* <Route path="/:id" exact component={BookContainer} /> */}
 
                 <Route path="/introduce" component={IntroducePresenter} />
