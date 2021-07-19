@@ -5,6 +5,7 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { useHistory } from "react-router-dom";
 
 import { baseUrl } from "api/url";
+import useFollow from "hook/follow/useFollow";
 
 interface IPeopleProfile {
     blogId: number;
@@ -22,6 +23,7 @@ const PeopleProfile = ({
     content,
 }: IPeopleProfile) => {
     const history = useHistory();
+    const { alertNotYet } = useFollow();
 
     const onClick = () => {
         history.push(`/library/${blogId}`);
@@ -37,7 +39,10 @@ const PeopleProfile = ({
                     />
                 </div>
 
-                <div className="peoples__list__profile__logo__div">
+                <div
+                    className="peoples__list__profile__logo__div"
+                    onClick={alertNotYet}
+                >
                     <FontAwesomeIcon
                         className="peoples__list__profile__logo__div__heart"
                         icon={faHeart}

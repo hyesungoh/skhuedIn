@@ -90,3 +90,11 @@ export interface IGetBlogByUserId {
 export interface IGetCommentsByQuestionId {
     data: IComment[];
 }
+
+export interface IGetFollowsByToUserId {
+    data: {
+        id: number;
+        toUser: IUser;
+        fromUser: IUser;
+    };
+}

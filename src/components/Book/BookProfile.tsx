@@ -5,6 +5,7 @@ import { IUser } from "types";
 import { baseUrl } from "api/url";
 import BookProfileInfoSummary from "./BookProfileInfoSummary";
 import useInterview from "hook/interview/useInterview";
+import useFollow from "hook/follow/useFollow";
 
 interface IBookProfile {
     user: IUser;
@@ -12,6 +13,7 @@ interface IBookProfile {
 }
 
 const BookProfile = ({ user, blogImage }: IBookProfile) => {
+    const { alertNotYet } = useFollow();
     const { requestInterview } = useInterview();
 
     return (
@@ -25,7 +27,10 @@ const BookProfile = ({ user, blogImage }: IBookProfile) => {
                     />
                 </div>
                 <div className="book__profile__info__vertical__follow">
-                    <div className="book__profile__info__vertical__follow__heart">
+                    <div
+                        className="book__profile__info__vertical__follow__heart"
+                        onClick={alertNotYet}
+                    >
                         <FontAwesomeIcon icon={faHeart} size="1x" />
                     </div>
 
