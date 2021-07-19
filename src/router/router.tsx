@@ -4,10 +4,10 @@ import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import NavContainer from "pages/nav/container/NavContainer";
-import HomeContainer from "pages/home/container/HomeContainer";
+// import HomeContainer from "pages/home/container/HomeContainer";
 import SuggestionContainer from "pages/suggestion/container/SuggestionContainer";
 import IntroducePresenter from "pages/introduce/presenter/IntroducePresenter";
-import LibraryContainer from "pages/library/container/LibraryContainer";
+// import LibraryContainer from "pages/library/container/LibraryContainer";
 import BookContainer from "pages/book/container/BookContainer";
 import SignInContainer from "pages/signIn/container/SignInContainer";
 import SignInNaverContainer from "pages/signinNaver/containter/SignInNaverContainer";
