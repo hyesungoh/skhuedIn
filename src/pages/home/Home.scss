@@ -207,14 +207,14 @@
 }
 
 .newsfeed__content {
+    cursor: pointer;
     min-height: 200px;
     margin-bottom: 20px;
+    padding: 10px;
 
     display: flex;
     flex-direction: column;
     gap: 10px;
-
-    padding: 10px;
 
     border-radius: $border_intensity;
     background-color: $white_color;
