@@ -8,9 +8,9 @@ import useUserSession from "hook/useUserSession";
 const NavContainer = () => {
     const history = useHistory();
     const categorys = [
-        // { path: "", name: "이야기" },
+        { path: "", name: "이야기" },
         { path: "introduce", name: "소개" },
-        { path: "", name: "책장" },
+        { path: "library", name: "책장" },
         { path: "suggestion", name: "사서에게" },
     ];
 
