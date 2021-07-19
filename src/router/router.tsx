@@ -4,10 +4,10 @@ import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import NavContainer from "pages/nav/container/NavContainer";
-// import HomeContainer from "pages/home/container/HomeContainer";
+import HomeContainer from "pages/home/container/HomeContainer";
 import SuggestionContainer from "pages/suggestion/container/SuggestionContainer";
 import IntroducePresenter from "pages/introduce/presenter/IntroducePresenter";
-// import LibraryContainer from "pages/library/container/LibraryContainer";
+import LibraryContainer from "pages/library/container/LibraryContainer";
 import BookContainer from "pages/book/container/BookContainer";
 import SignInContainer from "pages/signIn/container/SignInContainer";
 import SignInNaverContainer from "pages/signinNaver/containter/SignInNaverContainer";
@@ -17,26 +17,20 @@ import MypageContainer from "pages/mypage/container/MypageContainer";
 import WritingPresenter from "pages/writing/presenter/WritingPresenter";
 import PostContainer from "pages/post/container/PostContainer";
 import Notfound from "pages/notfound/Notfound";
-
 import Loading from "components/Loading/Loading";
 import Error from "components/Error/Error";
 import RegistBlogContainer from "pages/registBlog/container/RegistBlogContainer";
 import ScrollToTop from "components/ScrollToTop";
 import GraduateContainer from "pages/graduate/container/GraduateContainer";
 
-import LibraryHome from "pages/libraryHome";
-
 const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup className="page">
         <CSSTransition key={location.key} classNames="slide" timeout={1200}>
             <Switch location={location}>
-                {/* <Route path="/" exact component={HomeContainer} /> */}
-                {/* <Route path="/" exact component={LibraryContainer} /> */}
-                <Route path="/" exact component={LibraryHome} />
-                {/* <Route path="/:id" exact component={BookContainer} /> */}
-
+                <Route path="/" exact component={HomeContainer} />
+                <Route path="/" exact component={LibraryContainer} />
                 <Route path="/introduce" component={IntroducePresenter} />
-                {/* <Route path="/library" exact component={LibraryContainer} /> */}
+                <Route path="/library" exact component={LibraryContainer} />
                 <Route path="/library/:id" exact component={BookContainer} />
                 <Route path="/suggestion" component={SuggestionContainer} />
                 <Route path="/signin" exact component={SignInContainer} />
