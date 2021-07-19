@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IUser } from "types";
 import { baseUrl } from "api/url";
 import BookProfileInfoSummary from "./BookProfileInfoSummary";
+import useInterview from "hook/interview/useInterview";
 
 interface IBookProfile {
     user: IUser;
@@ -11,6 +12,8 @@ interface IBookProfile {
 }
 
 const BookProfile = ({ user, blogImage }: IBookProfile) => {
+    const { requestInterview } = useInterview();
+
     return (
         <div className="book__profile__info">
             <div className="book__profile__info__vertical">
@@ -26,7 +29,7 @@ const BookProfile = ({ user, blogImage }: IBookProfile) => {
                         <FontAwesomeIcon icon={faHeart} size="1x" />
                     </div>
 
-                    <button>인터뷰 요청하기</button>
+                    <button onClick={requestInterview}>인터뷰 요청하기</button>
                 </div>
             </div>
 
