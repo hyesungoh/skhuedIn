@@ -1,12 +1,12 @@
+import React from "react";
 import axios from "axios";
 import { useRecoilValue } from "recoil";
-import { currentUserState } from "store/user";
-
-import { baseUrl } from "api/url";
-import React from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
-import { IFollowUser, IGetFollowingByFromUserId } from "types/fetch";
+import { baseUrl } from "api/url";
+import { currentUserState } from "store/user";
+
+import { IGetFollowingByFromUserId } from "types/fetch";
 
 const useFollow = () => {
     const currentUser = useRecoilValue(currentUserState);
@@ -18,6 +18,24 @@ const useFollow = () => {
         );
 
         return response.data.data;
+    };
+
+    const followUserByToUserId = async (targetUserId: number) => {
+        return axios.post(`${baseUrl}/api/follows`, {
+            data: {
+                fromUserId: currentUser.data?.id,
+                toUserId: targetUserId,
+            },
+        });
+    };
+
+    const unfollowUserByToUserId = async (targetUserId: number) => {
+        return axios.delete(`${baseUrl}/api/follows`, {
+            data: {
+                fromUserId: currentUser.data?.id,
+                toUserId: targetUserId,
+            },
+        });
     };
 
     const refresh = () => {
@@ -36,43 +54,17 @@ const useFollow = () => {
         );
     };
 
-    const toggleFollowUser = async (targetUserId: number) => {
-        const isFollowedUser = checkIsFollowedUser(targetUserId);
-
-        if (isFollowedUser) {
-        }
-        // await axios.post<IFollowUser>(`${baseUrl}/api/follows`, {
-        //     fromUserId: currentUser.data?.id,
-        //     toUserId: targetUserId,
-        // });
-    };
-
-    const followUserByToUserId = useMutation(
+    const toggleFollowUser = useMutation(
         (targetUserId: number) => {
-            return axios.post(`${baseUrl}/api/follows`, {
-                data: {
-                    fromUserId: currentUser.data?.id,
-                    toUserId: targetUserId,
-                },
-            });
-        },
-        {
-            onSuccess: () => refresh(),
-        }
-    );
+            if (!currentUser.isSigned) alert("로그인 부탁드립니다 !");
 
-    const unfollowUserByToUserId = useMutation(
-        (targetUserId: number) => {
-            return axios.delete(`${baseUrl}/api/follows`, {
-                data: {
-                    fromUserId: currentUser.data?.id,
-                    toUserId: targetUserId,
-                },
-            });
+            if (checkIsFollowedUser(targetUserId)) {
+                return unfollowUserByToUserId(targetUserId);
+            }
+
+            return followUserByToUserId(targetUserId);
         },
-        {
-            onSuccess: () => refresh(),
-        }
+        { onSuccess: () => refresh() }
     );
 
     const alertNotYet = (e: React.MouseEvent) => {
@@ -80,7 +72,11 @@ const useFollow = () => {
         window.alert("아직 준비되지 않은 기능입니다.");
     };
 
-    return { following, toggleFollowUser, alertNotYet };
+    return {
+        following: following ? following : [],
+        toggleFollowUser: toggleFollowUser.mutate,
+        alertNotYet,
+    };
 };
 
 export default useFollow;
