@@ -11,6 +11,7 @@ interface SetUserTokenAndIdProps {
 }
 
 const useUserSession = () => {
+    // Session에 저장되어 있는 이름 입니다.
     const TOKEN_SESSION_NAME: string = "userToken";
     const ID_SESSION_NAME: string = "userId";
 
@@ -48,16 +49,19 @@ const useUserSession = () => {
         ] = `Bearer ${sessionToken}`;
     };
 
+    // 토큰, id 값을 session에 저장합니다.
     const setUserTokenAndId = ({ token, id }: SetUserTokenAndIdProps) => {
         window.sessionStorage.setItem(TOKEN_SESSION_NAME, token);
         window.sessionStorage.setItem(ID_SESSION_NAME, JSON.stringify(id));
     };
 
+    // session의 토큰, id 값을 비웁니다.
     const clearUserSession = () => {
         window.sessionStorage.removeItem(TOKEN_SESSION_NAME);
         window.sessionStorage.removeItem(ID_SESSION_NAME);
     };
 
+    // session의 token 값을 반환 합니다.
     const isUserTokenExist = () => {
         const sessionToken = window.sessionStorage.getItem(TOKEN_SESSION_NAME);
         return sessionToken;
