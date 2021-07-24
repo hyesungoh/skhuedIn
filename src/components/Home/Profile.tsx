@@ -1,10 +1,18 @@
 import { useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
+import { useHistory } from "react-router-dom";
 
 import NotSignedProfile from "components/Home/NotSignedProfile";
+import useFollow from "hook/follow/useFollow";
 
 const Profile = () => {
+    const history = useHistory();
     const currentUser = useRecoilValue(currentUserState);
+    const { following } = useFollow();
+
+    const onClickMypage = () => {
+        history.push(`/mypage/${currentUser.data?.id}`);
+    };
 
     if (!currentUser.isSigned) return <NotSignedProfile />;
 
@@ -26,13 +34,16 @@ const Profile = () => {
 
             <div className="profile__follow">
                 <div className="profile__follow__follower">
-                    <span>이부분</span>
+                    <span>팔로잉</span>
                     <span className="profile__follow__follower--number">
-                        몰로하지
+                        {following.length}명
                     </span>
                 </div>
-                <div className="profile__follow__navigate">
-                    <span>더 알아보기</span>
+                <div
+                    className="profile__follow__navigate"
+                    onClick={onClickMypage}
+                >
+                    <span>마이페이지</span>
                 </div>
             </div>
         </div>
