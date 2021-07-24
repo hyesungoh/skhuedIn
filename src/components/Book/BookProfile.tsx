@@ -13,7 +13,7 @@ interface IBookProfile {
 }
 
 const BookProfile = ({ user, blogImage }: IBookProfile) => {
-    const { alertNotYet, toggleFollowUser } = useFollow();
+    const { toggleFollowUser } = useFollow();
     const { requestInterview } = useInterview();
 
     return (
@@ -29,7 +29,9 @@ const BookProfile = ({ user, blogImage }: IBookProfile) => {
                 <div className="book__profile__info__vertical__follow">
                     <div
                         className="book__profile__info__vertical__follow__heart"
-                        onClick={()=>{toggleFollowUser(user.id)}}
+                        onClick={() => {
+                            toggleFollowUser(user.id);
+                        }}
                     >
                         <FontAwesomeIcon icon={faHeart} size="1x" />
                     </div>
