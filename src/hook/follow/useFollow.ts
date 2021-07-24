@@ -11,8 +11,11 @@ const useFollow = () => {
 
     const { data: following } = useQuery(
         ["following", currentUser.data?.id],
-        () => axios.get(`${baseUrl}/follows/to-user/${currentUser.data?.id}`)
+        () => axios.get(`${baseUrl}/follows/to-user/${currentUser.data?.id}`),
+        { enabled: currentUser.isSigned }
     );
+
+    console.log(following);
 
     const toggleFollowUser = async (targetUserId: number) => {
         await axios.post(`${baseUrl}/api/follows`, {
