@@ -13,9 +13,11 @@ interface IBookProfile {
 }
 
 const BookProfile = ({ user, blogImage }: IBookProfile) => {
-    const { alertNotYet } = useFollow();
+    const { alertNotYet, following } = useFollow();
     const { requestInterview } = useInterview();
 
+    console.log(following);
+    
     return (
         <div className="book__profile__info">
             <div className="book__profile__info__vertical">
