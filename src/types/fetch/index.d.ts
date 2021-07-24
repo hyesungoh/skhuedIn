@@ -1,6 +1,7 @@
 import {
     IBlog,
     IComment,
+    IFollow,
     IPageable,
     IPost,
     IQuestion,
@@ -91,10 +92,9 @@ export interface IGetCommentsByQuestionId {
     data: IComment[];
 }
 
-export interface IGetFollowsByToUserId {
-    data: {
-        id: number;
-        toUser: IUser;
-        fromUser: IUser;
-    };
+export interface IFollowUser {
+    data: IFollow;
+}
+export interface IGetFollowingByFromUserId {
+    data: IFollow[];
 }

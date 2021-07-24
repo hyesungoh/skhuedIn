@@ -84,3 +84,9 @@ export interface IQuestion {
     createdDate: string;
     lastModifiedDate: string;
 }
+
+export interface IFollow {
+    id: number;
+    fromUser: IUser;
+    toUser: IUser;
+}
