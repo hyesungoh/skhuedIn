@@ -1,14 +1,7 @@
-import HomePresenter from "../presenter/HomePresenter";
-
+import HomePresenter from "pages/home/presenter/HomePresenter";
 import "pages/home/Home.scss";
 
 const HomeContainer = () => {
-    // const setMainPostsPage = useSetRecoilState(mainPostsPageState);
-
-    // useEffect(() => {
-    //     setMainPostsPage(0);
-    // }, []);
-
     return <HomePresenter />;
 };
 

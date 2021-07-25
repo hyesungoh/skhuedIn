@@ -24,12 +24,11 @@ const useFollow = () => {
     // 로그인된 유저 아이디와 targetUserId를 이용해 팔로우 합니다.
     const followUserByToUserId = async (targetUserId: number) => {
         const response = await axios.post(`${baseUrl}/api/follows`, {
-            data: {
-                fromUserId: currentUser.data?.id,
-                toUserId: targetUserId,
-            },
+            fromUserId: currentUser.data?.id,
+            toUserId: targetUserId,
         });
 
+        console.log(response);
         return response.data;
     };
 
@@ -42,17 +41,20 @@ const useFollow = () => {
             },
         });
 
+        console.log(response);
         return response.data;
     };
 
     // 키값을 기준으로 캐시된 값을 refresh 합니다.
     const refresh = () => {
-        queryClient.invalidateQueries(["following", currentUser.data?.id]);
+        // queryClient.invalidateQueries(["following", currentUser.data?.id]);
+        queryClient.invalidateQueries([`following${currentUser.data?.id}`]);
     };
 
     // 현재 로그인된 유저의 팔로잉을 useQuery로 캐싱 합니다.
     const { data: following } = useQuery(
-        ["following", currentUser.data?.id],
+        // ["following", currentUser.data?.id],
+        [`following${currentUser.data?.id}`],
         getFollowingByFromUserId,
         { enabled: currentUser.isSigned }
     );
