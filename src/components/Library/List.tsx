@@ -96,6 +96,7 @@ const List = ({ blogs }: IList) => {
                         key={index}
                         blogId={blog.id}
                         name={blog.user.name}
+                        blogUserId={blog.user.id}
                         entranceYear={blog.user.entranceYear}
                         profileImageUrl={blog.profile.name}
                         content={blog.content}

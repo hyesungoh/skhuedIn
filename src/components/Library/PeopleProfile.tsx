@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
@@ -9,6 +9,7 @@ import useFollow from "hook/follow/useFollow";
 
 interface IPeopleProfile {
     blogId: number;
+    blogUserId: number;
     name: string;
     entranceYear: string;
     profileImageUrl: string;
@@ -18,15 +19,21 @@ interface IPeopleProfile {
 const PeopleProfile = ({
     blogId,
     name,
+    blogUserId,
     entranceYear,
     profileImageUrl,
     content,
 }: IPeopleProfile) => {
+    // book 클릭 시 id 값을 이용해 push
     const history = useHistory();
-    const { alertNotYet } = useFollow();
-
     const onClick = () => {
         history.push(`/library/${blogId}`);
+    };
+
+    const { toggleFollowUser } = useFollow();
+    const onClickFollow = (e: MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
+        toggleFollowUser(blogUserId);
     };
 
     return (
@@ -41,7 +48,7 @@ const PeopleProfile = ({
 
                 <div
                     className="peoples__list__profile__logo__div"
-                    onClick={alertNotYet}
+                    onClick={onClickFollow}
                 >
                     <FontAwesomeIcon
                         className="peoples__list__profile__logo__div__heart"
