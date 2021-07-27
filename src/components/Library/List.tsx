@@ -14,18 +14,18 @@ interface IList {
 }
 
 const List = ({ blogs }: IList) => {
+    // 카테고리 리스트
     const categories: string[] = [
         "최신업데이트순",
         "입학순",
         "졸업순",
         "인기순",
     ];
-
+    // 현재 카테고리
     const [category, setCategory] = useState<string>(categories[0]);
-    const currentUser = useRecoilValue(currentUserState);
 
+    // 카테고리 변경 시 mutation
     const queryClient = useQueryClient();
-
     const changeCategory = useMutation(
         (value: string) => getBlogsByCategory(value),
         {
@@ -35,6 +35,8 @@ const List = ({ blogs }: IList) => {
         }
     );
 
+    // 현재 유저를 기준으로 블로그를 만들 수 있는 지 확인
+    const currentUser = useRecoilValue(currentUserState);
     const CanMakeBlog = () => {
         if (!currentUser.data) return false;
 
@@ -45,6 +47,7 @@ const List = ({ blogs }: IList) => {
         return false;
     };
 
+    // 카테고리 값을 기준으로 API에 적용가능한 값을 반환
     const reducingCategory = (tempCategory: string): string => {
         switch (tempCategory) {
             case "최신업데이트순":
@@ -60,6 +63,7 @@ const List = ({ blogs }: IList) => {
         }
     };
 
+    // 카테고리 클릭 시 setState 후 mutate
     const onCategoryClick = (tempCategory: string) => {
         setCategory(tempCategory);
         const formatedCategory = reducingCategory(tempCategory);
