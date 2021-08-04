@@ -1,24 +1,27 @@
-import Error from "components/Error/Error";
-import { useHistory } from "react-router";
-import { useRecoilValue } from "recoil";
-import { currentUserState } from "store/user";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { useHistory } from "react-router";
+
+import Error from "components/Error/Error";
+import { currentUserState } from "store/user";
 
 const Profile = () => {
     const history = useHistory();
     const currentUser = useRecoilValue(currentUserState);
 
+    // 졸업했어요 버튼 클릭 시
     const onGraduateClick = () => {
         history.push("/graduate");
     };
 
+    // 졸업 확인
     const isGraduate = () => {
         if (!currentUser.data) return false;
-
         if (currentUser.data?.graduationYear !== "0") return true;
         return false;
     };
 
+    // 유저 정보가 없을 시 에러 렌더링
     if (!currentUser.data) return <Error />;
     return (
         <StyledMain>
