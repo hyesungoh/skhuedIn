@@ -6,6 +6,7 @@ import Error from "components/Error/Error";
 import { currentUserState } from "store/user";
 import GraduateInfo from "./GraduateInfo";
 import StudentInfo from "./StudentInfo";
+import isGraduate from "utils/isGraduate";
 
 const Profile = () => {
     const history = useHistory();
@@ -17,11 +18,7 @@ const Profile = () => {
     };
 
     // 졸업 확인
-    const isGraduate = () => {
-        if (!currentUser.data) return false;
-        if (currentUser.data?.graduationYear !== "0") return true;
-        return false;
-    };
+    const isGraduated = isGraduate(currentUser);
 
     // 유저 정보가 없을 시 에러 렌더링
     if (!currentUser.data) return <Error />;
@@ -30,7 +27,7 @@ const Profile = () => {
             <ImageAside>
                 <StyledImg src={currentUser.data?.userImageUrl} alt="profile" />
             </ImageAside>
-            {isGraduate() ? (
+            {isGraduated ? (
                 <GraduateInfo />
             ) : (
                 <>
