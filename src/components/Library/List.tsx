@@ -8,6 +8,7 @@ import { getBlogsByCategory } from "api/blog/fetch";
 import { useRecoilValue } from "recoil";
 import { currentUserState } from "store/user";
 import SuggestBlogCard from "./SuggestBlogCard";
+import canMakeBlog from "utils/canMakeBlog";
 
 interface IList {
     blogs: IBlog[];
@@ -37,14 +38,7 @@ const List = ({ blogs }: IList) => {
 
     // 현재 유저를 기준으로 블로그를 만들 수 있는 지 확인
     const currentUser = useRecoilValue(currentUserState);
-    const CanMakeBlog = () => {
-        if (!currentUser.data) return false;
-
-        if (currentUser.data?.graduationYear !== "0") {
-            if (!currentUser.data?.isBlog) return true;
-        }
-        return false;
-    };
+    const canBlogMakeUser = canMakeBlog(currentUser);
 
     // 카테고리 값을 기준으로 API에 적용가능한 값을 반환
     const reducingCategory = (tempCategory: string): string => {
@@ -89,7 +83,7 @@ const List = ({ blogs }: IList) => {
             </div>
 
             <div className="peoples__list">
-                {CanMakeBlog() ? <SuggestBlogCard /> : null}
+                {canBlogMakeUser ? <SuggestBlogCard /> : null}
                 {blogs.map((blog, index) => (
                     <PeopleProfile
                         key={index}

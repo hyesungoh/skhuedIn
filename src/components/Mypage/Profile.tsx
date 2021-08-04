@@ -11,14 +11,13 @@ import isGraduate from "utils/isGraduate";
 const Profile = () => {
     const history = useHistory();
     const currentUser = useRecoilValue(currentUserState);
+    // 졸업 확인
+    const isGraduated = isGraduate(currentUser);
 
     // 졸업했어요 버튼 클릭 시
     const onGraduateClick = () => {
         history.push("/graduate");
     };
-
-    // 졸업 확인
-    const isGraduated = isGraduate(currentUser);
 
     // 유저 정보가 없을 시 에러 렌더링
     if (!currentUser.data) return <Error />;
