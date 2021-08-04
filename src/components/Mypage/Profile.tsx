@@ -12,6 +12,13 @@ const Profile = () => {
         history.push("/graduate");
     };
 
+    const isGraduate = () => {
+        if (!currentUser.data) return false;
+
+        if (currentUser.data?.graduationYear !== "0") return true;
+        return false;
+    };
+
     if (!currentUser.data) return <Error />;
     return (
         <StyledMain>
@@ -36,7 +43,11 @@ const Profile = () => {
                     </InfoArticle>
                 </InfoDiv>
             </InfoSection>
-            <GraduateBtn onClick={onGraduateClick}>졸업 했어요 !</GraduateBtn>
+            {!isGraduate() && (
+                <GraduateBtn onClick={onGraduateClick}>
+                    졸업 했어요 !
+                </GraduateBtn>
+            )}
         </StyledMain>
     );
 };
