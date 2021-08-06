@@ -14,10 +14,17 @@ const useFollow = () => {
 
     // 로그인된 유저 기준으로 팔로잉 유저들을 가지고 옵니다.
     const getFollowingByFromUserId = async () => {
+        // try {
+        //     const response = await axios.get<IGetFollowingByFromUserId>(
+        //         `${baseUrl}/api/follows/from-user/${currentUser.data?.id}`
+        //     );
+        //     return response.data.data;
+        // } catch (error) {
+        //     console.log(error);
+        // }
         const response = await axios.get<IGetFollowingByFromUserId>(
             `${baseUrl}/api/follows/from-user/${currentUser.data?.id}`
         );
-
         return response.data.data;
     };
 
@@ -28,7 +35,6 @@ const useFollow = () => {
             toUserId: targetUserId,
         });
 
-        console.log(response);
         return response.data;
     };
 

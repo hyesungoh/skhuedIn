@@ -44,9 +44,6 @@ const QuestionModal = ({
     }, []);
 
     const closeModal = (e: React.MouseEvent) => {
-        console.log(e.target);
-        console.log(e.currentTarget);
-
         if (e.target !== e.currentTarget) return;
 
         setIsOpen(false);

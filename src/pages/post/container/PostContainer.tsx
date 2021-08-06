@@ -13,7 +13,6 @@ const PostContainer = () => {
     const { id } = useParams<IParams>();
     const { data, isLoading } = useQuery("post", () => getPostById(id));
 
-    console.log(data);
     if (!data) return <Loading />;
     return (
         <PostPresenter

@@ -84,7 +84,7 @@ const ProfileImageDiv = styled.div`
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-color: red;
+    background-color: ${({ theme }) => theme.colors.emph};
     margin-bottom: 8px;
 
     &:hover ~ ${ProfileInfoDiv} > ${BoldSpan} {

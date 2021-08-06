@@ -1,6 +1,6 @@
 ## Frontend Develop Log
 
-## Using
+## Getting Started
 
 #### TypeScript
 
