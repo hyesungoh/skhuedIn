@@ -1,5 +1,10 @@
-## Frontend Develop Log
+<div align=center>
 
+<h1>
+SKHUED-IN</h1>
+
+<p>재학생과 졸업생을 잇는 성공회인 사람도서관</p>
+</div>
 ## Getting Started
 
 #### TypeScript
