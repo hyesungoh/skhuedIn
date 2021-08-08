@@ -18,7 +18,8 @@ const Nav = ({
     onSignOutClick,
 }: INav) => {
     const currentUser = useRecoilValue(currentUserState);
-
+    
+    // 로그인된 상태일 때 렌더링 될 DOM
     const SignedInCategory = () => (
         <div className="nav__category__element nav__dropdown">
             <span></span>
