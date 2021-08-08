@@ -1,8 +1,7 @@
-import React from "react";
-
 import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
+// Routes
 import NavContainer from "pages/nav/container/NavContainer";
 import HomeContainer from "pages/home/container/HomeContainer";
 import SuggestionContainer from "pages/suggestion/container/SuggestionContainer";
@@ -23,6 +22,7 @@ import RegistBlogContainer from "pages/registBlog/container/RegistBlogContainer"
 import ScrollToTop from "components/ScrollToTop";
 import GraduateContainer from "pages/graduate/container/GraduateContainer";
 
+// react-transition-group을 이용해 route 이동 간 애니메이션 사용
 const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup className="page">
         <CSSTransition key={location.key} classNames="slide" timeout={1200}>
