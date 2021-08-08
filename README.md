@@ -5,6 +5,7 @@ SKHUED-IN</h1>
 
 <p>재학생과 졸업생을 잇는 성공회인 사람도서관</p>
 </div>
+
 ## Getting Started
 
 #### TypeScript
@@ -119,6 +120,12 @@ npm i react-google-login
 ```terminal
 npm i lodash
 npm i @types/lodash
+```
+
+#### Or just
+
+```bash
+npm install # or yarn
 ```
 
 ## Development
