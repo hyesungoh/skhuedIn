@@ -10,10 +10,12 @@ const Profile = () => {
     const currentUser = useRecoilValue(currentUserState);
     const { following } = useFollow();
 
+    // 마이페이지 클릭 시
     const onClickMypage = () => {
         history.push(`/mypage/${currentUser.data?.id}`);
     };
 
+    // 로그인되어 있지 않을 시 
     if (!currentUser.isSigned) return <NotSignedProfile />;
 
     return (
