@@ -11,11 +11,18 @@ interface IParams {
 }
 
 const BookContainer = () => {
+    // parameter의 id 값
     const { id } = useParams<IParams>();
+
+    // 해당 blog의 posts fetch
+    // custom hooks로 refactor 필요
     const { data, isLoading, error } = useQuery("posts", () =>
         getBlogsById(id)
     );
 
+
+    // 해당 blog의 questions fetch
+    // custom hooks로 refactor 필요
     const {
         data: quesData,
         // isLoading: quesIsLoading,
