@@ -6,10 +6,12 @@ import HowTo from "components/Introduce/HowTo";
 import styled from "styled-components";
 
 const IntroducePresenter = () => {
+    // 현재 보여지고 있는 주제
     const [category, setCategory] = useState<"introduce" | "howto">(
         "introduce"
     );
 
+    // 주제 버튼 클릭 시
     const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         const { name } = e.target as HTMLButtonElement;
         if (name === "introduce" || name === "howto") setCategory(name);

@@ -63,6 +63,8 @@ const List = ({ blogs }: IList) => {
         changeCategory.mutate(formatedCategory);
     };
 
+    console.log(blogs);
+
     return (
         <div className="library__peoples">
             <div className="peoples__category">
@@ -91,7 +93,7 @@ const List = ({ blogs }: IList) => {
                         name={blog.user.name}
                         blogUserId={blog.user.id}
                         entranceYear={blog.user.entranceYear}
-                        profileImageUrl={blog.profile.name}
+                        profileImageUrl={blog.user.name}
                         content={blog.content}
                     />
                 ))}
