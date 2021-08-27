@@ -63,8 +63,6 @@ const List = ({ blogs }: IList) => {
         changeCategory.mutate(formatedCategory);
     };
 
-    console.log(blogs);
-
     return (
         <div className="library__peoples">
             <div className="peoples__category">

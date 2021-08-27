@@ -36,6 +36,8 @@ const PeopleProfile = ({
         toggleFollowUser(blogUserId);
     };
 
+    if (!entranceYear) return <></>;
+
     return (
         <div className="peoples__list__profile" onClick={onClick}>
             <div className="peoples__list__profile__logo">
