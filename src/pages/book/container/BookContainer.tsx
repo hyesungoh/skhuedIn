@@ -29,6 +29,7 @@ const BookContainer = () => {
         // error: quesError,
     } = useQuery("questions", () => getQuestionsById(id));
 
+
     if (error) return <Notfound />;
     if (!data || !quesData) return <Loading />;
 
@@ -37,7 +38,7 @@ const BookContainer = () => {
             isLoading={isLoading}
             error={error}
             posts={data.posts.content}
-            blogImage={data.profile.name}
+            blogImage={data.user.name}
             user={data.user}
             questions={quesData?.content}
         />
